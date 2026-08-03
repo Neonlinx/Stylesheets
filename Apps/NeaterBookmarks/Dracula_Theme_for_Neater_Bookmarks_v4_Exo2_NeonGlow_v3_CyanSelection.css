@@ -1,0 +1,2136 @@
+/* =========================================================
+   vBookmarks / Neater Bookmarks
+   Dracula Theme - Medium Adjustable v4 / Exo 2
+   SUPER COMMENTED / SUPER COMMENTATA
+   Italian + English
+   ========================================================= */
+
+
+/* =========================================================
+   IMPORT FONT
+   IMPORTAZIONE DEL FONT
+   ========================================================= */
+
+/* ITA:
+   Importa il font "Exo 2" da Google Fonts.
+   Questo font verrà poi usato su quasi tutta l'interfaccia.
+
+   ENG:
+   Imports the "Exo 2" font from Google Fonts.
+   This font will then be used across almost the whole interface.
+*/
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600&display=swap');
+
+
+/* =========================================================
+   ROOT VARIABLES
+   VARIABILI GLOBALI
+   ========================================================= */
+
+/* ITA:
+   :root contiene le variabili globali del tema.
+   Il vantaggio è enorme: cambi un valore qui e si aggiorna
+   automaticamente in tutti i punti dove viene usato.
+
+   ENG:
+   :root contains the global theme variables.
+   This is very useful: change one value here and it updates
+   automatically everywhere that variable is used.
+*/
+:root {
+
+    /* =====================================================
+       MAIN BACKGROUND COLORS
+       COLORI PRINCIPALI DI SFONDO
+       ===================================================== */
+
+    /* ITA:
+       Colore di sfondo principale dell'interfaccia.
+       È il classico sfondo Dracula.
+
+       ENG:
+       Main interface background color.
+       This is the classic Dracula background.
+    */
+    --bg-main: #282A36;
+
+    /* ITA:
+       Colore superiore del gradiente dei pannelli.
+
+       ENG:
+       Top color of the panel gradient.
+    */
+    --bg-panel-top: #2A2D39;
+
+    /* ITA:
+       Colore inferiore del gradiente dei pannelli.
+
+       ENG:
+       Bottom color of the panel gradient.
+    */
+    --bg-panel-bottom: #282A36;
+
+    /* ITA:
+       Sfondo tenue dei singoli elementi:
+       preferiti, cartelle, righe cliccabili, ecc.
+
+       ENG:
+       Soft background for individual items:
+       bookmarks, folders, clickable rows, etc.
+    */
+    --bg-soft: rgba(68, 71, 90, 0.14);
+
+    /* ITA:
+       Sfondo più intenso, usato per elementi tipo
+       la barra di ricerca.
+
+       ENG:
+       Stronger background, used for elements such
+       as the search bar.
+    */
+    --bg-soft-strong: rgba(68, 71, 90, 0.88);
+
+    /* =====================================================
+       BORDER COLORS
+       COLORI DEI BORDI
+       ===================================================== */
+
+    /* ITA:
+       Bordo molto tenue dei singoli elementi.
+
+       ENG:
+       Very soft border for individual items.
+    */
+    --border-soft: rgba(98, 114, 164, 0.10);
+
+    /* ITA:
+       Bordo principale, leggermente più visibile.
+
+       ENG:
+       Main border color, slightly more visible.
+    */
+    --border-main: #6272A4;
+
+    /* =====================================================
+       TEXT COLORS
+       COLORI DEL TESTO
+       ===================================================== */
+
+    /* ITA:
+       Colore principale del testo dei preferiti.
+
+       ENG:
+       Main text color for bookmark items.
+    */
+    --text-main: #EAEAF2;
+
+    /* ITA:
+       Colore del testo delle cartelle.
+
+       ENG:
+       Text color for folder items.
+    */
+    --text-folder: #E8C8F1;
+
+    /* ITA:
+       Colore secondario del testo.
+       Utile per placeholder e dettagli meno importanti.
+
+       ENG:
+       Secondary text color.
+       Useful for placeholders and less important details.
+    */
+    --text-soft: #A4A9C7;
+
+    /* =====================================================
+       ACCENT COLORS
+       COLORI DI ACCENTO
+       ===================================================== */
+
+    /* ITA:
+       Rosa Dracula, usato come accento secondario.
+
+       ENG:
+       Dracula pink, used as a secondary accent.
+    */
+    --accent-pink: #FF79C6;
+
+    /* ITA:
+       Viola Dracula, usato per selezione/focus.
+
+       ENG:
+       Dracula purple, used for selection/focus.
+    */
+    --accent-purple: #BD93F9;
+
+    /* ITA:
+       Azzurro/ciano Dracula, usato per hover e dettagli luminosi.
+
+       ENG:
+       Dracula cyan, used for hover and bright highlights.
+    */
+    --accent-cyan: #8BE9FD;
+
+    /* =====================================================
+       TREE / FOLDER STRUCTURE COLORS
+       COLORI DELLA STRUTTURA AD ALBERO
+       ===================================================== */
+
+    /* ITA:
+       Colore base delle linee che indicano la gerarchia
+       delle cartelle annidate.
+
+       ENG:
+       Base color of the lines showing nested folder hierarchy.
+    */
+    --tree-line: rgba(255, 255, 255, 0.05);
+
+    /* ITA:
+       Colore della struttura albero quando si illumina in hover.
+
+       ENG:
+       Tree structure color when it brightens on hover.
+    */
+    --tree-line-strong: rgba(139, 233, 253, 0.18);
+
+    /* =====================================================
+       DENSITY / COMPACTNESS SETTINGS
+       IMPOSTAZIONI DI COMPATTEZZA
+       ===================================================== */
+
+    /* ITA:
+       Queste variabili regolano quanto è compatta o ariosa
+       l'interfaccia.
+       Se vuoi farla più densa o più grande, tocca soprattutto qui.
+
+       ENG:
+       These variables control how compact or spacious
+       the interface feels.
+       If you want it denser or larger, this is the main place to tweak.
+    */
+
+    /* ITA:
+       Dimensione generale del testo degli elementi.
+
+       ENG:
+       General font size for the items.
+    */
+    --ui-font-size: 13px;
+
+    /* ITA:
+       Altezza di riga del testo.
+       Valore più alto = più aria verticale.
+       Valore più basso = aspetto più compatto.
+
+       ENG:
+       Text line height.
+       Higher value = more vertical breathing room.
+       Lower value = more compact look.
+    */
+    --ui-line-height: 1.35em;
+
+    /* ITA:
+       Padding verticale interno degli elementi.
+
+       ENG:
+       Vertical internal padding of items.
+    */
+    --item-padding-y: 4px;
+
+    /* ITA:
+       Padding orizzontale interno degli elementi.
+
+       ENG:
+       Horizontal internal padding of items.
+    */
+    --item-padding-x: 9px;
+
+    /* ITA:
+       Margine verticale esterno tra un elemento e l'altro.
+
+       ENG:
+       Vertical outer margin between items.
+    */
+    --item-margin-y: 2px;
+
+    /* ITA:
+       Margine orizzontale esterno degli elementi.
+
+       ENG:
+       Horizontal outer margin of items.
+    */
+    --item-margin-x: 4px;
+
+    /* ITA:
+       Grandezza testo della barra di ricerca.
+
+       ENG:
+       Search bar text size.
+    */
+    --search-font-size: 13px;
+
+    /* ITA:
+       Padding verticale della barra di ricerca.
+
+       ENG:
+       Vertical padding of the search bar.
+    */
+    --search-padding-y: 6px;
+
+    /* ITA:
+       Padding orizzontale della barra di ricerca.
+
+       ENG:
+       Horizontal padding of the search bar.
+    */
+    --search-padding-x: 10px;
+
+    /* =====================================================
+       TREE INDENT / CONNECTORS
+       RIENTRANZA E CONNETTORI DELL'ALBERO
+       ===================================================== */
+
+    /* ITA:
+       Rientranza del primo livello annidato.
+
+       ENG:
+       Indentation of the first nested level.
+    */
+    --tree-indent: 11px;
+
+    /* ITA:
+       Rientranza dei livelli ancora più profondi.
+
+       ENG:
+       Indentation of deeper nested levels.
+    */
+    --tree-indent-inner: 9px;
+
+    /* ITA:
+       Posizione verticale del trattino orizzontale che collega
+       gli elementi figli al ramo.
+
+       ENG:
+       Vertical position of the small horizontal connector
+       linking child items to the branch.
+    */
+    --tree-connector-top: 14px;
+
+    /* ITA:
+       Lunghezza del trattino orizzontale della struttura albero.
+
+       ENG:
+       Length of the tree connector line.
+    */
+    --tree-connector-width: 9px;
+}
+
+
+/* =========================================================
+   GLOBAL FONT + TEXT RENDERING
+   FONT GLOBALE + RESA TESTO
+   ========================================================= */
+
+/* ITA:
+   Questo blocco applica il font scelto e alcune ottimizzazioni
+   di rendering a molti elementi dell'interfaccia.
+
+   NOTA v2: Rimosso "font-smooth: always" perché non è uno standard
+   CSS e veniva ignorato da tutti i browser moderni.
+   Rimosso anche "text-rendering: geometricPrecision" perché
+   a 13px può peggiorare la leggibilità anziché migliorarla.
+   Mantenuto solo -webkit-font-smoothing e -moz-osx-font-smoothing
+   che sono quelli che funzionano davvero.
+
+   ENG:
+   This block applies the chosen font and some text rendering
+   tweaks to many interface elements.
+
+   NOTE v2: Removed "font-smooth: always" as it is not a CSS standard
+   and was ignored by all modern browsers.
+   Also removed "text-rendering: geometricPrecision" because
+   at 13px it can hurt readability rather than help it.
+   Only kept -webkit-font-smoothing and -moz-osx-font-smoothing
+   which actually work.
+*/
+body,
+input,
+button,
+span,
+a,
+i,
+li,
+ul,
+div {
+    /* ITA: Applica Exo 2.
+       ENG: Applies Exo 2.
+    */
+    font-family: "Exo 2", "Segoe UI", sans-serif !important;
+
+    /* ITA: Peso normale del font.
+       ENG: Normal font weight.
+    */
+    font-weight: 400 !important;
+
+    /* ITA: Elimina ombre sul testo.
+       ENG: Removes text shadows.
+    */
+    text-shadow: none !important;
+
+    /* ITA:
+       Migliorano la nitidezza del testo su sistemi Mac/WebKit.
+       Su Windows hanno effetto minimo ma non causano danni.
+
+       ENG:
+       Improve text sharpness on Mac/WebKit systems.
+       On Windows they have minimal effect but cause no harm.
+    */
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+}
+
+
+/* =========================================================
+   GLOBAL BACKGROUND / TEXT BASE
+   BASE GENERALE SFONDO / TESTO
+   ========================================================= */
+
+/* ITA:
+   Applica sfondo e colore testo ai contenitori principali.
+
+   ENG:
+   Applies background and text color to the main containers.
+*/
+html,
+body,
+#container,
+#mainSection,
+#results,
+#tree,
+#search {
+    background: var(--bg-main) !important;
+    color: var(--text-main) !important;
+}
+
+
+/* =========================================================
+   SEARCH AREA CONTAINER
+   CONTENITORE AREA RICERCA
+   ========================================================= */
+
+/* ITA:
+   #search è la fascia che contiene la casella di ricerca.
+
+   ENG:
+   #search is the area containing the search field.
+*/
+#search {
+    /* ITA: Linea inferiore divisoria.
+       ENG: Bottom divider line.
+    */
+    border-bottom: 1px solid rgba(98, 114, 164, 0.28) !important;
+
+    /* ITA: Piccolo padding interno del contenitore.
+       ENG: Small inner padding for the container.
+    */
+    padding: 3px 6px !important;
+}
+
+
+/* =========================================================
+   SEARCH INPUT FIELD
+   CAMPO INPUT DELLA RICERCA
+   ========================================================= */
+
+#search input {
+    /* ITA: Sfondo del campo.
+       ENG: Field background.
+    */
+    background: var(--bg-soft-strong) !important;
+
+    /* ITA: Colore del testo digitato.
+       ENG: Typed text color.
+    */
+    color: var(--text-main) !important;
+
+    /* ITA: Bordo del campo.
+       ENG: Field border.
+    */
+    border: 1px solid var(--border-main) !important;
+
+    /* ITA: Angoli arrotondati.
+       ENG: Rounded corners.
+    */
+    border-radius: 9px !important;
+
+    /* ITA: Padding controllato dalle variabili.
+       ENG: Padding controlled by variables.
+    */
+    padding: var(--search-padding-y) var(--search-padding-x) !important;
+
+    /* ITA: Dimensione testo input.
+       ENG: Input text size.
+    */
+    font-size: var(--search-font-size) !important;
+
+    /* ITA: Altezza riga dell'input.
+       ENG: Input line height.
+    */
+    line-height: 1.25 !important;
+
+    /* ITA: Nessuna ombra.
+       ENG: No shadow.
+    */
+    box-shadow: none !important;
+    text-shadow: none !important;
+}
+
+/* ITA: Colore del placeholder.
+   ENG: Placeholder color.
+*/
+#search input::placeholder {
+    color: var(--text-soft) !important;
+}
+
+/* ITA:
+   Stato focus: quando clicchi dentro la ricerca.
+
+   ENG:
+   Focus state: when you click into the search field.
+*/
+#search input:focus {
+    outline: none !important;
+    border-color: var(--accent-cyan) !important;
+    box-shadow: 0 0 0 2px rgba(139, 233, 253, 0.12) !important;
+}
+
+
+/* =========================================================
+   MAIN PANELS
+   PANNELLI PRINCIPALI
+   ========================================================= */
+
+/* ITA:
+   #results = area dei preferiti / risultati
+   #tree    = area struttura cartelle
+
+   ENG:
+   #results = bookmarks / results area
+   #tree    = folder tree area
+*/
+#results,
+#tree {
+    background: linear-gradient(180deg, var(--bg-panel-top) 0%, var(--bg-panel-bottom) 100%) !important;
+}
+
+
+/* =========================================================
+   LIST RESET
+   RESET DELLE LISTE
+   ========================================================= */
+
+/* ITA:
+   Riduce margini/padding di default delle liste UL.
+
+   ENG:
+   Reduces default margins/padding of UL lists.
+*/
+#results ul,
+#tree ul {
+    margin: 1px 0 !important;
+    padding: 0 !important;
+}
+
+/* ITA:
+   Reset base degli LI.
+   position: relative è fondamentale per usare bene
+   ::before e ::after.
+
+   ENG:
+   Base reset for LI elements.
+   position: relative is essential to properly use
+   ::before and ::after.
+*/
+#results ul li,
+#tree ul li {
+    background: transparent !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: relative !important;
+}
+
+
+/* =========================================================
+   MAIN CLICKABLE ITEMS
+   ELEMENTI CLICCABILI PRINCIPALI
+   ========================================================= */
+
+/* ITA:
+   Questo è uno dei blocchi più importanti:
+   definisce lo stile dei preferiti e delle cartelle.
+
+   NOTA v2: Aggiunto "position: relative" su a e span.
+   È necessario perché il pseudo-elemento ::after (la linea
+   hover) usa "position: absolute" e deve agganciarsi
+   all'elemento cliccabile, non all'li esterno.
+   Senza questo, la linea si posizionava rispetto all'li
+   e non all'area del link, con risultati visivi imprecisi.
+
+   ENG:
+   This is one of the most important blocks:
+   it defines the look of bookmarks and folders.
+
+   NOTE v2: Added "position: relative" on a and span.
+   This is necessary because the ::after pseudo-element
+   (the hover underline) uses "position: absolute" and must
+   anchor to the clickable element, not the outer li.
+   Without this, the line positioned relative to the li
+   rather than the link area, causing visual inaccuracies.
+*/
+#results ul li a,
+#tree ul li a,
+#tree ul li span {
+    /* ITA: Necessario per ancorare correttamente ::after.
+       ENG: Required to correctly anchor ::after.
+    */
+    position: relative !important;
+
+    /* ITA: Colore testo base.
+       ENG: Base text color.
+    */
+    color: var(--text-main) !important;
+
+    /* ITA: Sfondo leggero del blocco.
+       ENG: Light block background.
+    */
+    background: var(--bg-soft) !important;
+
+    /* ITA: Spazio interno.
+       ENG: Inner spacing.
+    */
+    padding: var(--item-padding-y) var(--item-padding-x) !important;
+
+    /* ITA: Spazio esterno.
+       ENG: Outer spacing.
+    */
+    margin: var(--item-margin-y) var(--item-margin-x) !important;
+
+    /* ITA: Arrotondamento angoli.
+       ENG: Rounded corners.
+    */
+    border-radius: 8px !important;
+
+    /* ITA: Altezza riga del testo.
+       ENG: Text line height.
+    */
+    line-height: var(--ui-line-height) !important;
+
+    /* ITA: Grandezza testo.
+       ENG: Text size.
+    */
+    font-size: var(--ui-font-size) !important;
+
+    /* ITA:
+       Leggerissima spaziatura lettere.
+       A volte aiuta la leggibilità.
+
+       ENG:
+       Very slight letter spacing.
+       Sometimes helps readability.
+    */
+    letter-spacing: 0.1px !important;
+
+    /* ITA: Nessuna sottolineatura standard.
+       ENG: No standard underline.
+    */
+    text-decoration: none !important;
+
+    /* ITA: Bordo leggero.
+       ENG: Light border.
+    */
+    border: 1px solid var(--border-soft) !important;
+
+    /* ITA: Nessuna ombra.
+       ENG: No shadow.
+    */
+    box-shadow: none !important;
+    text-shadow: none !important;
+
+    /* ITA:
+       Transizioni fluide per hover e piccoli movimenti.
+
+       ENG:
+       Smooth transitions for hover and small movement effects.
+    */
+    transition:
+        background-color 0.14s ease,
+        border-color 0.14s ease,
+        transform 0.08s ease !important;
+}
+
+/* ITA:
+   Le cartelle usano un colore testo diverso dai preferiti.
+
+   ENG:
+   Folders use a different text color from bookmarks.
+*/
+#tree ul li span,
+#tree ul li a {
+    color: var(--text-folder) !important;
+}
+
+/* ITA:
+   I preferiti mantengono il colore principale.
+
+   ENG:
+   Bookmarks keep the main text color.
+*/
+#results ul li a {
+    color: var(--text-main) !important;
+}
+
+
+/* =========================================================
+   TREE STRUCTURE / NESTING
+   STRUTTURA AD ALBERO / ANNIDAMENTO
+   ========================================================= */
+
+/* ITA:
+   Le sottoliste vengono rientrate e ricevono una linea verticale
+   per far capire la gerarchia.
+
+   ENG:
+   Nested lists are indented and get a vertical line
+   to visually show hierarchy.
+*/
+#tree ul ul {
+    margin-left: var(--tree-indent) !important;
+    padding-left: var(--tree-indent) !important;
+    border-left: 1px solid var(--tree-line) !important;
+}
+
+/* ITA:
+   Livelli ancora più annidati ricevono una rientranza ulteriore.
+
+   ENG:
+   Deeper nested levels get additional indentation.
+*/
+#tree ul ul ul {
+    margin-left: var(--tree-indent-inner) !important;
+    padding-left: var(--tree-indent) !important;
+}
+
+/* ITA:
+   Questo pseudo-elemento disegna il piccolo trattino orizzontale
+   che collega ogni elemento figlio al ramo verticale.
+
+   ENG:
+   This pseudo-element draws the small horizontal line
+   connecting each child item to the vertical branch.
+*/
+#tree ul ul > li::before {
+    content: "" !important;
+    position: absolute !important;
+    left: calc(var(--tree-indent) * -1) !important;
+    top: var(--tree-connector-top) !important;
+    width: var(--tree-connector-width) !important;
+    height: 1px !important;
+    background: var(--tree-line) !important;
+    pointer-events: none !important;
+}
+
+/* ITA:
+   Quando passi sopra una zona annidata, il trattino si illumina.
+
+   ENG:
+   When hovering a nested area, the connector line brightens.
+*/
+#tree ul ul > li:hover::before {
+    background: var(--tree-line-strong) !important;
+}
+
+/* ITA:
+   Anche la linea verticale del ramo si illumina.
+
+   ENG:
+   The vertical branch line also brightens.
+*/
+#tree ul ul:hover {
+    border-left-color: var(--tree-line-strong) !important;
+}
+
+
+/* =========================================================
+   HOVER STATE
+   STATO HOVER
+   ========================================================= */
+
+/* ITA:
+   Questo è il famoso effetto "azzurrino acceso".
+   Quando il mouse passa sopra un elemento:
+   - lo sfondo si illumina
+   - il bordo diventa più visibile
+   - appare un piccolo alone
+   - il blocco si solleva leggermente
+
+   ENG:
+   This is the bright cyan hover effect.
+   When the mouse moves over an item:
+   - the background lights up
+   - the border becomes more visible
+   - a subtle glow appears
+   - the block lifts slightly
+*/
+#results ul li a:hover,
+#tree ul li a:hover,
+#tree ul li span:hover {
+    background: rgba(139, 233, 253, 0.16) !important;
+    border-color: rgba(139, 233, 253, 0.34) !important;
+    box-shadow: 0 0 8px rgba(139, 233, 253, 0.10) !important;
+    text-decoration: none !important;
+    transform: translateY(-1px) !important;
+}
+
+
+/* =========================================================
+   UNIFORM HOVER UNDERLINE
+   SOTTOLINEATURA UNIFORME IN HOVER
+   ========================================================= */
+
+/* ITA:
+   Invece di usare la vera underline del testo,
+   qui si disegna una linea artificiale sotto tutto il blocco.
+   Così passa anche sotto l'icona/cartellina e non solo sotto il testo.
+
+   NOTA v2: Ora funziona correttamente perché abbiamo aggiunto
+   "position: relative" sugli elementi a e span nel blocco
+   principale qui sopra. In precedenza la linea si agganciava
+   all'li esterno, causando uno sfasamento.
+
+   ENG:
+   Instead of using the real text underline,
+   this draws an artificial line under the whole block.
+   This way it also runs under the icon/folder symbol,
+   not just under the text.
+
+   NOTE v2: Now works correctly because we added
+   "position: relative" on a and span in the main block above.
+   Previously the line anchored to the outer li,
+   causing a visual offset.
+*/
+#results ul li a:hover::after,
+#tree ul li a:hover::after,
+#tree ul li span:hover::after {
+    content: "" !important;
+    position: absolute !important;
+
+    /* ITA:
+       Distanza della linea dai lati sinistro e destro.
+       Riduci il valore = linea più lunga.
+       Aumenta il valore = linea più corta.
+
+       ENG:
+       Distance of the line from the left and right edges.
+       Lower value = longer line.
+       Higher value = shorter line.
+    */
+    left: 9px !important;
+    right: 9px !important;
+
+    /* ITA:
+       Distanza dal bordo inferiore.
+       Valore più piccolo = più in basso.
+       Valore più grande = più in alto.
+
+       ENG:
+       Distance from the bottom edge.
+       Smaller value = lower.
+       Larger value = higher.
+    */
+    bottom: 3px !important;
+
+    /* ITA: Spessore della linea.
+       ENG: Line thickness.
+    */
+    height: 2px !important;
+
+    /* ITA: Colore della linea.
+       ENG: Line color.
+    */
+    background: var(--accent-cyan) !important;
+
+    /* ITA: Estremità arrotondate.
+       ENG: Rounded ends.
+    */
+    border-radius: 999px !important;
+
+    opacity: 1 !important;
+    pointer-events: none !important;
+}
+
+/* ITA:
+   Evita decorazioni strane su elementi interni in hover.
+
+   ENG:
+   Prevents weird decoration effects on inner elements during hover.
+*/
+#results ul li a:hover i,
+#tree ul li a:hover i {
+    text-decoration: none !important;
+}
+
+
+/* =========================================================
+   ACTIVE / FOCUS STATE
+   STATO ATTIVO / FOCUS
+   ========================================================= */
+
+/* ITA:
+   Questo blocco entra in gioco quando un elemento è attivo,
+   selezionato o riceve focus.
+
+   NOTA v2: Rimosso "menu[type=context] command:focus" da qui.
+   Quel selettore è deprecato in HTML5 e non viene riconosciuto
+   da Chrome. Gestire il focus del menu contestuale tramite
+   quello selettore non ha effetto nei browser moderni.
+   Il menu contestuale è comunque stilizzato nella sezione dedicata.
+
+   ENG:
+   This block applies when an element is active,
+   selected, or focused.
+
+   NOTE v2: Removed "menu[type=context] command:focus" from here.
+   That selector is deprecated in HTML5 and not recognized by Chrome.
+   Targeting context menu focus via that selector has no effect
+   in modern browsers. The context menu is still styled in its
+   dedicated section below.
+*/
+#results ul li a:active,
+#results ul li a.active,
+#results ul li a:focus,
+#tree ul li a:active,
+#tree ul li a.active,
+#tree ul li a:focus,
+#tree ul li span:active,
+#tree ul li span.active,
+#tree ul li span:focus {
+    /* ITA: Sfondo viola selezione.
+       ENG: Purple selection background.
+    */
+    background: rgba(189, 147, 249, 0.90) !important;
+
+    /* ITA: Testo scuro per contrasto.
+       ENG: Dark text for contrast.
+    */
+    color: #282A36 !important;
+
+    border-color: transparent !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+
+/* =========================================================
+   FOLDER TWISTY / ARROW
+   FRECCETTA DELLE CARTELLE
+   ========================================================= */
+
+/* ITA:
+   .twisty è il piccolo triangolino che indica
+   apertura/chiusura delle cartelle.
+
+   ENG:
+   .twisty is the little triangle showing whether
+   a folder is open or closed.
+*/
+#tree ul li span .twisty {
+    border-color: transparent transparent transparent var(--accent-cyan) !important;
+}
+
+
+/* =========================================================
+   ICONS / FAVICONS
+   ICONE / FAVICON
+   ========================================================= */
+
+/* ITA:
+   Qui regoli leggermente l'aspetto delle icone:
+   opacità, saturazione, luminosità e spazio dal testo.
+
+   ENG:
+   Here you slightly adjust icon appearance:
+   opacity, saturation, brightness, and spacing from the text.
+*/
+#results ul li a img,
+#results ul li span img,
+#tree ul li a img,
+#tree ul li span img {
+    opacity: 0.96 !important;
+    filter: saturate(1.04) brightness(1.02) !important;
+    margin-right: 5px !important;
+}
+
+
+/* =========================================================
+   CONTEXT MENU
+   MENU CONTESTUALE
+   ========================================================= */
+
+/* ITA:
+   Questo è il menu del tasto destro.
+
+   NOTA v2: I selettori "menu[type=context]" e "command" sono
+   deprecati in HTML5 e non funzionano nei browser moderni
+   incluso Chrome. Li manteniamo per compatibilità con
+   eventuali versioni vecchie dell'estensione che potrebbero
+   ancora usare quel markup, ma non avranno effetto visivo
+   su Chrome aggiornato. Se l'estensione usa un menu contestuale
+   custom (div/ul), bisognerebbe adattare i selettori al
+   markup effettivo dell'estensione.
+
+   ENG:
+   This is the right-click context menu.
+
+   NOTE v2: The "menu[type=context]" and "command" selectors are
+   deprecated in HTML5 and don't work in modern browsers
+   including Chrome. We keep them for compatibility with older
+   versions of the extension that might still use that markup,
+   but they will have no visual effect on updated Chrome.
+   If the extension uses a custom context menu (div/ul), the
+   selectors should be adapted to match the extension's actual markup.
+*/
+menu[type=context] {
+    background: rgba(40, 42, 54, 0.98) !important;
+    color: var(--text-main) !important;
+    border: 1px solid rgba(98, 114, 164, 0.24) !important;
+    border-radius: 10px !important;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.30) !important;
+}
+
+/* ITA:
+   Singole voci del menu contestuale.
+
+   ENG:
+   Individual context menu entries.
+*/
+menu[type=context] command {
+    color: var(--text-main) !important;
+    border-radius: 8px !important;
+    margin: 1px 5px !important;
+    padding: 4px 9px !important;
+    font-size: var(--ui-font-size) !important;
+    text-shadow: none !important;
+}
+
+/* ITA:
+   Hover delle voci del menu contestuale.
+
+   ENG:
+   Hover state for context menu entries.
+*/
+menu[type=context] command:hover {
+    background: rgba(139, 233, 253, 0.10) !important;
+    color: #FFFFFF !important;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+   BARRA DI SCORRIMENTO
+   ========================================================= */
+
+/* ITA:
+   Dimensione della scrollbar verticale e orizzontale.
+
+   ENG:
+   Size of vertical and horizontal scrollbars.
+*/
+::-webkit-scrollbar {
+    width: 13px !important;
+    height: 13px !important;
+}
+
+/* ITA:
+   Traccia della scrollbar.
+
+   ENG:
+   Scrollbar track.
+*/
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-track-piece {
+    background: var(--bg-main) !important;
+    border-radius: 13px !important;
+}
+
+/* ITA:
+   Parte mobile della scrollbar (thumb).
+
+   ENG:
+   Draggable part of the scrollbar (thumb).
+*/
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #55618D 0%, #8BE9FD 100%) !important;
+    border-radius: 13px !important;
+    border: 3px solid var(--bg-main) !important;
+}
+
+/* ITA:
+   Hover della scrollbar.
+
+   ENG:
+   Hover state of the scrollbar.
+*/
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #8BE9FD 0%, #BD93F9 100%) !important;
+}
+
+/* ITA:
+   Angolo tra scrollbar verticale e orizzontale.
+
+   ENG:
+   Corner where vertical and horizontal scrollbars meet.
+*/
+::-webkit-scrollbar-corner {
+    background: var(--bg-main) !important;
+}
+/* =========================================================
+   vBookmarks / Neater Bookmarks 4.0
+   DRACULA COMPATIBILITY AND UI COMPLETION PATCH
+   PATCH DI COMPATIBILITÀ E COMPLETAMENTO UI DRACULA
+
+   Questa sezione va lasciata ALLA FINE del CSS: in questo modo
+   prevale sulle regole precedenti e adatta il tema alla nuova
+   struttura introdotta dalla versione 4.0.
+   ========================================================= */
+
+
+/* =========================================================
+   1. COLLEGAMENTO TRA LE VARIABILI DEL NOSTRO TEMA E I TOKEN V4
+   ========================================================= */
+
+/*
+   La versione 4.0 usa variabili globali --vbm-* per colorare
+   praticamente tutta l'interfaccia: viste, pulsanti, menu,
+   dialoghi, palette comandi, avvisi e scrollbar.
+
+   Mappandole sui nostri colori Dracula, anche le funzioni nuove
+   ereditano automaticamente lo stesso stile.
+*/
+:root {
+    --vbm-bg: var(--bg-main);
+    --vbm-bg-elev: #303241;
+    --vbm-bg-hover: rgba(139, 233, 253, 0.16);
+    --vbm-bg-selected: rgba(189, 147, 249, 0.90);
+
+    --vbm-fg: var(--text-main);
+    --vbm-fg-selected: #282A36;
+    --vbm-muted: var(--text-soft);
+
+    --vbm-border: rgba(98, 114, 164, 0.30);
+    --vbm-accent: var(--accent-cyan);
+    --vbm-accent-fg: #282A36;
+    --vbm-focus-ring: rgba(139, 233, 253, 0.32);
+
+    --vbm-danger: #FF5555;
+    --vbm-danger-fg: #282A36;
+    --vbm-warning: #F1FA8C;
+    --vbm-warning-fg: #282A36;
+
+    --vbm-scrim: rgba(0, 0, 0, 0.62);
+    --vbm-shadow: rgba(0, 0, 0, 0.48);
+    --vbm-flash: rgba(189, 147, 249, 0.24);
+
+    --vbm-scrollbar: #6272A4;
+    --vbm-scrollbar-hover: var(--accent-cyan);
+    --vbm-radius: 8px;
+
+    /* Metriche native v4 mantenute vicine alla nostra taglia Medium */
+    --vbm-row-h: 28px;
+    --vbm-indent: 12px;
+}
+
+
+/* =========================================================
+   2. FONT SULLA NUOVA UI V4
+   ========================================================= */
+
+/*
+   La v4 introduce SVG, KBD, SELECT e diversi controlli nuovi.
+   Li includiamo esplicitamente per mantenere Exo 2 ovunque.
+*/
+body,
+input,
+button,
+select,
+textarea,
+menu,
+kbd,
+.vbm-row,
+.view-tab,
+.menu-item,
+.palette-row,
+.dialog {
+    font-family: "Exo 2", "Segoe UI", sans-serif !important;
+    font-weight: 400 !important;
+    text-shadow: none !important;
+}
+
+
+/* =========================================================
+   3. CORREZIONE DEI SELETTORI DELL'ALBERO PER LA V4
+   ========================================================= */
+
+/*
+   Nella v4 la riga della cartella è uno span diretto dell'elemento LI.
+   Il selettore con > evita di applicare lo stile anche a indicatori,
+   tooltip, badge e icone annidate.
+*/
+#tree ul li > span {
+    position: relative !important;
+    color: var(--text-folder) !important;
+    background: var(--bg-soft) !important;
+    padding: var(--item-padding-y) var(--item-padding-x) !important;
+    margin: var(--item-margin-y) var(--item-margin-x) !important;
+    border: 1px solid var(--border-soft) !important;
+    border-radius: 8px !important;
+    line-height: var(--ui-line-height) !important;
+    font-size: var(--ui-font-size) !important;
+    letter-spacing: 0.1px !important;
+}
+
+/*
+   I link delle cartelle e dei preferiti conservano le nostre metriche.
+*/
+#results ul li a,
+#tree ul li a {
+    position: relative !important;
+    background: var(--bg-soft) !important;
+    padding: var(--item-padding-y) var(--item-padding-x) !important;
+    margin: var(--item-margin-y) var(--item-margin-x) !important;
+    border: 1px solid var(--border-soft) !important;
+    border-radius: 8px !important;
+    line-height: var(--ui-line-height) !important;
+    font-size: var(--ui-font-size) !important;
+    letter-spacing: 0.1px !important;
+}
+
+/*
+   Colori distinti: cartelle lilla, preferiti chiari.
+*/
+#tree ul li > span,
+#tree ul li a.link-folder {
+    color: var(--text-folder) !important;
+}
+
+#tree ul li a:not(.link-folder),
+#results ul li a {
+    color: var(--text-main) !important;
+}
+
+
+/* =========================================================
+   4. HOVER V4: RIGA LUMINOSA E SOTTOLINEATURA COMPLETA
+   ========================================================= */
+
+#results ul li a:hover,
+#tree ul li a:hover,
+#tree ul li > span:hover,
+#recent-list ul li a:hover,
+#stats-list ul li a:hover,
+#dead-list ul li a:hover,
+#dupes-list ul li a:hover,
+.search-history-row a:hover,
+.palette-row:hover,
+.menu-item:hover {
+    background: rgba(139, 233, 253, 0.16) !important;
+    border-color: rgba(139, 233, 253, 0.34) !important;
+    box-shadow: 0 0 8px rgba(139, 233, 253, 0.10) !important;
+}
+
+/*
+   Manteniamo la linea uniforme sotto icona e testo soltanto
+   sulle vere righe di bookmark/cartella.
+*/
+#results ul li a:hover::after,
+#tree ul li a:hover::after,
+#tree ul li > span:hover::after,
+#recent-list ul li a:hover::after,
+#stats-list ul li a:hover::after,
+#dead-list ul li a:hover::after,
+#dupes-list ul li a:hover::after {
+    content: "" !important;
+    position: absolute !important;
+    left: 9px !important;
+    right: 9px !important;
+    bottom: 3px !important;
+    height: 2px !important;
+    background: var(--accent-cyan) !important;
+    border-radius: 999px !important;
+    pointer-events: none !important;
+}
+
+/*
+   La v4 sottolinea ancora il solo elemento <i> del titolo.
+   Lo disattiviamo perché usiamo la nostra linea completa.
+*/
+#results ul li a:hover i,
+#tree ul li a:hover i,
+#recent-list ul li a:hover i,
+#stats-list ul li a:hover i,
+#dead-list ul li a:hover i,
+#dupes-list ul li a:hover i {
+    text-decoration: none !important;
+}
+
+
+/* =========================================================
+   5. NUOVE VISTE: RECENTI, STATISTICHE, LINK MORTI E DUPLICATI
+   ========================================================= */
+
+/*
+   I contenitori delle nuove viste ricevono lo stesso fondo
+   dell'albero classico.
+*/
+#recent-list,
+#stats-list,
+#dead-list,
+#dupes-list,
+#search-history-area,
+#palette-results {
+    background: linear-gradient(
+        180deg,
+        var(--bg-panel-top) 0%,
+        var(--bg-panel-bottom) 100%
+    ) !important;
+    color: var(--text-main) !important;
+}
+
+/*
+   Le righe delle nuove viste diventano coerenti con la taglia Medium.
+*/
+#recent-list ul li a,
+#stats-list ul li a,
+#dead-list ul li a,
+#dupes-list ul li a,
+.search-history-row a {
+    position: relative !important;
+    color: var(--text-main) !important;
+    background: var(--bg-soft) !important;
+    padding: var(--item-padding-y) var(--item-padding-x) !important;
+    margin: var(--item-margin-y) var(--item-margin-x) !important;
+    border: 1px solid var(--border-soft) !important;
+    border-radius: 8px !important;
+    line-height: var(--ui-line-height) !important;
+    font-size: var(--ui-font-size) !important;
+}
+
+/*
+   Testi secondari: percorso, data, stato e metadati.
+*/
+.vbm-row .row-sub,
+.vbm-row .row-path,
+.history-meta,
+.history-time,
+.recent-group-head,
+.search-history-head,
+.stats-section-head,
+.palette-url,
+.palette-slash {
+    color: var(--text-soft) !important;
+}
+
+
+/* =========================================================
+   6. SCHEDE DI NAVIGAZIONE DELLE VISTE
+   ========================================================= */
+
+#view-tabs {
+    background: #242631 !important;
+    border-bottom-color: rgba(98, 114, 164, 0.30) !important;
+}
+
+.view-tab {
+    color: var(--text-soft) !important;
+    font-size: 12px !important;
+    transition:
+        background-color 0.14s ease,
+        color 0.14s ease !important;
+}
+
+.view-tab:hover {
+    background: rgba(139, 233, 253, 0.12) !important;
+    color: var(--text-main) !important;
+}
+
+.view-tab[aria-selected="true"] {
+    color: var(--accent-cyan) !important;
+    background: rgba(139, 233, 253, 0.08) !important;
+}
+
+.tab-indicator {
+    background: linear-gradient(
+        90deg,
+        var(--accent-cyan),
+        var(--accent-purple)
+    ) !important;
+    box-shadow: 0 0 7px rgba(139, 233, 253, 0.35) !important;
+}
+
+
+/* =========================================================
+   7. NUOVA BARRA DI RICERCA E PULSANTI RAPIDI
+   ========================================================= */
+
+/*
+   Nella v4 #search è una riga flex con ricerca, stella e menu strumenti.
+*/
+#search {
+    background: var(--bg-main) !important;
+    padding: 3px 6px !important;
+    gap: 0 !important;
+}
+
+#search-field {
+    min-width: 0 !important;
+}
+
+#search input {
+    background: var(--bg-soft-strong) !important;
+    color: var(--text-main) !important;
+    border-color: var(--border-main) !important;
+    border-radius: 9px !important;
+    font-size: var(--search-font-size) !important;
+}
+
+#search .vbm-icon-search,
+#search-clear {
+    color: var(--text-soft) !important;
+}
+
+#search-clear:hover {
+    color: var(--accent-cyan) !important;
+    background: rgba(139, 233, 253, 0.12) !important;
+}
+
+#quick-add-btn,
+#tool-btn {
+    background: var(--bg-soft-strong) !important;
+    color: var(--text-soft) !important;
+    border-color: var(--border-main) !important;
+    border-radius: 9px !important;
+}
+
+#quick-add-btn:hover,
+#tool-btn:hover,
+#quick-add-btn.starred {
+    background: rgba(139, 233, 253, 0.14) !important;
+    color: var(--accent-cyan) !important;
+    border-color: var(--accent-cyan) !important;
+    box-shadow: 0 0 8px rgba(139, 233, 253, 0.12) !important;
+}
+
+
+/* =========================================================
+   8. MENU CONTESTUALI V4
+   ========================================================= */
+
+/*
+   La v4 NON usa più <command>.
+   Le singole voci sono DIV con classe .menu-item.
+*/
+menu[type="context"] {
+    background: rgba(40, 42, 54, 0.98) !important;
+    color: var(--text-main) !important;
+    border-color: rgba(189, 147, 249, 0.32) !important;
+    border-radius: 10px !important;
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.42) !important;
+}
+
+menu[type="context"] .menu-item {
+    color: var(--text-main) !important;
+    border-radius: 7px !important;
+    margin: 1px 5px !important;
+    padding: 0 9px !important;
+    font-size: var(--ui-font-size) !important;
+}
+
+menu[type="context"] .menu-item:hover,
+menu[type="context"] .menu-item:focus {
+    background: rgba(139, 233, 253, 0.16) !important;
+    color: #FFFFFF !important;
+    outline-color: rgba(139, 233, 253, 0.32) !important;
+}
+
+menu[type="context"] hr {
+    background-color: rgba(98, 114, 164, 0.35) !important;
+}
+
+
+/* =========================================================
+   9. PALETTE COMANDI
+   ========================================================= */
+
+#command-palette {
+    background: rgba(40, 42, 54, 0.985) !important;
+    color: var(--text-main) !important;
+    border-color: rgba(189, 147, 249, 0.35) !important;
+    border-radius: 12px !important;
+    box-shadow:
+        0 18px 44px rgba(0, 0, 0, 0.50),
+        0 0 18px rgba(139, 233, 253, 0.08) !important;
+}
+
+#palette-input {
+    background: #303241 !important;
+    color: var(--text-main) !important;
+    border-color: var(--border-main) !important;
+    font-size: var(--ui-font-size) !important;
+}
+
+.palette-row {
+    color: var(--text-main) !important;
+    border: 1px solid transparent !important;
+    border-radius: 7px !important;
+}
+
+.palette-row.selected,
+.palette-row.selected:hover {
+    background: rgba(189, 147, 249, 0.90) !important;
+    color: #282A36 !important;
+    border-color: transparent !important;
+}
+
+.palette-row.selected .palette-url,
+.palette-row.selected .palette-slash {
+    color: #282A36 !important;
+}
+
+#palette-close {
+    color: var(--text-soft) !important;
+    border-top-color: rgba(98, 114, 164, 0.30) !important;
+}
+
+#palette-close:hover {
+    background: rgba(139, 233, 253, 0.10) !important;
+    color: var(--accent-cyan) !important;
+}
+
+
+/* =========================================================
+   10. DIALOGHI, ORDINAMENTO E CONTROLLI
+   ========================================================= */
+
+.dialog {
+    background: linear-gradient(
+        180deg,
+        #303241 0%,
+        var(--bg-main) 100%
+    ) !important;
+    color: var(--text-main) !important;
+    border-color: rgba(98, 114, 164, 0.35) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.48) !important;
+}
+
+.dialog input,
+.dialog select {
+    background: #303241 !important;
+    color: var(--text-main) !important;
+    border-color: var(--border-main) !important;
+}
+
+.dialog input:focus,
+.dialog select:focus {
+    border-color: var(--accent-cyan) !important;
+    outline-color: rgba(139, 233, 253, 0.30) !important;
+}
+
+.dialog .buttons button {
+    background: #44475A !important;
+    color: var(--text-main) !important;
+    border-color: rgba(98, 114, 164, 0.38) !important;
+    border-radius: 8px !important;
+}
+
+.dialog .buttons button:hover {
+    background: rgba(139, 233, 253, 0.16) !important;
+    border-color: var(--accent-cyan) !important;
+}
+
+.dialog .buttons button:first-of-type {
+    background: linear-gradient(
+        180deg,
+        var(--accent-cyan),
+        #6FCFDF
+    ) !important;
+    color: #282A36 !important;
+    border-color: var(--accent-cyan) !important;
+}
+
+
+/* =========================================================
+   11. AVVISI, TOAST E BANNER
+   ========================================================= */
+
+#undo-toast,
+#notice-toast,
+.stats-history-banner,
+.risk-banner {
+    background: rgba(48, 50, 65, 0.98) !important;
+    color: var(--text-main) !important;
+    border-color: rgba(98, 114, 164, 0.38) !important;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.38) !important;
+}
+
+#undo-toast-button,
+.stats-history-banner a,
+.risk-banner a {
+    color: var(--accent-cyan) !important;
+}
+
+.risk-banner .risk-banner-never,
+.risk-banner .risk-banner-dismiss,
+.row-btn {
+    color: var(--text-soft) !important;
+}
+
+.risk-banner .risk-banner-never:hover,
+.risk-banner .risk-banner-dismiss:hover,
+.row-btn:hover {
+    background: rgba(139, 233, 253, 0.12) !important;
+    color: var(--text-main) !important;
+}
+
+
+/* =========================================================
+   12. BADGE, STATO E COLORI SEMANTICI
+   ========================================================= */
+
+.palette-row .palette-badge,
+.dead-badge,
+.dead-indicator {
+    color: var(--vbm-danger) !important;
+}
+
+mark,
+#results mark {
+    color: var(--accent-cyan) !important;
+    background: rgba(139, 233, 253, 0.16) !important;
+}
+
+
+/* =========================================================
+   13. SEPARATORI
+   ========================================================= */
+
+#tree ul li a.separator-row {
+    background: transparent !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+}
+
+#tree ul li a.separator-row::after {
+    content: none !important;
+}
+
+#tree ul li a.separator-row hr.separator-line {
+    border-top-color: rgba(98, 114, 164, 0.42) !important;
+}
+
+
+/* =========================================================
+   14. SCROLLBAR V4
+   ========================================================= */
+
+::-webkit-scrollbar {
+    width: 13px !important;
+    height: 13px !important;
+}
+
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-track-piece {
+    background: var(--bg-main) !important;
+    border-radius: 13px !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+        180deg,
+        #55618D 0%,
+        var(--accent-cyan) 100%
+    ) !important;
+    border-radius: 13px !important;
+    border: 3px solid var(--bg-main) !important;
+    background-clip: padding-box !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(
+        180deg,
+        var(--accent-cyan) 0%,
+        var(--accent-purple) 100%
+    ) !important;
+    background-clip: padding-box !important;
+}
+
+
+/* =========================================================
+   15. RIDUZIONE MOVIMENTO
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
+
+
+/* =========================================================
+   v4 FIX 1 — SPAZIO PER LENTE E PULSANTE CANCELLA-RICERCA
+   ========================================================= */
+
+/*
+   La v4 posiziona la lente e la X dentro il campo di ricerca.
+   Il nostro precedente "padding" abbreviato aveva sovrascritto
+   il padding-inline-start/end originale, facendo finire il testo
+   sotto la lente.
+
+   29px a sinistra lasciano spazio alla lente.
+   28px a destra lasciano spazio al pulsante X.
+*/
+#search input {
+    padding-block: var(--search-padding-y) !important;
+    padding-inline-start: 29px !important;
+    padding-inline-end: 28px !important;
+}
+
+
+/* =========================================================
+   EXO 2 — OVERRIDE FINALE DEL FONT
+   ========================================================= */
+
+/*
+   Exo 2 è più leggibile nelle righe compatte.
+   Il peso 400 viene usato per il testo normale; gli elementi
+   importanti usano 500, senza diventare troppo pesanti.
+*/
+html,
+body,
+input,
+button,
+select,
+textarea,
+menu,
+kbd,
+span,
+a,
+i,
+li,
+ul,
+div,
+.vbm-row,
+.view-tab,
+.menu-item,
+.palette-row,
+.dialog {
+    font-family: "Exo 2", "Segoe UI", sans-serif !important;
+}
+
+/* Testo normale delle righe: regolare e nitido. */
+#tree ul li > span,
+#tree ul li a,
+#results ul li a,
+#recent-list ul li a,
+#stats-list ul li a,
+#dead-list ul li a,
+#dupes-list ul li a,
+.search-history-row a {
+    font-weight: 400 !important;
+}
+
+/* Elementi da evidenziare appena, senza vero grassetto pesante. */
+.view-tab[aria-selected="true"],
+.dialog .buttons button:first-of-type,
+.palette-row.selected,
+mark,
+#results mark {
+    font-weight: 500 !important;
+}
+
+
+/* =========================================================
+   NEON FOG GLOW — ALONE FLUO SULL'ELEMENTO SELEZIONATO
+   ========================================================= */
+
+/*
+   Effetto "luce nella nebbia":
+   - bordo ciano molto netto;
+   - primo alone vicino e luminoso;
+   - secondo alone più largo e morbido;
+   - leggerissima luce interna.
+*/
+#results ul li a:active,
+#results ul li a.active,
+#results ul li a:focus,
+#tree ul li a:active,
+#tree ul li a.active,
+#tree ul li a:focus,
+#tree ul li > span:active,
+#tree ul li > span.active,
+#tree ul li > span:focus,
+#recent-list ul li a:active,
+#recent-list ul li a.active,
+#recent-list ul li a:focus,
+#stats-list ul li a:active,
+#stats-list ul li a.active,
+#stats-list ul li a:focus,
+#dead-list ul li a:active,
+#dead-list ul li a.active,
+#dead-list ul li a:focus,
+#dupes-list ul li a:active,
+#dupes-list ul li a.active,
+#dupes-list ul li a:focus {
+    border-color: rgba(139, 233, 253, 0.95) !important;
+
+    box-shadow:
+        inset 0 0 7px rgba(139, 233, 253, 0.18),
+        0 0 4px rgba(139, 233, 253, 0.95),
+        0 0 10px rgba(139, 233, 253, 0.55),
+        0 0 18px rgba(189, 147, 249, 0.22) !important;
+
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+/*
+   Riflesso aggiuntivo molto leggero lungo il bordo,
+   per rendere la luce meno piatta.
+*/
+#results ul li a:active::before,
+#results ul li a.active::before,
+#results ul li a:focus::before,
+#tree ul li a:active::before,
+#tree ul li a.active::before,
+#tree ul li a:focus::before,
+#tree ul li > span:active::before,
+#tree ul li > span.active::before,
+#tree ul li > span:focus::before,
+#recent-list ul li a:active::before,
+#recent-list ul li a.active::before,
+#recent-list ul li a:focus::before,
+#stats-list ul li a:active::before,
+#stats-list ul li a.active::before,
+#stats-list ul li a:focus::before,
+#dead-list ul li a:active::before,
+#dead-list ul li a.active::before,
+#dead-list ul li a:focus::before,
+#dupes-list ul li a:active::before,
+#dupes-list ul li a.active::before,
+#dupes-list ul li a:focus::before {
+    content: "" !important;
+    position: absolute !important;
+    inset: -2px !important;
+    border: 1px solid rgba(139, 233, 253, 0.30) !important;
+    border-radius: 10px !important;
+    filter: blur(1.5px) !important;
+    pointer-events: none !important;
+    opacity: 0.85 !important;
+}
+
+/*
+   Piccola animazione quasi impercettibile:
+   simula una luce che respira nella foschia.
+*/
+@keyframes vbm-neon-breathe {
+    0%, 100% {
+        filter: brightness(1);
+    }
+    50% {
+        filter: brightness(1.08);
+    }
+}
+
+#results ul li a.active,
+#results ul li a:focus,
+#tree ul li a.active,
+#tree ul li a:focus,
+#tree ul li > span.active,
+#tree ul li > span:focus,
+#recent-list ul li a.active,
+#recent-list ul li a:focus,
+#stats-list ul li a.active,
+#stats-list ul li a:focus,
+#dead-list ul li a.active,
+#dead-list ul li a:focus,
+#dupes-list ul li a.active,
+#dupes-list ul li a:focus {
+    animation: vbm-neon-breathe 2.6s ease-in-out infinite !important;
+}
+
+/*
+   Rispetta le preferenze di accessibilità:
+   niente animazione se il sistema richiede movimento ridotto.
+*/
+@media (prefers-reduced-motion: reduce) {
+    #results ul li a.active,
+    #results ul li a:focus,
+    #tree ul li a.active,
+    #tree ul li a:focus,
+    #tree ul li > span.active,
+    #tree ul li > span:focus,
+    #recent-list ul li a.active,
+    #recent-list ul li a:focus,
+    #stats-list ul li a.active,
+    #stats-list ul li a:focus,
+    #dead-list ul li a.active,
+    #dead-list ul li a:focus,
+    #dupes-list ul li a.active,
+    #dupes-list ul li a:focus {
+        animation: none !important;
+    }
+}
+
+
+/* =========================================================
+   NEON FOG GLOW v2
+   TESTO LUMINOSO IN SELEZIONE + GLOW ANCHE IN HOVER
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   SELEZIONE: TESTO CHIARO E LUMINOSO
+   --------------------------------------------------------- */
+
+#results ul li a:active,
+#results ul li a.active,
+#results ul li a:focus,
+#tree ul li a:active,
+#tree ul li a.active,
+#tree ul li a:focus,
+#tree ul li > span:active,
+#tree ul li > span.active,
+#tree ul li > span:focus,
+#recent-list ul li a:active,
+#recent-list ul li a.active,
+#recent-list ul li a:focus,
+#stats-list ul li a:active,
+#stats-list ul li a.active,
+#stats-list ul li a:focus,
+#dead-list ul li a:active,
+#dead-list ul li a.active,
+#dead-list ul li a:focus,
+#dupes-list ul li a:active,
+#dupes-list ul li a.active,
+#dupes-list ul li a:focus {
+    color: #F8F8F2 !important;
+    text-shadow:
+        0 0 2px rgba(248, 248, 242, 0.90),
+        0 0 6px rgba(139, 233, 253, 0.68) !important;
+}
+
+/* Forza il colore anche sul nodo interno che contiene il titolo. */
+#results ul li a:active i,
+#results ul li a.active i,
+#results ul li a:focus i,
+#tree ul li a:active i,
+#tree ul li a.active i,
+#tree ul li a:focus i,
+#tree ul li > span:active i,
+#tree ul li > span.active i,
+#tree ul li > span:focus i,
+#recent-list ul li a:active i,
+#recent-list ul li a.active i,
+#recent-list ul li a:focus i,
+#stats-list ul li a:active i,
+#stats-list ul li a.active i,
+#stats-list ul li a:focus i,
+#dead-list ul li a:active i,
+#dead-list ul li a.active i,
+#dead-list ul li a:focus i,
+#dupes-list ul li a:active i,
+#dupes-list ul li a.active i,
+#dupes-list ul li a:focus i {
+    color: #F8F8F2 !important;
+    text-shadow:
+        0 0 2px rgba(248, 248, 242, 0.90),
+        0 0 6px rgba(139, 233, 253, 0.68) !important;
+}
+
+/* ---------------------------------------------------------
+   HOVER: GLOW PIÙ MORBIDO DELLA SELEZIONE
+   --------------------------------------------------------- */
+
+#results ul li a:hover,
+#tree ul li a:hover,
+#tree ul li > span:hover,
+#recent-list ul li a:hover,
+#stats-list ul li a:hover,
+#dead-list ul li a:hover,
+#dupes-list ul li a:hover,
+.search-history-row a:hover {
+    border-color: rgba(139, 233, 253, 0.72) !important;
+
+    box-shadow:
+        inset 0 0 5px rgba(139, 233, 253, 0.10),
+        0 0 3px rgba(139, 233, 253, 0.70),
+        0 0 8px rgba(139, 233, 253, 0.34),
+        0 0 13px rgba(189, 147, 249, 0.12) !important;
+
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+/* Leggera schiarita del testo sotto il mouse. */
+#results ul li a:hover,
+#tree ul li a:hover,
+#tree ul li > span:hover,
+#recent-list ul li a:hover,
+#stats-list ul li a:hover,
+#dead-list ul li a:hover,
+#dupes-list ul li a:hover,
+.search-history-row a:hover,
+#results ul li a:hover i,
+#tree ul li a:hover i,
+#tree ul li > span:hover i,
+#recent-list ul li a:hover i,
+#stats-list ul li a:hover i,
+#dead-list ul li a:hover i,
+#dupes-list ul li a:hover i {
+    color: #F1F5F7 !important;
+    text-shadow: 0 0 4px rgba(139, 233, 253, 0.30) !important;
+}
+
+/*
+   Una riga selezionata mantiene il glow forte anche quando
+   il puntatore ci passa sopra: l'hover non la indebolisce.
+*/
+#results ul li a.active:hover,
+#results ul li a:focus:hover,
+#tree ul li a.active:hover,
+#tree ul li a:focus:hover,
+#tree ul li > span.active:hover,
+#tree ul li > span:focus:hover,
+#recent-list ul li a.active:hover,
+#recent-list ul li a:focus:hover,
+#stats-list ul li a.active:hover,
+#stats-list ul li a:focus:hover,
+#dead-list ul li a.active:hover,
+#dead-list ul li a:focus:hover,
+#dupes-list ul li a.active:hover,
+#dupes-list ul li a:focus:hover {
+    border-color: rgba(139, 233, 253, 0.95) !important;
+
+    box-shadow:
+        inset 0 0 7px rgba(139, 233, 253, 0.18),
+        0 0 4px rgba(139, 233, 253, 0.95),
+        0 0 10px rgba(139, 233, 253, 0.55),
+        0 0 18px rgba(189, 147, 249, 0.22) !important;
+
+    color: #F8F8F2 !important;
+    text-shadow:
+        0 0 2px rgba(248, 248, 242, 0.90),
+        0 0 6px rgba(139, 233, 253, 0.68) !important;
+
+    z-index: 2 !important;
+}
+
+
+/* =========================================================
+   NEON FOG GLOW v3
+   SELEZIONE CIANO SEMITRASPARENTE
+   ========================================================= */
+
+/*
+   Sostituisce lo sfondo rosa/viola della selezione con un
+   azzurro-ciano semitrasparente più coerente con il glow.
+
+   Il gradiente è leggermente più scuro in basso, così mantiene
+   profondità senza diventare troppo luminoso.
+*/
+#results ul li a:active,
+#results ul li a.active,
+#results ul li a:focus,
+#tree ul li a:active,
+#tree ul li a.active,
+#tree ul li a:focus,
+#tree ul li > span:active,
+#tree ul li > span.active,
+#tree ul li > span:focus,
+#recent-list ul li a:active,
+#recent-list ul li a.active,
+#recent-list ul li a:focus,
+#stats-list ul li a:active,
+#stats-list ul li a.active,
+#stats-list ul li a:focus,
+#dead-list ul li a:active,
+#dead-list ul li a.active,
+#dead-list ul li a:focus,
+#dupes-list ul li a:active,
+#dupes-list ul li a.active,
+#dupes-list ul li a:focus {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(139, 233, 253, 0.34) 0%,
+            rgba(98, 114, 164, 0.24) 100%
+        ) !important;
+
+    color: #F8F8F2 !important;
+}
+
+/*
+   Mantiene chiaro anche il nodo interno che contiene il titolo.
+*/
+#results ul li a:active i,
+#results ul li a.active i,
+#results ul li a:focus i,
+#tree ul li a:active i,
+#tree ul li a.active i,
+#tree ul li a:focus i,
+#tree ul li > span:active i,
+#tree ul li > span.active i,
+#tree ul li > span:focus i,
+#recent-list ul li a:active i,
+#recent-list ul li a.active i,
+#recent-list ul li a:focus i,
+#stats-list ul li a:active i,
+#stats-list ul li a.active i,
+#stats-list ul li a:focus i,
+#dead-list ul li a:active i,
+#dead-list ul li a.active i,
+#dead-list ul li a:focus i,
+#dupes-list ul li a:active i,
+#dupes-list ul li a.active i,
+#dupes-list ul li a:focus i {
+    color: #F8F8F2 !important;
+}
+
+/*
+   Se il puntatore passa sulla riga già selezionata,
+   conserva lo stesso sfondo ciano invece di riprendere
+   il colore hover normale.
+*/
+#results ul li a.active:hover,
+#results ul li a:focus:hover,
+#tree ul li a.active:hover,
+#tree ul li a:focus:hover,
+#tree ul li > span.active:hover,
+#tree ul li > span:focus:hover,
+#recent-list ul li a.active:hover,
+#recent-list ul li a:focus:hover,
+#stats-list ul li a.active:hover,
+#stats-list ul li a:focus:hover,
+#dead-list ul li a.active:hover,
+#dead-list ul li a:focus:hover,
+#dupes-list ul li a.active:hover,
+#dupes-list ul li a:focus:hover {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(139, 233, 253, 0.38) 0%,
+            rgba(98, 114, 164, 0.28) 100%
+        ) !important;
+}
