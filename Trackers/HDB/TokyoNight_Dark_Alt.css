@@ -1,0 +1,70 @@
+﻿/* ==UserStyle==
+@name           HDB - Dark alt color scheme for Tokyo Night
+@namespace      https://hdbits.org/
+@version        1.1.0
+@description    An alternative dark color scheme for Tokyo Night
+@run-at         document-start
+@author         -
+==/UserStyle== */
+@-moz-document domain("hdbits.org") {
+    :root {
+        /* Accent Colors */
+        --flamingo: #f2cdcd !important;
+        --pink: #f5c2e7 !important;
+        --mauve: #cba6f7 !important;
+        --red: #ff6675 !important;
+        --maroon: #eba0ac !important;
+        --peach: #fab387 !important;
+        --yellow: #f9e2af !important;
+        --green: #a1e87d !important;
+        --green-seeding: #63ee85 !important;
+        --teal: #73daca !important;
+        --sapphire: #74c7ec !important;
+        --blue: hsl(233, 100%, 85%) !important;
+        --lavender: hsl(215, 90%, 75%) !important;
+        --bookmark-blue: #51a1fd !important;
+        /* Background / Foreground Colors */
+        --text: hsl(220, 5.9%, 95%) !important;
+        --text-muted-color: hsl(220, 8%, 55%) !important;
+        --subtext1: hsl(215, 0%, 80%) !important;
+        --subtext0: hsl(213.3, 3.7%, 47.6%) !important;
+        --overlay0: hsl(215, 90%, 70%) !important;
+        --surface2: hsl(224, 5%, 30%) !important;
+        --surface1: hsl(227, 6%, 25%) !important;
+        --surface0: hsl(230, 8%, 22%) !important;
+        --quote-bg-color: hsl(230, 8%, 14%) !important;
+        --base: hsl(230, 6%, 6%) !important;
+        --mantle: hsl(230, 6%, 10%) !important;
+        --crust: hsl(230, 4%, 4%) !important;
+        --header: hsl(230, 4%, 9%) !important;
+        --link-color: hsl(214.5, 11%, 55.1%) !important;
+        --link-hover-color: hsl(215, 100%, 70%) !important;
+        --input-placeholder-text-color: hsl(227, 13%, 53%) !important;
+        --input-bg: hsl(230, 4%, 11%) !important;
+        --input-text-color: hsl(215, 100%, 92%) !important;
+        --input-border: var(--general-border) !important;
+        --table-border: var(--general-border) !important;
+        --general-border: 1px solid var(--surface0) !important;
+        --button-primary-bg: hsl(215, 30%, 70%) !important;
+        --button-primary-hover-bg: hsl(215, 100%, 65%) !important;
+        --button-primary-text-color: #000 !important;
+        --button-primary-text-hover-color: #000 !important;
+        --button-primary-border: 1px solid transparent !important;
+        --button-secondary-bg: hsl(225, 8%, 16%) !important;
+        --button-secondary-hover-bg: hsl(215, 100%, 70%) !important;
+        --button-secondary-text-color: hsl(215, 5%, 81%) !important;
+        --button-secondary-text-hover-color: #000 !important;
+        --button-secondary-border: 1px solid var(--surface0) !important;
+        --default-avatar-color: var(--unreadpost-bg-color) !important;
+        --details-th-text-color: hsl(213, 0%, 50.4%) !important;
+        --th-text-color: hsl(213, 0%, 50.4%) !important;
+        --heading-color: hsl(213, 0%, 50.4%) !important;
+        --featured: var(--quote-bg-color) !important;
+        --unreadpost-bg-color: hsl(235, 8%, 16%) !important;
+        --unreadpost-border: 1px solid var(--unreadpost-border-color) !important;
+        --unreadpost-border-color: var(--overlay0) !important;
+        --poster-shadow: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.5)) !important;
+        --recommendation-blur-button-border: 1px solid hsla(0, 0%, 100%, 0.137) !important;
+        --recommendation-blur-bg-color: hsla(236, 19%, 15%, 0.66) !important;
+    }
+}

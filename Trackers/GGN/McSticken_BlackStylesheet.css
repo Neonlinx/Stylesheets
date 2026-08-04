@@ -1,0 +1,51 @@
+﻿/* Dark Game Room */
+/* Only the dark bits done by Mcsticken, the main site stuff is by chris10000 */
+
+/*****Importing Game Room except for special pages*****/
+/* Overall Files */
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/variables.css');
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/overallStyles.css');
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/header.css');
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/footer.css');
+@import url('https://gazellegames.net/static/styles/game_room/caticons.css');
+
+/* Main Pages */
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/homepage.css');
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/torrentsBrowse.css');
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/torrentsGames.css');
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/bundles.css');
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/requests.css');
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/forums.css');
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/rules.css');
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/wiki.css');
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/staff.css');
+
+/* Palooza */
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/paloozaOverall.css');
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/paloozaShop.css');
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/paloozaInventory.css');
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/paloozaCrafting.css');
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/paloozaEquipment.css');
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/paloozaTrading.css');
+
+/* AdventureClub (Fight System) */
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/adventureSkills.css');
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/adventureBackpack.css');
+
+/* Misc Pages */
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/upload.css');
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/profiles.css');
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/clans.css');
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/staffPages.css');
+@import url('https://gazellegames.net/static/styles/game_room/cssFiles/miscPages.css');
+
+/* Other Screen Sizes */
+@import url('https://gazellegames.net/static/styles/game_room/screenSizes/mobile.css') screen and (max-width: 800px);
+@import url('https://gazellegames.net/static/styles/game_room/screenSizes/largeDesktop.css') screen and (min-width: 1400px);
+@import url('https://gazellegames.net/static/styles/game_room/screenSizes/middleDesktop.css') screen and (min-width: 801px) and (max-width: 1099px);
+@import url('https://gazellegames.net/static/styles/game_room/screenSizes/palooza.css');
+
+/* Dark Theme CSS */
+@import url('Main.css');
+@import url('Mobile.css') screen and (max-width: 800px);
+@import url('Small.css') screen and (max width: 1099px);
