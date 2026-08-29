@@ -1,27 +1,32 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.0
+ * Version: 0.3.1
+ *
+ * Changelog 0.3.1:
+ * - Restored the complete RED/Gazelle structural layout through DarkMonoAlt_v2b.
+ * - Kept DarkMonoAlt_v2b strictly as a compatibility/layout skeleton.
+ * - Dracula/vBookmarks styling is still applied afterwards and remains the visual target.
+ * - Fixes the "unstyled single-page" layout regression seen in v0.3.0:
+ *   vertical menus, bullet lists, full-width sections and lost page geometry.
  *
  * Changelog 0.3.0:
- * - Rebuilt as a native RED/PostMod override: DarkMonoAlt is no longer imported.
- * - Visual reference is Dracula_vBookmarks_Theme_v4.1.3_Refined.
- * - Added Exo 2 typography and the exact vBookmarks Dracula palette.
- * - Reworked page/header/content backgrounds to remove legacy grey/black strips.
- * - Cyan links and metadata; removed unwanted pink text from normal links.
- * - Added vBookmarks-style cyan neon hover, glow and underline to navigation.
- * - Enlarged and padded the alert/stat container.
- * - Redesigned RED search boxes as rounded Dracula/vBookmarks controls.
- * - Rounded boxes, forum tables and torrent groups.
- * - Added cyan "neon row" hover to torrent/forum rows.
- * - Removed small black backgrounds behind inline forum/pagination links.
- * - Improved outer borders and table edge continuity.
+ * - Rebuilt the visual layer around Dracula_vBookmarks_Theme_v4.1.3_Refined.
+ * - Added Exo 2 typography and the vBookmarks Dracula palette.
+ * - Reworked page/header/content backgrounds.
+ * - Cyan links and metadata.
+ * - Added vBookmarks-style cyan neon hover, glow and underline.
+ * - Redesigned search boxes, panels, forum tables and torrent groups.
+ * - Rounded cards and improved borders.
  *
- * Notes:
- * - RED's normal "postmod" stylesheet remains the structural base.
- * - This file is intentionally visual/layout override only.
+ * Architecture:
+ * - DarkMonoAlt_v2b = structural compatibility layer only.
+ * - Everything below = Dracula/vBookmarks visual override.
+ * - Once the theme is stable, structural rules can be vendored selectively
+ *   so the final theme no longer needs to import another RED stylesheet.
  */
 
+@import url("https://neonlinx.github.io/Stylesheets/Trackers/RED/DarkMonoAlt_v2b.css");
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600&display=swap');
 
 :root {
