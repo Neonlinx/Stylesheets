@@ -1,0 +1,1653 @@
+/*
+ * vBookmarks 4.1.x — Dracula / Exo 2
+ * Refined custom stylesheet
+ * 
+ * Author: https://github.com/Neonlinx
+ *
+ * Keeps the original Dracula palette, Medium density,
+ * cyan neon hover/selection glow and Exo 2 typography.
+ *
+ * Updated for the current vBookmarks UI:
+ * - Staging + Recent view
+ * - Tab Groups view
+ * - modern toolbars and dropdowns
+ * - announcements / What's New
+ * - submenu flyouts
+ * - picker/editor dialogs
+ * - new badges and semantic states
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600&display=swap');
+
+:root {
+
+    --bg-main: #282A36;
+
+    --bg-panel-top: #2A2D39;
+
+    --bg-panel-bottom: #282A36;
+
+    --bg-soft: rgba(68, 71, 90, 0.14);
+
+    --bg-soft-strong: rgba(68, 71, 90, 0.88);
+
+    --border-soft: rgba(98, 114, 164, 0.10);
+
+    --border-main: #6272A4;
+
+    --text-main: #EAEAF2;
+
+    --text-folder: #E8C8F1;
+
+    --text-soft: #A4A9C7;
+
+    --accent-pink: #FF79C6;
+
+    --accent-purple: #BD93F9;
+
+    --accent-cyan: #8BE9FD;
+
+    --tree-line: rgba(255, 255, 255, 0.05);
+
+    --tree-line-strong: rgba(139, 233, 253, 0.18);
+
+    --ui-font-size: 13px;
+
+    --ui-line-height: 1.35em;
+
+    --item-padding-y: 4px;
+
+    --item-padding-x: 9px;
+
+    --item-margin-y: 2px;
+
+    --item-margin-x: 4px;
+
+    --search-font-size: 13px;
+
+    --search-padding-y: 6px;
+
+    --search-padding-x: 10px;
+
+    --tree-indent: 11px;
+
+    --tree-indent-inner: 9px;
+
+    --tree-connector-top: 14px;
+
+    --tree-connector-width: 9px;
+}
+
+body,
+input,
+button,
+span,
+a,
+i,
+li,
+ul,
+div {
+    
+    font-family: "Exo 2", "Segoe UI", sans-serif !important;
+
+    font-weight: 400 !important;
+
+    text-shadow: none !important;
+
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+}
+
+html,
+body,
+#container,
+#mainSection,
+#results,
+#tree,
+#search {
+    background: var(--bg-main) !important;
+    color: var(--text-main) !important;
+}
+
+#search {
+    
+    border-bottom: 1px solid rgba(98, 114, 164, 0.28) !important;
+
+    padding: 3px 6px !important;
+}
+
+#search input {
+    
+    background: var(--bg-soft-strong) !important;
+
+    color: var(--text-main) !important;
+
+    border: 1px solid var(--border-main) !important;
+
+    border-radius: 9px !important;
+
+    padding: var(--search-padding-y) var(--search-padding-x) !important;
+
+    font-size: var(--search-font-size) !important;
+
+    line-height: 1.25 !important;
+
+    box-shadow: none !important;
+    text-shadow: none !important;
+}
+
+#search input::placeholder {
+    color: var(--text-soft) !important;
+}
+
+#search input:focus {
+    outline: none !important;
+    border-color: var(--accent-cyan) !important;
+    box-shadow: 0 0 0 2px rgba(139, 233, 253, 0.12) !important;
+}
+
+#results,
+#tree {
+    background: linear-gradient(180deg, var(--bg-panel-top) 0%, var(--bg-panel-bottom) 100%) !important;
+}
+
+#results ul,
+#tree ul {
+    margin: 1px 0 !important;
+    padding: 0 !important;
+}
+
+#results ul li,
+#tree ul li {
+    background: transparent !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: relative !important;
+}
+
+#results ul li a,
+#tree ul li a,
+#tree ul li > span {
+    
+    position: relative !important;
+
+    color: var(--text-main) !important;
+
+    background: var(--bg-soft) !important;
+
+    padding: var(--item-padding-y) var(--item-padding-x) !important;
+
+    margin: var(--item-margin-y) var(--item-margin-x) !important;
+
+    border-radius: 8px !important;
+
+    line-height: var(--ui-line-height) !important;
+
+    font-size: var(--ui-font-size) !important;
+
+    letter-spacing: 0.1px !important;
+
+    text-decoration: none !important;
+
+    border: 1px solid var(--border-soft) !important;
+
+    box-shadow: none !important;
+    text-shadow: none !important;
+
+    transition:
+        background-color 0.14s ease,
+        border-color 0.14s ease,
+        transform 0.08s ease !important;
+}
+
+#tree ul li > span,
+#tree ul li a {
+    color: var(--text-folder) !important;
+}
+
+#results ul li a {
+    color: var(--text-main) !important;
+}
+
+#tree ul ul {
+    margin-left: var(--tree-indent) !important;
+    padding-left: var(--tree-indent) !important;
+    border-left: 1px solid var(--tree-line) !important;
+}
+
+#tree ul ul ul {
+    margin-left: var(--tree-indent-inner) !important;
+    padding-left: var(--tree-indent) !important;
+}
+
+#tree ul ul > li::before {
+    content: "" !important;
+    position: absolute !important;
+    left: calc(var(--tree-indent) * -1) !important;
+    top: var(--tree-connector-top) !important;
+    width: var(--tree-connector-width) !important;
+    height: 1px !important;
+    background: var(--tree-line) !important;
+    pointer-events: none !important;
+}
+
+#tree ul ul > li:hover::before {
+    background: var(--tree-line-strong) !important;
+}
+
+#tree ul ul:hover {
+    border-left-color: var(--tree-line-strong) !important;
+}
+
+#results ul li a:hover,
+#tree ul li a:hover,
+#tree ul li > span:hover {
+    background: rgba(139, 233, 253, 0.16) !important;
+    border-color: rgba(139, 233, 253, 0.34) !important;
+    box-shadow: 0 0 8px rgba(139, 233, 253, 0.10) !important;
+    text-decoration: none !important;
+    transform: translateY(-1px) !important;
+}
+
+#results ul li a:hover::after,
+#tree ul li a:hover::after,
+#tree ul li > span:hover::after {
+    content: "" !important;
+    position: absolute !important;
+
+    left: 9px !important;
+    right: 9px !important;
+
+    bottom: 3px !important;
+
+    height: 2px !important;
+
+    background: var(--accent-cyan) !important;
+
+    border-radius: 999px !important;
+
+    opacity: 1 !important;
+    pointer-events: none !important;
+}
+
+#results ul li a:hover i,
+#tree ul li a:hover i {
+    text-decoration: none !important;
+}
+
+#results ul li a:active,
+#results ul li a.active,
+#results ul li a:focus,
+#tree ul li a:active,
+#tree ul li a.active,
+#tree ul li a:focus,
+#tree ul li > span:active,
+#tree ul li > span.active,
+#tree ul li > span:focus {
+    
+    background: rgba(189, 147, 249, 0.90) !important;
+
+    color: #282A36 !important;
+
+    border-color: transparent !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+#tree ul li > span .twisty {
+    border-color: transparent transparent transparent var(--accent-cyan) !important;
+}
+
+#results ul li a img,
+#results ul li span img,
+#tree ul li a img,
+#tree ul li > span img {
+    opacity: 0.96 !important;
+    filter: saturate(1.04) brightness(1.02) !important;
+    margin-right: 5px !important;
+}
+
+menu[type=context] {
+    background: rgba(40, 42, 54, 0.98) !important;
+    color: var(--text-main) !important;
+    border: 1px solid rgba(98, 114, 164, 0.24) !important;
+    border-radius: 10px !important;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.30) !important;
+}
+
+::-webkit-scrollbar {
+    width: 13px !important;
+    height: 13px !important;
+}
+
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-track-piece {
+    background: var(--bg-main) !important;
+    border-radius: 13px !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #55618D 0%, #8BE9FD 100%) !important;
+    border-radius: 13px !important;
+    border: 3px solid var(--bg-main) !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #8BE9FD 0%, #BD93F9 100%) !important;
+}
+
+::-webkit-scrollbar-corner {
+    background: var(--bg-main) !important;
+}
+
+:root {
+    --vbm-bg: var(--bg-main);
+    --vbm-bg-elev: #303241;
+    --vbm-bg-hover: rgba(139, 233, 253, 0.16);
+    --vbm-bg-selected: rgba(189, 147, 249, 0.90);
+
+    --vbm-fg: var(--text-main);
+    --vbm-fg-selected: #282A36;
+    --vbm-muted: var(--text-soft);
+
+    --vbm-border: rgba(98, 114, 164, 0.30);
+    --vbm-accent: var(--accent-cyan);
+    --vbm-accent-fg: #282A36;
+    --vbm-focus-ring: rgba(139, 233, 253, 0.32);
+
+    --vbm-danger: #FF5555;
+    --vbm-danger-fg: #282A36;
+    --vbm-warning: #F1FA8C;
+    --vbm-warning-fg: #282A36;
+
+    --vbm-scrim: rgba(0, 0, 0, 0.62);
+    --vbm-shadow: rgba(0, 0, 0, 0.48);
+    --vbm-flash: rgba(189, 147, 249, 0.24);
+
+    --vbm-scrollbar: #6272A4;
+    --vbm-scrollbar-hover: var(--accent-cyan);
+    --vbm-radius: 8px;
+
+    --vbm-row-h: 28px;
+    --vbm-indent: 12px;
+}
+
+body,
+input,
+button,
+select,
+textarea,
+menu,
+kbd,
+.vbm-row,
+.view-tab,
+.menu-item,
+.palette-row,
+.dialog {
+    font-family: "Exo 2", "Segoe UI", sans-serif !important;
+    font-weight: 400 !important;
+    text-shadow: none !important;
+}
+
+#tree ul li > span {
+    position: relative !important;
+    color: var(--text-folder) !important;
+    background: var(--bg-soft) !important;
+    padding: var(--item-padding-y) var(--item-padding-x) !important;
+    margin: var(--item-margin-y) var(--item-margin-x) !important;
+    border: 1px solid var(--border-soft) !important;
+    border-radius: 8px !important;
+    line-height: var(--ui-line-height) !important;
+    font-size: var(--ui-font-size) !important;
+    letter-spacing: 0.1px !important;
+}
+
+#results ul li a,
+#tree ul li a {
+    position: relative !important;
+    background: var(--bg-soft) !important;
+    padding: var(--item-padding-y) var(--item-padding-x) !important;
+    margin: var(--item-margin-y) var(--item-margin-x) !important;
+    border: 1px solid var(--border-soft) !important;
+    border-radius: 8px !important;
+    line-height: var(--ui-line-height) !important;
+    font-size: var(--ui-font-size) !important;
+    letter-spacing: 0.1px !important;
+}
+
+#tree ul li > span,
+#tree ul li a.link-folder {
+    color: var(--text-folder) !important;
+}
+
+#tree ul li a:not(.link-folder),
+#results ul li a {
+    color: var(--text-main) !important;
+}
+
+#results ul li a:hover,
+#tree ul li a:hover,
+#tree ul li > span:hover,
+#recent-list ul li a:hover,
+#stats-list ul li a:hover,
+#dead-list ul li a:hover,
+#dupes-list ul li a:hover,
+.search-history-row a:hover,
+.palette-row:hover,
+.menu-item:hover {
+    background: rgba(139, 233, 253, 0.16) !important;
+    border-color: rgba(139, 233, 253, 0.34) !important;
+    box-shadow: 0 0 8px rgba(139, 233, 253, 0.10) !important;
+}
+
+#results ul li a:hover::after,
+#tree ul li a:hover::after,
+#tree ul li > span:hover::after,
+#recent-list ul li a:hover::after,
+#stats-list ul li a:hover::after,
+#dead-list ul li a:hover::after,
+#dupes-list ul li a:hover::after {
+    content: "" !important;
+    position: absolute !important;
+    left: 9px !important;
+    right: 9px !important;
+    bottom: 3px !important;
+    height: 2px !important;
+    background: var(--accent-cyan) !important;
+    border-radius: 999px !important;
+    pointer-events: none !important;
+}
+
+#results ul li a:hover i,
+#tree ul li a:hover i,
+#recent-list ul li a:hover i,
+#stats-list ul li a:hover i,
+#dead-list ul li a:hover i,
+#dupes-list ul li a:hover i {
+    text-decoration: none !important;
+}
+
+#recent-list,
+#stats-list,
+#dead-list,
+#dupes-list,
+#search-history-area,
+#palette-results {
+    background: linear-gradient(
+        180deg,
+        var(--bg-panel-top) 0%,
+        var(--bg-panel-bottom) 100%
+    ) !important;
+    color: var(--text-main) !important;
+}
+
+#recent-list ul li a,
+#stats-list ul li a,
+#dead-list ul li a,
+#dupes-list ul li a,
+.search-history-row a {
+    position: relative !important;
+    color: var(--text-main) !important;
+    background: var(--bg-soft) !important;
+    padding: var(--item-padding-y) var(--item-padding-x) !important;
+    margin: var(--item-margin-y) var(--item-margin-x) !important;
+    border: 1px solid var(--border-soft) !important;
+    border-radius: 8px !important;
+    line-height: var(--ui-line-height) !important;
+    font-size: var(--ui-font-size) !important;
+}
+
+.vbm-row .row-sub,
+.vbm-row .row-path,
+.history-meta,
+.history-time,
+.recent-group-head,
+.search-history-head,
+.stats-section-head,
+.palette-url,
+.palette-slash {
+    color: var(--text-soft) !important;
+}
+
+#view-tabs {
+    background: #242631 !important;
+    border-bottom-color: rgba(98, 114, 164, 0.30) !important;
+}
+
+.view-tab {
+    color: var(--text-soft) !important;
+    font-size: 12px !important;
+    transition:
+        background-color 0.14s ease,
+        color 0.14s ease !important;
+}
+
+.view-tab:hover {
+    background: rgba(139, 233, 253, 0.12) !important;
+    color: var(--text-main) !important;
+}
+
+.view-tab[aria-selected="true"] {
+    color: var(--accent-cyan) !important;
+    background: rgba(139, 233, 253, 0.08) !important;
+}
+
+.tab-indicator {
+    background: linear-gradient(
+        90deg,
+        var(--accent-cyan),
+        var(--accent-purple)
+    ) !important;
+    box-shadow: 0 0 7px rgba(139, 233, 253, 0.35) !important;
+}
+
+#search {
+    background: var(--bg-main) !important;
+    padding: 3px 6px !important;
+    gap: 0 !important;
+}
+
+#search-field {
+    min-width: 0 !important;
+}
+
+#search input {
+    background: var(--bg-soft-strong) !important;
+    color: var(--text-main) !important;
+    border-color: var(--border-main) !important;
+    border-radius: 9px !important;
+    font-size: var(--search-font-size) !important;
+}
+
+#search .vbm-icon-search,
+#search-clear {
+    color: var(--text-soft) !important;
+}
+
+#search-clear:hover {
+    color: var(--accent-cyan) !important;
+    background: rgba(139, 233, 253, 0.12) !important;
+}
+
+#quick-add-btn,
+#tool-btn {
+    background: var(--bg-soft-strong) !important;
+    color: var(--text-soft) !important;
+    border-color: var(--border-main) !important;
+    border-radius: 9px !important;
+}
+
+#quick-add-btn:hover,
+#tool-btn:hover,
+#quick-add-btn.starred {
+    background: rgba(139, 233, 253, 0.14) !important;
+    color: var(--accent-cyan) !important;
+    border-color: var(--accent-cyan) !important;
+    box-shadow: 0 0 8px rgba(139, 233, 253, 0.12) !important;
+}
+
+menu[type="context"] {
+    background: rgba(40, 42, 54, 0.98) !important;
+    color: var(--text-main) !important;
+    border-color: rgba(189, 147, 249, 0.32) !important;
+    border-radius: 10px !important;
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.42) !important;
+}
+
+menu[type="context"] .menu-item {
+    color: var(--text-main) !important;
+    border-radius: 7px !important;
+    margin: 1px 5px !important;
+    padding: 0 9px !important;
+    font-size: var(--ui-font-size) !important;
+}
+
+menu[type="context"] .menu-item:hover,
+menu[type="context"] .menu-item:focus {
+    background: rgba(139, 233, 253, 0.16) !important;
+    color: #FFFFFF !important;
+    outline-color: rgba(139, 233, 253, 0.32) !important;
+}
+
+menu[type="context"] hr {
+    background-color: rgba(98, 114, 164, 0.35) !important;
+}
+
+#command-palette {
+    background: rgba(40, 42, 54, 0.985) !important;
+    color: var(--text-main) !important;
+    border-color: rgba(189, 147, 249, 0.35) !important;
+    border-radius: 12px !important;
+    box-shadow:
+        0 18px 44px rgba(0, 0, 0, 0.50),
+        0 0 18px rgba(139, 233, 253, 0.08) !important;
+}
+
+#palette-input {
+    background: #303241 !important;
+    color: var(--text-main) !important;
+    border-color: var(--border-main) !important;
+    font-size: var(--ui-font-size) !important;
+}
+
+.palette-row {
+    color: var(--text-main) !important;
+    border: 1px solid transparent !important;
+    border-radius: 7px !important;
+}
+
+.palette-row.selected,
+.palette-row.selected:hover {
+    background: rgba(189, 147, 249, 0.90) !important;
+    color: #282A36 !important;
+    border-color: transparent !important;
+}
+
+.palette-row.selected .palette-url,
+.palette-row.selected .palette-slash {
+    color: #282A36 !important;
+}
+
+#palette-close {
+    color: var(--text-soft) !important;
+    border-top-color: rgba(98, 114, 164, 0.30) !important;
+}
+
+#palette-close:hover {
+    background: rgba(139, 233, 253, 0.10) !important;
+    color: var(--accent-cyan) !important;
+}
+
+.dialog {
+    background: linear-gradient(
+        180deg,
+        #303241 0%,
+        var(--bg-main) 100%
+    ) !important;
+    color: var(--text-main) !important;
+    border-color: rgba(98, 114, 164, 0.35) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.48) !important;
+}
+
+.dialog input,
+.dialog select {
+    background: #303241 !important;
+    color: var(--text-main) !important;
+    border-color: var(--border-main) !important;
+}
+
+.dialog input:focus,
+.dialog select:focus {
+    border-color: var(--accent-cyan) !important;
+    outline-color: rgba(139, 233, 253, 0.30) !important;
+}
+
+.dialog .buttons button {
+    background: #44475A !important;
+    color: var(--text-main) !important;
+    border-color: rgba(98, 114, 164, 0.38) !important;
+    border-radius: 8px !important;
+}
+
+.dialog .buttons button:hover {
+    background: rgba(139, 233, 253, 0.16) !important;
+    border-color: var(--accent-cyan) !important;
+}
+
+.dialog .buttons button:first-of-type {
+    background: linear-gradient(
+        180deg,
+        var(--accent-cyan),
+        #6FCFDF
+    ) !important;
+    color: #282A36 !important;
+    border-color: var(--accent-cyan) !important;
+}
+
+#undo-toast,
+#notice-toast,
+.stats-history-banner,
+.risk-banner {
+    background: rgba(48, 50, 65, 0.98) !important;
+    color: var(--text-main) !important;
+    border-color: rgba(98, 114, 164, 0.38) !important;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.38) !important;
+}
+
+#undo-toast-button,
+.stats-history-banner a,
+.risk-banner a {
+    color: var(--accent-cyan) !important;
+}
+
+.risk-banner .risk-banner-never,
+.risk-banner .risk-banner-dismiss,
+.row-btn {
+    color: var(--text-soft) !important;
+}
+
+.risk-banner .risk-banner-never:hover,
+.risk-banner .risk-banner-dismiss:hover,
+.row-btn:hover {
+    background: rgba(139, 233, 253, 0.12) !important;
+    color: var(--text-main) !important;
+}
+
+.palette-row .palette-badge,
+.dead-badge,
+.dead-indicator {
+    color: var(--vbm-danger) !important;
+}
+
+mark,
+#results mark {
+    color: var(--accent-cyan) !important;
+    background: rgba(139, 233, 253, 0.16) !important;
+}
+
+#tree ul li a.separator-row {
+    background: transparent !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+}
+
+#tree ul li a.separator-row::after {
+    content: none !important;
+}
+
+#tree ul li a.separator-row hr.separator-line {
+    border-top-color: rgba(98, 114, 164, 0.42) !important;
+}
+
+::-webkit-scrollbar {
+    width: 13px !important;
+    height: 13px !important;
+}
+
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-track-piece {
+    background: var(--bg-main) !important;
+    border-radius: 13px !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+        180deg,
+        #55618D 0%,
+        var(--accent-cyan) 100%
+    ) !important;
+    border-radius: 13px !important;
+    border: 3px solid var(--bg-main) !important;
+    background-clip: padding-box !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(
+        180deg,
+        var(--accent-cyan) 0%,
+        var(--accent-purple) 100%
+    ) !important;
+    background-clip: padding-box !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
+
+#search input {
+    padding-block: var(--search-padding-y) !important;
+    padding-inline-start: 29px !important;
+    padding-inline-end: 28px !important;
+}
+
+html,
+body,
+input,
+button,
+select,
+textarea,
+menu,
+kbd,
+span,
+a,
+i,
+li,
+ul,
+div,
+.vbm-row,
+.view-tab,
+.menu-item,
+.palette-row,
+.dialog {
+    font-family: "Exo 2", "Segoe UI", sans-serif !important;
+}
+
+#tree ul li > span,
+#tree ul li a,
+#results ul li a,
+#recent-list ul li a,
+#stats-list ul li a,
+#dead-list ul li a,
+#dupes-list ul li a,
+.search-history-row a {
+    font-weight: 400 !important;
+}
+
+.view-tab[aria-selected="true"],
+.dialog .buttons button:first-of-type,
+.palette-row.selected,
+mark,
+#results mark {
+    font-weight: 500 !important;
+}
+
+#results ul li a:active,
+#results ul li a.active,
+#results ul li a:focus,
+#tree ul li a:active,
+#tree ul li a.active,
+#tree ul li a:focus,
+#tree ul li > span:active,
+#tree ul li > span.active,
+#tree ul li > span:focus,
+#recent-list ul li a:active,
+#recent-list ul li a.active,
+#recent-list ul li a:focus,
+#stats-list ul li a:active,
+#stats-list ul li a.active,
+#stats-list ul li a:focus,
+#dead-list ul li a:active,
+#dead-list ul li a.active,
+#dead-list ul li a:focus,
+#dupes-list ul li a:active,
+#dupes-list ul li a.active,
+#dupes-list ul li a:focus {
+    border-color: rgba(139, 233, 253, 0.95) !important;
+
+    box-shadow:
+        inset 0 0 7px rgba(139, 233, 253, 0.18),
+        0 0 4px rgba(139, 233, 253, 0.95),
+        0 0 10px rgba(139, 233, 253, 0.55),
+        0 0 18px rgba(189, 147, 249, 0.22) !important;
+
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+#results ul li a:active::before,
+#results ul li a.active::before,
+#results ul li a:focus::before,
+#tree ul li a:active::before,
+#tree ul li a.active::before,
+#tree ul li a:focus::before,
+#tree ul li > span:active::before,
+#tree ul li > span.active::before,
+#tree ul li > span:focus::before,
+#recent-list ul li a:active::before,
+#recent-list ul li a.active::before,
+#recent-list ul li a:focus::before,
+#stats-list ul li a:active::before,
+#stats-list ul li a.active::before,
+#stats-list ul li a:focus::before,
+#dead-list ul li a:active::before,
+#dead-list ul li a.active::before,
+#dead-list ul li a:focus::before,
+#dupes-list ul li a:active::before,
+#dupes-list ul li a.active::before,
+#dupes-list ul li a:focus::before {
+    content: "" !important;
+    position: absolute !important;
+    inset: -2px !important;
+    border: 1px solid rgba(139, 233, 253, 0.30) !important;
+    border-radius: 10px !important;
+    filter: blur(1.5px) !important;
+    pointer-events: none !important;
+    opacity: 0.85 !important;
+}
+
+@keyframes vbm-neon-breathe {
+    0%, 100% {
+        filter: brightness(1);
+    }
+    50% {
+        filter: brightness(1.08);
+    }
+}
+
+#results ul li a.active,
+#results ul li a:focus,
+#tree ul li a.active,
+#tree ul li a:focus,
+#tree ul li > span.active,
+#tree ul li > span:focus,
+#recent-list ul li a.active,
+#recent-list ul li a:focus,
+#stats-list ul li a.active,
+#stats-list ul li a:focus,
+#dead-list ul li a.active,
+#dead-list ul li a:focus,
+#dupes-list ul li a.active,
+#dupes-list ul li a:focus {
+    animation: vbm-neon-breathe 2.6s ease-in-out infinite !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #results ul li a.active,
+    #results ul li a:focus,
+    #tree ul li a.active,
+    #tree ul li a:focus,
+    #tree ul li > span.active,
+    #tree ul li > span:focus,
+    #recent-list ul li a.active,
+    #recent-list ul li a:focus,
+    #stats-list ul li a.active,
+    #stats-list ul li a:focus,
+    #dead-list ul li a.active,
+    #dead-list ul li a:focus,
+    #dupes-list ul li a.active,
+    #dupes-list ul li a:focus {
+        animation: none !important;
+    }
+}
+
+#results ul li a:active,
+#results ul li a.active,
+#results ul li a:focus,
+#tree ul li a:active,
+#tree ul li a.active,
+#tree ul li a:focus,
+#tree ul li > span:active,
+#tree ul li > span.active,
+#tree ul li > span:focus,
+#recent-list ul li a:active,
+#recent-list ul li a.active,
+#recent-list ul li a:focus,
+#stats-list ul li a:active,
+#stats-list ul li a.active,
+#stats-list ul li a:focus,
+#dead-list ul li a:active,
+#dead-list ul li a.active,
+#dead-list ul li a:focus,
+#dupes-list ul li a:active,
+#dupes-list ul li a.active,
+#dupes-list ul li a:focus {
+    color: #F8F8F2 !important;
+    text-shadow:
+        0 0 2px rgba(248, 248, 242, 0.90),
+        0 0 6px rgba(139, 233, 253, 0.68) !important;
+}
+
+#results ul li a:active i,
+#results ul li a.active i,
+#results ul li a:focus i,
+#tree ul li a:active i,
+#tree ul li a.active i,
+#tree ul li a:focus i,
+#tree ul li > span:active i,
+#tree ul li > span.active i,
+#tree ul li > span:focus i,
+#recent-list ul li a:active i,
+#recent-list ul li a.active i,
+#recent-list ul li a:focus i,
+#stats-list ul li a:active i,
+#stats-list ul li a.active i,
+#stats-list ul li a:focus i,
+#dead-list ul li a:active i,
+#dead-list ul li a.active i,
+#dead-list ul li a:focus i,
+#dupes-list ul li a:active i,
+#dupes-list ul li a.active i,
+#dupes-list ul li a:focus i {
+    color: #F8F8F2 !important;
+    text-shadow:
+        0 0 2px rgba(248, 248, 242, 0.90),
+        0 0 6px rgba(139, 233, 253, 0.68) !important;
+}
+
+#results ul li a:hover,
+#tree ul li a:hover,
+#tree ul li > span:hover,
+#recent-list ul li a:hover,
+#stats-list ul li a:hover,
+#dead-list ul li a:hover,
+#dupes-list ul li a:hover,
+.search-history-row a:hover {
+    border-color: rgba(139, 233, 253, 0.72) !important;
+
+    box-shadow:
+        inset 0 0 5px rgba(139, 233, 253, 0.10),
+        0 0 3px rgba(139, 233, 253, 0.70),
+        0 0 8px rgba(139, 233, 253, 0.34),
+        0 0 13px rgba(189, 147, 249, 0.12) !important;
+
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+#results ul li a:hover,
+#tree ul li a:hover,
+#tree ul li > span:hover,
+#recent-list ul li a:hover,
+#stats-list ul li a:hover,
+#dead-list ul li a:hover,
+#dupes-list ul li a:hover,
+.search-history-row a:hover,
+#results ul li a:hover i,
+#tree ul li a:hover i,
+#tree ul li > span:hover i,
+#recent-list ul li a:hover i,
+#stats-list ul li a:hover i,
+#dead-list ul li a:hover i,
+#dupes-list ul li a:hover i {
+    color: #F1F5F7 !important;
+    text-shadow: 0 0 4px rgba(139, 233, 253, 0.30) !important;
+}
+
+#results ul li a.active:hover,
+#results ul li a:focus:hover,
+#tree ul li a.active:hover,
+#tree ul li a:focus:hover,
+#tree ul li > span.active:hover,
+#tree ul li > span:focus:hover,
+#recent-list ul li a.active:hover,
+#recent-list ul li a:focus:hover,
+#stats-list ul li a.active:hover,
+#stats-list ul li a:focus:hover,
+#dead-list ul li a.active:hover,
+#dead-list ul li a:focus:hover,
+#dupes-list ul li a.active:hover,
+#dupes-list ul li a:focus:hover {
+    border-color: rgba(139, 233, 253, 0.95) !important;
+
+    box-shadow:
+        inset 0 0 7px rgba(139, 233, 253, 0.18),
+        0 0 4px rgba(139, 233, 253, 0.95),
+        0 0 10px rgba(139, 233, 253, 0.55),
+        0 0 18px rgba(189, 147, 249, 0.22) !important;
+
+    color: #F8F8F2 !important;
+    text-shadow:
+        0 0 2px rgba(248, 248, 242, 0.90),
+        0 0 6px rgba(139, 233, 253, 0.68) !important;
+
+    z-index: 2 !important;
+}
+
+#results ul li a:active,
+#results ul li a.active,
+#results ul li a:focus,
+#tree ul li a:active,
+#tree ul li a.active,
+#tree ul li a:focus,
+#tree ul li > span:active,
+#tree ul li > span.active,
+#tree ul li > span:focus,
+#recent-list ul li a:active,
+#recent-list ul li a.active,
+#recent-list ul li a:focus,
+#stats-list ul li a:active,
+#stats-list ul li a.active,
+#stats-list ul li a:focus,
+#dead-list ul li a:active,
+#dead-list ul li a.active,
+#dead-list ul li a:focus,
+#dupes-list ul li a:active,
+#dupes-list ul li a.active,
+#dupes-list ul li a:focus {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(139, 233, 253, 0.34) 0%,
+            rgba(98, 114, 164, 0.24) 100%
+        ) !important;
+
+    color: #F8F8F2 !important;
+}
+
+#results ul li a:active i,
+#results ul li a.active i,
+#results ul li a:focus i,
+#tree ul li a:active i,
+#tree ul li a.active i,
+#tree ul li a:focus i,
+#tree ul li > span:active i,
+#tree ul li > span.active i,
+#tree ul li > span:focus i,
+#recent-list ul li a:active i,
+#recent-list ul li a.active i,
+#recent-list ul li a:focus i,
+#stats-list ul li a:active i,
+#stats-list ul li a.active i,
+#stats-list ul li a:focus i,
+#dead-list ul li a:active i,
+#dead-list ul li a.active i,
+#dead-list ul li a:focus i,
+#dupes-list ul li a:active i,
+#dupes-list ul li a.active i,
+#dupes-list ul li a:focus i {
+    color: #F8F8F2 !important;
+}
+
+#results ul li a.active:hover,
+#results ul li a:focus:hover,
+#tree ul li a.active:hover,
+#tree ul li a:focus:hover,
+#tree ul li > span.active:hover,
+#tree ul li > span:focus:hover,
+#recent-list ul li a.active:hover,
+#recent-list ul li a:focus:hover,
+#stats-list ul li a.active:hover,
+#stats-list ul li a:focus:hover,
+#dead-list ul li a.active:hover,
+#dead-list ul li a:focus:hover,
+#dupes-list ul li a.active:hover,
+#dupes-list ul li a:focus:hover {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(139, 233, 253, 0.38) 0%,
+            rgba(98, 114, 164, 0.28) 100%
+        ) !important;
+}
+/* =========================================================
+   vBookmarks 4.1.x compatibility layer
+   ========================================================= */
+
+/*
+ * Force the Dracula tokens even when vBookmarks has one of its
+ * built-in themes selected. body[data-theme] matches the native
+ * theme selectors with equal specificity and comes later.
+ */
+:root,
+body[data-theme] {
+    color-scheme: dark;
+
+    --vbm-bg: var(--bg-main);
+    --vbm-bg-elev: #303241;
+    --vbm-bg-hover: rgba(139, 233, 253, 0.16);
+    --vbm-bg-selected: rgba(139, 233, 253, 0.30);
+
+    --vbm-fg: var(--text-main);
+    --vbm-fg-selected: #F8F8F2;
+    --vbm-muted: var(--text-soft);
+
+    --vbm-border: rgba(98, 114, 164, 0.30);
+    --vbm-accent: var(--accent-cyan);
+    --vbm-accent-fg: #282A36;
+    --vbm-focus-ring: rgba(139, 233, 253, 0.32);
+
+    --vbm-danger: #FF5555;
+    --vbm-danger-fg: #282A36;
+    --vbm-warning: #F1FA8C;
+    --vbm-warning-fg: #282A36;
+    --vbm-success: #50FA7B;
+
+    --vbm-scrim: rgba(0, 0, 0, 0.62);
+    --vbm-shadow: rgba(0, 0, 0, 0.48);
+    --vbm-flash: rgba(139, 233, 253, 0.20);
+
+    --vbm-scrollbar: #6272A4;
+    --vbm-scrollbar-hover: var(--accent-cyan);
+    --vbm-radius: 8px;
+    --vbm-row-h: 28px;
+}
+
+/* New view surfaces */
+#staging-list,
+#recent-list,
+#tabgroups-list,
+#stats-list,
+#dead-list,
+#dupes-list,
+#results,
+#tree,
+#search-history-area {
+    background:
+        linear-gradient(
+            180deg,
+            var(--bg-panel-top) 0%,
+            var(--bg-panel-bottom) 100%
+        ) !important;
+    color: var(--text-main) !important;
+}
+
+/* Staging and Tab Groups rows */
+#staging-list li.vbm-row > a.tree-item-link,
+#tabgroups-list li.vbm-row > a.tree-item-link {
+    position: relative !important;
+    color: var(--text-main) !important;
+    background: var(--bg-soft) !important;
+
+    border: 1px solid var(--border-soft) !important;
+    border-radius: 8px !important;
+
+    font-size: var(--ui-font-size) !important;
+    line-height: var(--ui-line-height) !important;
+    letter-spacing: 0.1px !important;
+
+    transition:
+        background-color 0.14s ease,
+        border-color 0.14s ease,
+        box-shadow 0.14s ease !important;
+}
+
+/* New-list hover glow */
+#staging-list li.vbm-row > a.tree-item-link:hover,
+#tabgroups-list li.vbm-row > a.tree-item-link:hover {
+    color: #F1F5F7 !important;
+    background: rgba(139, 233, 253, 0.16) !important;
+    border-color: rgba(139, 233, 253, 0.72) !important;
+
+    box-shadow:
+        inset 0 0 5px rgba(139, 233, 253, 0.10),
+        0 0 3px rgba(139, 233, 253, 0.70),
+        0 0 8px rgba(139, 233, 253, 0.34),
+        0 0 13px rgba(189, 147, 249, 0.12) !important;
+
+    text-shadow: 0 0 4px rgba(139, 233, 253, 0.30) !important;
+    z-index: 1 !important;
+}
+
+/* Full-width cyan underline on hover */
+#staging-list li.vbm-row > a.tree-item-link:hover::after,
+#tabgroups-list li.vbm-row > a.tree-item-link:hover::after {
+    content: "" !important;
+    position: absolute !important;
+    left: 9px !important;
+    right: 9px !important;
+    bottom: 3px !important;
+    height: 2px !important;
+
+    background: var(--accent-cyan) !important;
+    border-radius: 999px !important;
+
+    pointer-events: none !important;
+}
+
+/* New-list selected/focused state */
+#staging-list li.vbm-row > a.tree-item-link:active,
+#staging-list li.vbm-row > a.tree-item-link.active,
+#staging-list li.vbm-row > a.tree-item-link:focus,
+#tabgroups-list li.vbm-row > a.tree-item-link:active,
+#tabgroups-list li.vbm-row > a.tree-item-link.active,
+#tabgroups-list li.vbm-row > a.tree-item-link:focus {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(139, 233, 253, 0.34) 0%,
+            rgba(98, 114, 164, 0.24) 100%
+        ) !important;
+
+    color: #F8F8F2 !important;
+    border-color: rgba(139, 233, 253, 0.95) !important;
+
+    outline: none !important;
+
+    box-shadow:
+        inset 0 0 7px rgba(139, 233, 253, 0.18),
+        0 0 4px rgba(139, 233, 253, 0.95),
+        0 0 10px rgba(139, 233, 253, 0.55),
+        0 0 18px rgba(189, 147, 249, 0.22) !important;
+
+    text-shadow:
+        0 0 2px rgba(248, 248, 242, 0.90),
+        0 0 6px rgba(139, 233, 253, 0.68) !important;
+
+    z-index: 2 !important;
+}
+
+/* Keep inner titles bright in selected rows */
+#staging-list li.vbm-row > a.tree-item-link:active i,
+#staging-list li.vbm-row > a.tree-item-link.active i,
+#staging-list li.vbm-row > a.tree-item-link:focus i,
+#tabgroups-list li.vbm-row > a.tree-item-link:active i,
+#tabgroups-list li.vbm-row > a.tree-item-link.active i,
+#tabgroups-list li.vbm-row > a.tree-item-link:focus i {
+    color: #F8F8F2 !important;
+    text-shadow:
+        0 0 2px rgba(248, 248, 242, 0.90),
+        0 0 6px rgba(139, 233, 253, 0.68) !important;
+}
+
+/* Hierarchy / section headers */
+.staging-section-head,
+.staging-bucket-head,
+.staging-group-head,
+.recent-group-head,
+.tabgroups-window-head,
+.tabgroups-group-head,
+.tabgroups-closed-head {
+    color: var(--text-folder) !important;
+}
+
+.staging-section-head:hover,
+.staging-bucket-head:hover,
+.staging-group-head:hover,
+.recent-group-head:hover,
+.tabgroups-window-head:hover,
+.tabgroups-group-head:hover,
+.tabgroups-closed-head:hover {
+    background: rgba(139, 233, 253, 0.08) !important;
+}
+
+/* Staging hierarchy connector */
+#staging-list {
+    --staging-line: rgba(139, 233, 253, 0.18) !important;
+}
+
+/* Shared 4.1 toolbars */
+.staging-toolbar,
+.search-toolbar,
+.tabgroups-toolbar,
+.stats-toolbar,
+.dead-toolbar,
+.dupes-toolbar {
+    color: var(--text-soft) !important;
+    background: rgba(36, 38, 49, 0.82) !important;
+    border-color: rgba(98, 114, 164, 0.30) !important;
+}
+
+.staging-toolbar button,
+.search-toolbar button,
+.tabgroups-toolbar button,
+.stats-toolbar button,
+.dead-toolbar button,
+.dupes-toolbar button {
+    font-family: "Exo 2", "Segoe UI", sans-serif !important;
+}
+
+.staging-toolbar button:hover:not([disabled]),
+.search-toolbar button:hover:not([disabled]),
+.tabgroups-toolbar button:hover:not([disabled]),
+.stats-toolbar button:hover:not([disabled]),
+.dead-toolbar button:hover:not([disabled]),
+.dupes-toolbar button:hover:not([disabled]) {
+    background: rgba(139, 233, 253, 0.12) !important;
+}
+
+/* Tab Groups filter */
+.tabgroups-toolbar .tabgroups-filter-input {
+    background: #303241 !important;
+    color: var(--text-main) !important;
+    border-color: var(--border-main) !important;
+    border-radius: 7px !important;
+    font-family: "Exo 2", "Segoe UI", sans-serif !important;
+}
+
+.tabgroups-toolbar .tabgroups-filter-input:focus {
+    border-color: var(--accent-cyan) !important;
+    outline-color: rgba(139, 233, 253, 0.32) !important;
+}
+
+.tabgroups-toolbar .tabgroups-filter-input::placeholder {
+    color: var(--text-soft) !important;
+}
+
+/* Modern toolbar dropdowns */
+.vbm-dropdown-list {
+    background: rgba(40, 42, 54, 0.985) !important;
+    color: var(--text-main) !important;
+    border-color: rgba(189, 147, 249, 0.32) !important;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.42) !important;
+}
+
+.vbm-dropdown-list li {
+    color: var(--text-main) !important;
+    border-radius: 6px !important;
+}
+
+.vbm-dropdown-list li:hover {
+    background: rgba(139, 233, 253, 0.14) !important;
+}
+
+.vbm-dropdown-list li:focus {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(139, 233, 253, 0.34) 0%,
+            rgba(98, 114, 164, 0.24) 100%
+        ) !important;
+    color: #F8F8F2 !important;
+}
+
+/* Context-menu flyout submenus */
+menu[type="context"].submenu {
+    background: rgba(40, 42, 54, 0.99) !important;
+    border-color: rgba(189, 147, 249, 0.34) !important;
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.48) !important;
+}
+
+menu[type="context"] .menu-item.has-submenu::after {
+    color: var(--accent-cyan) !important;
+}
+
+/* New picker/editor dialogs */
+#tab-group-dialog,
+#tab-group-pick-dialog,
+#copy-move-dialog,
+#bookmark-folder-pick-dialog {
+    background:
+        linear-gradient(
+            180deg,
+            #303241 0%,
+            var(--bg-main) 100%
+        ) !important;
+
+    color: var(--text-main) !important;
+    border-color: rgba(98, 114, 164, 0.35) !important;
+    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.52) !important;
+}
+
+/* Announcement / What's New banners */
+#whats-new,
+.announce-banner,
+#announce {
+    background: rgba(48, 50, 65, 0.96) !important;
+    color: var(--text-main) !important;
+    border-color: rgba(98, 114, 164, 0.36) !important;
+}
+
+#whats-new a,
+.announce-banner a,
+.announce-banner .announce-link {
+    color: var(--accent-cyan) !important;
+}
+
+#whats-new .announce-icon,
+.announce-banner .announce-icon {
+    color: var(--accent-cyan) !important;
+}
+
+/* Count pills and compact row badges */
+.count-pill,
+.vbm-row .row-badge {
+    border-color: rgba(139, 233, 253, 0.28) !important;
+}
+
+.tabgroups-group .count-pill,
+#tabgroups-list .tabgroups-window-head .count-pill,
+#tabgroups-list .tabgroups-closed-group .count-pill,
+.staging-group-head .count-pill,
+.staging-bucket-head .count-pill {
+    background: rgba(139, 233, 253, 0.12) !important;
+    color: var(--accent-cyan) !important;
+}
+
+/* Semantic states */
+.palette-custom-tag {
+    color: var(--text-soft) !important;
+    border-color: rgba(98, 114, 164, 0.30) !important;
+}
+
+.dead-indicator,
+.dead-badge,
+.palette-badge {
+    color: var(--vbm-danger) !important;
+}
+
+/* Drag/drop affordances stay above the custom neon rows */
+#bookmark-clone,
+#drop-overlay {
+    z-index: 50 !important;
+}
+
+/* Modern scrollbar contract */
+::-webkit-scrollbar {
+    width: 13px !important;
+    height: 13px !important;
+}
+
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-track-piece {
+    background: var(--bg-main) !important;
+    border-radius: 13px !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background:
+        linear-gradient(
+            180deg,
+            #55618D 0%,
+            var(--accent-cyan) 100%
+        ) !important;
+
+    border: 3px solid var(--bg-main) !important;
+    border-radius: 13px !important;
+    background-clip: padding-box !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background:
+        linear-gradient(
+            180deg,
+            var(--accent-cyan) 0%,
+            var(--accent-purple) 100%
+        ) !important;
+
+    background-clip: padding-box !important;
+}
+
+/* Reduced-motion support for the neon breathing effect */
+@media (prefers-reduced-motion: reduce) {
+    #staging-list li.vbm-row > a.tree-item-link,
+    #tabgroups-list li.vbm-row > a.tree-item-link {
+        animation: none !important;
+    }
+}
+/* =========================================================
+   v4.1.1 — Staging underline + Current badges refinement
+   ========================================================= */
+
+/*
+ * Staging rows reserve a trailing action column.
+ * Stop the decorative hover line before that control so the
+ * underline keeps the same visual rhythm as the other views.
+ */
+#staging-list li.vbm-row > a.tree-item-link:hover::after {
+    right: 30px !important;
+}
+
+
+/*
+ * The native current-window/current-tab badges use the full
+ * accent fill. On these very small pills the Dracula cyan is
+ * visually too intense, so use a softer translucent treatment
+ * without changing --vbm-accent anywhere else in the theme.
+ */
+#tabgroups-list ul li.tabgroups-window-head b.tabgroups-window-current,
+#tabgroups-list ul li.tabgroups-row .row-badge.current {
+    background: rgba(139, 233, 253, 0.20) !important;
+    color: #DDF8FF !important;
+
+    border: 1px solid rgba(139, 233, 253, 0.48) !important;
+
+    box-shadow:
+        inset 0 0 4px rgba(139, 233, 253, 0.08),
+        0 0 4px rgba(139, 233, 253, 0.10) !important;
+
+    font-weight: 500 !important;
+    text-shadow: none !important;
+}
+
+
+/* Keep the current-tab row tint subtle and separate from the badge. */
+#tabgroups-list li.tabgroups-current {
+    background-color: rgba(139, 233, 253, 0.055) !important;
+}
+/* =========================================================
+   v4.1.2 — Unified row geometry
+   ========================================================= */
+
+/*
+ * vBookmarks 4.1 gives Staging/Recent and Tab Groups their own
+ * compact row geometry. Match those anchors to the Dracula row
+ * metrics already used by Stats, Dead Links and Duplicates.
+ */
+#staging-list li.vbm-row > a.tree-item-link,
+#tabgroups-list li.vbm-row > a.tree-item-link {
+    padding:
+        var(--item-padding-y)
+        var(--item-padding-x) !important;
+
+    margin:
+        var(--item-margin-y)
+        var(--item-margin-x) !important;
+}
+
+
+/*
+ * With the normal Dracula spacing restored, the decorative line
+ * can use the same inset as every other list view.
+ */
+#staging-list li.vbm-row > a.tree-item-link:hover::after,
+#tabgroups-list li.vbm-row > a.tree-item-link:hover::after {
+    left: 9px !important;
+    right: 9px !important;
+    bottom: 3px !important;
+}
+
+
+/*
+ * Keep trailing row controls vertically centered when the anchor
+ * grows to the standard Dracula row height.
+ */
+#staging-list li.vbm-row,
+#tabgroups-list li.vbm-row {
+    align-items: center !important;
+}
+/* =========================================================
+   v4.1.3 — Remove native link underline in Staging/Tab Groups
+   ========================================================= */
+
+#staging-list li.vbm-row > a.tree-item-link,
+#tabgroups-list li.vbm-row > a.tree-item-link,
+#staging-list li.vbm-row > a.tree-item-link:hover,
+#tabgroups-list li.vbm-row > a.tree-item-link:hover,
+#staging-list li.vbm-row > a.tree-item-link:focus,
+#tabgroups-list li.vbm-row > a.tree-item-link:focus,
+#staging-list li.vbm-row > a.tree-item-link:active,
+#tabgroups-list li.vbm-row > a.tree-item-link:active {
+    text-decoration: none !important;
+}
+
+#staging-list li.vbm-row > a.tree-item-link i,
+#tabgroups-list li.vbm-row > a.tree-item-link i,
+#staging-list li.vbm-row > a.tree-item-link span,
+#tabgroups-list li.vbm-row > a.tree-item-link span,
+#staging-list li.vbm-row > a.tree-item-link b,
+#tabgroups-list li.vbm-row > a.tree-item-link b,
+#staging-list li.vbm-row > a.tree-item-link:hover i,
+#tabgroups-list li.vbm-row > a.tree-item-link:hover i,
+#staging-list li.vbm-row > a.tree-item-link:hover span,
+#tabgroups-list li.vbm-row > a.tree-item-link:hover span,
+#staging-list li.vbm-row > a.tree-item-link:hover b,
+#tabgroups-list li.vbm-row > a.tree-item-link:hover b {
+    text-decoration: none !important;
+}
