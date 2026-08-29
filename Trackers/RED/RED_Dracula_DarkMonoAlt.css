@@ -1,7 +1,19 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.3
+ * Version: 0.3.4
+ *
+ * Changelog 0.3.4:
+ * - First broad geometry/refinement pass after the structural core became stable.
+ * - Increased usable content width and improved vertical spacing.
+ * - Normalized main/sidebar columns on Home, Wiki and album/torrent pages.
+ * - Fixed oversized forum avatars and post-column proportions.
+ * - Improved forum index/topic row spacing and header alignment.
+ * - Reworked torrent list artwork/info/stat alignment and row breathing room.
+ * - Reworked Top 10 rows so artwork, title/details and numeric columns align at the top.
+ * - Improved Collages, Requests, Rules and Wiki table/form spacing.
+ * - Added safer wrapping/white-space rules for time, size and count columns.
+ * - Kept the Dracula/vBookmarks palette, neon cyan hover and typography unchanged.
  *
  * Changelog 0.3.3:
  * - Removed the external DarkMonoAlt import completely.
@@ -1202,3 +1214,534 @@ blockquote,
     #footer a {
         color: var(--red-cyan) !important;
     }
+
+
+/* =========================================================
+   v0.3.4 — GEOMETRY / SPACING REFINEMENT
+   This block intentionally comes last so it can correct the
+   native RED core without changing the established Dracula look.
+   ========================================================= */
+
+/* ---------- Global page proportions ---------- */
+
+#header {
+    max-width: 1320px !important;
+}
+
+#content {
+    width: min(1180px, calc(100% - 56px)) !important;
+    padding: 20px 24px 28px !important;
+}
+
+#searchbars {
+    padding-left: 28px !important;
+    padding-right: 28px !important;
+}
+
+    #searchbars input {
+        min-width: 145px !important;
+    }
+
+/* More comfortable rhythm between RED's major blocks. */
+#content > .thin > h2,
+#content > .thin > .header,
+#content .main_column > .box,
+#content .sidebar > .box,
+#content .forum_list,
+#content .torrent_table,
+#content .request_table,
+#content .collage_table,
+#content .search_form,
+#content .filter_torrents {
+    margin-bottom: 12px !important;
+}
+
+.box .body,
+.box2 .body,
+.box.pad,
+.box2.pad {
+    line-height: 1.45 !important;
+}
+
+/* ---------- Home ---------- */
+
+#index #content .main_column {
+    width: 70% !important;
+    margin-left: 0 !important;
+}
+
+#index #content .sidebar {
+    width: 28% !important;
+    margin-right: 0 !important;
+}
+
+#index .news_post .body {
+    padding: 12px !important;
+}
+
+#index .sidebar .box .pad,
+#index .sidebar .box .body {
+    padding: 10px !important;
+}
+
+#index .sidebar .box {
+    margin-bottom: 12px !important;
+}
+
+/* ---------- Search / filter forms ---------- */
+
+.search_form td,
+.filter_torrents td,
+.request_table td {
+    vertical-align: middle !important;
+}
+
+.search_form td,
+.filter_torrents td {
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
+}
+
+    .search_form td.label,
+    .filter_torrents td.label {
+        padding-right: 12px !important;
+    }
+
+#torrents .filter_torrents input[type="text"],
+#torrents .filter_torrents input[type="search"] {
+    min-height: 26px !important;
+}
+
+#torrents .filter_torrents select,
+#requests .search_form select,
+#collage .search_form select {
+    min-height: 26px !important;
+}
+
+#torrents .filter_torrents .cat_list td,
+#requests .search_form td,
+#collage .search_form td {
+    line-height: 1.35 !important;
+}
+
+/* ---------- Generic table rhythm ---------- */
+
+#content table td,
+#content table th {
+    line-height: 1.32 !important;
+}
+
+#content table th,
+#content .colhead td,
+#content .colhead_dark td {
+    vertical-align: middle !important;
+}
+
+#content table tbody td {
+    vertical-align: middle;
+}
+
+/* Avoid ugly two-line time/size/count cells where space is available. */
+.torrent_table td:nth-last-child(-n+5),
+.request_table td:nth-last-child(-n+5),
+.collage_table td:nth-last-child(-n+5) {
+    white-space: nowrap;
+}
+
+/* ---------- Torrent search results ---------- */
+
+#torrents #torrent_table {
+    table-layout: auto !important;
+}
+
+    #torrents #torrent_table tr.group > td {
+        padding-top: 10px !important;
+        padding-bottom: 10px !important;
+        vertical-align: middle !important;
+    }
+
+    #torrents #torrent_table tr.group_torrent > td,
+    #torrents #torrent_table tr.torrent > td,
+    #torrents #torrent_table tr.torrent_row > td {
+        padding-top: 6px !important;
+        padding-bottom: 6px !important;
+        vertical-align: middle !important;
+    }
+
+    #torrents #torrent_table .group_image,
+    #torrents #torrent_table td.group_image {
+        width: 88px !important;
+        min-width: 88px !important;
+        vertical-align: middle !important;
+    }
+
+        #torrents #torrent_table .group_image img,
+        #torrents #torrent_table tr.group img {
+            width: 74px !important;
+            height: 74px !important;
+            max-width: 74px !important;
+            max-height: 74px !important;
+            object-fit: cover !important;
+            margin: 2px 8px 2px 2px !important;
+            border-radius: 5px !important;
+        }
+
+    #torrents #torrent_table .group_info {
+        width: auto !important;
+        height: auto !important;
+        padding: 4px 8px !important;
+        vertical-align: middle !important;
+    }
+
+        #torrents #torrent_table .group_info .tags {
+            margin-top: 3px !important;
+            line-height: 1.25 !important;
+        }
+
+    #torrents #torrent_table td.small,
+    #torrents #torrent_table td.number_column {
+        vertical-align: middle !important;
+        text-align: center !important;
+    }
+
+    /* Give file/time/size/activity columns enough room to remain legible. */
+    #torrents #torrent_table td:nth-last-child(6),
+    #torrents #torrent_table th:nth-last-child(6) {
+        min-width: 42px;
+    }
+
+    #torrents #torrent_table td:nth-last-child(5),
+    #torrents #torrent_table th:nth-last-child(5) {
+        min-width: 70px;
+    }
+
+    #torrents #torrent_table td:nth-last-child(4),
+    #torrents #torrent_table th:nth-last-child(4) {
+        min-width: 78px;
+    }
+
+/* ---------- Individual album/torrent page ---------- */
+
+#torrents .main_column {
+    width: 70% !important;
+    margin-left: 0 !important;
+}
+
+#torrents .sidebar {
+    width: 28% !important;
+    margin-right: 0 !important;
+}
+
+    #torrents .sidebar .box {
+        margin-bottom: 10px !important;
+    }
+
+        #torrents .sidebar .box .head {
+            padding: 8px 10px !important;
+        }
+
+        #torrents .sidebar .box .body,
+        #torrents .sidebar .box .pad {
+            padding: 10px !important;
+        }
+
+#torrents .torrentdetails,
+#torrents .torrent_description {
+    line-height: 1.45 !important;
+}
+
+/* ---------- Forum index / topic list ---------- */
+
+#forums .forum_index,
+#forums .forum_list table {
+    table-layout: auto !important;
+}
+
+    #forums .forum_index th,
+    #forums .forum_index td,
+    #forums .forum_list th,
+    #forums .forum_list td {
+        padding: 6px 8px !important;
+        vertical-align: middle !important;
+    }
+
+        #forums .forum_index td:first-child,
+        #forums .forum_list td:first-child {
+            width: 20px !important;
+            min-width: 20px !important;
+            padding-left: 5px !important;
+            padding-right: 5px !important;
+        }
+
+        #forums .forum_index td:nth-last-child(-n+2),
+        #forums .forum_index th:nth-last-child(-n+2) {
+            width: 72px !important;
+            text-align: center !important;
+            white-space: nowrap !important;
+        }
+
+        #forums .forum_list td:nth-last-child(-n+2),
+        #forums .forum_list th:nth-last-child(-n+2) {
+            white-space: nowrap !important;
+        }
+
+#forums .forum_list .forum_index td:nth-child(2) {
+    width: 24% !important;
+}
+
+/* ---------- Forum posts / AVATARS ---------- */
+
+#forums .forum_post {
+    table-layout: fixed !important;
+}
+
+    #forums .forum_post .avatar,
+    #forums .forum_post td.avatar {
+        width: 132px !important;
+        min-width: 132px !important;
+        max-width: 132px !important;
+        padding: 10px !important;
+        vertical-align: top !important;
+        text-align: center !important;
+        overflow: hidden !important;
+    }
+
+        #forums .forum_post .avatar img,
+        #forums .forum_post td.avatar img,
+        #forums .forum_post img.avatar {
+            display: block !important;
+            width: auto !important;
+            height: auto !important;
+            max-width: 112px !important;
+            max-height: 150px !important;
+            margin: 0 auto 6px !important;
+            object-fit: contain !important;
+        }
+
+    #forums .forum_post .body,
+    #forums .forum_post td.body {
+        width: auto !important;
+        padding: 14px 16px !important;
+        vertical-align: top !important;
+        line-height: 1.48 !important;
+        overflow-wrap: anywhere !important;
+    }
+
+    #forums .forum_post .head,
+    #forums .forum_post tr.colhead_dark td {
+        padding: 6px 9px !important;
+    }
+
+    #forums .forum_post + .forum_post {
+        margin-top: 12px !important;
+    }
+
+/* ---------- Collages ---------- */
+
+#collage .search_form {
+    padding: 12px !important;
+}
+
+#collage .collage_table td,
+#collage .collage_table th {
+    padding: 7px 9px !important;
+}
+
+    #collage .collage_table td:first-child {
+        width: 70px !important;
+    }
+
+    #collage .collage_table td:nth-last-child(-n+4),
+    #collage .collage_table th:nth-last-child(-n+4) {
+        text-align: center !important;
+        white-space: nowrap !important;
+    }
+
+/* ---------- Requests ---------- */
+
+#requests .search_form {
+    padding: 12px !important;
+}
+
+#requests .request_table td,
+#requests .request_table th {
+    padding: 7px 9px !important;
+}
+
+    #requests .request_table td:nth-last-child(-n+6),
+    #requests .request_table th:nth-last-child(-n+6) {
+        text-align: center !important;
+        white-space: nowrap !important;
+    }
+
+/* ---------- TOP 10 ----------
+   RED's Top 10 uses torrent rows differently from the normal torrent page.
+   Force each release to behave like a clean media row: artwork left,
+   descriptive data top-aligned, statistics aligned in their own columns.
+   ----------------------------------------------------- */
+
+#top10 .torrent_table {
+    table-layout: auto !important;
+}
+
+    #top10 .torrent_table tr.group > td,
+    #top10 .torrent_table tr.torrent > td,
+    #top10 .torrent_table tr.torrent_row > td {
+        padding: 10px 8px !important;
+        vertical-align: top !important;
+    }
+
+    #top10 .torrent_table .group_image,
+    #top10 .torrent_table td.group_image {
+        width: 100px !important;
+        min-width: 100px !important;
+        vertical-align: top !important;
+    }
+
+        #top10 .torrent_table .group_image img,
+        #top10 .torrent_table tr.group img,
+        #top10 .torrent_table tr.torrent img,
+        #top10 .torrent_table tr.torrent_row img {
+            width: 84px !important;
+            height: 84px !important;
+            max-width: 84px !important;
+            max-height: 84px !important;
+            object-fit: cover !important;
+            margin: 0 8px 0 0 !important;
+            border-radius: 5px !important;
+        }
+
+    #top10 .torrent_table .group_info {
+        display: table-cell !important;
+        width: auto !important;
+        height: auto !important;
+        padding: 0 10px 0 0 !important;
+        vertical-align: top !important;
+        line-height: 1.42 !important;
+    }
+
+        #top10 .torrent_table .group_info .tags,
+        #top10 .torrent_table .tags {
+            margin-top: 4px !important;
+            line-height: 1.3 !important;
+            white-space: normal !important;
+        }
+
+    /* Numeric/stat columns: keep them narrow, top aligned and readable. */
+    #top10 .torrent_table td:nth-last-child(-n+6),
+    #top10 .torrent_table th:nth-last-child(-n+6) {
+        vertical-align: top !important;
+        text-align: center !important;
+        white-space: nowrap !important;
+        padding-left: 6px !important;
+        padding-right: 6px !important;
+    }
+
+    #top10 .torrent_table td:nth-last-child(6),
+    #top10 .torrent_table th:nth-last-child(6) {
+        min-width: 72px !important;
+    }
+
+    #top10 .torrent_table td:nth-last-child(5),
+    #top10 .torrent_table th:nth-last-child(5) {
+        min-width: 66px !important;
+    }
+
+    #top10 .torrent_table tr.group {
+        min-height: 104px !important;
+    }
+
+/* ---------- Wiki ---------- */
+
+#wiki .main_column {
+    width: 70% !important;
+    margin-left: 0 !important;
+}
+
+#wiki .sidebar {
+    width: 28% !important;
+    margin-right: 0 !important;
+}
+
+    #wiki .main_column > .box,
+    #wiki .sidebar > .box {
+        margin-bottom: 12px !important;
+    }
+
+    #wiki .main_column .box .body,
+    #wiki .main_column .box .pad,
+    #wiki .sidebar .box .body,
+    #wiki .sidebar .box .pad {
+        padding: 11px !important;
+    }
+
+#wiki .main_column li {
+    margin-top: 2px !important;
+    margin-bottom: 2px !important;
+}
+
+/* ---------- Rules ---------- */
+
+#rules .rule_summary,
+#rules .rule_table,
+#rules #actual_rules {
+    padding: 14px 16px !important;
+}
+
+    #rules .rule_table td,
+    #rules .rule_table th {
+        padding: 7px 10px !important;
+        vertical-align: top !important;
+    }
+
+    #rules #actual_rules li,
+    #rules .rule_summary li {
+        margin-bottom: 5px !important;
+        line-height: 1.45 !important;
+    }
+
+/* ---------- Notifications ---------- */
+
+#noty_bottomRight_layout_container {
+    right: 20px !important;
+    bottom: 16px !important;
+}
+
+    #noty_bottomRight_layout_container > li {
+        min-width: 285px !important;
+    }
+
+/* ---------- Wide-screen breathing room ---------- */
+
+@media (min-width: 1500px) {
+    #content {
+        width: 1200px !important;
+    }
+
+    #header {
+        max-width: 1320px !important;
+    }
+}
+
+/* Keep the structural core usable on narrower desktop windows. */
+@media (max-width: 1220px) {
+    #content {
+        width: calc(100% - 32px) !important;
+    }
+
+    #index #content .main_column,
+    #torrents .main_column,
+    #wiki .main_column {
+        width: 69% !important;
+    }
+
+    #index #content .sidebar,
+    #torrents .sidebar,
+    #wiki .sidebar {
+        width: 29% !important;
+    }
+}
+
+/* =========================================================
+   END v0.3.4 REFINEMENT
+   ========================================================= */
