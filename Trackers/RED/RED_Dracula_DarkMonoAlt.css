@@ -1,0 +1,549 @@
+/*
+ * RED Dracula — DarkMonoAlt edition
+ * Target: Redacted (Gazelle)
+ * Base layout: DarkMonoAlt by gazellecss.github.io
+ * Dracula palette: https://draculatheme.com/contribute
+ *
+ * Author: Neonlinx
+ *
+ * This stylesheet intentionally imports DarkMonoAlt and then recolours / refines
+ * the Gazelle UI. That keeps DarkMonoAlt's layout work while making the visual
+ * language easy to maintain in one palette block.
+ */
+
+@import url("https://gazellecss.github.io/darkmonoalt/darkmonoalt.css");
+
+:root {
+    --dr-bg-darker: #191a21;
+    --dr-bg-dark: #21222c;
+    --dr-bg: #282a36;
+    --dr-bg-light: #343746;
+    --dr-current: #44475a;
+    --dr-subtle: #6272a4;
+    --dr-fg: #f8f8f2;
+    --dr-cyan: #8be9fd;
+    --dr-green: #50fa7b;
+    --dr-orange: #ffb86c;
+    --dr-pink: #ff79c6;
+    --dr-purple: #bd93f9;
+    --dr-red: #ff5555;
+    --dr-yellow: #f1fa8c;
+
+    --dr-border: #44475a;
+    --dr-border-soft: #343746;
+    --dr-shadow: rgba(0, 0, 0, .34);
+    --dr-purple-soft: rgba(189, 147, 249, .14);
+    --dr-pink-soft: rgba(255, 121, 198, .12);
+    --dr-cyan-soft: rgba(139, 233, 253, .10);
+}
+
+/* =========================================================
+   PAGE / TYPOGRAPHY
+   ========================================================= */
+html,
+body {
+    background: var(--dr-bg-darker) !important;
+    color: var(--dr-fg) !important;
+}
+
+body,
+input,
+button,
+select,
+textarea {
+    color: var(--dr-fg);
+}
+
+::selection {
+    background: var(--dr-current);
+    color: var(--dr-fg);
+}
+
+::-moz-selection {
+    background: var(--dr-current);
+    color: var(--dr-fg);
+}
+
+hr {
+    border-color: var(--dr-border) !important;
+}
+
+/* =========================================================
+   LINKS
+   Purple is the primary Dracula accent; cyan is reserved for
+   secondary/meta links so dense torrent pages stay readable.
+   ========================================================= */
+a,
+a:visited {
+    color: var(--dr-purple) !important;
+}
+
+a:hover,
+a:focus {
+    color: var(--dr-pink) !important;
+    text-decoration-color: var(--dr-pink) !important;
+}
+
+a:active {
+    color: var(--dr-cyan) !important;
+}
+
+/* =========================================================
+   MAIN CHROME
+   ========================================================= */
+#header,
+#content,
+#footer {
+    color: var(--dr-fg) !important;
+}
+
+#header {
+    background: var(--dr-bg-dark) !important;
+    border-color: var(--dr-border) !important;
+    box-shadow: 0 5px 18px var(--dr-shadow);
+}
+
+#logo a {
+    color: var(--dr-pink) !important;
+}
+
+#menu,
+#userinfo,
+#searchbars {
+    background: var(--dr-bg-dark) !important;
+    border-color: var(--dr-border) !important;
+}
+
+#menu a,
+#userinfo a {
+    color: var(--dr-fg) !important;
+}
+
+#menu a:hover,
+#userinfo a:hover {
+    color: var(--dr-pink) !important;
+    background: var(--dr-purple-soft) !important;
+}
+
+#menu .active,
+#menu a.active,
+#userinfo .active {
+    color: var(--dr-purple) !important;
+}
+
+#searchbars input {
+    background: var(--dr-bg) !important;
+    border-color: var(--dr-border) !important;
+    color: var(--dr-fg) !important;
+}
+
+#searchbars input::placeholder,
+input::placeholder,
+textarea::placeholder {
+    color: var(--dr-subtle) !important;
+    opacity: 1;
+}
+
+/* =========================================================
+   BOXES / PANELS
+   ========================================================= */
+.box,
+.box2,
+.thin,
+.pad,
+.sidebar .box,
+.main_column .box,
+.forum_post,
+.news_post,
+.profileinfo,
+#blog,
+#recommended,
+#similar_artist_map,
+#torrent_table,
+#requests,
+#collages {
+    border-color: var(--dr-border) !important;
+}
+
+.box,
+.box2,
+.sidebar .box,
+.main_column .box,
+.forum_post,
+.news_post {
+    background: var(--dr-bg) !important;
+    color: var(--dr-fg) !important;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, .18);
+}
+
+.head,
+.box .head,
+.box2 .head,
+.sidebar .head,
+.forum_post .colhead_dark,
+.news_post .head {
+    background: var(--dr-bg-dark) !important;
+    color: var(--dr-fg) !important;
+    border-color: var(--dr-border) !important;
+}
+
+.head strong,
+.head span,
+.colhead,
+.colhead_dark {
+    color: var(--dr-fg) !important;
+}
+
+.head a,
+.colhead a,
+.colhead_dark a {
+    color: var(--dr-purple) !important;
+}
+
+/* =========================================================
+   TABLES — critical on Gazelle torrent pages
+   ========================================================= */
+table,
+tbody,
+thead,
+tfoot {
+    border-color: var(--dr-border) !important;
+}
+
+tr,
+td,
+th {
+    border-color: var(--dr-border-soft) !important;
+}
+
+tr.colhead,
+tr.colhead_dark,
+.colhead,
+.colhead_dark,
+thead tr {
+    background: var(--dr-bg-dark) !important;
+    color: var(--dr-fg) !important;
+}
+
+tr.rowa,
+tr:nth-child(odd) {
+    background-color: var(--dr-bg) !important;
+}
+
+tr.rowb,
+tr:nth-child(even) {
+    background-color: var(--dr-bg-light) !important;
+}
+
+/* Torrent/group rows get their own treatment because nested Gazelle
+   tables otherwise become visually too flat in a monochrome dark theme. */
+tr.group,
+.group_torrent,
+tr.torrent,
+tr.torrent_row {
+    background-color: var(--dr-bg) !important;
+    border-color: var(--dr-border-soft) !important;
+}
+
+tr.group:hover,
+tr.torrent:hover,
+tr.torrent_row:hover,
+tbody tr:hover {
+    background-color: var(--dr-current) !important;
+}
+
+.group_torrent td,
+.torrent td,
+.group td {
+    border-color: var(--dr-border-soft) !important;
+}
+
+.group_torrent span,
+.torrent span {
+    color: inherit;
+}
+
+/* =========================================================
+   TORRENT / ARTIST / ALBUM METADATA
+   ========================================================= */
+.tags,
+.tags a,
+.tag,
+.taglist,
+.torrent_info,
+.torrentdetails,
+.basic-movie-list__torrent__details,
+.small_upvote,
+.small_downvote {
+    color: var(--dr-subtle) !important;
+}
+
+.tags a:hover,
+.tag a:hover {
+    color: var(--dr-cyan) !important;
+}
+
+.torrent a,
+.group a,
+.group_torrent a {
+    text-decoration-color: transparent;
+}
+
+.torrent a:hover,
+.group a:hover,
+.group_torrent a:hover {
+    text-decoration-color: currentColor;
+}
+
+/* =========================================================
+   FORMS / BUTTONS
+   ========================================================= */
+input,
+textarea,
+select,
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+    background: var(--dr-bg-dark) !important;
+    color: var(--dr-fg) !important;
+    border: 1px solid var(--dr-border) !important;
+    box-shadow: none !important;
+}
+
+input:hover,
+textarea:hover,
+select:hover,
+button:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover {
+    border-color: var(--dr-purple) !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus,
+button:focus {
+    outline: none !important;
+    border-color: var(--dr-pink) !important;
+    box-shadow: 0 0 0 2px var(--dr-pink-soft) !important;
+}
+
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+    background: var(--dr-current) !important;
+    color: var(--dr-fg) !important;
+    cursor: pointer;
+}
+
+button:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover {
+    background: var(--dr-purple) !important;
+    color: var(--dr-bg-darker) !important;
+}
+
+option {
+    background: var(--dr-bg-dark) !important;
+    color: var(--dr-fg) !important;
+}
+
+/* =========================================================
+   PAGINATION / TABS / LINKBOX
+   ========================================================= */
+.linkbox,
+.pagination,
+.tabs,
+ul.tabs,
+.ui-tabs-nav {
+    color: var(--dr-subtle) !important;
+}
+
+.pagination a,
+.linkbox a,
+.tabs a,
+.ui-tabs-nav a {
+    background: var(--dr-bg-dark) !important;
+    border-color: var(--dr-border) !important;
+    color: var(--dr-purple) !important;
+}
+
+.pagination a:hover,
+.linkbox a:hover,
+.tabs a:hover,
+.ui-tabs-nav a:hover {
+    background: var(--dr-current) !important;
+    color: var(--dr-pink) !important;
+}
+
+.pagination .current,
+.tabs .active,
+.ui-tabs-active a {
+    background: var(--dr-purple) !important;
+    color: var(--dr-bg-darker) !important;
+    border-color: var(--dr-purple) !important;
+}
+
+/* =========================================================
+   FORUMS / QUOTES / CODE
+   ========================================================= */
+blockquote,
+.quote,
+code,
+pre,
+pre code {
+    background: var(--dr-bg-dark) !important;
+    color: var(--dr-fg) !important;
+    border-color: var(--dr-border) !important;
+}
+
+blockquote,
+.quote {
+    border-left-color: var(--dr-purple) !important;
+}
+
+code,
+pre code {
+    color: var(--dr-cyan) !important;
+}
+
+.forum_post .avatar,
+.forum_post .body,
+.forum_post td {
+    border-color: var(--dr-border-soft) !important;
+}
+
+/* =========================================================
+   STATUS / SEMANTIC COLOURS
+   Do not recolour these all purple: meaning is more useful here.
+   ========================================================= */
+.alertbar,
+.notice,
+.info,
+.save_message {
+    background: var(--dr-cyan-soft) !important;
+    border-color: var(--dr-cyan) !important;
+    color: var(--dr-cyan) !important;
+}
+
+.warning,
+.warningbar,
+.important_text {
+    color: var(--dr-orange) !important;
+}
+
+.error,
+.error_message,
+.invalid,
+.nobullet .error {
+    color: var(--dr-red) !important;
+}
+
+.success,
+.good,
+.permission,
+.snatch,
+.ratio_good,
+.ratio-high {
+    color: var(--dr-green) !important;
+}
+
+.ratio_bad,
+.ratio-low {
+    color: var(--dr-red) !important;
+}
+
+/* Common Gazelle stat colours */
+.uploaded,
+.seeders,
+.seeding,
+.freeleech,
+.freeleech_label {
+    color: var(--dr-green) !important;
+}
+
+.downloaded,
+.leechers,
+.leeching {
+    color: var(--dr-orange) !important;
+}
+
+.snatched,
+.neutral,
+.grey,
+.gray {
+    color: var(--dr-subtle) !important;
+}
+
+/* =========================================================
+   TOOLTIP / AUTOCOMPLETE / POPUPS
+   ========================================================= */
+.tooltip,
+.ui-tooltip,
+.autocomplete,
+.ui-autocomplete,
+.ui-menu,
+.ui-dialog,
+.lightbox,
+.popup {
+    background: var(--dr-bg-dark) !important;
+    color: var(--dr-fg) !important;
+    border-color: var(--dr-border) !important;
+    box-shadow: 0 8px 24px var(--dr-shadow) !important;
+}
+
+.ui-menu-item:hover,
+.ui-state-hover,
+.ui-state-focus,
+.ui-state-active {
+    background: var(--dr-current) !important;
+    color: var(--dr-fg) !important;
+    border-color: var(--dr-purple) !important;
+}
+
+/* =========================================================
+   SCROLLBARS — Chromium / Firefox
+   ========================================================= */
+* {
+    scrollbar-color: var(--dr-current) var(--dr-bg-dark);
+}
+
+::-webkit-scrollbar {
+    width: 11px;
+    height: 11px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--dr-bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--dr-current);
+    border: 2px solid var(--dr-bg-dark);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--dr-purple);
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+#footer {
+    background: var(--dr-bg-dark) !important;
+    border-color: var(--dr-border) !important;
+    color: var(--dr-subtle) !important;
+}
+
+#footer a {
+    color: var(--dr-purple) !important;
+}
+
+#footer a:hover {
+    color: var(--dr-pink) !important;
+}
