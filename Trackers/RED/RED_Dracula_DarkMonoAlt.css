@@ -1,7 +1,12 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.1
+ * Version: 0.3.2
+ *
+ * Changelog 0.3.2:
+ * - Switched the structural import back to the original gazellecss DarkMonoAlt URL.
+ * - This is the same structural source known to render correctly in the earlier working V2.
+ * - Dracula/vBookmarks remains the visual layer and is loaded after the base stylesheet.
  *
  * Changelog 0.3.1:
  * - Restored the complete RED/Gazelle structural layout through DarkMonoAlt_v2b.
@@ -20,13 +25,13 @@
  * - Rounded cards and improved borders.
  *
  * Architecture:
- * - DarkMonoAlt_v2b = structural compatibility layer only.
+ * - DarkMonoAlt = structural compatibility layer only.
  * - Everything below = Dracula/vBookmarks visual override.
  * - Once the theme is stable, structural rules can be vendored selectively
  *   so the final theme no longer needs to import another RED stylesheet.
  */
 
-@import url("https://neonlinx.github.io/Stylesheets/Trackers/RED/DarkMonoAlt_v2b.css");
+@import url("https://gazellecss.github.io/darkmonoalt/darkmonoalt.css");
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600&display=swap');
 
 :root {
