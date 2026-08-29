@@ -28,7 +28,6 @@
     --dr-purple: #bd93f9;
     --dr-red: #ff5555;
     --dr-yellow: #f1fa8c;
-
     --dr-border: #44475a;
     --dr-border-soft: #343746;
     --dr-shadow: rgba(0, 0, 0, .34);
@@ -78,15 +77,15 @@ a:visited {
     color: var(--dr-purple) !important;
 }
 
-a:hover,
-a:focus {
-    color: var(--dr-pink) !important;
-    text-decoration-color: var(--dr-pink) !important;
-}
+    a:hover,
+    a:focus {
+        color: var(--dr-pink) !important;
+        text-decoration-color: var(--dr-pink) !important;
+    }
 
-a:active {
-    color: var(--dr-cyan) !important;
-}
+    a:active {
+        color: var(--dr-cyan) !important;
+    }
 
 /* =========================================================
    MAIN CHROME
@@ -114,35 +113,35 @@ a:active {
     border-color: var(--dr-border) !important;
 }
 
-#menu a,
-#userinfo a {
-    color: var(--dr-fg) !important;
-}
+    #menu a,
+    #userinfo a {
+        color: var(--dr-fg) !important;
+    }
 
-#menu a:hover,
-#userinfo a:hover {
-    color: var(--dr-pink) !important;
-    background: var(--dr-purple-soft) !important;
-}
+        #menu a:hover,
+        #userinfo a:hover {
+            color: var(--dr-pink) !important;
+            background: var(--dr-purple-soft) !important;
+        }
 
-#menu .active,
-#menu a.active,
-#userinfo .active {
-    color: var(--dr-purple) !important;
-}
+        #menu .active,
+        #menu a.active,
+        #userinfo .active {
+            color: var(--dr-purple) !important;
+        }
 
-#searchbars input {
-    background: var(--dr-bg) !important;
-    border-color: var(--dr-border) !important;
-    color: var(--dr-fg) !important;
-}
+    #searchbars input {
+        background: var(--dr-bg) !important;
+        border-color: var(--dr-border) !important;
+        color: var(--dr-fg) !important;
+    }
 
-#searchbars input::placeholder,
-input::placeholder,
-textarea::placeholder {
-    color: var(--dr-subtle) !important;
-    opacity: 1;
-}
+        #searchbars input::placeholder,
+        input::placeholder,
+        textarea::placeholder {
+            color: var(--dr-subtle) !important;
+            opacity: 1;
+        }
 
 /* =========================================================
    BOXES / PANELS
@@ -176,29 +175,29 @@ textarea::placeholder {
     box-shadow: 0 3px 12px rgba(0, 0, 0, .18);
 }
 
-.head,
-.box .head,
-.box2 .head,
-.sidebar .head,
-.forum_post .colhead_dark,
-.news_post .head {
-    background: var(--dr-bg-dark) !important;
-    color: var(--dr-fg) !important;
-    border-color: var(--dr-border) !important;
-}
+    .head,
+    .box .head,
+    .box2 .head,
+    .sidebar .head,
+    .forum_post .colhead_dark,
+    .news_post .head {
+        background: var(--dr-bg-dark) !important;
+        color: var(--dr-fg) !important;
+        border-color: var(--dr-border) !important;
+    }
 
-.head strong,
-.head span,
-.colhead,
-.colhead_dark {
-    color: var(--dr-fg) !important;
-}
+        .head strong,
+        .head span,
+        .colhead,
+        .colhead_dark {
+            color: var(--dr-fg) !important;
+        }
 
-.head a,
-.colhead a,
-.colhead_dark a {
-    color: var(--dr-purple) !important;
-}
+            .head a,
+            .colhead a,
+            .colhead_dark a {
+                color: var(--dr-purple) !important;
+            }
 
 /* =========================================================
    TABLES — critical on Gazelle torrent pages
@@ -216,52 +215,52 @@ th {
     border-color: var(--dr-border-soft) !important;
 }
 
-tr.colhead,
-tr.colhead_dark,
-.colhead,
-.colhead_dark,
-thead tr {
-    background: var(--dr-bg-dark) !important;
-    color: var(--dr-fg) !important;
-}
+    tr.colhead,
+    tr.colhead_dark,
+    .colhead,
+    .colhead_dark,
+    thead tr {
+        background: var(--dr-bg-dark) !important;
+        color: var(--dr-fg) !important;
+    }
 
-tr.rowa,
-tr:nth-child(odd) {
-    background-color: var(--dr-bg) !important;
-}
+    tr.rowa,
+    tr:nth-child(odd) {
+        background-color: var(--dr-bg) !important;
+    }
 
-tr.rowb,
-tr:nth-child(even) {
-    background-color: var(--dr-bg-light) !important;
-}
+    tr.rowb,
+    tr:nth-child(even) {
+        background-color: var(--dr-bg-light) !important;
+    }
 
-/* Torrent/group rows get their own treatment because nested Gazelle
+    /* Torrent/group rows get their own treatment because nested Gazelle
    tables otherwise become visually too flat in a monochrome dark theme. */
-tr.group,
-.group_torrent,
-tr.torrent,
-tr.torrent_row {
-    background-color: var(--dr-bg) !important;
-    border-color: var(--dr-border-soft) !important;
-}
+    tr.group,
+    .group_torrent,
+    tr.torrent,
+    tr.torrent_row {
+        background-color: var(--dr-bg) !important;
+        border-color: var(--dr-border-soft) !important;
+    }
 
-tr.group:hover,
-tr.torrent:hover,
-tr.torrent_row:hover,
-tbody tr:hover {
-    background-color: var(--dr-current) !important;
-}
+        tr.group:hover,
+        tr.torrent:hover,
+        tr.torrent_row:hover,
+        tbody tr:hover {
+            background-color: var(--dr-current) !important;
+        }
 
-.group_torrent td,
-.torrent td,
-.group td {
-    border-color: var(--dr-border-soft) !important;
-}
+        .group_torrent td,
+        .torrent td,
+        .group td {
+            border-color: var(--dr-border-soft) !important;
+        }
 
-.group_torrent span,
-.torrent span {
-    color: inherit;
-}
+        .group_torrent span,
+        .torrent span {
+            color: inherit;
+        }
 
 /* =========================================================
    TORRENT / ARTIST / ALBUM METADATA
@@ -278,10 +277,10 @@ tbody tr:hover {
     color: var(--dr-subtle) !important;
 }
 
-.tags a:hover,
-.tag a:hover {
-    color: var(--dr-cyan) !important;
-}
+    .tags a:hover,
+    .tag a:hover {
+        color: var(--dr-cyan) !important;
+    }
 
 .torrent a,
 .group a,
@@ -289,11 +288,11 @@ tbody tr:hover {
     text-decoration-color: transparent;
 }
 
-.torrent a:hover,
-.group a:hover,
-.group_torrent a:hover {
-    text-decoration-color: currentColor;
-}
+    .torrent a:hover,
+    .group a:hover,
+    .group_torrent a:hover {
+        text-decoration-color: currentColor;
+    }
 
 /* =========================================================
    FORMS / BUTTONS
@@ -311,41 +310,41 @@ input[type="reset"] {
     box-shadow: none !important;
 }
 
-input:hover,
-textarea:hover,
-select:hover,
-button:hover,
-input[type="button"]:hover,
-input[type="submit"]:hover,
-input[type="reset"]:hover {
-    border-color: var(--dr-purple) !important;
-}
+    input:hover,
+    textarea:hover,
+    select:hover,
+    button:hover,
+    input[type="button"]:hover,
+    input[type="submit"]:hover,
+    input[type="reset"]:hover {
+        border-color: var(--dr-purple) !important;
+    }
 
-input:focus,
-textarea:focus,
-select:focus,
-button:focus {
-    outline: none !important;
-    border-color: var(--dr-pink) !important;
-    box-shadow: 0 0 0 2px var(--dr-pink-soft) !important;
-}
+    input:focus,
+    textarea:focus,
+    select:focus,
+    button:focus {
+        outline: none !important;
+        border-color: var(--dr-pink) !important;
+        box-shadow: 0 0 0 2px var(--dr-pink-soft) !important;
+    }
 
-button,
-input[type="button"],
-input[type="submit"],
-input[type="reset"] {
-    background: var(--dr-current) !important;
-    color: var(--dr-fg) !important;
-    cursor: pointer;
-}
+    button,
+    input[type="button"],
+    input[type="submit"],
+    input[type="reset"] {
+        background: var(--dr-current) !important;
+        color: var(--dr-fg) !important;
+        cursor: pointer;
+    }
 
-button:hover,
-input[type="button"]:hover,
-input[type="submit"]:hover,
-input[type="reset"]:hover {
-    background: var(--dr-purple) !important;
-    color: var(--dr-bg-darker) !important;
-}
+        button:hover,
+        input[type="button"]:hover,
+        input[type="submit"]:hover,
+        input[type="reset"]:hover {
+            background: var(--dr-purple) !important;
+            color: var(--dr-bg-darker) !important;
+        }
 
 option {
     background: var(--dr-bg-dark) !important;
@@ -363,30 +362,30 @@ ul.tabs,
     color: var(--dr-subtle) !important;
 }
 
-.pagination a,
-.linkbox a,
-.tabs a,
-.ui-tabs-nav a {
-    background: var(--dr-bg-dark) !important;
-    border-color: var(--dr-border) !important;
-    color: var(--dr-purple) !important;
-}
+    .pagination a,
+    .linkbox a,
+    .tabs a,
+    .ui-tabs-nav a {
+        background: var(--dr-bg-dark) !important;
+        border-color: var(--dr-border) !important;
+        color: var(--dr-purple) !important;
+    }
 
-.pagination a:hover,
-.linkbox a:hover,
-.tabs a:hover,
-.ui-tabs-nav a:hover {
-    background: var(--dr-current) !important;
-    color: var(--dr-pink) !important;
-}
+        .pagination a:hover,
+        .linkbox a:hover,
+        .tabs a:hover,
+        .ui-tabs-nav a:hover {
+            background: var(--dr-current) !important;
+            color: var(--dr-pink) !important;
+        }
 
-.pagination .current,
-.tabs .active,
-.ui-tabs-active a {
-    background: var(--dr-purple) !important;
-    color: var(--dr-bg-darker) !important;
-    border-color: var(--dr-purple) !important;
-}
+    .pagination .current,
+    .tabs .active,
+    .ui-tabs-active a {
+        background: var(--dr-purple) !important;
+        color: var(--dr-bg-darker) !important;
+        border-color: var(--dr-purple) !important;
+    }
 
 /* =========================================================
    FORUMS / QUOTES / CODE
@@ -527,9 +526,9 @@ pre code {
     border-radius: 10px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-    background: var(--dr-purple);
-}
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--dr-purple);
+    }
 
 /* =========================================================
    FOOTER
@@ -540,10 +539,454 @@ pre code {
     color: var(--dr-subtle) !important;
 }
 
-#footer a {
-    color: var(--dr-purple) !important;
+    #footer a {
+        color: var(--dr-purple) !important;
+    }
+
+        #footer a:hover {
+            color: var(--dr-pink) !important;
+        }
+
+/* =========================================================
+   V2 — NEATERBOOKMARKS / VBOOKMARKS INSPIRED REFINEMENT
+   ========================================================= */
+:root {
+    --nb-cyan: #8be9fd;
+    --nb-cyan-strong: #6ee7f9;
+    --nb-cyan-soft: rgba(139, 233, 253, .13);
+    --nb-cyan-glow: rgba(139, 233, 253, .32);
+    --nb-purple-glow: rgba(189, 147, 249, .30);
+    --nb-pink-glow: rgba(255, 121, 198, .27);
+    --nb-panel: rgba(25, 26, 36, .90);
+    --nb-panel-2: rgba(33, 34, 44, .91);
+    --nb-panel-3: rgba(40, 42, 54, .90);
+    --nb-line: rgba(139, 233, 253, .20);
+    --nb-radius: 10px;
+    --nb-radius-small: 7px;
 }
 
-#footer a:hover {
+/* ---------- Page background: layered Dracula / vBookmarks atmosphere ---------- */
+html {
+    background: #090a11 !important;
+}
+
+body {
+    color: var(--nb-cyan) !important;
+    background: radial-gradient(900px 560px at 18% 8%, rgba(139,233,253,.065), transparent 66%), radial-gradient(850px 600px at 84% 12%, rgba(189,147,249,.065), transparent 68%), radial-gradient(760px 520px at 52% 70%, rgba(255,121,198,.025), transparent 72%), linear-gradient(180deg, #090a11 0%, #0b0c14 44%, #080910 100%) !important;
+    background-attachment: fixed !important;
+}
+
+#content {
+    background: transparent !important;
+    color: var(--nb-cyan) !important;
+}
+
+    /* Main copy should feel like NeaterBookmarks rather than white-on-black. */
+    #content p,
+    #content li,
+    #content td,
+    #content th,
+    #content label,
+    #content .pad,
+    #content .body,
+    #content .box,
+    #content .box2,
+    #content .thin {
+        color: var(--nb-cyan) !important;
+    }
+
+/* Keep some structural / important text brighter for hierarchy. */
+strong,
+b,
+.head,
+.colhead,
+.colhead_dark,
+h1, h2, h3, h4 {
+    color: var(--dr-fg) !important;
+}
+
+h1, h2, h3 {
+    text-shadow: 0 0 12px rgba(139,233,253,.12);
+}
+
+/* ---------- Header / glass strip ---------- */
+#header {
+    background: linear-gradient(180deg, rgba(19,20,31,.96), rgba(13,14,23,.94)) !important;
+    border: 1px solid rgba(139,233,253,.10) !important;
+    border-top-color: rgba(139,233,253,.20) !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,.38), inset 0 1px 0 rgba(255,255,255,.025) !important;
+}
+
+/* The RED logo is supplied by the base theme; enlarge it without replacing it. */
+#logo {
+    transform: scale(1.10);
+    transform-origin: left center;
+}
+
+/* ---------- Main nav: remove hard black active rectangles ---------- */
+#menu,
+#userinfo {
+    background: transparent !important;
+}
+
+    #menu ul li,
+    #userinfo ul li {
+        background: transparent !important;
+    }
+
+    #menu a,
+    #userinfo a,
+    #menu li a,
+    #userinfo li a {
+        position: relative;
+        background: transparent !important;
+        border: 1px solid transparent !important;
+        border-radius: 8px !important;
+        color: var(--nb-cyan) !important;
+        transition: color .16s ease, border-color .16s ease, background-color .16s ease, box-shadow .16s ease, text-shadow .16s ease, transform .16s ease !important;
+    }
+
+        #menu a:hover,
+        #userinfo a:hover,
+        #menu li a:hover,
+        #userinfo li a:hover {
+            color: var(--dr-pink) !important;
+            background: linear-gradient(180deg, rgba(255,121,198,.10), rgba(189,147,249,.055)) !important;
+            border-color: rgba(255,121,198,.42) !important;
+            box-shadow: 0 0 8px rgba(255,121,198,.19), 0 0 20px rgba(189,147,249,.10), inset 0 0 12px rgba(255,121,198,.045) !important;
+            text-shadow: 0 0 7px var(--nb-pink-glow) !important;
+            transform: translateY(-1px);
+        }
+
+        #menu .active,
+        #menu a.active,
+        #menu li.active,
+        #menu li.active a,
+        #userinfo .active,
+        #userinfo li.active,
+        #userinfo li.active a {
+            color: var(--dr-pink) !important;
+            background: rgba(255,121,198,.055) !important;
+            border-color: rgba(255,121,198,.30) !important;
+            box-shadow: inset 0 -2px 0 rgba(255,121,198,.78), 0 0 13px rgba(255,121,198,.10) !important;
+            text-shadow: 0 0 7px rgba(255,121,198,.25) !important;
+        }
+
+/* ---------- The six search boxes under the header ---------- */
+#searchbars {
+    background: rgba(20,21,31,.72) !important;
+    border-top: 1px solid rgba(139,233,253,.08) !important;
+    border-bottom: 1px solid rgba(139,233,253,.08) !important;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.018) !important;
+}
+
+    #searchbars input {
+        background: linear-gradient(180deg, rgba(36,38,50,.92), rgba(23,24,34,.94)) !important;
+        border: 1px solid rgba(139,233,253,.26) !important;
+        border-radius: 8px !important;
+        color: var(--nb-cyan) !important;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,.025), 0 1px 4px rgba(0,0,0,.25) !important;
+        transition: border-color .16s ease, box-shadow .16s ease, background .16s ease, transform .16s ease !important;
+    }
+
+        #searchbars input:hover {
+            background: linear-gradient(180deg, rgba(42,45,59,.95), rgba(27,29,40,.96)) !important;
+            border-color: rgba(139,233,253,.72) !important;
+            box-shadow: 0 0 7px rgba(139,233,253,.24), 0 0 18px rgba(139,233,253,.10), inset 0 0 10px rgba(139,233,253,.045) !important;
+            transform: translateY(-1px);
+        }
+
+        #searchbars input:focus {
+            border-color: var(--nb-cyan) !important;
+            box-shadow: 0 0 0 1px rgba(139,233,253,.24), 0 0 12px rgba(139,233,253,.24), 0 0 28px rgba(189,147,249,.08) !important;
+        }
+
+/* ---------- Panels / boxes: vBookmarks rounded-card language ---------- */
+.box,
+.box2,
+.sidebar .box,
+.main_column .box,
+.forum_post,
+.news_post,
+.profileinfo,
+#blog,
+#recommended,
+#similar_artist_map,
+#requests,
+#collages {
+    background: linear-gradient(180deg, var(--nb-panel-3), var(--nb-panel-2)) !important;
+    border: 1px solid rgba(139,233,253,.13) !important;
+    border-radius: var(--nb-radius) !important;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0,0,0,.21), inset 0 1px 0 rgba(255,255,255,.022) !important;
+}
+
+    .head,
+    .box .head,
+    .box2 .head,
+    .sidebar .head,
+    .news_post .head,
+    .forum_post .colhead_dark {
+        background: linear-gradient(180deg, rgba(25,27,39,.98), rgba(18,19,29,.98)) !important;
+        border-bottom: 1px solid rgba(139,233,253,.12) !important;
+    }
+
+/* ---------- Forms: cyan folder-like frames ---------- */
+input,
+textarea,
+select,
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+    border-radius: var(--nb-radius-small) !important;
+}
+
+    input:not([type="checkbox"]):not([type="radio"]),
+    textarea,
+    select {
+        background: rgba(14,15,24,.90) !important;
+        border-color: rgba(139,233,253,.25) !important;
+        color: var(--nb-cyan) !important;
+        box-shadow: inset 0 1px 3px rgba(0,0,0,.30), inset 0 0 0 1px rgba(255,255,255,.010) !important;
+    }
+
+        input:not([type="checkbox"]):not([type="radio"]):hover,
+        textarea:hover,
+        select:hover {
+            border-color: rgba(139,233,253,.66) !important;
+            box-shadow: 0 0 8px rgba(139,233,253,.14), inset 0 1px 3px rgba(0,0,0,.30) !important;
+        }
+
+        input:not([type="checkbox"]):not([type="radio"]):focus,
+        textarea:focus,
+        select:focus {
+            border-color: var(--nb-cyan) !important;
+            box-shadow: 0 0 0 1px rgba(139,233,253,.22), 0 0 10px var(--nb-cyan-glow), inset 0 0 10px rgba(139,233,253,.035) !important;
+        }
+
+    button,
+    input[type="button"],
+    input[type="submit"],
+    input[type="reset"] {
+        background: linear-gradient(180deg, rgba(52,55,72,.94), rgba(34,36,48,.96)) !important;
+        border-color: rgba(139,233,253,.28) !important;
+        color: var(--nb-cyan) !important;
+        transition: all .16s ease !important;
+    }
+
+        button:hover,
+        input[type="button"]:hover,
+        input[type="submit"]:hover,
+        input[type="reset"]:hover {
+            background: linear-gradient(180deg, rgba(56,60,79,.98), rgba(38,40,54,.98)) !important;
+            border-color: var(--nb-cyan) !important;
+            color: var(--dr-fg) !important;
+            box-shadow: 0 0 8px rgba(139,233,253,.28), 0 0 20px rgba(139,233,253,.10), inset 0 0 12px rgba(139,233,253,.045) !important;
+            text-shadow: 0 0 6px rgba(139,233,253,.35) !important;
+        }
+
+/* ---------- Tables ---------- */
+table {
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+}
+
+tr.colhead,
+tr.colhead_dark,
+.colhead,
+.colhead_dark,
+thead tr {
+    background: linear-gradient(180deg, rgba(18,20,29,.98), rgba(12,13,21,.98)) !important;
+}
+
+th,
+td {
+    border-color: rgba(139,233,253,.115) !important;
+}
+
+tr.rowa,
+tr:nth-child(odd) {
+    background-color: rgba(31,33,45,.94) !important;
+}
+
+tr.rowb,
+tr:nth-child(even) {
+    background-color: rgba(42,45,59,.92) !important;
+}
+
+tr.group,
+.group_torrent,
+tr.torrent,
+tr.torrent_row {
+    background-color: rgba(28,30,41,.95) !important;
+}
+
+    tr.group:hover,
+    tr.torrent:hover,
+    tr.torrent_row:hover,
+    tbody tr:hover {
+        background-color: rgba(68,71,90,.72) !important;
+        box-shadow: inset 3px 0 0 rgba(139,233,253,.58) !important;
+    }
+
+/* Rounded row ends make long lists much less 'spreadsheet-like'. */
+tbody tr > td:first-child {
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+
+tbody tr > td:last-child {
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+/* ---------- Forums: remove DarkMonoAlt's little black label rectangles ---------- */
+.forum_index a,
+.forum_post a,
+.forum_post span,
+.forum_post strong,
+.forum_post td a,
+.forum_post .body a,
+.forum_post .head a,
+table.forum_index a,
+#forums a,
+#forums span,
+#forums strong {
+    background-color: transparent !important;
+    background-image: none !important;
+    box-shadow: none;
+}
+
+.forum_index,
+.forum_post,
+.forum_post table {
+    border-radius: var(--nb-radius) !important;
+}
+
+.forum_index {
+    overflow: hidden;
+    box-shadow: 0 5px 18px rgba(0,0,0,.18);
+}
+
+    .forum_index tr:not(.colhead):hover td {
+        background: rgba(68,71,90,.62) !important;
+    }
+
+    /* Usernames and links retain Dracula accent while ordinary forum text stays cyan. */
+    .forum_index a,
+    .forum_post a {
+        color: var(--dr-pink) !important;
+    }
+
+        .forum_index a:hover,
+        .forum_post a:hover {
+            color: var(--nb-cyan) !important;
+            text-shadow: 0 0 6px rgba(139,233,253,.28) !important;
+        }
+
+/* ---------- Link boxes / pagination: no black rectangles behind words ---------- */
+.linkbox a,
+.pagination a,
+.tabs a,
+.ui-tabs-nav a {
+    background: transparent !important;
+    border: 1px solid transparent !important;
+    border-radius: 7px !important;
     color: var(--dr-pink) !important;
 }
+
+    .linkbox a:hover,
+    .pagination a:hover,
+    .tabs a:hover,
+    .ui-tabs-nav a:hover {
+        background: rgba(139,233,253,.07) !important;
+        border-color: rgba(139,233,253,.32) !important;
+        color: var(--nb-cyan) !important;
+        box-shadow: 0 0 8px rgba(139,233,253,.15) !important;
+    }
+
+.pagination .current,
+.tabs .active,
+.ui-tabs-active a {
+    background: rgba(189,147,249,.09) !important;
+    color: var(--dr-purple) !important;
+    border-color: rgba(189,147,249,.38) !important;
+    box-shadow: inset 0 -2px 0 rgba(189,147,249,.70) !important;
+}
+
+/* ---------- Fixed indicator/notification boxes ---------- */
+.alertbar,
+.notice,
+.info,
+.save_message,
+#alerts .alertbar,
+#notifications .alertbar {
+    border-radius: 9px !important;
+    background: rgba(21,23,31,.94) !important;
+    border: 1px solid rgba(139,233,253,.28) !important;
+    box-shadow: 0 5px 16px rgba(0,0,0,.30), inset 0 0 12px rgba(139,233,253,.025) !important;
+}
+
+/* ---------- Misc dark bands visible in screenshots ---------- */
+#content > .thin,
+.thin {
+    background: transparent !important;
+}
+
+/* Tone down the large flat grey strips inherited from the base theme. */
+#content .rowa,
+#content .rowb,
+#content tr.rowa,
+#content tr.rowb {
+    border-color: rgba(139,233,253,.10) !important;
+}
+
+/* Preserve semantic colors, but give them subtle glow rather than flat paint. */
+.freeleech,
+.freeleech_label,
+.seeders,
+.seeding,
+.success,
+.good,
+.ratio_good,
+.ratio-high {
+    text-shadow: 0 0 5px rgba(80,250,123,.20);
+}
+
+.warning,
+.warningbar,
+.important_text,
+.downloaded,
+.leechers,
+.leeching {
+    text-shadow: 0 0 5px rgba(255,184,108,.16);
+}
+
+.error,
+.error_message,
+.invalid,
+.ratio_bad,
+.ratio-low {
+    text-shadow: 0 0 5px rgba(255,85,85,.18);
+}
+
+/* ---------- Selection / scrollbar polish ---------- */
+::selection {
+    background: rgba(139,233,253,.25) !important;
+    color: #fff !important;
+}
+
+::-webkit-scrollbar-track {
+    background: #11121b !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #44475a, #343746) !important;
+    border: 2px solid #11121b !important;
+}
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(180deg, #6272a4, #44475a) !important;
+        box-shadow: inset 0 0 4px rgba(139,233,253,.18);
+    }
