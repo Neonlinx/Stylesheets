@@ -1,7 +1,14 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.15
+ * Version: 0.3.16
+ *
+ * Changelog 0.3.16:
+ * - Corrected the stats row using RED's actual HTML structure.
+ * - Stats labels and colons now use the softer Dracula pink.
+ * - Numeric/value spans (.stat and their children) are forced to white.
+ * - Preserved spacing between colon and numeric value.
+ * - Reworked stats hover to use a full pink fill + glow instead of border-only feedback.
  *
  * Changelog 0.3.15:
  * - Softened the default Dracula pink for lower account/stat controls.
@@ -3434,3 +3441,65 @@ blockquote,
     border-radius: 0 !important;
     padding: 0 !important;
 }
+
+
+/* =========================================================
+   v0.3.16 — STATS MARKUP-AWARE COLOR + HOVER FIX
+   RED structure example:
+   <li><a>Up</a>: <span class="stat">3.822 TB</span></li>
+   ========================================================= */
+
+/* The li owns the label punctuation, so its default color controls ":" too. */
+#userinfo_stats > li {
+    color: var(--red-pink-soft) !important;
+}
+
+    /* Linked labels such as Up / Down inherit the same pink. */
+    #userinfo_stats > li > a {
+        color: var(--red-pink-soft) !important;
+        margin-left: 0 !important;
+    }
+
+    /* Values are explicitly white, including nested ratio classes such as .r10. */
+    #userinfo_stats > li > .stat,
+    #userinfo_stats > li > .stat *,
+    #userinfo_stats > li .stat,
+    #userinfo_stats > li .stat * {
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
+    }
+
+    /* Keep a visible, consistent gap after the colon. */
+    #userinfo_stats > li > .stat {
+        margin-left: 4px !important;
+    }
+
+    /* Full pink hover treatment — fill + border + outer glow. */
+    #userinfo_stats > li:hover,
+    #userinfo_stats > li:focus-within {
+        color: var(--red-pink) !important;
+        background: rgba(255, 121, 198, 0.17) !important;
+        border-color: rgba(255, 121, 198, 0.48) !important;
+        box-shadow: 0 0 11px rgba(255, 121, 198, 0.22), 0 0 22px rgba(255, 121, 198, 0.09), inset 0 0 0 1px rgba(255, 121, 198, 0.06) !important;
+        transform: translateY(-1px) !important;
+    }
+
+        /* Labels brighten pink on hover; values stay white. */
+        #userinfo_stats > li:hover > a,
+        #userinfo_stats > li:focus-within > a {
+            color: var(--red-pink) !important;
+            text-shadow: 0 0 8px rgba(255, 121, 198, 0.22) !important;
+        }
+
+        #userinfo_stats > li:hover > .stat,
+        #userinfo_stats > li:hover > .stat *,
+        #userinfo_stats > li:focus-within > .stat,
+        #userinfo_stats > li:focus-within > .stat * {
+            color: #ffffff !important;
+            -webkit-text-fill-color: #ffffff !important;
+            text-shadow: none !important;
+        }
+
+/* =========================================================
+   END v0.3.16 STATS MARKUP-AWARE FIX
+   ========================================================= */
