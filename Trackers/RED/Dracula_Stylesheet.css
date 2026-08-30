@@ -1,7 +1,11 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.12
+ * Version: 0.3.13
+ *
+ * Changelog 0.3.13:
+ * - Raised the Inbox / Staff Inbox / Uploads / Bookmarks / Notifications / Subscriptions / Posts / Comments / Friends / Better row a bit inside the upper header.
+ * - Balanced the vertical gap so the space below that row better matches the space between the header shell and the lower left pill controls.
  *
  * Changelog 0.3.12:
  * - Lowered the Inbox / Staff Inbox / Uploads / Bookmarks / Notifications / Subscriptions / Posts / Comments / Friends / Better row inside the upper header.
@@ -3122,4 +3126,18 @@ blockquote,
 
 /* =========================================================
    END v0.3.12 LOWER SECONDARY NAV + BRIGHTER HOVER
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.13 — RAISE SECONDARY NAV SLIGHTLY
+   Matches the lower gap to the spacing below the header.
+   ========================================================= */
+
+#userinfo_minor {
+    top: -58px !important;
+}
+
+/* =========================================================
+   END v0.3.13 RAISE SECONDARY NAV SLIGHTLY
    ========================================================= */
