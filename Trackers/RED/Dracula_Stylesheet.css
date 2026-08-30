@@ -1,7 +1,15 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.7
+ * Version: 0.3.8
+ *
+ * Changelog 0.3.8:
+ * - Header refinement pass based on live screenshots.
+ * - Moved Inbox / Staff Inbox / Uploads / Bookmarks / Notifications / Subscriptions / Posts / Comments / Friends / Better back inside the upper rounded header.
+ * - Increased the upper header height so the logo and right-side utility navigation fit comfortably.
+ * - Kept Neonlinx / Settings / Logout / Upload / Invite / Donate below the header.
+ * - Standardized Settings and Logout to the same pill treatment as Upload / Invite / Donate.
+ * - Converted Up / Down / Ratio / Tokens / Seeding into wider rounded pills for readability.
  *
  * Changelog 0.3.7:
  * - Header-only refinement.
@@ -2419,4 +2427,281 @@ blockquote,
 
 /* =========================================================
    END v0.3.7 HEADER LAYOUT REFINEMENT
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.8 — HEADER STRUCTURE TUNE
+   - upper shell taller
+   - minor nav back inside shell
+   - lower-left controls keep pill layout
+   - stats row becomes proper pill row
+   ========================================================= */
+
+/* ---------- Upper shell size ---------- */
+
+#header {
+    height: 118px !important;
+    min-height: 118px !important;
+    overflow: visible !important;
+}
+
+/* Slightly roomier logo block (size upgrade can come later). */
+#logo {
+    width: 210px !important;
+    height: 62px !important;
+}
+
+    #logo a {
+        width: 150px !important;
+        height: 38px !important;
+        margin: 12px 0 0 48px !important;
+        background: linear-gradient( to right, var(--red-pink) 0 67%, var(--red-cyan) 67% 88%, transparent 88% 100% ) left bottom / 112px 2px no-repeat !important;
+    }
+
+        #logo a::before {
+            font-size: 18px !important;
+        }
+
+        #logo a::after {
+            font-size: 17px !important;
+        }
+
+/* Main nav stays on top row in the shell. */
+#menu {
+    top: 0 !important;
+    height: 56px !important;
+}
+
+    #menu ul {
+        padding-top: 14px !important;
+    }
+
+/* ---------- Put the right-side utility nav back INSIDE the shell ---------- */
+
+#userinfo_minor {
+    top: 58px !important;
+    right: 46px !important;
+    left: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    margin: 0 !important;
+}
+
+    /* Utility nav inside the shell should be text-like, not pill buttons. */
+    #userinfo_minor li {
+        display: block !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: auto !important;
+        height: auto !important;
+    }
+
+    #userinfo_minor a {
+        display: inline-block !important;
+        min-height: 0 !important;
+        height: auto !important;
+        padding: 0 !important;
+        background: transparent !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        color: var(--red-cyan) !important;
+        font-weight: 600 !important;
+        line-height: 1.1 !important;
+        text-decoration: none !important;
+        text-shadow: none !important;
+        transform: none !important;
+    }
+
+        #userinfo_minor a:hover {
+            color: var(--red-text) !important;
+            text-shadow: 0 0 8px rgba(139, 233, 253, 0.20) !important;
+            background: transparent !important;
+            border: 0 !important;
+            box-shadow: none !important;
+            transform: none !important;
+        }
+
+/* ---------- Lower control row BELOW the shell ---------- */
+
+#userinfo_username {
+    top: 126px !important;
+    left: 46px !important;
+    gap: 8px !important;
+}
+
+#userinfo_major {
+    top: 126px !important;
+    left: 46px !important;
+    gap: 8px !important;
+    /* keep this row contiguous with the username pill */
+    margin-left: 104px !important;
+}
+
+    /* Same pill treatment for EVERY lower-left account control. */
+    #userinfo_username li,
+    #userinfo_major li {
+        display: block !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: auto !important;
+        height: auto !important;
+    }
+
+        #userinfo_username li > a,
+        #userinfo_major li > a,
+        #userinfo_username a.username,
+        #nav_userinfo a {
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            width: auto !important;
+            min-width: 0 !important;
+            min-height: 28px !important;
+            height: 28px !important;
+            box-sizing: border-box !important;
+            padding: 4px 11px 5px !important;
+            background: rgba(68, 71, 90, 0.28) !important;
+            border: 1px solid rgba(98, 114, 164, 0.38) !important;
+            border-radius: 9px !important;
+            box-shadow: none !important;
+            color: var(--red-cyan) !important;
+            font-weight: 600 !important;
+            line-height: 1 !important;
+            text-decoration: none !important;
+            text-shadow: none !important;
+            transform: none !important;
+            transition: background-color .14s ease, border-color .14s ease, box-shadow .14s ease, transform .14s ease !important;
+        }
+
+#userinfo_username a.username,
+#nav_userinfo a {
+    color: var(--red-text) !important;
+}
+
+    #userinfo_username li > a:hover,
+    #userinfo_major li > a:hover,
+    #userinfo_username a.username:hover,
+    #nav_userinfo a:hover {
+        background: rgba(139, 233, 253, 0.16) !important;
+        border-color: rgba(139, 233, 253, 0.42) !important;
+        box-shadow: 0 0 8px rgba(139, 233, 253, 0.12), inset 0 0 0 1px rgba(139, 233, 253, 0.04) !important;
+        color: var(--red-text) !important;
+        transform: translateY(-1px) !important;
+    }
+
+/* ---------- Gift token row aligned with lower pills ---------- */
+
+#alerts {
+    top: 126px !important;
+    right: 46px !important;
+    z-index: 34 !important;
+}
+
+/* ---------- Stats become wider rounded pills ---------- */
+
+#userinfo_stats {
+    top: 162px !important;
+    left: 46px !important;
+    right: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    margin: 0 !important;
+}
+
+    #userinfo_stats li {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        box-sizing: border-box !important;
+        min-height: 24px !important;
+        padding: 3px 9px 4px !important;
+        margin: 0 !important;
+        background: rgba(68, 71, 90, 0.20) !important;
+        border: 1px solid rgba(98, 114, 164, 0.30) !important;
+        border-radius: 9px !important;
+        box-shadow: none !important;
+        color: var(--red-text) !important;
+        line-height: 1 !important;
+        white-space: nowrap !important;
+    }
+
+    #userinfo_stats a {
+        display: inline !important;
+        min-height: 0 !important;
+        height: auto !important;
+        padding: 0 !important;
+        background: transparent !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        color: inherit !important;
+        text-decoration: none !important;
+        transform: none !important;
+    }
+
+        #userinfo_stats a:hover {
+            color: var(--red-cyan) !important;
+            text-shadow: 0 0 8px rgba(139, 233, 253, 0.15) !important;
+        }
+
+/* ---------- Push following layout down ---------- */
+
+#searchbars {
+    top: 196px !important;
+}
+
+#content {
+    margin-top: 236px !important;
+}
+
+/* ---------- Responsive desktop tuning ---------- */
+
+@media (max-width: 1350px) {
+    #logo a {
+        margin-left: 32px !important;
+    }
+
+    #userinfo_username {
+        left: 28px !important;
+    }
+
+    #userinfo_major {
+        left: 28px !important;
+        margin-left: 98px !important;
+    }
+
+    #userinfo_minor {
+        right: 28px !important;
+        gap: 4px !important;
+    }
+
+    #alerts {
+        right: 28px !important;
+    }
+
+    #userinfo_stats {
+        left: 28px !important;
+        gap: 6px !important;
+    }
+
+    #userinfo_username li > a,
+    #userinfo_major li > a,
+    #userinfo_username a.username,
+    #nav_userinfo a {
+        padding-left: 9px !important;
+        padding-right: 9px !important;
+    }
+
+    #userinfo_stats li {
+        padding-left: 8px !important;
+        padding-right: 8px !important;
+    }
+}
+
+/* =========================================================
+   END v0.3.8 HEADER STRUCTURE TUNE
    ========================================================= */
