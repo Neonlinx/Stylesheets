@@ -1,7 +1,15 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.4
+ * Version: 0.3.5
+ *
+ * Changelog 0.3.5:
+ * - HOTFIX: restored the complete logged-in user navigation area.
+ * - Restored username/settings/logout/upload/invite/donate links on the left.
+ * - Restored Inbox/Staff Inbox/Uploads/Bookmarks/Notifications/etc. on the right.
+ * - Restored the upload/download/ratio/token/seeding statistics row.
+ * - Repositioned the user-info blocks independently of the header flow so they
+ *   cannot disappear when header/searchbar geometry changes.
  *
  * Changelog 0.3.4:
  * - First broad geometry/refinement pass after the structural core became stable.
@@ -1744,4 +1752,187 @@ blockquote,
 
 /* =========================================================
    END v0.3.4 REFINEMENT
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.5 HOTFIX — LOGGED-IN USER NAVIGATION
+   These controls are essential on RED. Keep them absolutely
+   positioned so future header/layout refinements cannot hide them.
+   ========================================================= */
+
+#header {
+    min-height: 78px !important;
+    overflow: visible !important;
+}
+
+/* Userinfo is an overlay layer inside the header. */
+#userinfo {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 30 !important;
+    display: block !important;
+    visibility: visible !important;
+    overflow: visible !important;
+    width: 100% !important;
+    height: 0 !important;
+}
+
+/* Make absolutely sure RED does not hide any of the four lists. */
+#userinfo_username,
+#userinfo_major,
+#userinfo_minor,
+#userinfo_stats {
+    position: absolute !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    float: none !important;
+    overflow: visible !important;
+    height: auto !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    z-index: 31 !important;
+    white-space: nowrap !important;
+    list-style: none !important;
+}
+
+/* Left row: Neonlinx / Settings / Logout */
+#userinfo_username {
+    top: 58px !important;
+    left: 48px !important;
+    right: auto !important;
+    text-align: left !important;
+}
+
+/* Left row continuation: Upload / Invite / Donate */
+#userinfo_major {
+    top: 58px !important;
+    left: 185px !important;
+    right: auto !important;
+    text-align: left !important;
+}
+
+/* Right row: Inbox / Staff Inbox / Uploads / Bookmarks / ... */
+#userinfo_minor {
+    top: 58px !important;
+    right: 48px !important;
+    left: auto !important;
+    text-align: right !important;
+}
+
+/* Stats line below the left account links. */
+#userinfo_stats {
+    top: 84px !important;
+    left: 48px !important;
+    right: auto !important;
+    text-align: left !important;
+    font-size: 12px !important;
+}
+
+    /* Keep list items horizontal and clickable. */
+    #userinfo_username li,
+    #userinfo_major li,
+    #userinfo_minor li,
+    #userinfo_stats li {
+        display: inline-block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        width: auto !important;
+        height: auto !important;
+        margin: 0 8px 0 0 !important;
+        padding: 0 !important;
+        line-height: 18px !important;
+        list-style: none !important;
+    }
+
+#userinfo_minor li {
+    margin-right: 7px !important;
+}
+
+    #userinfo_minor li:last-child,
+    #userinfo_major li:last-child,
+    #userinfo_username li:last-child,
+    #userinfo_stats li:last-child {
+        margin-right: 0 !important;
+    }
+
+/* Normal account links: readable cyan/white Dracula treatment. */
+#userinfo_username a,
+#userinfo_major a,
+#userinfo_minor a,
+#userinfo_stats a {
+    display: inline !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    padding: 1px 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    color: var(--red-cyan) !important;
+    text-decoration: none !important;
+}
+
+    #userinfo_username a:hover,
+    #userinfo_major a:hover,
+    #userinfo_minor a:hover,
+    #userinfo_stats a:hover {
+        color: var(--red-text) !important;
+        text-shadow: 0 0 8px rgba(139,233,253,.28) !important;
+    }
+
+    /* Username gets a little more emphasis without changing geometry. */
+    #userinfo_username a.username,
+    #nav_userinfo a {
+        color: var(--red-text) !important;
+        font-weight: 600 !important;
+    }
+
+/* Stats are text, not buttons. Preserve useful semantic colours. */
+#userinfo_stats {
+    color: var(--red-muted) !important;
+}
+
+    #userinfo_stats .ratio_good,
+    #userinfo_stats .uploaded,
+    #userinfo_stats .seeding {
+        color: var(--red-green) !important;
+    }
+
+/* Keep alerts above content but below the account links visually. */
+#alerts {
+    z-index: 25 !important;
+}
+
+/* On slightly narrower desktop windows, reduce horizontal spread before wrapping. */
+@media (max-width: 1180px) {
+    #userinfo_username {
+        left: 28px !important;
+    }
+
+    #userinfo_major {
+        left: 160px !important;
+    }
+
+    #userinfo_minor {
+        right: 28px !important;
+    }
+
+    #userinfo_stats {
+        left: 28px !important;
+    }
+
+        #userinfo_username li,
+        #userinfo_major li,
+        #userinfo_minor li,
+        #userinfo_stats li {
+            margin-right: 5px !important;
+        }
+}
+
+/* =========================================================
+   END v0.3.5 HOTFIX
    ========================================================= */
