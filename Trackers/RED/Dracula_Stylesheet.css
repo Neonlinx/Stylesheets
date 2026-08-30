@@ -1,7 +1,13 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.10
+ * Version: 0.3.11
+ *
+ * Changelog 0.3.11:
+ * - Centered the Inbox / Staff Inbox / Uploads / Bookmarks / Notifications / Subscriptions / Posts / Comments / Friends / Better row under the main menu.
+ * - Increased horizontal spacing in that secondary utility row.
+ * - Applied a vBookmarks-style hover treatment to the secondary utility links to match the main navigation language.
+ * - Added cyan underline/glow behavior on hover/focus for the secondary utility row.
  *
  * Changelog 0.3.10:
  * - Header micro-alignment pass.
@@ -3001,4 +3007,76 @@ blockquote,
 
 /* =========================================================
    END v0.3.10 HEADER MICRO-ALIGNMENT
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.11 — SECONDARY HEADER NAV POLISH
+   Center the Inbox/Bookmarks/etc row and make it behave
+   visually like the main header navigation.
+   ========================================================= */
+
+/* Center the secondary header utility row below the main nav. */
+#userinfo_minor {
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    white-space: nowrap !important;
+}
+
+    /* Give these links the same interaction language as the top nav. */
+    #userinfo_minor a {
+        position: relative !important;
+        display: inline-block !important;
+        padding: 5px 8px !important;
+        margin: 1px 0 !important;
+        color: var(--red-cyan) !important;
+        background: transparent !important;
+        border: 1px solid transparent !important;
+        border-radius: var(--red-radius) !important;
+        box-shadow: none !important;
+        line-height: 1 !important;
+        text-decoration: none !important;
+        text-shadow: none !important;
+        transition: background-color .14s ease, border-color .14s ease, box-shadow .14s ease, transform .08s ease !important;
+    }
+
+        #userinfo_minor a:hover,
+        #userinfo_minor a:focus {
+            color: var(--red-cyan) !important;
+            background: var(--red-hover) !important;
+            border-color: var(--red-hover-border) !important;
+            box-shadow: 0 0 8px var(--red-hover-glow) !important;
+            transform: translateY(-1px) !important;
+        }
+
+            #userinfo_minor a:hover::after,
+            #userinfo_minor a:focus::after {
+                content: "" !important;
+                position: absolute !important;
+                left: 8px !important;
+                right: 8px !important;
+                bottom: 2px !important;
+                height: 2px !important;
+                background: var(--red-cyan) !important;
+                border-radius: 999px !important;
+                pointer-events: none !important;
+            }
+
+/* Slightly tighter fallback for narrower desktop widths. */
+@media (max-width: 1350px) {
+    #userinfo_minor {
+        gap: 8px !important;
+    }
+
+        #userinfo_minor a {
+            padding-left: 7px !important;
+            padding-right: 7px !important;
+        }
+}
+
+/* =========================================================
+   END v0.3.11 SECONDARY HEADER NAV POLISH
    ========================================================= */
