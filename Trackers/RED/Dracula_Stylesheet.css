@@ -1,7 +1,13 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.16
+ * Version: 0.3.17
+ *
+ * Changelog 0.3.17:
+ * - Reversed the stats color hierarchy for better readability.
+ * - Stats labels and punctuation are now white.
+ * - Numeric/value spans (.stat and nested value classes) are now Dracula pink.
+ * - Kept the existing pink hover glow and all header geometry unchanged.
  *
  * Changelog 0.3.16:
  * - Corrected the stats row using RED's actual HTML structure.
@@ -3502,4 +3508,56 @@ blockquote,
 
 /* =========================================================
    END v0.3.16 STATS MARKUP-AWARE FIX
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.17 — STATS COLOR HIERARCHY REVERSED
+   Labels/punctuation = white
+   Numeric values      = Dracula pink
+   ========================================================= */
+
+#userinfo_stats > li {
+    color: #ffffff !important;
+}
+
+    #userinfo_stats > li > a {
+        color: #ffffff !important;
+        margin-left: 0 !important;
+    }
+
+    #userinfo_stats > li > .stat,
+    #userinfo_stats > li > .stat *,
+    #userinfo_stats > li .stat,
+    #userinfo_stats > li .stat * {
+        color: var(--red-pink-soft-bright, #f29ad0) !important;
+        -webkit-text-fill-color: var(--red-pink-soft-bright, #f29ad0) !important;
+    }
+
+    #userinfo_stats > li > .stat {
+        margin-left: 4px !important;
+    }
+
+    #userinfo_stats > li:hover,
+    #userinfo_stats > li:focus-within {
+        color: #ffffff !important;
+    }
+
+        #userinfo_stats > li:hover > a,
+        #userinfo_stats > li:focus-within > a {
+            color: #ffffff !important;
+            text-shadow: 0 0 7px rgba(255,255,255,.12) !important;
+        }
+
+        #userinfo_stats > li:hover > .stat,
+        #userinfo_stats > li:hover > .stat *,
+        #userinfo_stats > li:focus-within > .stat,
+        #userinfo_stats > li:focus-within > .stat * {
+            color: var(--red-pink) !important;
+            -webkit-text-fill-color: var(--red-pink) !important;
+            text-shadow: 0 0 8px rgba(255, 121, 198, 0.22) !important;
+        }
+
+/* =========================================================
+   END v0.3.17 STATS COLOR HIERARCHY REVERSED
    ========================================================= */
