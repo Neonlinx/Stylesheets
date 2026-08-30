@@ -1,7 +1,14 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.5
+ * Version: 0.3.6
+ *
+ * Changelog 0.3.6:
+ * - Header/userinfo refinement only.
+ * - Restored Logout by removing overlap between username/major navigation groups.
+ * - Converted left and right account links into rounded pill-style buttons.
+ * - Increased horizontal/vertical breathing room around account links.
+ * - Matched the visual language of the Gift Tokens alert without changing the rest of the theme.
  *
  * Changelog 0.3.5:
  * - HOTFIX: restored the complete logged-in user navigation area.
@@ -1935,4 +1942,151 @@ blockquote,
 
 /* =========================================================
    END v0.3.5 HOTFIX
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.6 — HEADER / USERINFO REFINEMENT ONLY
+   ========================================================= */
+
+#userinfo_username,
+#userinfo_major,
+#userinfo_minor,
+#userinfo_stats {
+    white-space: nowrap !important;
+}
+
+/* Left account navigation: one continuous visual row */
+#userinfo_username {
+    top: 56px !important;
+    left: 44px !important;
+    right: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+}
+
+#userinfo_major {
+    top: 56px !important;
+    left: 44px !important;
+    right: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    /*
+     * Leave enough room for Neonlinx / Settings / Logout.
+     * This fixes Logout being covered by Upload.
+     */
+    margin-left: 205px !important;
+}
+
+/* Right-side account navigation */
+#userinfo_minor {
+    top: 56px !important;
+    right: 44px !important;
+    left: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+}
+
+/* Stats remain below the left account links */
+#userinfo_stats {
+    top: 86px !important;
+    left: 44px !important;
+    right: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 7px !important;
+}
+
+    /* Flex gap controls spacing, so remove old item margins. */
+    #userinfo_username li,
+    #userinfo_major li,
+    #userinfo_minor li,
+    #userinfo_stats li {
+        margin: 0 !important;
+    }
+
+/* ---------------------------------------------------------
+   Pill buttons — same family as the Gift Tokens alert
+   --------------------------------------------------------- */
+
+#userinfo_username a,
+#userinfo_major a,
+#userinfo_minor a {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+    min-height: 24px !important;
+    padding: 3px 9px 4px !important;
+    border: 1px solid rgba(98, 114, 164, 0.38) !important;
+    border-radius: 9px !important;
+    background: rgba(68, 71, 90, 0.28) !important;
+    color: var(--red-cyan) !important;
+    text-decoration: none !important;
+    line-height: 1.15 !important;
+    transition: background-color .14s ease, border-color .14s ease, box-shadow .14s ease, transform .14s ease !important;
+}
+
+    /* Username slightly more prominent */
+    #userinfo_username a.username,
+    #nav_userinfo a {
+        color: var(--red-text) !important;
+        font-weight: 600 !important;
+    }
+
+    /* vBookmarks-style cyan hover */
+    #userinfo_username a:hover,
+    #userinfo_major a:hover,
+    #userinfo_minor a:hover {
+        background: rgba(139, 233, 253, 0.16) !important;
+        border-color: rgba(139, 233, 253, 0.42) !important;
+        box-shadow: 0 0 8px rgba(139, 233, 253, 0.12) !important;
+        color: var(--red-text) !important;
+        transform: translateY(-1px) !important;
+    }
+
+/* Stats are deliberately NOT pill buttons. */
+#userinfo_stats a {
+    display: inline !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+/* Slightly more compact on narrower desktop windows. */
+@media (max-width: 1250px) {
+    #userinfo_username {
+        left: 28px !important;
+    }
+
+    #userinfo_major {
+        left: 28px !important;
+        margin-left: 195px !important;
+    }
+
+    #userinfo_minor {
+        right: 28px !important;
+        gap: 4px !important;
+    }
+
+    #userinfo_stats {
+        left: 28px !important;
+    }
+
+    #userinfo_username a,
+    #userinfo_major a,
+    #userinfo_minor a {
+        padding-left: 7px !important;
+        padding-right: 7px !important;
+    }
+}
+
+/* =========================================================
+   END v0.3.6 HEADER / USERINFO REFINEMENT
    ========================================================= */
