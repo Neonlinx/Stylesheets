@@ -1,7 +1,13 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.11
+ * Version: 0.3.12
+ *
+ * Changelog 0.3.12:
+ * - Lowered the Inbox / Staff Inbox / Uploads / Bookmarks / Notifications / Subscriptions / Posts / Comments / Friends / Better row inside the upper header.
+ * - Moved that secondary navigation closer to the lower border of the upper rounded container.
+ * - Increased brightness/intensity of the hover/focus treatment for the secondary header links.
+ * - Strengthened cyan glow, border and fill for a more vivid Dracula/vBookmarks interaction effect.
  *
  * Changelog 0.3.11:
  * - Centered the Inbox / Staff Inbox / Uploads / Bookmarks / Notifications / Subscriptions / Posts / Comments / Friends / Better row under the main menu.
@@ -3079,4 +3085,41 @@ blockquote,
 
 /* =========================================================
    END v0.3.11 SECONDARY HEADER NAV POLISH
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.12 — LOWER SECONDARY NAV + BRIGHTER HOVER
+   ========================================================= */
+
+/* Move the Inbox / Staff Inbox / ... row lower inside the upper shell. */
+#userinfo_minor {
+    top: -44px !important;
+}
+
+    /* Brighter, more vivid interaction for the secondary utility links. */
+    #userinfo_minor a {
+        transition: background-color .14s ease, border-color .14s ease, box-shadow .14s ease, color .14s ease, transform .08s ease !important;
+    }
+
+        #userinfo_minor a:hover,
+        #userinfo_minor a:focus {
+            color: #c9f6ff !important;
+            background: rgba(139, 233, 253, 0.22) !important;
+            border-color: rgba(139, 233, 253, 0.58) !important;
+            box-shadow: 0 0 12px rgba(139, 233, 253, 0.24), 0 0 22px rgba(139, 233, 253, 0.10), inset 0 0 0 1px rgba(139, 233, 253, 0.08) !important;
+            transform: translateY(-1px) !important;
+        }
+
+            #userinfo_minor a:hover::after,
+            #userinfo_minor a:focus::after {
+                left: 7px !important;
+                right: 7px !important;
+                height: 2px !important;
+                background: #8be9fd !important;
+                box-shadow: 0 0 8px rgba(139, 233, 253, 0.55) !important;
+            }
+
+/* =========================================================
+   END v0.3.12 LOWER SECONDARY NAV + BRIGHTER HOVER
    ========================================================= */
