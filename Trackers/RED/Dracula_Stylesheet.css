@@ -1,7 +1,15 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.13
+ * Version: 0.3.14
+ *
+ * Changelog 0.3.14:
+ * - Color-language refinement inspired by the vBookmarks Dracula theme.
+ * - Changed upper inactive navigation/control text from cyan/white to Dracula pink.
+ * - Preserved cyan as the active/hover/focus accent.
+ * - Added a cyan-to-pink text gradient to the Neonlinx account button.
+ * - Applied pink text to the search shortcut inputs while retaining cyan hover/focus.
+ * - Gift Tokens alert intentionally remains cyan as a notification accent.
  *
  * Changelog 0.3.13:
  * - Raised the Inbox / Staff Inbox / Uploads / Bookmarks / Notifications / Subscriptions / Posts / Comments / Friends / Better row a bit inside the upper header.
@@ -3140,4 +3148,134 @@ blockquote,
 
 /* =========================================================
    END v0.3.13 RAISE SECONDARY NAV SLIGHTLY
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.14 — DRACULA PINK DEFAULT / CYAN INTERACTION
+   ========================================================= */
+
+/* ---------- Main navigation ---------- */
+
+#menu a {
+    color: var(--red-pink) !important;
+}
+
+    #menu a:hover,
+    #menu a:focus,
+    #index #nav_index a,
+    #collage #nav_collages a,
+    #forums #nav_forums a,
+    #chat #nav_irc a,
+    #rules #nav_rules a,
+    #staff #nav_staff a,
+    #torrents #nav_torrents a,
+    #requests #nav_requests a,
+    #top10 #nav_top10 a,
+    #wiki #nav_wiki a,
+    #imagehost #nav_imagehost a {
+        color: var(--red-cyan) !important;
+    }
+
+/* ---------- Secondary header navigation ---------- */
+
+#userinfo_minor a {
+    color: var(--red-pink) !important;
+}
+
+    #userinfo_minor a:hover,
+    #userinfo_minor a:focus {
+        color: #c9f6ff !important;
+    }
+
+/* ---------- Lower account controls ---------- */
+
+#userinfo_username > li > a,
+#userinfo_major > li > a,
+#nav_useredit > a,
+#nav_logout > a,
+#nav_upload > a,
+#nav_invite > a,
+#nav_donate > a {
+    color: var(--red-pink) !important;
+}
+
+    #userinfo_username > li > a:hover,
+    #userinfo_major > li > a:hover,
+    #nav_useredit > a:hover,
+    #nav_logout > a:hover,
+    #nav_upload > a:hover,
+    #nav_invite > a:hover,
+    #nav_donate > a:hover {
+        color: var(--red-cyan) !important;
+    }
+
+/* ---------- Neonlinx: cyan -> pink text gradient ---------- */
+
+/*
+ * Multiple background layers let us keep the existing translucent pill
+ * while clipping only the first gradient layer to the text.
+ */
+#nav_userinfo > a,
+#userinfo_username #nav_userinfo > a {
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+    background-image: linear-gradient(90deg, var(--red-cyan) 0%, #9eeafd 25%, #bd93f9 58%, var(--red-pink) 100%), linear-gradient(rgba(68, 71, 90, 0.28), rgba(68, 71, 90, 0.28)) !important;
+    background-origin: border-box, border-box !important;
+    background-clip: text, border-box !important;
+    -webkit-background-clip: text, border-box !important;
+    font-weight: 700 !important;
+}
+
+    #nav_userinfo > a:hover,
+    #userinfo_username #nav_userinfo > a:hover {
+        -webkit-text-fill-color: transparent !important;
+        background-image: linear-gradient(90deg, #baf4ff 0%, var(--red-cyan) 30%, #d0a8ff 66%, #ff9bd3 100%), linear-gradient(rgba(139, 233, 253, 0.16), rgba(139, 233, 253, 0.16)) !important;
+        background-clip: text, border-box !important;
+        -webkit-background-clip: text, border-box !important;
+    }
+
+/* ---------- Stats pills ---------- */
+
+#userinfo_stats > li {
+    color: var(--red-pink) !important;
+}
+
+    #userinfo_stats > li a {
+        color: inherit !important;
+    }
+
+    #userinfo_stats > li:hover,
+    #userinfo_stats > li:hover a {
+        color: var(--red-cyan) !important;
+    }
+
+/* ---------- Search shortcut row ---------- */
+
+#searchbars input,
+#searchbars input[type="search"],
+#searchbars input[type="text"] {
+    color: var(--red-pink) !important;
+    caret-color: var(--red-cyan) !important;
+}
+
+    #searchbars input::placeholder {
+        color: var(--red-pink) !important;
+        opacity: .96 !important;
+    }
+
+    #searchbars input:hover,
+    #searchbars input:focus {
+        color: var(--red-cyan) !important;
+    }
+
+        #searchbars input:hover::placeholder,
+        #searchbars input:focus::placeholder {
+            color: var(--red-cyan) !important;
+        }
+
+/* Gift-token alert intentionally stays cyan. */
+
+/* =========================================================
+   END v0.3.14 DRACULA COLOR LANGUAGE
    ========================================================= */
