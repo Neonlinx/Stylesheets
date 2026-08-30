@@ -1,7 +1,14 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.9
+ * Version: 0.3.10
+ *
+ * Changelog 0.3.10:
+ * - Header micro-alignment pass.
+ * - Right-aligned Inbox / Staff Inbox / Uploads / ... / Better with the Staff item above.
+ * - Added a little more breathing room between account/stat controls and the searchbar.
+ * - Reduced the excessive empty vertical gap before the main page content.
+ * - Kept all established pill/button geometry unchanged.
  *
  * Changelog 0.3.9:
  * - Header spacing and account-control layout refinement.
@@ -2947,4 +2954,51 @@ blockquote,
 
 /* =========================================================
    END v0.3.9 ROBUST HEADER FLEX LAYOUT
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.10 — HEADER MICRO-ALIGNMENT
+   ========================================================= */
+
+/* Align the secondary utility navigation with the right edge of Staff. */
+#userinfo_minor {
+    right: 46px !important;
+    left: auto !important;
+    justify-content: flex-end !important;
+}
+
+/*
+ * Give the search shortcut row a touch more breathing room
+ * below the account/stat controls.
+ */
+#searchbars {
+    top: 218px !important;
+}
+
+/*
+ * The previous layout left too much dead space between the search shortcuts
+ * and the actual page panel. Pull the main content upward substantially.
+ */
+#content {
+    margin-top: 214px !important;
+}
+
+/* Keep the content/search relationship stable on narrower desktop widths. */
+@media (max-width: 1350px) {
+    #userinfo_minor {
+        right: 28px !important;
+    }
+
+    #searchbars {
+        top: 218px !important;
+    }
+
+    #content {
+        margin-top: 214px !important;
+    }
+}
+
+/* =========================================================
+   END v0.3.10 HEADER MICRO-ALIGNMENT
    ========================================================= */
