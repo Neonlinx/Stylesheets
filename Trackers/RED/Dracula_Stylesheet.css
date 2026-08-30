@@ -1,7 +1,12 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.18
+ * Version: 0.3.19
+ *
+ * Changelog 0.3.19:
+ * - Right-aligned the Inbox / Staff Inbox / Uploads / Bookmarks / Notifications / Subscriptions / Posts / Comments / Friends / Better row with the main navigation's Staff edge.
+ * - Reduced horizontal spacing between secondary header links for a more compact row.
+ * - Added a small gap between the Gift Tokens inner value pill and the trailing exclamation mark.
  *
  * Changelog 0.3.18:
  * - Fixed the remaining lower stats inconsistency so Seeding-style value nodes also use the highlighted pink value color.
@@ -3653,4 +3658,47 @@ blockquote,
 
 /* =========================================================
    END v0.3.18 — SEEDING VALUE + ALERT EMPHASIS PILL
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.19 — SECONDARY NAV RIGHT ALIGN + ALERT PUNCTUATION
+   ========================================================= */
+
+/* Align the secondary utility row with the right edge used by Staff above. */
+#userinfo_minor {
+    left: auto !important;
+    right: 55px !important;
+    transform: none !important;
+    justify-content: flex-end !important;
+    gap: 6px !important;
+}
+
+    /* Slightly tighten the clickable/hover areas too. */
+    #userinfo_minor a {
+        padding-left: 7px !important;
+        padding-right: 7px !important;
+    }
+
+/* Give the trailing "!" a little breathing room after the inner value pill. */
+#alerts .alertbar span,
+#alerts .blend span {
+    margin-right: 4px !important;
+}
+
+/* Keep alignment stable on narrower desktop windows. */
+@media (max-width: 1350px) {
+    #userinfo_minor {
+        right: 55px !important;
+        gap: 5px !important;
+    }
+
+        #userinfo_minor a {
+            padding-left: 6px !important;
+            padding-right: 6px !important;
+        }
+}
+
+/* =========================================================
+   END v0.3.19 SECONDARY NAV RIGHT ALIGN + ALERT PUNCTUATION
    ========================================================= */
