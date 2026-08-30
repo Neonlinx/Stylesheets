@@ -1,7 +1,16 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.6
+ * Version: 0.3.7
+ *
+ * Changelog 0.3.7:
+ * - Header-only refinement.
+ * - Restored a self-contained REDACTED.SH logo in the upper-left header.
+ * - Reserved the rounded top header exclusively for logo + primary navigation.
+ * - Moved all logged-in account buttons outside and directly below the header.
+ * - Aligned the account button row with the Gift Tokens pill.
+ * - Standardized every account link to the same pill geometry as Upload/Invite/Donate.
+ * - Kept the statistics row below the account controls.
  *
  * Changelog 0.3.6:
  * - Header/userinfo refinement only.
@@ -2089,4 +2098,325 @@ blockquote,
 
 /* =========================================================
    END v0.3.6 HEADER / USERINFO REFINEMENT
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.7 — HEADER LAYOUT REFINEMENT
+   Top rounded shell = logo + primary navigation only.
+   Account controls live directly below it.
+   ========================================================= */
+
+/* ---------- Top rounded shell ---------- */
+
+#header {
+    position: relative !important;
+    height: 74px !important;
+    min-height: 74px !important;
+    overflow: visible !important;
+}
+
+/*
+ * Restore the REDACTED.SH mark without relying on a legacy skin sprite.
+ * The anchor remains the real clickable home link.
+ */
+#logo {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    z-index: 40 !important;
+    width: 185px !important;
+    height: 52px !important;
+    overflow: visible !important;
+}
+
+    #logo a {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        width: 132px !important;
+        height: 34px !important;
+        margin: 10px 0 0 48px !important;
+        padding: 0 0 3px !important;
+        box-sizing: border-box !important;
+        background: linear-gradient( to right, var(--red-pink) 0 67%, var(--red-cyan) 67% 88%, transparent 88% 100% ) left bottom / 102px 2px no-repeat !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        color: transparent !important;
+        font-size: 0 !important;
+        line-height: 1 !important;
+        transform: none !important;
+        overflow: visible !important;
+        text-decoration: none !important;
+    }
+
+        #logo a::before {
+            content: "REDACTED" !important;
+            position: static !important;
+            display: inline !important;
+            width: auto !important;
+            height: auto !important;
+            background: none !important;
+            border: 0 !important;
+            color: var(--red-text) !important;
+            font-family: "Exo 2", sans-serif !important;
+            font-size: 17px !important;
+            font-weight: 700 !important;
+            letter-spacing: .1px !important;
+            line-height: 1 !important;
+        }
+
+        #logo a::after {
+            content: ".SH" !important;
+            position: static !important;
+            display: inline !important;
+            width: auto !important;
+            height: auto !important;
+            margin-left: 1px !important;
+            background: none !important;
+            border: 0 !important;
+            color: var(--red-text-soft) !important;
+            font-family: "Exo 2", sans-serif !important;
+            font-size: 16px !important;
+            font-weight: 400 !important;
+            line-height: 1 !important;
+        }
+
+/* Primary site navigation stays inside the rounded shell. */
+#menu {
+    top: 0 !important;
+    height: 54px !important;
+}
+
+    #menu ul {
+        padding-top: 14px !important;
+    }
+
+/* ---------- Logged-in controls BELOW the shell ---------- */
+
+#userinfo {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    height: 0 !important;
+    overflow: visible !important;
+    z-index: 35 !important;
+    pointer-events: none !important;
+}
+
+#userinfo_username,
+#userinfo_major,
+#userinfo_minor,
+#userinfo_stats {
+    position: absolute !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+
+/*
+ * First row under header:
+ * left = username/settings/logout/upload/invite/donate
+ * right = inbox/.../better
+ */
+#userinfo_username {
+    top: 82px !important;
+    left: 46px !important;
+    right: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 7px !important;
+    margin: 0 !important;
+}
+
+#userinfo_major {
+    top: 82px !important;
+    left: 46px !important;
+    right: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 7px !important;
+    /* room for Neonlinx + Settings + Logout */
+    margin: 0 0 0 219px !important;
+}
+
+#userinfo_minor {
+    top: 82px !important;
+    right: 46px !important;
+    left: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    margin: 0 !important;
+}
+
+/* Second row: statistics */
+#userinfo_stats {
+    top: 116px !important;
+    left: 46px !important;
+    right: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    margin: 0 !important;
+}
+
+/* ---------- Unified account pills ---------- */
+
+#userinfo_username li,
+#userinfo_major li,
+#userinfo_minor li {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: auto !important;
+    height: auto !important;
+    line-height: 1 !important;
+}
+
+#userinfo_username a,
+#userinfo_major a,
+#userinfo_minor a,
+#userinfo_username a.username,
+#nav_userinfo a {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: auto !important;
+    min-width: 0 !important;
+    min-height: 26px !important;
+    height: 26px !important;
+    box-sizing: border-box !important;
+    padding: 4px 10px 5px !important;
+    background: rgba(68, 71, 90, 0.28) !important;
+    border: 1px solid rgba(98, 114, 164, 0.38) !important;
+    border-radius: 9px !important;
+    box-shadow: none !important;
+    color: var(--red-cyan) !important;
+    font-weight: 500 !important;
+    line-height: 1 !important;
+    text-decoration: none !important;
+    text-shadow: none !important;
+    transform: none !important;
+    transition: background-color .14s ease, border-color .14s ease, box-shadow .14s ease, transform .14s ease !important;
+}
+
+    /* Username remains slightly stronger, but uses identical geometry. */
+    #userinfo_username a.username,
+    #nav_userinfo a {
+        color: var(--red-text) !important;
+        font-weight: 600 !important;
+    }
+
+        /* Same neon interaction for EVERY account pill. */
+        #userinfo_username a:hover,
+        #userinfo_major a:hover,
+        #userinfo_minor a:hover,
+        #userinfo_username a.username:hover,
+        #nav_userinfo a:hover {
+            background: rgba(139, 233, 253, 0.16) !important;
+            border-color: rgba(139, 233, 253, 0.42) !important;
+            box-shadow: 0 0 8px rgba(139, 233, 253, 0.12), inset 0 0 0 1px rgba(139, 233, 253, 0.04) !important;
+            color: var(--red-text) !important;
+            text-shadow: none !important;
+            transform: translateY(-1px) !important;
+        }
+
+/* Stats remain clean text beneath the buttons. */
+#userinfo_stats li {
+    display: inline-block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 18px !important;
+}
+
+#userinfo_stats a {
+    display: inline !important;
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    transform: none !important;
+}
+
+/* ---------- Gift-token alert aligned with first account row ---------- */
+
+#alerts {
+    position: absolute !important;
+    top: 82px !important;
+    right: 46px !important;
+    z-index: 34 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+}
+
+/*
+ * The account minor links occupy the right side of the same row.
+ * Place alerts on the next visual line when both are present, matching
+ * the screenshot arrangement but keeping them outside the header shell.
+ */
+#userinfo_minor:not(:empty) ~ #alerts,
+#alerts {
+    top: 116px !important;
+}
+
+/* ---------- Search strip begins after account + stats ---------- */
+
+#searchbars {
+    top: 150px !important;
+}
+
+/*
+ * Structural content offsets in older RED skins are tied to the searchbar.
+ * Give the page enough vertical room for the newly separated header rows.
+ */
+#content {
+    margin-top: 190px !important;
+}
+
+/* ---------- Desktop adaptation ---------- */
+
+@media (max-width: 1350px) {
+    #userinfo_username {
+        left: 28px !important;
+    }
+
+    #userinfo_major {
+        left: 28px !important;
+        margin-left: 213px !important;
+    }
+
+    #userinfo_minor {
+        right: 28px !important;
+        gap: 4px !important;
+    }
+
+    #userinfo_stats {
+        left: 28px !important;
+    }
+
+    #alerts {
+        right: 28px !important;
+    }
+
+    #userinfo_username a,
+    #userinfo_major a,
+    #userinfo_minor a,
+    #userinfo_username a.username,
+    #nav_userinfo a {
+        padding-left: 8px !important;
+        padding-right: 8px !important;
+    }
+}
+
+/* =========================================================
+   END v0.3.7 HEADER LAYOUT REFINEMENT
    ========================================================= */
