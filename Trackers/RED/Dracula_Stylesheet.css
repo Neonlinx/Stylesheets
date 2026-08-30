@@ -1,7 +1,15 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.14
+ * Version: 0.3.15
+ *
+ * Changelog 0.3.15:
+ * - Softened the default Dracula pink for lower account/stat controls.
+ * - Changed lower account-control hover glow from cyan to Dracula pink.
+ * - Kept stats values white where RED exposes separate value elements.
+ * - Added spacing before exposed stat value elements.
+ * - Restored the six search shortcut labels to cyan.
+ * - Removed the awkward tiny dark inner box from the Gift Tokens alert.
  *
  * Changelog 0.3.14:
  * - Color-language refinement inspired by the vBookmarks Dracula theme.
@@ -3279,3 +3287,150 @@ blockquote,
 /* =========================================================
    END v0.3.14 DRACULA COLOR LANGUAGE
    ========================================================= */
+
+/* =========================================================
+   Author: Neonlinx
+   Version: 0.3.15
+   Changes:
+   - Softened Dracula pink for lower account/stat controls.
+   - Switched lower hover glow from cyan to pink.
+   - Kept stats numbers white where the markup exposes value nodes.
+   - Added spacing before exposed stat value nodes.
+   - Recolored the six search shortcut fields to cyan.
+   - Neutralized the small dark sub-pill inside the Gift Tokens alert.
+   ========================================================= */
+
+:root {
+    --red-pink-soft: #d98ab9;
+    --red-pink-soft-bright: #f29ad0;
+    --red-pink-hover-bg: rgba(255, 121, 198, 0.15);
+    --red-pink-hover-border: rgba(255, 121, 198, 0.42);
+    --red-pink-hover-glow: rgba(255, 121, 198, 0.18);
+}
+
+/* ---------- Lower account controls: softer pink by default, pink glow on hover ---------- */
+
+#userinfo_username > li > a,
+#userinfo_major > li > a,
+#nav_useredit > a,
+#nav_logout > a,
+#nav_upload > a,
+#nav_invite > a,
+#nav_donate > a {
+    color: var(--red-pink-soft) !important;
+}
+
+    #userinfo_username > li > a:hover,
+    #userinfo_major > li > a:hover,
+    #nav_useredit > a:hover,
+    #nav_logout > a:hover,
+    #nav_upload > a:hover,
+    #nav_invite > a:hover,
+    #nav_donate > a:hover,
+    #userinfo_username > li > a:focus,
+    #userinfo_major > li > a:focus,
+    #nav_useredit > a:focus,
+    #nav_logout > a:focus,
+    #nav_upload > a:focus,
+    #nav_invite > a:focus,
+    #nav_donate > a:focus {
+        color: var(--red-pink) !important;
+        background: var(--red-pink-hover-bg) !important;
+        border-color: var(--red-pink-hover-border) !important;
+        box-shadow: 0 0 10px var(--red-pink-hover-glow), 0 0 20px rgba(255, 121, 198, 0.08), inset 0 0 0 1px rgba(255, 121, 198, 0.05) !important;
+    }
+
+/* Preserve the Neonlinx gradient behaviour. */
+#nav_userinfo > a:hover,
+#userinfo_username #nav_userinfo > a:hover {
+    background-image: linear-gradient(90deg, #baf4ff 0%, var(--red-cyan) 30%, #d0a8ff 66%, #ff9bd3 100%), linear-gradient(rgba(255, 121, 198, 0.14), rgba(255, 121, 198, 0.14)) !important;
+    border-color: var(--red-pink-hover-border) !important;
+    box-shadow: 0 0 10px var(--red-pink-hover-glow), 0 0 20px rgba(255, 121, 198, 0.08), inset 0 0 0 1px rgba(255, 121, 198, 0.05) !important;
+}
+
+/* ---------- Stats: pink label family, white exposed numbers ---------- */
+
+#userinfo_stats > li {
+    color: var(--red-pink-soft) !important;
+}
+
+    #userinfo_stats > li > a,
+    #userinfo_stats > li > span,
+    #userinfo_stats > li > strong,
+    #userinfo_stats > li > b,
+    #userinfo_stats > li .ratio_good,
+    #userinfo_stats > li .ratio_bad,
+    #userinfo_stats > li .uploaded,
+    #userinfo_stats > li .downloaded,
+    #userinfo_stats > li .seeding,
+    #userinfo_stats > li .seeders,
+    #userinfo_stats > li .leechers,
+    #userinfo_stats > li .stat,
+    #userinfo_stats > li .value {
+        color: var(--red-text) !important;
+        margin-left: 4px !important;
+    }
+
+    #userinfo_stats > li:hover {
+        color: var(--red-pink) !important;
+        border-color: var(--red-pink-hover-border) !important;
+        box-shadow: 0 0 8px var(--red-pink-hover-glow), inset 0 0 0 1px rgba(255, 121, 198, 0.04) !important;
+    }
+
+        #userinfo_stats > li:hover > a,
+        #userinfo_stats > li:hover > span,
+        #userinfo_stats > li:hover > strong,
+        #userinfo_stats > li:hover > b,
+        #userinfo_stats > li:hover .ratio_good,
+        #userinfo_stats > li:hover .ratio_bad,
+        #userinfo_stats > li:hover .uploaded,
+        #userinfo_stats > li:hover .downloaded,
+        #userinfo_stats > li:hover .seeding,
+        #userinfo_stats > li:hover .seeders,
+        #userinfo_stats > li:hover .leechers,
+        #userinfo_stats > li:hover .stat,
+        #userinfo_stats > li:hover .value {
+            color: #ffffff !important;
+        }
+
+/* ---------- Search shortcut row: make the six labels cyan ---------- */
+
+#searchbars input,
+#searchbars input[type="search"],
+#searchbars input[type="text"] {
+    color: var(--red-cyan) !important;
+}
+
+    #searchbars input::placeholder {
+        color: var(--red-cyan) !important;
+        opacity: 0.96 !important;
+    }
+
+    #searchbars input:hover,
+    #searchbars input:focus {
+        color: #c9f6ff !important;
+        border-color: rgba(139, 233, 253, 0.45) !important;
+        box-shadow: 0 0 8px rgba(139, 233, 253, 0.14) !important;
+    }
+
+        #searchbars input:hover::placeholder,
+        #searchbars input:focus::placeholder {
+            color: #c9f6ff !important;
+        }
+
+/* ---------- Gift Tokens pill: remove the awkward tiny dark inner box ---------- */
+
+#alerts .alertbar a,
+#alerts .alertbar strong,
+#alerts .alertbar b,
+#alerts .alertbar span,
+#alerts .blend a,
+#alerts .blend strong,
+#alerts .blend b,
+#alerts .blend span {
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+}
