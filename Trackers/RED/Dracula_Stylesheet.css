@@ -1,7 +1,12 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.17
+ * Version: 0.3.18
+ *
+ * Changelog 0.3.18:
+ * - Fixed the remaining lower stats inconsistency so Seeding-style value nodes also use the highlighted pink value color.
+ * - Restored a rounded inner emphasis pill for dynamic alert values inside the Gift Tokens notice (e.g. "1 day, 5 hours").
+ * - Slightly widened the inner alert-value pill so highlighted durations/status values read clearly.
  *
  * Changelog 0.3.17:
  * - Reversed the stats color hierarchy for better readability.
@@ -3558,6 +3563,94 @@ blockquote,
             text-shadow: 0 0 8px rgba(255, 121, 198, 0.22) !important;
         }
 
-/* =========================================================
+    /* =========================================================
    END v0.3.17 STATS COLOR HIERARCHY REVERSED
+   ========================================================= */
+
+
+    /* =========================================================
+   v0.3.18 — SEEDING VALUE + ALERT EMPHASIS PILL
+   - Ensure remaining stats value nodes (including Seeding-style ones)
+     use the pink value accent.
+   - Reintroduce a rounded inner pill for alert payload text such as
+     "1 day, 5 hours".
+   ========================================================= */
+
+    /* Keep labels white, but push common value wrappers to pink. */
+    #userinfo_stats > li .seeding,
+    #userinfo_stats > li .seeders,
+    #userinfo_stats > li .leechers,
+    #userinfo_stats > li .uploaded,
+    #userinfo_stats > li .downloaded,
+    #userinfo_stats > li .ratio_good,
+    #userinfo_stats > li .ratio_bad,
+    #userinfo_stats > li a + span,
+    #userinfo_stats > li a + span *,
+    #userinfo_stats > li > span.stat,
+    #userinfo_stats > li > span.stat * {
+        color: var(--red-pink-soft-bright, #f29ad0) !important;
+        -webkit-text-fill-color: var(--red-pink-soft-bright, #f29ad0) !important;
+    }
+
+    #userinfo_stats > li:hover .seeding,
+    #userinfo_stats > li:hover .seeders,
+    #userinfo_stats > li:hover .leechers,
+    #userinfo_stats > li:hover .uploaded,
+    #userinfo_stats > li:hover .downloaded,
+    #userinfo_stats > li:hover .ratio_good,
+    #userinfo_stats > li:hover .ratio_bad,
+    #userinfo_stats > li:hover a + span,
+    #userinfo_stats > li:hover a + span *,
+    #userinfo_stats > li:focus-within .seeding,
+    #userinfo_stats > li:focus-within .seeders,
+    #userinfo_stats > li:focus-within .leechers,
+    #userinfo_stats > li:focus-within .uploaded,
+    #userinfo_stats > li:focus-within .downloaded,
+    #userinfo_stats > li:focus-within .ratio_good,
+    #userinfo_stats > li:focus-within .ratio_bad,
+    #userinfo_stats > li:focus-within a + span,
+    #userinfo_stats > li:focus-within a + span * {
+        color: var(--red-pink) !important;
+        -webkit-text-fill-color: var(--red-pink) !important;
+        text-shadow: 0 0 8px rgba(255, 121, 198, 0.22) !important;
+    }
+
+/* Gift Tokens / alert payload inner pill. */
+#alerts .alertbar span,
+#alerts .blend span {
+    display: inline-block !important;
+    vertical-align: baseline !important;
+    margin: 0 0 0 6px !important;
+    padding: 1px 9px 2px !important;
+    line-height: 1.25 !important;
+    white-space: nowrap !important;
+    color: #ffffff !important;
+    background: rgba(68, 71, 90, .78) !important;
+    border: 1px solid rgba(139, 233, 253, .22) !important;
+    border-radius: 999px !important;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.02) !important;
+}
+
+    #alerts .alertbar span a,
+    #alerts .blend span a,
+    #alerts .alertbar span strong,
+    #alerts .blend span strong,
+    #alerts .alertbar span b,
+    #alerts .blend span b {
+        color: inherit !important;
+        background: transparent !important;
+        border: 0 !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+    }
+
+/* Remove the leading extra left offset on the first chunk if RED wraps
+   only the changing payload inside the span. */
+#alerts .alertbar > span:first-child,
+#alerts .blend > span:first-child {
+    margin-left: 0 !important;
+}
+
+/* =========================================================
+   END v0.3.18 — SEEDING VALUE + ALERT EMPHASIS PILL
    ========================================================= */
