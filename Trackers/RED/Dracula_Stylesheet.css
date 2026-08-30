@@ -1,7 +1,14 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.8
+ * Version: 0.3.9
+ *
+ * Changelog 0.3.9:
+ * - Header spacing and account-control layout refinement.
+ * - Replaced fixed username/major offsets with a true flex row, eliminating overlap between Settings / Logout / Upload / Invite / Donate.
+ * - Added more breathing room below the upper rounded header.
+ * - Shifted Inbox / Staff Inbox / Uploads / Bookmarks / Notifications / Subscriptions / Posts / Comments / Friends / Better further left inside the upper header.
+ * - Explicitly standardized Neonlinx / Settings / Logout / Upload / Invite / Donate pill geometry.
  *
  * Changelog 0.3.8:
  * - Header refinement pass based on live screenshots.
@@ -2704,4 +2711,240 @@ blockquote,
 
 /* =========================================================
    END v0.3.8 HEADER STRUCTURE TUNE
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.9 — ROBUST HEADER FLEX LAYOUT
+   Fixes the root cause of the left-button overlap:
+   RED renders username and major navigation as two separate ULs.
+   They now participate in the same real flex flow.
+   ========================================================= */
+
+/* ---------- More air below the upper shell ---------- */
+
+#header {
+    height: 118px !important;
+    min-height: 118px !important;
+}
+
+/*
+ * Move the entire logged-in control layer below the header.
+ * Username + major navigation are now normal flex items instead
+ * of two independently-positioned blocks.
+ */
+#userinfo {
+    position: absolute !important;
+    top: 140px !important;
+    left: 0 !important;
+    right: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 8px !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    height: 28px !important;
+    padding: 0 46px !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    pointer-events: none !important;
+    z-index: 35 !important;
+}
+
+/* First half of the left control row */
+#userinfo_username {
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    width: auto !important;
+    height: 28px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    pointer-events: auto !important;
+}
+
+/* Second half follows naturally after username/settings/logout */
+#userinfo_major {
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    width: auto !important;
+    height: 28px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    pointer-events: auto !important;
+}
+
+    /* ---------- Explicit pill styling for every left control ---------- */
+
+    #nav_userinfo > a,
+    #nav_useredit > a,
+    #nav_logout > a,
+    #nav_upload > a,
+    #nav_invite > a,
+    #nav_donate > a,
+    #userinfo_username > li > a,
+    #userinfo_major > li > a {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        box-sizing: border-box !important;
+        width: auto !important;
+        min-width: 0 !important;
+        height: 28px !important;
+        min-height: 28px !important;
+        margin: 0 !important;
+        padding: 4px 11px 5px !important;
+        background: rgba(68, 71, 90, 0.28) !important;
+        border: 1px solid rgba(98, 114, 164, 0.38) !important;
+        border-radius: 9px !important;
+        box-shadow: none !important;
+        color: var(--red-cyan) !important;
+        font-weight: 600 !important;
+        line-height: 1 !important;
+        text-decoration: none !important;
+        text-shadow: none !important;
+        transform: none !important;
+        transition: background-color .14s ease, border-color .14s ease, box-shadow .14s ease, transform .14s ease !important;
+    }
+
+        #nav_userinfo > a,
+        #nav_userinfo > a.username {
+            color: var(--red-text) !important;
+        }
+
+            #nav_userinfo > a:hover,
+            #nav_useredit > a:hover,
+            #nav_logout > a:hover,
+            #nav_upload > a:hover,
+            #nav_invite > a:hover,
+            #nav_donate > a:hover,
+            #userinfo_username > li > a:hover,
+            #userinfo_major > li > a:hover {
+                background: rgba(139, 233, 253, 0.16) !important;
+                border-color: rgba(139, 233, 253, 0.42) !important;
+                box-shadow: 0 0 8px rgba(139, 233, 253, 0.12), inset 0 0 0 1px rgba(139, 233, 253, 0.04) !important;
+                color: var(--red-text) !important;
+                transform: translateY(-1px) !important;
+            }
+
+/* ---------- Minor navigation stays INSIDE upper header ---------- */
+
+/*
+ * #userinfo itself is now below the shell, so pull the minor nav
+ * upward relative to that layer. Shift it left as requested.
+ */
+#userinfo_minor {
+    position: absolute !important;
+    top: -78px !important;
+    right: 165px !important;
+    left: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    width: auto !important;
+    height: 22px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    pointer-events: auto !important;
+    white-space: nowrap !important;
+}
+
+/* ---------- Statistics row below the control buttons ---------- */
+
+#userinfo_stats {
+    position: absolute !important;
+    top: 36px !important;
+    left: 46px !important;
+    right: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    width: auto !important;
+    height: 24px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    pointer-events: auto !important;
+}
+
+    /* Make all five stats equally deliberate and comfortably padded. */
+    #userinfo_stats > li {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        box-sizing: border-box !important;
+        min-height: 24px !important;
+        margin: 0 !important;
+        padding: 3px 10px 4px !important;
+        background: rgba(68, 71, 90, 0.20) !important;
+        border: 1px solid rgba(98, 114, 164, 0.30) !important;
+        border-radius: 9px !important;
+        color: var(--red-text) !important;
+        line-height: 1 !important;
+        white-space: nowrap !important;
+    }
+
+/* ---------- Gift Tokens aligned with the first lower row ---------- */
+
+#alerts {
+    top: 140px !important;
+    right: 46px !important;
+}
+
+/* ---------- Following layout ---------- */
+
+#searchbars {
+    top: 210px !important;
+}
+
+#content {
+    margin-top: 250px !important;
+}
+
+/* ---------- Desktop narrowing ---------- */
+
+@media (max-width: 1350px) {
+    #userinfo {
+        padding-left: 28px !important;
+        padding-right: 28px !important;
+    }
+
+    #userinfo_minor {
+        right: 110px !important;
+        gap: 4px !important;
+    }
+
+    #userinfo_stats {
+        left: 28px !important;
+        gap: 6px !important;
+    }
+
+    #alerts {
+        right: 28px !important;
+    }
+
+    #nav_userinfo > a,
+    #nav_useredit > a,
+    #nav_logout > a,
+    #nav_upload > a,
+    #nav_invite > a,
+    #nav_donate > a,
+    #userinfo_username > li > a,
+    #userinfo_major > li > a {
+        padding-left: 9px !important;
+        padding-right: 9px !important;
+    }
+}
+
+/* =========================================================
+   END v0.3.9 ROBUST HEADER FLEX LAYOUT
    ========================================================= */
