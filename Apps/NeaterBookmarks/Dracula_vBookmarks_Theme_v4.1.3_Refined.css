@@ -1,318 +1,1185 @@
 /*
- * vBookmarks 4.1.x — Dracula / Exo 2
- * Refined custom stylesheet
- * 
- * Author: https://github.com/Neonlinx
+ * RED — Dracula vBookmarks Theme
+ * Author: Neonlinx
+ * Version: 0.3.5
  *
- * Keeps the original Dracula palette, Medium density,
- * cyan neon hover/selection glow and Exo 2 typography.
+ * Changelog 0.3.5:
+ * - HOTFIX: restored the complete logged-in user navigation area.
+ * - Restored username/settings/logout/upload/invite/donate links on the left.
+ * - Restored Inbox/Staff Inbox/Uploads/Bookmarks/Notifications/etc. on the right.
+ * - Restored the upload/download/ratio/token/seeding statistics row.
+ * - Repositioned the user-info blocks independently of the header flow so they
+ *   cannot disappear when header/searchbar geometry changes.
  *
- * Updated for the current vBookmarks UI:
- * - Staging + Recent view
- * - Tab Groups view
- * - modern toolbars and dropdowns
- * - announcements / What's New
- * - submenu flyouts
- * - picker/editor dialogs
- * - new badges and semantic states
+ * Changelog 0.3.4:
+ * - First broad geometry/refinement pass after the structural core became stable.
+ * - Increased usable content width and improved vertical spacing.
+ * - Normalized main/sidebar columns on Home, Wiki and album/torrent pages.
+ * - Fixed oversized forum avatars and post-column proportions.
+ * - Improved forum index/topic row spacing and header alignment.
+ * - Reworked torrent list artwork/info/stat alignment and row breathing room.
+ * - Reworked Top 10 rows so artwork, title/details and numeric columns align at the top.
+ * - Improved Collages, Requests, Rules and Wiki table/form spacing.
+ * - Added safer wrapping/white-space rules for time, size and count columns.
+ * - Kept the Dracula/vBookmarks palette, neon cyan hover and typography unchanged.
+ *
+ * Changelog 0.3.3:
+ * - Removed the external DarkMonoAlt import completely.
+ * - Added a native RED/Gazelle structural core directly into this file.
+ * - Restores horizontal top navigation, user-info rows, search bars,
+ *   centred content geometry, main/sidebar columns and list resets.
+ * - Keeps Dracula/vBookmarks as the visual layer.
+ *
+ * Changelog 0.3.2:
+ * - Switched the structural import back to the original gazellecss DarkMonoAlt URL.
+ * - This is the same structural source known to render correctly in the earlier working V2.
+ * - Dracula/vBookmarks remains the visual layer and is loaded after the base stylesheet.
+ *
+ * Changelog 0.3.1:
+ * - Restored the complete RED/Gazelle structural layout through DarkMonoAlt_v2b.
+ * - Kept DarkMonoAlt_v2b strictly as a compatibility/layout skeleton.
+ * - Dracula/vBookmarks styling is still applied afterwards and remains the visual target.
+ * - Fixes the "unstyled single-page" layout regression seen in v0.3.0:
+ *   vertical menus, bullet lists, full-width sections and lost page geometry.
+ *
+ * Changelog 0.3.0:
+ * - Rebuilt the visual layer around Dracula_vBookmarks_Theme_v4.1.3_Refined.
+ * - Added Exo 2 typography and the vBookmarks Dracula palette.
+ * - Reworked page/header/content backgrounds.
+ * - Cyan links and metadata.
+ * - Added vBookmarks-style cyan neon hover, glow and underline.
+ * - Redesigned search boxes, panels, forum tables and torrent groups.
+ * - Rounded cards and improved borders.
+ *
+ * Architecture:
+ * - Native Gazelle layout core = structural compatibility layer.
+ * - Dracula/vBookmarks rules = visual layer.
+ * - No external RED stylesheet is required.
  */
 
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600&display=swap');
 
+
+/* =========================================================
+   RED / GAZELLE STRUCTURAL CORE
+   Native layout rules required when RED loads an external
+   stylesheet as a complete skin rather than as a small override.
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    min-height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+}
+
+#wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* ----- HEADER FRAME ----- */
+
+#header {
+    position: relative;
+    z-index: 5;
+    width: auto;
+    max-width: 1300px;
+    height: 65px;
+    margin: 0 auto;
+}
+
+/* ----- LOGO ----- */
+
+#logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 8;
+    width: 180px;
+    height: 45px;
+}
+
+    #logo a {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 5;
+        display: block;
+        width: 113px;
+        height: 30px;
+        margin: 8px 0 0 50px;
+        padding: 0;
+    }
+
+/* ----- MAIN TOP NAV ----- */
+
+#menu {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 7;
+    width: 100%;
+    height: 45px;
+    text-align: right;
+}
+
+    #menu ul {
+        margin: 0;
+        padding: 15px 0 0 50px;
+        list-style: none !important;
+    }
+
+        #menu ul li {
+            display: inline !important;
+            list-style: none !important;
+            line-height: 14px;
+        }
+
+            #menu ul li:last-child {
+                margin-right: 55px;
+            }
+
+/* ----- USER INFO ROWS ----- */
+
+#userinfo {
+    overflow: visible;
+    width: 100%;
+}
+
+    #userinfo ul {
+        position: absolute;
+        margin: 0;
+        padding: 0;
+        list-style: none !important;
+    }
+
+    #userinfo li {
+        list-style: none !important;
+    }
+
+#userinfo_username {
+    position: static !important;
+    float: left !important;
+    overflow: hidden;
+    height: 1.5em !important;
+    margin: 62px 0 0 50px;
+    text-align: left;
+}
+
+#userinfo_major {
+    position: static !important;
+    left: 0;
+    z-index: 20;
+    float: left !important;
+    overflow: hidden;
+    height: 1.5em !important;
+    margin: 62px 0 0 5px;
+    text-align: left;
+}
+
+#userinfo_stats {
+    left: 0;
+    z-index: 1;
+    margin: 90px 0 0 50px;
+    font-size: 12px;
+    text-align: right;
+}
+
+#userinfo_minor {
+    right: 0;
+    margin: 62px 50px 0 0;
+    text-align: right;
+}
+
+    #userinfo_username li,
+    #userinfo_major li,
+    #userinfo_stats li,
+    #userinfo_minor li {
+        display: inline !important;
+        line-height: 14px;
+    }
+
+    #userinfo_stats li,
+    #userinfo_major li,
+    #userinfo_username li,
+    #userinfo_minor li {
+        margin-right: 5px;
+    }
+
+    #userinfo_major li,
+    #userinfo_minor li {
+        padding-right: 5px;
+    }
+
+/* ----- ALERTS ----- */
+
+#alerts {
+    position: absolute;
+    top: 90px;
+    right: 55px;
+    z-index: 4;
+    text-align: right;
+}
+
+/* ----- GLOBAL SEARCH BARS ----- */
+
+#searchbars {
+    position: absolute;
+    top: 125px;
+    clear: both;
+    box-sizing: border-box;
+    width: 100%;
+    height: 52px;
+    margin: 0;
+    padding: 12px 5px;
+    text-align: center;
+}
+
+    #searchbars ul {
+        display: inline;
+        margin: 0;
+        padding: 0;
+        list-style: none !important;
+    }
+
+        #searchbars ul li {
+            position: relative;
+            display: inline-block !important;
+            margin-right: 5px;
+            padding: 0;
+            list-style: none !important;
+        }
+
+            #searchbars ul li:last-child {
+                margin-right: 0;
+            }
+
+    #searchbars form {
+        display: inline;
+        margin: 0;
+        padding: 0;
+    }
+
+    #searchbars input {
+        width: 130px;
+    }
+
+/* ----- CONTENT ----- */
+
+#content {
+    position: relative;
+    z-index: 2;
+    clear: both;
+    overflow: hidden;
+    box-sizing: border-box;
+    width: 1050px;
+    min-height: 200px;
+    margin: 125px auto 50px !important;
+    line-height: 1.4em;
+}
+
+    #content .main_column {
+        float: left;
+        width: 69%;
+        margin-left: .5%;
+    }
+
+    #content .sidebar {
+        float: right;
+        width: 27% !important;
+        margin-right: 2%;
+    }
+
+.thin {
+    clear: both;
+    overflow: hidden;
+}
+
+/* ----- BASIC TABLE/LIST STRUCTURE ----- */
+
+table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+ol,
+ul {
+    list-style-position: inside;
+}
+
+    ul.nobullet,
+    #menu ul,
+    #userinfo ul,
+    #searchbars ul {
+        list-style-type: none !important;
+    }
+
+.hidden,
+.hide {
+    display: none !important;
+}
+
+/* ----- COMMON FLOAT HELPERS USED BY GAZELLE ----- */
+
+.float_left {
+    float: left;
+}
+
+.float_right {
+    float: right;
+}
+
+.clear,
+.clearfix {
+    clear: both;
+}
+
+.center {
+    text-align: center;
+}
+
+.right {
+    text-align: right;
+}
+
+.left {
+    text-align: left;
+}
+
+/* ----- HOME / GENERAL COLUMN SAFETY ----- */
+
+.main_column,
+.sidebar,
+.box,
+.box2 {
+    box-sizing: border-box;
+}
+
+.forum_post.box {
+    width: 100%;
+}
+
+.torrent_table,
+.request_table,
+.filelist_table,
+.forum_index,
+.layout,
+.message_table,
+.collage_table,
+.friends_table {
+    width: 100% !important;
+}
+
+/* Prevent browser default bullets from reappearing in navigation. */
+#menu li::marker,
+#userinfo li::marker,
+#searchbars li::marker {
+    content: "";
+}
+
+/* =========================================================
+   END STRUCTURAL CORE
+   ========================================================= */
+
 :root {
+    /* Exact visual language used by our vBookmarks Dracula theme */
+    --red-bg-main: #282A36;
+    --red-bg-panel-top: #2A2D39;
+    --red-bg-panel-bottom: #282A36;
+    --red-bg-elev: #303241;
+    --red-bg-soft: rgba(68, 71, 90, 0.14);
+    --red-bg-soft-strong: rgba(68, 71, 90, 0.88);
+    --red-border-soft: rgba(98, 114, 164, 0.10);
+    --red-border: #6272A4;
+    --red-border-mid: rgba(98, 114, 164, 0.30);
+    --red-text: #EAEAF2;
+    --red-text-folder: #E8C8F1;
+    --red-muted: #A4A9C7;
+    --red-pink: #FF79C6;
+    --red-purple: #BD93F9;
+    --red-cyan: #8BE9FD;
+    --red-green: #50FA7B;
+    --red-yellow: #F1FA8C;
+    --red-orange: #FFB86C;
+    --red-red: #FF5555;
+    --red-hover: rgba(139, 233, 253, 0.16);
+    --red-hover-border: rgba(139, 233, 253, 0.34);
+    --red-hover-glow: rgba(139, 233, 253, 0.10);
+    --red-focus-ring: rgba(139, 233, 253, 0.32);
+    --red-shadow: rgba(0, 0, 0, 0.30);
+    --red-radius: 8px;
+    --red-radius-large: 12px;
+}
 
-    --bg-main: #282A36;
+/* =========================================================
+   TYPOGRAPHY / GLOBAL
+   ========================================================= */
 
-    --bg-panel-top: #2A2D39;
-
-    --bg-panel-bottom: #282A36;
-
-    --bg-soft: rgba(68, 71, 90, 0.14);
-
-    --bg-soft-strong: rgba(68, 71, 90, 0.88);
-
-    --border-soft: rgba(98, 114, 164, 0.10);
-
-    --border-main: #6272A4;
-
-    --text-main: #EAEAF2;
-
-    --text-folder: #E8C8F1;
-
-    --text-soft: #A4A9C7;
-
-    --accent-pink: #FF79C6;
-
-    --accent-purple: #BD93F9;
-
-    --accent-cyan: #8BE9FD;
-
-    --tree-line: rgba(255, 255, 255, 0.05);
-
-    --tree-line-strong: rgba(139, 233, 253, 0.18);
-
-    --ui-font-size: 13px;
-
-    --ui-line-height: 1.35em;
-
-    --item-padding-y: 4px;
-
-    --item-padding-x: 9px;
-
-    --item-margin-y: 2px;
-
-    --item-margin-x: 4px;
-
-    --search-font-size: 13px;
-
-    --search-padding-y: 6px;
-
-    --search-padding-x: 10px;
-
-    --tree-indent: 11px;
-
-    --tree-indent-inner: 9px;
-
-    --tree-connector-top: 14px;
-
-    --tree-connector-width: 9px;
+html,
+body {
+    background: var(--red-bg-main) !important;
+    color: var(--red-text) !important;
 }
 
 body,
 input,
 button,
+select,
+textarea,
+table,
 span,
 a,
-i,
 li,
-ul,
 div {
-    
     font-family: "Exo 2", "Segoe UI", sans-serif !important;
-
-    font-weight: 400 !important;
-
     text-shadow: none !important;
-
     -webkit-font-smoothing: antialiased !important;
     -moz-osx-font-smoothing: grayscale !important;
 }
 
-html,
-body,
-#container,
-#mainSection,
-#results,
-#tree,
-#search {
-    background: var(--bg-main) !important;
-    color: var(--text-main) !important;
+body {
+    font-weight: 400 !important;
 }
 
-#search {
-    
-    border-bottom: 1px solid rgba(98, 114, 164, 0.28) !important;
-
-    padding: 3px 6px !important;
+/* Kill decorative legacy backgrounds inherited from old RED skins. */
+#wrapper,
+#header,
+#content,
+#footer,
+#searchbars,
+#menu,
+#userinfo,
+#alerts,
+#extra1,
+#extra2,
+#extra3,
+#extra4,
+#extra5,
+#extra6 {
+    background-image: none !important;
 }
 
-#search input {
-    
-    background: var(--bg-soft-strong) !important;
-
-    color: var(--text-main) !important;
-
-    border: 1px solid var(--border-main) !important;
-
-    border-radius: 9px !important;
-
-    padding: var(--search-padding-y) var(--search-padding-x) !important;
-
-    font-size: var(--search-font-size) !important;
-
-    line-height: 1.25 !important;
-
-    box-shadow: none !important;
-    text-shadow: none !important;
+#wrapper {
+    background-color: var(--red-bg-main) !important;
 }
 
-#search input::placeholder {
-    color: var(--text-soft) !important;
+::selection {
+    background: rgba(139, 233, 253, 0.28);
+    color: #fff;
 }
 
-#search input:focus {
-    outline: none !important;
-    border-color: var(--accent-cyan) !important;
-    box-shadow: 0 0 0 2px rgba(139, 233, 253, 0.12) !important;
+/* =========================================================
+   LINKS — cyan is the normal vBookmarks/RED accent
+   ========================================================= */
+
+a,
+a:visited,
+#content a,
+#content a:visited,
+.alertbar a,
+.blend a {
+    color: var(--red-cyan) !important;
+    background-color: transparent;
+    text-decoration: none !important;
 }
 
-#results,
-#tree {
-    background: linear-gradient(180deg, var(--bg-panel-top) 0%, var(--bg-panel-bottom) 100%) !important;
+    a:hover,
+    a:focus,
+    #content a:hover,
+    .alertbar a:hover,
+    .blend a:hover {
+        color: var(--red-cyan) !important;
+    }
+
+/* Semantic colours only where they actually communicate state. */
+.ratio_good,
+.uploaded,
+.seeders,
+.seeding,
+.freeleech,
+.freeleech_label,
+.success,
+.good {
+    color: var(--red-green) !important;
 }
 
-#results ul,
-#tree ul {
-    margin: 1px 0 !important;
-    padding: 0 !important;
+.ratio_bad,
+.error,
+.error_message {
+    color: var(--red-red) !important;
 }
 
-#results ul li,
-#tree ul li {
+.leechers,
+.leeching,
+.downloaded,
+.warning,
+.warningbar {
+    color: var(--red-orange) !important;
+}
+
+/* =========================================================
+   PAGE SHELL
+   ========================================================= */
+
+#header {
+    background: linear-gradient(180deg, var(--red-bg-panel-top) 0%, var(--red-bg-panel-bottom) 100%) !important;
+    border: 1px solid var(--red-border-mid) !important;
+    border-top: 0 !important;
+    border-radius: 0 0 var(--red-radius-large) var(--red-radius-large) !important;
+    box-shadow: 0 8px 24px rgba(0,0,0,.16) !important;
+}
+
+#content {
+    background: linear-gradient(180deg, rgba(42,45,57,.96) 0%, var(--red-bg-main) 115px) !important;
+    color: var(--red-text) !important;
+    border: 1px solid var(--red-border-mid) !important;
+    border-radius: var(--red-radius-large) !important;
+    box-shadow: 0 10px 28px rgba(0,0,0,.18) !important;
+    padding: 20px 24px 28px !important;
+}
+
+/* Keep the content visually centred even on wide screens. */
+#content,
+#header {
+    box-sizing: border-box !important;
+}
+
+/* Remove the broad grey strip visible around the search/header area. */
+#searchbars {
     background: transparent !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    position: relative !important;
-}
-
-#results ul li a,
-#tree ul li a,
-#tree ul li > span {
-    
-    position: relative !important;
-
-    color: var(--text-main) !important;
-
-    background: var(--bg-soft) !important;
-
-    padding: var(--item-padding-y) var(--item-padding-x) !important;
-
-    margin: var(--item-margin-y) var(--item-margin-x) !important;
-
-    border-radius: 8px !important;
-
-    line-height: var(--ui-line-height) !important;
-
-    font-size: var(--ui-font-size) !important;
-
-    letter-spacing: 0.1px !important;
-
-    text-decoration: none !important;
-
-    border: 1px solid var(--border-soft) !important;
-
+    border: 0 !important;
     box-shadow: none !important;
-    text-shadow: none !important;
-
-    transition:
-        background-color 0.14s ease,
-        border-color 0.14s ease,
-        transform 0.08s ease !important;
 }
 
-#tree ul li > span,
-#tree ul li a {
-    color: var(--text-folder) !important;
+/* =========================================================
+   LOGO
+   ========================================================= */
+
+#logo {
+    overflow: visible !important;
 }
 
-#results ul li a {
-    color: var(--text-main) !important;
+    #logo a {
+        transform: scale(1.10);
+        transform-origin: left center;
+        overflow: visible !important;
+    }
+
+/* =========================================================
+   TOP NAVIGATION — vBookmarks hover/selection
+   ========================================================= */
+
+#menu ul {
+    overflow: visible !important;
 }
 
-#tree ul ul {
-    margin-left: var(--tree-indent) !important;
-    padding-left: var(--tree-indent) !important;
-    border-left: 1px solid var(--tree-line) !important;
+#menu li {
+    overflow: visible !important;
 }
 
-#tree ul ul ul {
-    margin-left: var(--tree-indent-inner) !important;
-    padding-left: var(--tree-indent) !important;
+#menu a {
+    position: relative !important;
+    display: inline-block !important;
+    color: var(--red-cyan) !important;
+    background: transparent !important;
+    border: 1px solid transparent !important;
+    border-radius: var(--red-radius) !important;
+    padding: 5px 8px !important;
+    margin: 1px 1px !important;
+    transition: background-color .14s ease, border-color .14s ease, box-shadow .14s ease, transform .08s ease !important;
 }
 
-#tree ul ul > li::before {
-    content: "" !important;
-    position: absolute !important;
-    left: calc(var(--tree-indent) * -1) !important;
-    top: var(--tree-connector-top) !important;
-    width: var(--tree-connector-width) !important;
-    height: 1px !important;
-    background: var(--tree-line) !important;
-    pointer-events: none !important;
+    #menu a:hover,
+    #menu a:focus {
+        color: var(--red-cyan) !important;
+        background: var(--red-hover) !important;
+        border-color: var(--red-hover-border) !important;
+        box-shadow: 0 0 8px var(--red-hover-glow) !important;
+        transform: translateY(-1px) !important;
+    }
+
+        /* Cyan underline identical in spirit to vBookmarks. */
+        #menu a:hover::after,
+        #menu a:focus::after {
+            content: "" !important;
+            position: absolute !important;
+            left: 8px !important;
+            right: 8px !important;
+            bottom: 2px !important;
+            height: 2px !important;
+            background: var(--red-cyan) !important;
+            border-radius: 999px !important;
+            pointer-events: none !important;
+        }
+
+/* Current RED section: no more pink square. */
+#index #nav_index a,
+#collage #nav_collages a,
+#forums #nav_forums a,
+#chat #nav_irc a,
+#rules #nav_rules a,
+#staff #nav_staff a,
+#torrents #nav_torrents a,
+#requests #nav_requests a,
+#top10 #nav_top10 a,
+#wiki #nav_wiki a,
+#imagehost #nav_imagehost a {
+    position: relative !important;
+    color: var(--red-cyan) !important;
+    background: var(--red-hover) !important;
+    border: 1px solid var(--red-hover-border) !important;
+    border-radius: var(--red-radius) !important;
+    box-shadow: 0 0 8px var(--red-hover-glow) !important;
 }
 
-#tree ul ul > li:hover::before {
-    background: var(--tree-line-strong) !important;
+    #index #nav_index a::after,
+    #collage #nav_collages a::after,
+    #forums #nav_forums a::after,
+    #chat #nav_irc a::after,
+    #rules #nav_rules a::after,
+    #staff #nav_staff a::after,
+    #torrents #nav_torrents a::after,
+    #requests #nav_requests a::after,
+    #top10 #nav_top10 a::after,
+    #wiki #nav_wiki a::after,
+    #imagehost #nav_imagehost a::after {
+        content: "" !important;
+        position: absolute !important;
+        left: 8px !important;
+        right: 8px !important;
+        bottom: 2px !important;
+        height: 2px !important;
+        background: var(--red-cyan) !important;
+        border-radius: 999px !important;
+    }
+
+/* Secondary account links */
+#userinfo a,
+#userinfo_username a,
+#userinfo_major a,
+#userinfo_minor a {
+    color: var(--red-cyan) !important;
+    background: transparent !important;
 }
 
-#tree ul ul:hover {
-    border-left-color: var(--tree-line-strong) !important;
+    #userinfo a:hover,
+    #userinfo_username a:hover,
+    #userinfo_major a:hover,
+    #userinfo_minor a:hover {
+        color: var(--red-cyan) !important;
+        text-shadow: 0 0 8px rgba(139,233,253,.18) !important;
+    }
+
+/* =========================================================
+   ALERT / STAT BAR
+   ========================================================= */
+
+#alerts {
+    overflow: visible !important;
 }
 
-#results ul li a:hover,
-#tree ul li a:hover,
-#tree ul li > span:hover {
-    background: rgba(139, 233, 253, 0.16) !important;
-    border-color: rgba(139, 233, 253, 0.34) !important;
-    box-shadow: 0 0 8px rgba(139, 233, 253, 0.10) !important;
-    text-decoration: none !important;
-    transform: translateY(-1px) !important;
-}
-
-#results ul li a:hover::after,
-#tree ul li a:hover::after,
-#tree ul li > span:hover::after {
-    content: "" !important;
-    position: absolute !important;
-
-    left: 9px !important;
-    right: 9px !important;
-
-    bottom: 3px !important;
-
-    height: 2px !important;
-
-    background: var(--accent-cyan) !important;
-
+.alertbar,
+.blend {
+    box-sizing: border-box !important;
+    color: var(--red-cyan) !important;
+    background: rgba(68,71,90,.34) !important;
+    border: 1px solid var(--red-border-mid) !important;
     border-radius: 999px !important;
-
-    opacity: 1 !important;
-    pointer-events: none !important;
+    padding: 4px 16px !important;
+    min-height: 24px !important;
+    line-height: 1.35 !important;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.015) !important;
 }
 
-#results ul li a:hover i,
-#tree ul li a:hover i {
-    text-decoration: none !important;
+/* =========================================================
+   SIX GLOBAL SEARCH BARS
+   ========================================================= */
+
+#searchbars ul {
+    overflow: visible !important;
 }
 
-#results ul li a:active,
-#results ul li a.active,
-#results ul li a:focus,
-#tree ul li a:active,
-#tree ul li a.active,
-#tree ul li a:focus,
-#tree ul li > span:active,
-#tree ul li > span.active,
-#tree ul li > span:focus {
-    
-    background: rgba(189, 147, 249, 0.90) !important;
+    #searchbars ul li {
+        overflow: visible !important;
+    }
 
-    color: #282A36 !important;
-
-    border-color: transparent !important;
-    outline: none !important;
+#searchbars input,
+#searchbars input[type="search"],
+#searchbars input[type="text"] {
+    box-sizing: border-box !important;
+    background: var(--red-bg-soft-strong) !important;
+    color: var(--red-text) !important;
+    border: 1px solid var(--red-border) !important;
+    border-radius: 9px !important;
+    padding: 6px 10px !important;
+    height: auto !important;
     box-shadow: none !important;
+    outline: none !important;
+    transition: background-color .14s ease, border-color .14s ease, box-shadow .14s ease, transform .08s ease !important;
 }
 
-#tree ul li > span .twisty {
-    border-color: transparent transparent transparent var(--accent-cyan) !important;
+    #searchbars input:hover {
+        background: var(--red-hover) !important;
+        border-color: var(--red-hover-border) !important;
+        box-shadow: 0 0 8px var(--red-hover-glow) !important;
+        transform: translateY(-1px) !important;
+    }
+
+    #searchbars input:focus {
+        background: rgba(68,71,90,.88) !important;
+        border-color: var(--red-cyan) !important;
+        box-shadow: 0 0 0 2px rgba(139,233,253,.12) !important;
+    }
+
+    #searchbars input::placeholder {
+        color: var(--red-muted) !important;
+        opacity: 1 !important;
+    }
+
+/* =========================================================
+   TITLES / HEADERS
+   ========================================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+#content h1,
+#content h2,
+#content h3 {
+    color: var(--red-text) !important;
+    text-shadow: none !important;
 }
 
-#results ul li a img,
-#results ul li span img,
-#tree ul li a img,
-#tree ul li > span img {
-    opacity: 0.96 !important;
-    filter: saturate(1.04) brightness(1.02) !important;
-    margin-right: 5px !important;
+.head,
+.colhead,
+.colhead_dark,
+thead,
+thead tr,
+table .colhead,
+table .colhead_dark {
+    background: rgba(20, 21, 28, .78) !important;
+    color: var(--red-cyan) !important;
 }
 
-menu[type=context] {
-    background: rgba(40, 42, 54, 0.98) !important;
-    color: var(--text-main) !important;
-    border: 1px solid rgba(98, 114, 164, 0.24) !important;
-    border-radius: 10px !important;
-    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.30) !important;
+/* =========================================================
+   BOXES / PANELS — vBookmarks cards
+   ========================================================= */
+
+.box,
+.box2,
+.sidebar .box,
+.main_column .box,
+.news_post,
+.forum_post,
+.profileinfo,
+.filter_torrents,
+.search_form {
+    background: linear-gradient(180deg, var(--red-bg-panel-top) 0%, var(--red-bg-panel-bottom) 100%) !important;
+    color: var(--red-text) !important;
+    border: 1px solid var(--red-border-mid) !important;
+    border-radius: var(--red-radius-large) !important;
+    box-shadow: 0 6px 18px rgba(0,0,0,.12) !important;
+    overflow: hidden !important;
+}
+
+    .head,
+    .box .head,
+    .box2 .head,
+    .news_post .head,
+    .sidebar .head {
+        background: rgba(20,21,28,.56) !important;
+        border: 0 !important;
+        border-bottom: 1px solid var(--red-border-mid) !important;
+        color: var(--red-cyan) !important;
+        padding: 8px 10px !important;
+    }
+
+        /* Remove legacy little black patches behind inline labels/links. */
+        .head a,
+        .colhead a,
+        .colhead_dark a,
+        .linkbox a,
+        .pagination a,
+        .brackets,
+        .brackets a,
+        .forum_post a,
+        .forum_index a {
+            background-color: transparent !important;
+            background-image: none !important;
+        }
+
+/* =========================================================
+   INPUTS / BUTTONS
+   ========================================================= */
+
+input,
+input[type="search"],
+input[type="text"],
+input[type="password"],
+textarea,
+select {
+    box-sizing: border-box !important;
+    background: var(--red-bg-soft-strong) !important;
+    color: var(--red-text) !important;
+    border: 1px solid var(--red-border) !important;
+    border-radius: 9px !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+    input:hover,
+    textarea:hover,
+    select:hover {
+        border-color: var(--red-hover-border) !important;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+        border-color: var(--red-cyan) !important;
+        box-shadow: 0 0 0 2px rgba(139,233,253,.12) !important;
+    }
+
+    button,
+    input[type="button"],
+    input[type="submit"],
+    input[type="reset"] {
+        color: var(--red-cyan) !important;
+        background: var(--red-bg-soft) !important;
+        border: 1px solid var(--red-border-mid) !important;
+        border-radius: var(--red-radius) !important;
+        padding: 5px 10px !important;
+        transition: background-color .14s ease, border-color .14s ease, box-shadow .14s ease, transform .08s ease !important;
+    }
+
+        button:hover,
+        input[type="button"]:hover,
+        input[type="submit"]:hover,
+        input[type="reset"]:hover {
+            color: var(--red-cyan) !important;
+            background: var(--red-hover) !important;
+            border-color: var(--red-hover-border) !important;
+            box-shadow: 0 0 8px var(--red-hover-glow) !important;
+            transform: translateY(-1px) !important;
+        }
+
+/* =========================================================
+   TABLES
+   ========================================================= */
+
+#content table {
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    color: var(--red-text) !important;
+}
+
+    #content table td,
+    #content table th {
+        border-color: var(--red-border-mid) !important;
+    }
+
+    /* Alternation is deliberately subtle, exactly like vBookmarks cards. */
+    #content table tr.rowa > td,
+    #content table tr:nth-child(odd) > td {
+        background-color: rgba(68,71,90,.16);
+    }
+
+    #content table tr.rowb > td,
+    #content table tr:nth-child(even) > td {
+        background-color: rgba(68,71,90,.08);
+    }
+
+/* =========================================================
+   FORUM INDEX
+   ========================================================= */
+
+#forums #content table {
+    border: 1px solid var(--red-border-mid) !important;
+    border-radius: var(--red-radius-large) !important;
+    overflow: hidden !important;
+}
+
+    #forums #content table tr:first-child th:first-child,
+    #forums #content table tr:first-child td:first-child {
+        border-top-left-radius: var(--red-radius) !important;
+    }
+
+    #forums #content table tr:first-child th:last-child,
+    #forums #content table tr:first-child td:last-child {
+        border-top-right-radius: var(--red-radius) !important;
+    }
+
+    #forums #content table tr:last-child td:first-child {
+        border-bottom-left-radius: var(--red-radius) !important;
+    }
+
+    #forums #content table tr:last-child td:last-child {
+        border-bottom-right-radius: var(--red-radius) !important;
+    }
+
+    /* Complete borders on every side instead of the broken left-only look. */
+    #forums #content table td,
+    #forums #content table th {
+        border-right: 1px solid var(--red-border-mid) !important;
+        border-bottom: 1px solid var(--red-border-mid) !important;
+    }
+
+    #forums #content table tr > *:last-child {
+        border-right: 0 !important;
+    }
+
+    #forums #content table tr:last-child > * {
+        border-bottom: 0 !important;
+    }
+
+    /* vBookmarks style row hover */
+    #forums #content table tbody tr {
+        position: relative;
+        transition: background-color .14s ease, box-shadow .14s ease !important;
+    }
+
+        #forums #content table tbody tr:hover > td {
+            background: var(--red-hover) !important;
+            border-color: var(--red-hover-border) !important;
+        }
+
+        #forums #content table tbody tr:hover {
+            box-shadow: inset 3px 0 0 var(--red-cyan), 0 0 8px var(--red-hover-glow) !important;
+        }
+
+    #forums #content table a {
+        color: var(--red-cyan) !important;
+    }
+
+/* Unread Topics and similar tiny links: give them room. */
+#forums .linkbox {
+    line-height: 1.8 !important;
+}
+
+    #forums .linkbox a,
+    #forums .pagination a {
+        display: inline-block !important;
+        padding: 3px 7px !important;
+        margin: 1px !important;
+        color: var(--red-cyan) !important;
+        background: var(--red-bg-soft) !important;
+        border: 1px solid var(--red-border-soft) !important;
+        border-radius: 7px !important;
+        transition: background-color .14s ease, border-color .14s ease, box-shadow .14s ease !important;
+    }
+
+        #forums .linkbox a:hover,
+        #forums .pagination a:hover {
+            background: var(--red-hover) !important;
+            border-color: var(--red-hover-border) !important;
+            box-shadow: 0 0 8px var(--red-hover-glow) !important;
+        }
+
+/* =========================================================
+   FORUM POSTS
+   ========================================================= */
+
+.forum_post {
+    border-radius: var(--red-radius-large) !important;
+    overflow: hidden !important;
+}
+
+    .forum_post td,
+    .forum_post .body,
+    .forum_post .avatar {
+        background-color: transparent !important;
+        border-color: var(--red-border-mid) !important;
+    }
+
+blockquote,
+.quote,
+code,
+pre {
+    background: rgba(68,71,90,.30) !important;
+    color: var(--red-text) !important;
+    border: 1px solid var(--red-border-mid) !important;
+    border-radius: var(--red-radius) !important;
+}
+
+blockquote,
+.quote {
+    border-left: 3px solid var(--red-cyan) !important;
+}
+
+/* =========================================================
+   TORRENTS
+   ========================================================= */
+
+#torrents #torrent_table,
+#torrent_table {
+    border: 1px solid var(--red-border-mid) !important;
+    border-radius: var(--red-radius-large) !important;
+    overflow: hidden !important;
+}
+
+    /* Restore a visible continuous outer edge. */
+    #torrent_table > tbody > tr > td:first-child {
+        border-left: 0 !important;
+    }
+
+    #torrent_table > tbody > tr > td:last-child {
+        border-right: 0 !important;
+    }
+
+    #torrent_table > tbody > tr:last-child > td {
+        border-bottom: 0 !important;
+    }
+
+    /* Album / release group card */
+    #torrent_table tr.group > td {
+        background: rgba(48,50,65,.76) !important;
+    }
+
+    /* Edition headers */
+    #torrent_table tr.group_torrent > td,
+    #torrent_table tr.edition > td {
+        background: rgba(68,71,90,.26) !important;
+    }
+
+    /* Individual torrent row */
+    #torrent_table tr.torrent > td,
+    #torrent_table tr.torrent_row > td {
+        background: rgba(68,71,90,.10) !important;
+    }
+
+    /*
+ * This is the requested vBookmarks-like cyan hover:
+ * translucent fill + thin neon edge/glow.
+ */
+    #torrent_table tr.group,
+    #torrent_table tr.group_torrent,
+    #torrent_table tr.torrent,
+    #torrent_table tr.torrent_row {
+        transition: background-color .14s ease, border-color .14s ease, box-shadow .14s ease !important;
+    }
+
+        #torrent_table tr.group:hover > td,
+        #torrent_table tr.group_torrent:hover > td,
+        #torrent_table tr.torrent:hover > td,
+        #torrent_table tr.torrent_row:hover > td {
+            background: var(--red-hover) !important;
+            border-color: var(--red-hover-border) !important;
+        }
+
+        #torrent_table tr.group:hover,
+        #torrent_table tr.group_torrent:hover,
+        #torrent_table tr.torrent:hover,
+        #torrent_table tr.torrent_row:hover {
+            box-shadow: inset 3px 0 0 var(--red-cyan), 0 0 8px var(--red-hover-glow) !important;
+        }
+
+    #torrent_table a,
+    #torrent_table .torrent_info,
+    #torrent_table .tags a {
+        color: var(--red-cyan) !important;
+    }
+
+        #torrent_table .tags,
+        #torrent_table .torrent_info .tags {
+            color: var(--red-muted) !important;
+        }
+
+    /* Preserve warnings/features semantically rather than making everything cyan. */
+    #torrent_table .freeleech,
+    #torrent_table .freeleech_label {
+        color: var(--red-green) !important;
+    }
+
+    #torrent_table .trumpable,
+    #torrent_table .warning {
+        color: var(--red-yellow) !important;
+    }
+
+/* =========================================================
+   PAGINATION
+   ========================================================= */
+
+.pagination,
+.linkbox {
+    color: var(--red-muted) !important;
+}
+
+    .pagination a,
+    .linkbox a {
+        position: relative !important;
+        color: var(--red-cyan) !important;
+        background: transparent !important;
+        border-radius: 6px !important;
+    }
+
+        .pagination a:hover,
+        .linkbox a:hover {
+            background: var(--red-hover) !important;
+            box-shadow: 0 0 8px var(--red-hover-glow) !important;
+        }
+
+/* =========================================================
+   FLOATING INDICATOR BOXES
+   ========================================================= */
+
+#noty_bottomRight_layout_container > li,
+.noty_bar,
+.noty_message,
+.notification,
+.tooltip,
+.ui-tooltip {
+    background: linear-gradient(180deg, var(--red-bg-panel-top), var(--red-bg-panel-bottom)) !important;
+    color: var(--red-text) !important;
+    border: 1px solid var(--red-border-mid) !important;
+    border-radius: var(--red-radius-large) !important;
+    box-shadow: 0 8px 24px rgba(0,0,0,.24) !important;
+}
+
+/* =========================================================
+   AUTOCOMPLETE / POPUPS
+   ========================================================= */
+
+#artistcomplete,
+#torrentscomplete,
+.ui-autocomplete,
+.autocomplete,
+.ui-menu {
+    background: rgba(40,42,54,.98) !important;
+    color: var(--red-text) !important;
+    border: 1px solid var(--red-border-mid) !important;
+    border-radius: var(--red-radius) !important;
+    box-shadow: 0 10px 24px rgba(0,0,0,.30) !important;
+    overflow: hidden !important;
+}
+
+    #artistcomplete li.highlight,
+    #torrentscomplete li.highlight,
+    .ui-menu-item:hover {
+        background: var(--red-hover) !important;
+        color: var(--red-cyan) !important;
+    }
+
+/* =========================================================
+   SCROLLBAR — same family as vBookmarks
+   ========================================================= */
+
+* {
+    scrollbar-color: #6272A4 var(--red-bg-main);
 }
 
 ::-webkit-scrollbar {
@@ -322,1332 +1189,750 @@ menu[type=context] {
 
 ::-webkit-scrollbar-track,
 ::-webkit-scrollbar-track-piece {
-    background: var(--bg-main) !important;
+    background: var(--red-bg-main) !important;
     border-radius: 13px !important;
 }
 
 ::-webkit-scrollbar-thumb {
     background: linear-gradient(180deg, #55618D 0%, #8BE9FD 100%) !important;
     border-radius: 13px !important;
-    border: 3px solid var(--bg-main) !important;
+    border: 3px solid var(--red-bg-main) !important;
 }
 
-::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, #8BE9FD 0%, #BD93F9 100%) !important;
-}
+    ::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(180deg, #8BE9FD 0%, #BD93F9 100%) !important;
+    }
 
 ::-webkit-scrollbar-corner {
-    background: var(--bg-main) !important;
+    background: var(--red-bg-main) !important;
 }
 
-:root {
-    --vbm-bg: var(--bg-main);
-    --vbm-bg-elev: #303241;
-    --vbm-bg-hover: rgba(139, 233, 253, 0.16);
-    --vbm-bg-selected: rgba(189, 147, 249, 0.90);
+/* =========================================================
+   FOOTER
+   ========================================================= */
 
-    --vbm-fg: var(--text-main);
-    --vbm-fg-selected: #282A36;
-    --vbm-muted: var(--text-soft);
-
-    --vbm-border: rgba(98, 114, 164, 0.30);
-    --vbm-accent: var(--accent-cyan);
-    --vbm-accent-fg: #282A36;
-    --vbm-focus-ring: rgba(139, 233, 253, 0.32);
-
-    --vbm-danger: #FF5555;
-    --vbm-danger-fg: #282A36;
-    --vbm-warning: #F1FA8C;
-    --vbm-warning-fg: #282A36;
-
-    --vbm-scrim: rgba(0, 0, 0, 0.62);
-    --vbm-shadow: rgba(0, 0, 0, 0.48);
-    --vbm-flash: rgba(189, 147, 249, 0.24);
-
-    --vbm-scrollbar: #6272A4;
-    --vbm-scrollbar-hover: var(--accent-cyan);
-    --vbm-radius: 8px;
-
-    --vbm-row-h: 28px;
-    --vbm-indent: 12px;
+#footer {
+    background: linear-gradient(180deg, var(--red-bg-panel-top), var(--red-bg-panel-bottom)) !important;
+    color: var(--red-muted) !important;
+    border: 1px solid var(--red-border-mid) !important;
+    border-radius: var(--red-radius-large) !important;
+    box-shadow: 0 8px 24px rgba(0,0,0,.16) !important;
 }
 
-body,
-input,
-button,
-select,
-textarea,
-menu,
-kbd,
-.vbm-row,
-.view-tab,
-.menu-item,
-.palette-row,
-.dialog {
-    font-family: "Exo 2", "Segoe UI", sans-serif !important;
-    font-weight: 400 !important;
-    text-shadow: none !important;
+    #footer a {
+        color: var(--red-cyan) !important;
+    }
+
+
+/* =========================================================
+   v0.3.4 — GEOMETRY / SPACING REFINEMENT
+   This block intentionally comes last so it can correct the
+   native RED core without changing the established Dracula look.
+   ========================================================= */
+
+/* ---------- Global page proportions ---------- */
+
+#header {
+    max-width: 1320px !important;
 }
 
-#tree ul li > span {
-    position: relative !important;
-    color: var(--text-folder) !important;
-    background: var(--bg-soft) !important;
-    padding: var(--item-padding-y) var(--item-padding-x) !important;
-    margin: var(--item-margin-y) var(--item-margin-x) !important;
-    border: 1px solid var(--border-soft) !important;
-    border-radius: 8px !important;
-    line-height: var(--ui-line-height) !important;
-    font-size: var(--ui-font-size) !important;
-    letter-spacing: 0.1px !important;
+#content {
+    width: min(1180px, calc(100% - 56px)) !important;
+    padding: 20px 24px 28px !important;
 }
 
-#results ul li a,
-#tree ul li a {
-    position: relative !important;
-    background: var(--bg-soft) !important;
-    padding: var(--item-padding-y) var(--item-padding-x) !important;
-    margin: var(--item-margin-y) var(--item-margin-x) !important;
-    border: 1px solid var(--border-soft) !important;
-    border-radius: 8px !important;
-    line-height: var(--ui-line-height) !important;
-    font-size: var(--ui-font-size) !important;
-    letter-spacing: 0.1px !important;
+#searchbars {
+    padding-left: 28px !important;
+    padding-right: 28px !important;
 }
 
-#tree ul li > span,
-#tree ul li a.link-folder {
-    color: var(--text-folder) !important;
+    #searchbars input {
+        min-width: 145px !important;
+    }
+
+/* More comfortable rhythm between RED's major blocks. */
+#content > .thin > h2,
+#content > .thin > .header,
+#content .main_column > .box,
+#content .sidebar > .box,
+#content .forum_list,
+#content .torrent_table,
+#content .request_table,
+#content .collage_table,
+#content .search_form,
+#content .filter_torrents {
+    margin-bottom: 12px !important;
 }
 
-#tree ul li a:not(.link-folder),
-#results ul li a {
-    color: var(--text-main) !important;
+.box .body,
+.box2 .body,
+.box.pad,
+.box2.pad {
+    line-height: 1.45 !important;
 }
 
-#results ul li a:hover,
-#tree ul li a:hover,
-#tree ul li > span:hover,
-#recent-list ul li a:hover,
-#stats-list ul li a:hover,
-#dead-list ul li a:hover,
-#dupes-list ul li a:hover,
-.search-history-row a:hover,
-.palette-row:hover,
-.menu-item:hover {
-    background: rgba(139, 233, 253, 0.16) !important;
-    border-color: rgba(139, 233, 253, 0.34) !important;
-    box-shadow: 0 0 8px rgba(139, 233, 253, 0.10) !important;
+/* ---------- Home ---------- */
+
+#index #content .main_column {
+    width: 70% !important;
+    margin-left: 0 !important;
 }
 
-#results ul li a:hover::after,
-#tree ul li a:hover::after,
-#tree ul li > span:hover::after,
-#recent-list ul li a:hover::after,
-#stats-list ul li a:hover::after,
-#dead-list ul li a:hover::after,
-#dupes-list ul li a:hover::after {
-    content: "" !important;
+#index #content .sidebar {
+    width: 28% !important;
+    margin-right: 0 !important;
+}
+
+#index .news_post .body {
+    padding: 12px !important;
+}
+
+#index .sidebar .box .pad,
+#index .sidebar .box .body {
+    padding: 10px !important;
+}
+
+#index .sidebar .box {
+    margin-bottom: 12px !important;
+}
+
+/* ---------- Search / filter forms ---------- */
+
+.search_form td,
+.filter_torrents td,
+.request_table td {
+    vertical-align: middle !important;
+}
+
+.search_form td,
+.filter_torrents td {
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
+}
+
+    .search_form td.label,
+    .filter_torrents td.label {
+        padding-right: 12px !important;
+    }
+
+#torrents .filter_torrents input[type="text"],
+#torrents .filter_torrents input[type="search"] {
+    min-height: 26px !important;
+}
+
+#torrents .filter_torrents select,
+#requests .search_form select,
+#collage .search_form select {
+    min-height: 26px !important;
+}
+
+#torrents .filter_torrents .cat_list td,
+#requests .search_form td,
+#collage .search_form td {
+    line-height: 1.35 !important;
+}
+
+/* ---------- Generic table rhythm ---------- */
+
+#content table td,
+#content table th {
+    line-height: 1.32 !important;
+}
+
+#content table th,
+#content .colhead td,
+#content .colhead_dark td {
+    vertical-align: middle !important;
+}
+
+#content table tbody td {
+    vertical-align: middle;
+}
+
+/* Avoid ugly two-line time/size/count cells where space is available. */
+.torrent_table td:nth-last-child(-n+5),
+.request_table td:nth-last-child(-n+5),
+.collage_table td:nth-last-child(-n+5) {
+    white-space: nowrap;
+}
+
+/* ---------- Torrent search results ---------- */
+
+#torrents #torrent_table {
+    table-layout: auto !important;
+}
+
+    #torrents #torrent_table tr.group > td {
+        padding-top: 10px !important;
+        padding-bottom: 10px !important;
+        vertical-align: middle !important;
+    }
+
+    #torrents #torrent_table tr.group_torrent > td,
+    #torrents #torrent_table tr.torrent > td,
+    #torrents #torrent_table tr.torrent_row > td {
+        padding-top: 6px !important;
+        padding-bottom: 6px !important;
+        vertical-align: middle !important;
+    }
+
+    #torrents #torrent_table .group_image,
+    #torrents #torrent_table td.group_image {
+        width: 88px !important;
+        min-width: 88px !important;
+        vertical-align: middle !important;
+    }
+
+        #torrents #torrent_table .group_image img,
+        #torrents #torrent_table tr.group img {
+            width: 74px !important;
+            height: 74px !important;
+            max-width: 74px !important;
+            max-height: 74px !important;
+            object-fit: cover !important;
+            margin: 2px 8px 2px 2px !important;
+            border-radius: 5px !important;
+        }
+
+    #torrents #torrent_table .group_info {
+        width: auto !important;
+        height: auto !important;
+        padding: 4px 8px !important;
+        vertical-align: middle !important;
+    }
+
+        #torrents #torrent_table .group_info .tags {
+            margin-top: 3px !important;
+            line-height: 1.25 !important;
+        }
+
+    #torrents #torrent_table td.small,
+    #torrents #torrent_table td.number_column {
+        vertical-align: middle !important;
+        text-align: center !important;
+    }
+
+    /* Give file/time/size/activity columns enough room to remain legible. */
+    #torrents #torrent_table td:nth-last-child(6),
+    #torrents #torrent_table th:nth-last-child(6) {
+        min-width: 42px;
+    }
+
+    #torrents #torrent_table td:nth-last-child(5),
+    #torrents #torrent_table th:nth-last-child(5) {
+        min-width: 70px;
+    }
+
+    #torrents #torrent_table td:nth-last-child(4),
+    #torrents #torrent_table th:nth-last-child(4) {
+        min-width: 78px;
+    }
+
+/* ---------- Individual album/torrent page ---------- */
+
+#torrents .main_column {
+    width: 70% !important;
+    margin-left: 0 !important;
+}
+
+#torrents .sidebar {
+    width: 28% !important;
+    margin-right: 0 !important;
+}
+
+    #torrents .sidebar .box {
+        margin-bottom: 10px !important;
+    }
+
+        #torrents .sidebar .box .head {
+            padding: 8px 10px !important;
+        }
+
+        #torrents .sidebar .box .body,
+        #torrents .sidebar .box .pad {
+            padding: 10px !important;
+        }
+
+#torrents .torrentdetails,
+#torrents .torrent_description {
+    line-height: 1.45 !important;
+}
+
+/* ---------- Forum index / topic list ---------- */
+
+#forums .forum_index,
+#forums .forum_list table {
+    table-layout: auto !important;
+}
+
+    #forums .forum_index th,
+    #forums .forum_index td,
+    #forums .forum_list th,
+    #forums .forum_list td {
+        padding: 6px 8px !important;
+        vertical-align: middle !important;
+    }
+
+        #forums .forum_index td:first-child,
+        #forums .forum_list td:first-child {
+            width: 20px !important;
+            min-width: 20px !important;
+            padding-left: 5px !important;
+            padding-right: 5px !important;
+        }
+
+        #forums .forum_index td:nth-last-child(-n+2),
+        #forums .forum_index th:nth-last-child(-n+2) {
+            width: 72px !important;
+            text-align: center !important;
+            white-space: nowrap !important;
+        }
+
+        #forums .forum_list td:nth-last-child(-n+2),
+        #forums .forum_list th:nth-last-child(-n+2) {
+            white-space: nowrap !important;
+        }
+
+#forums .forum_list .forum_index td:nth-child(2) {
+    width: 24% !important;
+}
+
+/* ---------- Forum posts / AVATARS ---------- */
+
+#forums .forum_post {
+    table-layout: fixed !important;
+}
+
+    #forums .forum_post .avatar,
+    #forums .forum_post td.avatar {
+        width: 132px !important;
+        min-width: 132px !important;
+        max-width: 132px !important;
+        padding: 10px !important;
+        vertical-align: top !important;
+        text-align: center !important;
+        overflow: hidden !important;
+    }
+
+        #forums .forum_post .avatar img,
+        #forums .forum_post td.avatar img,
+        #forums .forum_post img.avatar {
+            display: block !important;
+            width: auto !important;
+            height: auto !important;
+            max-width: 112px !important;
+            max-height: 150px !important;
+            margin: 0 auto 6px !important;
+            object-fit: contain !important;
+        }
+
+    #forums .forum_post .body,
+    #forums .forum_post td.body {
+        width: auto !important;
+        padding: 14px 16px !important;
+        vertical-align: top !important;
+        line-height: 1.48 !important;
+        overflow-wrap: anywhere !important;
+    }
+
+    #forums .forum_post .head,
+    #forums .forum_post tr.colhead_dark td {
+        padding: 6px 9px !important;
+    }
+
+    #forums .forum_post + .forum_post {
+        margin-top: 12px !important;
+    }
+
+/* ---------- Collages ---------- */
+
+#collage .search_form {
+    padding: 12px !important;
+}
+
+#collage .collage_table td,
+#collage .collage_table th {
+    padding: 7px 9px !important;
+}
+
+    #collage .collage_table td:first-child {
+        width: 70px !important;
+    }
+
+    #collage .collage_table td:nth-last-child(-n+4),
+    #collage .collage_table th:nth-last-child(-n+4) {
+        text-align: center !important;
+        white-space: nowrap !important;
+    }
+
+/* ---------- Requests ---------- */
+
+#requests .search_form {
+    padding: 12px !important;
+}
+
+#requests .request_table td,
+#requests .request_table th {
+    padding: 7px 9px !important;
+}
+
+    #requests .request_table td:nth-last-child(-n+6),
+    #requests .request_table th:nth-last-child(-n+6) {
+        text-align: center !important;
+        white-space: nowrap !important;
+    }
+
+/* ---------- TOP 10 ----------
+   RED's Top 10 uses torrent rows differently from the normal torrent page.
+   Force each release to behave like a clean media row: artwork left,
+   descriptive data top-aligned, statistics aligned in their own columns.
+   ----------------------------------------------------- */
+
+#top10 .torrent_table {
+    table-layout: auto !important;
+}
+
+    #top10 .torrent_table tr.group > td,
+    #top10 .torrent_table tr.torrent > td,
+    #top10 .torrent_table tr.torrent_row > td {
+        padding: 10px 8px !important;
+        vertical-align: top !important;
+    }
+
+    #top10 .torrent_table .group_image,
+    #top10 .torrent_table td.group_image {
+        width: 100px !important;
+        min-width: 100px !important;
+        vertical-align: top !important;
+    }
+
+        #top10 .torrent_table .group_image img,
+        #top10 .torrent_table tr.group img,
+        #top10 .torrent_table tr.torrent img,
+        #top10 .torrent_table tr.torrent_row img {
+            width: 84px !important;
+            height: 84px !important;
+            max-width: 84px !important;
+            max-height: 84px !important;
+            object-fit: cover !important;
+            margin: 0 8px 0 0 !important;
+            border-radius: 5px !important;
+        }
+
+    #top10 .torrent_table .group_info {
+        display: table-cell !important;
+        width: auto !important;
+        height: auto !important;
+        padding: 0 10px 0 0 !important;
+        vertical-align: top !important;
+        line-height: 1.42 !important;
+    }
+
+        #top10 .torrent_table .group_info .tags,
+        #top10 .torrent_table .tags {
+            margin-top: 4px !important;
+            line-height: 1.3 !important;
+            white-space: normal !important;
+        }
+
+    /* Numeric/stat columns: keep them narrow, top aligned and readable. */
+    #top10 .torrent_table td:nth-last-child(-n+6),
+    #top10 .torrent_table th:nth-last-child(-n+6) {
+        vertical-align: top !important;
+        text-align: center !important;
+        white-space: nowrap !important;
+        padding-left: 6px !important;
+        padding-right: 6px !important;
+    }
+
+    #top10 .torrent_table td:nth-last-child(6),
+    #top10 .torrent_table th:nth-last-child(6) {
+        min-width: 72px !important;
+    }
+
+    #top10 .torrent_table td:nth-last-child(5),
+    #top10 .torrent_table th:nth-last-child(5) {
+        min-width: 66px !important;
+    }
+
+    #top10 .torrent_table tr.group {
+        min-height: 104px !important;
+    }
+
+/* ---------- Wiki ---------- */
+
+#wiki .main_column {
+    width: 70% !important;
+    margin-left: 0 !important;
+}
+
+#wiki .sidebar {
+    width: 28% !important;
+    margin-right: 0 !important;
+}
+
+    #wiki .main_column > .box,
+    #wiki .sidebar > .box {
+        margin-bottom: 12px !important;
+    }
+
+    #wiki .main_column .box .body,
+    #wiki .main_column .box .pad,
+    #wiki .sidebar .box .body,
+    #wiki .sidebar .box .pad {
+        padding: 11px !important;
+    }
+
+#wiki .main_column li {
+    margin-top: 2px !important;
+    margin-bottom: 2px !important;
+}
+
+/* ---------- Rules ---------- */
+
+#rules .rule_summary,
+#rules .rule_table,
+#rules #actual_rules {
+    padding: 14px 16px !important;
+}
+
+    #rules .rule_table td,
+    #rules .rule_table th {
+        padding: 7px 10px !important;
+        vertical-align: top !important;
+    }
+
+    #rules #actual_rules li,
+    #rules .rule_summary li {
+        margin-bottom: 5px !important;
+        line-height: 1.45 !important;
+    }
+
+/* ---------- Notifications ---------- */
+
+#noty_bottomRight_layout_container {
+    right: 20px !important;
+    bottom: 16px !important;
+}
+
+    #noty_bottomRight_layout_container > li {
+        min-width: 285px !important;
+    }
+
+/* ---------- Wide-screen breathing room ---------- */
+
+@media (min-width: 1500px) {
+    #content {
+        width: 1200px !important;
+    }
+
+    #header {
+        max-width: 1320px !important;
+    }
+}
+
+/* Keep the structural core usable on narrower desktop windows. */
+@media (max-width: 1220px) {
+    #content {
+        width: calc(100% - 32px) !important;
+    }
+
+    #index #content .main_column,
+    #torrents .main_column,
+    #wiki .main_column {
+        width: 69% !important;
+    }
+
+    #index #content .sidebar,
+    #torrents .sidebar,
+    #wiki .sidebar {
+        width: 29% !important;
+    }
+}
+
+/* =========================================================
+   END v0.3.4 REFINEMENT
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.5 HOTFIX — LOGGED-IN USER NAVIGATION
+   These controls are essential on RED. Keep them absolutely
+   positioned so future header/layout refinements cannot hide them.
+   ========================================================= */
+
+#header {
+    min-height: 78px !important;
+    overflow: visible !important;
+}
+
+/* Userinfo is an overlay layer inside the header. */
+#userinfo {
     position: absolute !important;
-    left: 9px !important;
-    right: 9px !important;
-    bottom: 3px !important;
-    height: 2px !important;
-    background: var(--accent-cyan) !important;
-    border-radius: 999px !important;
-    pointer-events: none !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 30 !important;
+    display: block !important;
+    visibility: visible !important;
+    overflow: visible !important;
+    width: 100% !important;
+    height: 0 !important;
 }
 
-#results ul li a:hover i,
-#tree ul li a:hover i,
-#recent-list ul li a:hover i,
-#stats-list ul li a:hover i,
-#dead-list ul li a:hover i,
-#dupes-list ul li a:hover i {
-    text-decoration: none !important;
+/* Make absolutely sure RED does not hide any of the four lists. */
+#userinfo_username,
+#userinfo_major,
+#userinfo_minor,
+#userinfo_stats {
+    position: absolute !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    float: none !important;
+    overflow: visible !important;
+    height: auto !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    z-index: 31 !important;
+    white-space: nowrap !important;
+    list-style: none !important;
 }
 
-#recent-list,
-#stats-list,
-#dead-list,
-#dupes-list,
-#search-history-area,
-#palette-results {
-    background: linear-gradient(
-        180deg,
-        var(--bg-panel-top) 0%,
-        var(--bg-panel-bottom) 100%
-    ) !important;
-    color: var(--text-main) !important;
+/* Left row: Neonlinx / Settings / Logout */
+#userinfo_username {
+    top: 58px !important;
+    left: 48px !important;
+    right: auto !important;
+    text-align: left !important;
 }
 
-#recent-list ul li a,
-#stats-list ul li a,
-#dead-list ul li a,
-#dupes-list ul li a,
-.search-history-row a {
-    position: relative !important;
-    color: var(--text-main) !important;
-    background: var(--bg-soft) !important;
-    padding: var(--item-padding-y) var(--item-padding-x) !important;
-    margin: var(--item-margin-y) var(--item-margin-x) !important;
-    border: 1px solid var(--border-soft) !important;
-    border-radius: 8px !important;
-    line-height: var(--ui-line-height) !important;
-    font-size: var(--ui-font-size) !important;
+/* Left row continuation: Upload / Invite / Donate */
+#userinfo_major {
+    top: 58px !important;
+    left: 185px !important;
+    right: auto !important;
+    text-align: left !important;
 }
 
-.vbm-row .row-sub,
-.vbm-row .row-path,
-.history-meta,
-.history-time,
-.recent-group-head,
-.search-history-head,
-.stats-section-head,
-.palette-url,
-.palette-slash {
-    color: var(--text-soft) !important;
+/* Right row: Inbox / Staff Inbox / Uploads / Bookmarks / ... */
+#userinfo_minor {
+    top: 58px !important;
+    right: 48px !important;
+    left: auto !important;
+    text-align: right !important;
 }
 
-#view-tabs {
-    background: #242631 !important;
-    border-bottom-color: rgba(98, 114, 164, 0.30) !important;
-}
-
-.view-tab {
-    color: var(--text-soft) !important;
+/* Stats line below the left account links. */
+#userinfo_stats {
+    top: 84px !important;
+    left: 48px !important;
+    right: auto !important;
+    text-align: left !important;
     font-size: 12px !important;
-    transition:
-        background-color 0.14s ease,
-        color 0.14s ease !important;
 }
 
-.view-tab:hover {
-    background: rgba(139, 233, 253, 0.12) !important;
-    color: var(--text-main) !important;
+    /* Keep list items horizontal and clickable. */
+    #userinfo_username li,
+    #userinfo_major li,
+    #userinfo_minor li,
+    #userinfo_stats li {
+        display: inline-block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        width: auto !important;
+        height: auto !important;
+        margin: 0 8px 0 0 !important;
+        padding: 0 !important;
+        line-height: 18px !important;
+        list-style: none !important;
+    }
+
+#userinfo_minor li {
+    margin-right: 7px !important;
 }
 
-.view-tab[aria-selected="true"] {
-    color: var(--accent-cyan) !important;
-    background: rgba(139, 233, 253, 0.08) !important;
-}
+    #userinfo_minor li:last-child,
+    #userinfo_major li:last-child,
+    #userinfo_username li:last-child,
+    #userinfo_stats li:last-child {
+        margin-right: 0 !important;
+    }
 
-.tab-indicator {
-    background: linear-gradient(
-        90deg,
-        var(--accent-cyan),
-        var(--accent-purple)
-    ) !important;
-    box-shadow: 0 0 7px rgba(139, 233, 253, 0.35) !important;
-}
-
-#search {
-    background: var(--bg-main) !important;
-    padding: 3px 6px !important;
-    gap: 0 !important;
-}
-
-#search-field {
-    min-width: 0 !important;
-}
-
-#search input {
-    background: var(--bg-soft-strong) !important;
-    color: var(--text-main) !important;
-    border-color: var(--border-main) !important;
-    border-radius: 9px !important;
-    font-size: var(--search-font-size) !important;
-}
-
-#search .vbm-icon-search,
-#search-clear {
-    color: var(--text-soft) !important;
-}
-
-#search-clear:hover {
-    color: var(--accent-cyan) !important;
-    background: rgba(139, 233, 253, 0.12) !important;
-}
-
-#quick-add-btn,
-#tool-btn {
-    background: var(--bg-soft-strong) !important;
-    color: var(--text-soft) !important;
-    border-color: var(--border-main) !important;
-    border-radius: 9px !important;
-}
-
-#quick-add-btn:hover,
-#tool-btn:hover,
-#quick-add-btn.starred {
-    background: rgba(139, 233, 253, 0.14) !important;
-    color: var(--accent-cyan) !important;
-    border-color: var(--accent-cyan) !important;
-    box-shadow: 0 0 8px rgba(139, 233, 253, 0.12) !important;
-}
-
-menu[type="context"] {
-    background: rgba(40, 42, 54, 0.98) !important;
-    color: var(--text-main) !important;
-    border-color: rgba(189, 147, 249, 0.32) !important;
-    border-radius: 10px !important;
-    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.42) !important;
-}
-
-menu[type="context"] .menu-item {
-    color: var(--text-main) !important;
-    border-radius: 7px !important;
-    margin: 1px 5px !important;
-    padding: 0 9px !important;
-    font-size: var(--ui-font-size) !important;
-}
-
-menu[type="context"] .menu-item:hover,
-menu[type="context"] .menu-item:focus {
-    background: rgba(139, 233, 253, 0.16) !important;
-    color: #FFFFFF !important;
-    outline-color: rgba(139, 233, 253, 0.32) !important;
-}
-
-menu[type="context"] hr {
-    background-color: rgba(98, 114, 164, 0.35) !important;
-}
-
-#command-palette {
-    background: rgba(40, 42, 54, 0.985) !important;
-    color: var(--text-main) !important;
-    border-color: rgba(189, 147, 249, 0.35) !important;
-    border-radius: 12px !important;
-    box-shadow:
-        0 18px 44px rgba(0, 0, 0, 0.50),
-        0 0 18px rgba(139, 233, 253, 0.08) !important;
-}
-
-#palette-input {
-    background: #303241 !important;
-    color: var(--text-main) !important;
-    border-color: var(--border-main) !important;
-    font-size: var(--ui-font-size) !important;
-}
-
-.palette-row {
-    color: var(--text-main) !important;
-    border: 1px solid transparent !important;
-    border-radius: 7px !important;
-}
-
-.palette-row.selected,
-.palette-row.selected:hover {
-    background: rgba(189, 147, 249, 0.90) !important;
-    color: #282A36 !important;
-    border-color: transparent !important;
-}
-
-.palette-row.selected .palette-url,
-.palette-row.selected .palette-slash {
-    color: #282A36 !important;
-}
-
-#palette-close {
-    color: var(--text-soft) !important;
-    border-top-color: rgba(98, 114, 164, 0.30) !important;
-}
-
-#palette-close:hover {
-    background: rgba(139, 233, 253, 0.10) !important;
-    color: var(--accent-cyan) !important;
-}
-
-.dialog {
-    background: linear-gradient(
-        180deg,
-        #303241 0%,
-        var(--bg-main) 100%
-    ) !important;
-    color: var(--text-main) !important;
-    border-color: rgba(98, 114, 164, 0.35) !important;
-    border-radius: 12px !important;
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.48) !important;
-}
-
-.dialog input,
-.dialog select {
-    background: #303241 !important;
-    color: var(--text-main) !important;
-    border-color: var(--border-main) !important;
-}
-
-.dialog input:focus,
-.dialog select:focus {
-    border-color: var(--accent-cyan) !important;
-    outline-color: rgba(139, 233, 253, 0.30) !important;
-}
-
-.dialog .buttons button {
-    background: #44475A !important;
-    color: var(--text-main) !important;
-    border-color: rgba(98, 114, 164, 0.38) !important;
-    border-radius: 8px !important;
-}
-
-.dialog .buttons button:hover {
-    background: rgba(139, 233, 253, 0.16) !important;
-    border-color: var(--accent-cyan) !important;
-}
-
-.dialog .buttons button:first-of-type {
-    background: linear-gradient(
-        180deg,
-        var(--accent-cyan),
-        #6FCFDF
-    ) !important;
-    color: #282A36 !important;
-    border-color: var(--accent-cyan) !important;
-}
-
-#undo-toast,
-#notice-toast,
-.stats-history-banner,
-.risk-banner {
-    background: rgba(48, 50, 65, 0.98) !important;
-    color: var(--text-main) !important;
-    border-color: rgba(98, 114, 164, 0.38) !important;
-    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.38) !important;
-}
-
-#undo-toast-button,
-.stats-history-banner a,
-.risk-banner a {
-    color: var(--accent-cyan) !important;
-}
-
-.risk-banner .risk-banner-never,
-.risk-banner .risk-banner-dismiss,
-.row-btn {
-    color: var(--text-soft) !important;
-}
-
-.risk-banner .risk-banner-never:hover,
-.risk-banner .risk-banner-dismiss:hover,
-.row-btn:hover {
-    background: rgba(139, 233, 253, 0.12) !important;
-    color: var(--text-main) !important;
-}
-
-.palette-row .palette-badge,
-.dead-badge,
-.dead-indicator {
-    color: var(--vbm-danger) !important;
-}
-
-mark,
-#results mark {
-    color: var(--accent-cyan) !important;
-    background: rgba(139, 233, 253, 0.16) !important;
-}
-
-#tree ul li a.separator-row {
+/* Normal account links: readable cyan/white Dracula treatment. */
+#userinfo_username a,
+#userinfo_major a,
+#userinfo_minor a,
+#userinfo_stats a {
+    display: inline !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    padding: 1px 0 !important;
     background: transparent !important;
-    border-color: transparent !important;
+    border: 0 !important;
     box-shadow: none !important;
-}
-
-#tree ul li a.separator-row::after {
-    content: none !important;
-}
-
-#tree ul li a.separator-row hr.separator-line {
-    border-top-color: rgba(98, 114, 164, 0.42) !important;
-}
-
-::-webkit-scrollbar {
-    width: 13px !important;
-    height: 13px !important;
-}
-
-::-webkit-scrollbar-track,
-::-webkit-scrollbar-track-piece {
-    background: var(--bg-main) !important;
-    border-radius: 13px !important;
-}
-
-::-webkit-scrollbar-thumb {
-    background: linear-gradient(
-        180deg,
-        #55618D 0%,
-        var(--accent-cyan) 100%
-    ) !important;
-    border-radius: 13px !important;
-    border: 3px solid var(--bg-main) !important;
-    background-clip: padding-box !important;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(
-        180deg,
-        var(--accent-cyan) 0%,
-        var(--accent-purple) 100%
-    ) !important;
-    background-clip: padding-box !important;
-}
-
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        transition-duration: 0.01ms !important;
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-    }
-}
-
-#search input {
-    padding-block: var(--search-padding-y) !important;
-    padding-inline-start: 29px !important;
-    padding-inline-end: 28px !important;
-}
-
-html,
-body,
-input,
-button,
-select,
-textarea,
-menu,
-kbd,
-span,
-a,
-i,
-li,
-ul,
-div,
-.vbm-row,
-.view-tab,
-.menu-item,
-.palette-row,
-.dialog {
-    font-family: "Exo 2", "Segoe UI", sans-serif !important;
-}
-
-#tree ul li > span,
-#tree ul li a,
-#results ul li a,
-#recent-list ul li a,
-#stats-list ul li a,
-#dead-list ul li a,
-#dupes-list ul li a,
-.search-history-row a {
-    font-weight: 400 !important;
-}
-
-.view-tab[aria-selected="true"],
-.dialog .buttons button:first-of-type,
-.palette-row.selected,
-mark,
-#results mark {
-    font-weight: 500 !important;
-}
-
-#results ul li a:active,
-#results ul li a.active,
-#results ul li a:focus,
-#tree ul li a:active,
-#tree ul li a.active,
-#tree ul li a:focus,
-#tree ul li > span:active,
-#tree ul li > span.active,
-#tree ul li > span:focus,
-#recent-list ul li a:active,
-#recent-list ul li a.active,
-#recent-list ul li a:focus,
-#stats-list ul li a:active,
-#stats-list ul li a.active,
-#stats-list ul li a:focus,
-#dead-list ul li a:active,
-#dead-list ul li a.active,
-#dead-list ul li a:focus,
-#dupes-list ul li a:active,
-#dupes-list ul li a.active,
-#dupes-list ul li a:focus {
-    border-color: rgba(139, 233, 253, 0.95) !important;
-
-    box-shadow:
-        inset 0 0 7px rgba(139, 233, 253, 0.18),
-        0 0 4px rgba(139, 233, 253, 0.95),
-        0 0 10px rgba(139, 233, 253, 0.55),
-        0 0 18px rgba(189, 147, 249, 0.22) !important;
-
-    position: relative !important;
-    z-index: 2 !important;
-}
-
-#results ul li a:active::before,
-#results ul li a.active::before,
-#results ul li a:focus::before,
-#tree ul li a:active::before,
-#tree ul li a.active::before,
-#tree ul li a:focus::before,
-#tree ul li > span:active::before,
-#tree ul li > span.active::before,
-#tree ul li > span:focus::before,
-#recent-list ul li a:active::before,
-#recent-list ul li a.active::before,
-#recent-list ul li a:focus::before,
-#stats-list ul li a:active::before,
-#stats-list ul li a.active::before,
-#stats-list ul li a:focus::before,
-#dead-list ul li a:active::before,
-#dead-list ul li a.active::before,
-#dead-list ul li a:focus::before,
-#dupes-list ul li a:active::before,
-#dupes-list ul li a.active::before,
-#dupes-list ul li a:focus::before {
-    content: "" !important;
-    position: absolute !important;
-    inset: -2px !important;
-    border: 1px solid rgba(139, 233, 253, 0.30) !important;
-    border-radius: 10px !important;
-    filter: blur(1.5px) !important;
-    pointer-events: none !important;
-    opacity: 0.85 !important;
-}
-
-@keyframes vbm-neon-breathe {
-    0%, 100% {
-        filter: brightness(1);
-    }
-    50% {
-        filter: brightness(1.08);
-    }
-}
-
-#results ul li a.active,
-#results ul li a:focus,
-#tree ul li a.active,
-#tree ul li a:focus,
-#tree ul li > span.active,
-#tree ul li > span:focus,
-#recent-list ul li a.active,
-#recent-list ul li a:focus,
-#stats-list ul li a.active,
-#stats-list ul li a:focus,
-#dead-list ul li a.active,
-#dead-list ul li a:focus,
-#dupes-list ul li a.active,
-#dupes-list ul li a:focus {
-    animation: vbm-neon-breathe 2.6s ease-in-out infinite !important;
-}
-
-@media (prefers-reduced-motion: reduce) {
-    #results ul li a.active,
-    #results ul li a:focus,
-    #tree ul li a.active,
-    #tree ul li a:focus,
-    #tree ul li > span.active,
-    #tree ul li > span:focus,
-    #recent-list ul li a.active,
-    #recent-list ul li a:focus,
-    #stats-list ul li a.active,
-    #stats-list ul li a:focus,
-    #dead-list ul li a.active,
-    #dead-list ul li a:focus,
-    #dupes-list ul li a.active,
-    #dupes-list ul li a:focus {
-        animation: none !important;
-    }
-}
-
-#results ul li a:active,
-#results ul li a.active,
-#results ul li a:focus,
-#tree ul li a:active,
-#tree ul li a.active,
-#tree ul li a:focus,
-#tree ul li > span:active,
-#tree ul li > span.active,
-#tree ul li > span:focus,
-#recent-list ul li a:active,
-#recent-list ul li a.active,
-#recent-list ul li a:focus,
-#stats-list ul li a:active,
-#stats-list ul li a.active,
-#stats-list ul li a:focus,
-#dead-list ul li a:active,
-#dead-list ul li a.active,
-#dead-list ul li a:focus,
-#dupes-list ul li a:active,
-#dupes-list ul li a.active,
-#dupes-list ul li a:focus {
-    color: #F8F8F2 !important;
-    text-shadow:
-        0 0 2px rgba(248, 248, 242, 0.90),
-        0 0 6px rgba(139, 233, 253, 0.68) !important;
-}
-
-#results ul li a:active i,
-#results ul li a.active i,
-#results ul li a:focus i,
-#tree ul li a:active i,
-#tree ul li a.active i,
-#tree ul li a:focus i,
-#tree ul li > span:active i,
-#tree ul li > span.active i,
-#tree ul li > span:focus i,
-#recent-list ul li a:active i,
-#recent-list ul li a.active i,
-#recent-list ul li a:focus i,
-#stats-list ul li a:active i,
-#stats-list ul li a.active i,
-#stats-list ul li a:focus i,
-#dead-list ul li a:active i,
-#dead-list ul li a.active i,
-#dead-list ul li a:focus i,
-#dupes-list ul li a:active i,
-#dupes-list ul li a.active i,
-#dupes-list ul li a:focus i {
-    color: #F8F8F2 !important;
-    text-shadow:
-        0 0 2px rgba(248, 248, 242, 0.90),
-        0 0 6px rgba(139, 233, 253, 0.68) !important;
-}
-
-#results ul li a:hover,
-#tree ul li a:hover,
-#tree ul li > span:hover,
-#recent-list ul li a:hover,
-#stats-list ul li a:hover,
-#dead-list ul li a:hover,
-#dupes-list ul li a:hover,
-.search-history-row a:hover {
-    border-color: rgba(139, 233, 253, 0.72) !important;
-
-    box-shadow:
-        inset 0 0 5px rgba(139, 233, 253, 0.10),
-        0 0 3px rgba(139, 233, 253, 0.70),
-        0 0 8px rgba(139, 233, 253, 0.34),
-        0 0 13px rgba(189, 147, 249, 0.12) !important;
-
-    position: relative !important;
-    z-index: 1 !important;
-}
-
-#results ul li a:hover,
-#tree ul li a:hover,
-#tree ul li > span:hover,
-#recent-list ul li a:hover,
-#stats-list ul li a:hover,
-#dead-list ul li a:hover,
-#dupes-list ul li a:hover,
-.search-history-row a:hover,
-#results ul li a:hover i,
-#tree ul li a:hover i,
-#tree ul li > span:hover i,
-#recent-list ul li a:hover i,
-#stats-list ul li a:hover i,
-#dead-list ul li a:hover i,
-#dupes-list ul li a:hover i {
-    color: #F1F5F7 !important;
-    text-shadow: 0 0 4px rgba(139, 233, 253, 0.30) !important;
-}
-
-#results ul li a.active:hover,
-#results ul li a:focus:hover,
-#tree ul li a.active:hover,
-#tree ul li a:focus:hover,
-#tree ul li > span.active:hover,
-#tree ul li > span:focus:hover,
-#recent-list ul li a.active:hover,
-#recent-list ul li a:focus:hover,
-#stats-list ul li a.active:hover,
-#stats-list ul li a:focus:hover,
-#dead-list ul li a.active:hover,
-#dead-list ul li a:focus:hover,
-#dupes-list ul li a.active:hover,
-#dupes-list ul li a:focus:hover {
-    border-color: rgba(139, 233, 253, 0.95) !important;
-
-    box-shadow:
-        inset 0 0 7px rgba(139, 233, 253, 0.18),
-        0 0 4px rgba(139, 233, 253, 0.95),
-        0 0 10px rgba(139, 233, 253, 0.55),
-        0 0 18px rgba(189, 147, 249, 0.22) !important;
-
-    color: #F8F8F2 !important;
-    text-shadow:
-        0 0 2px rgba(248, 248, 242, 0.90),
-        0 0 6px rgba(139, 233, 253, 0.68) !important;
-
-    z-index: 2 !important;
-}
-
-#results ul li a:active,
-#results ul li a.active,
-#results ul li a:focus,
-#tree ul li a:active,
-#tree ul li a.active,
-#tree ul li a:focus,
-#tree ul li > span:active,
-#tree ul li > span.active,
-#tree ul li > span:focus,
-#recent-list ul li a:active,
-#recent-list ul li a.active,
-#recent-list ul li a:focus,
-#stats-list ul li a:active,
-#stats-list ul li a.active,
-#stats-list ul li a:focus,
-#dead-list ul li a:active,
-#dead-list ul li a.active,
-#dead-list ul li a:focus,
-#dupes-list ul li a:active,
-#dupes-list ul li a.active,
-#dupes-list ul li a:focus {
-    background:
-        linear-gradient(
-            180deg,
-            rgba(139, 233, 253, 0.34) 0%,
-            rgba(98, 114, 164, 0.24) 100%
-        ) !important;
-
-    color: #F8F8F2 !important;
-}
-
-#results ul li a:active i,
-#results ul li a.active i,
-#results ul li a:focus i,
-#tree ul li a:active i,
-#tree ul li a.active i,
-#tree ul li a:focus i,
-#tree ul li > span:active i,
-#tree ul li > span.active i,
-#tree ul li > span:focus i,
-#recent-list ul li a:active i,
-#recent-list ul li a.active i,
-#recent-list ul li a:focus i,
-#stats-list ul li a:active i,
-#stats-list ul li a.active i,
-#stats-list ul li a:focus i,
-#dead-list ul li a:active i,
-#dead-list ul li a.active i,
-#dead-list ul li a:focus i,
-#dupes-list ul li a:active i,
-#dupes-list ul li a.active i,
-#dupes-list ul li a:focus i {
-    color: #F8F8F2 !important;
-}
-
-#results ul li a.active:hover,
-#results ul li a:focus:hover,
-#tree ul li a.active:hover,
-#tree ul li a:focus:hover,
-#tree ul li > span.active:hover,
-#tree ul li > span:focus:hover,
-#recent-list ul li a.active:hover,
-#recent-list ul li a:focus:hover,
-#stats-list ul li a.active:hover,
-#stats-list ul li a:focus:hover,
-#dead-list ul li a.active:hover,
-#dead-list ul li a:focus:hover,
-#dupes-list ul li a.active:hover,
-#dupes-list ul li a:focus:hover {
-    background:
-        linear-gradient(
-            180deg,
-            rgba(139, 233, 253, 0.38) 0%,
-            rgba(98, 114, 164, 0.28) 100%
-        ) !important;
-}
-/* =========================================================
-   vBookmarks 4.1.x compatibility layer
-   ========================================================= */
-
-/*
- * Force the Dracula tokens even when vBookmarks has one of its
- * built-in themes selected. body[data-theme] matches the native
- * theme selectors with equal specificity and comes later.
- */
-:root,
-body[data-theme] {
-    color-scheme: dark;
-
-    --vbm-bg: var(--bg-main);
-    --vbm-bg-elev: #303241;
-    --vbm-bg-hover: rgba(139, 233, 253, 0.16);
-    --vbm-bg-selected: rgba(139, 233, 253, 0.30);
-
-    --vbm-fg: var(--text-main);
-    --vbm-fg-selected: #F8F8F2;
-    --vbm-muted: var(--text-soft);
-
-    --vbm-border: rgba(98, 114, 164, 0.30);
-    --vbm-accent: var(--accent-cyan);
-    --vbm-accent-fg: #282A36;
-    --vbm-focus-ring: rgba(139, 233, 253, 0.32);
-
-    --vbm-danger: #FF5555;
-    --vbm-danger-fg: #282A36;
-    --vbm-warning: #F1FA8C;
-    --vbm-warning-fg: #282A36;
-    --vbm-success: #50FA7B;
-
-    --vbm-scrim: rgba(0, 0, 0, 0.62);
-    --vbm-shadow: rgba(0, 0, 0, 0.48);
-    --vbm-flash: rgba(139, 233, 253, 0.20);
-
-    --vbm-scrollbar: #6272A4;
-    --vbm-scrollbar-hover: var(--accent-cyan);
-    --vbm-radius: 8px;
-    --vbm-row-h: 28px;
-}
-
-/* New view surfaces */
-#staging-list,
-#recent-list,
-#tabgroups-list,
-#stats-list,
-#dead-list,
-#dupes-list,
-#results,
-#tree,
-#search-history-area {
-    background:
-        linear-gradient(
-            180deg,
-            var(--bg-panel-top) 0%,
-            var(--bg-panel-bottom) 100%
-        ) !important;
-    color: var(--text-main) !important;
-}
-
-/* Staging and Tab Groups rows */
-#staging-list li.vbm-row > a.tree-item-link,
-#tabgroups-list li.vbm-row > a.tree-item-link {
-    position: relative !important;
-    color: var(--text-main) !important;
-    background: var(--bg-soft) !important;
-
-    border: 1px solid var(--border-soft) !important;
-    border-radius: 8px !important;
-
-    font-size: var(--ui-font-size) !important;
-    line-height: var(--ui-line-height) !important;
-    letter-spacing: 0.1px !important;
-
-    transition:
-        background-color 0.14s ease,
-        border-color 0.14s ease,
-        box-shadow 0.14s ease !important;
-}
-
-/* New-list hover glow */
-#staging-list li.vbm-row > a.tree-item-link:hover,
-#tabgroups-list li.vbm-row > a.tree-item-link:hover {
-    color: #F1F5F7 !important;
-    background: rgba(139, 233, 253, 0.16) !important;
-    border-color: rgba(139, 233, 253, 0.72) !important;
-
-    box-shadow:
-        inset 0 0 5px rgba(139, 233, 253, 0.10),
-        0 0 3px rgba(139, 233, 253, 0.70),
-        0 0 8px rgba(139, 233, 253, 0.34),
-        0 0 13px rgba(189, 147, 249, 0.12) !important;
-
-    text-shadow: 0 0 4px rgba(139, 233, 253, 0.30) !important;
-    z-index: 1 !important;
-}
-
-/* Full-width cyan underline on hover */
-#staging-list li.vbm-row > a.tree-item-link:hover::after,
-#tabgroups-list li.vbm-row > a.tree-item-link:hover::after {
-    content: "" !important;
-    position: absolute !important;
-    left: 9px !important;
-    right: 9px !important;
-    bottom: 3px !important;
-    height: 2px !important;
-
-    background: var(--accent-cyan) !important;
-    border-radius: 999px !important;
-
-    pointer-events: none !important;
-}
-
-/* New-list selected/focused state */
-#staging-list li.vbm-row > a.tree-item-link:active,
-#staging-list li.vbm-row > a.tree-item-link.active,
-#staging-list li.vbm-row > a.tree-item-link:focus,
-#tabgroups-list li.vbm-row > a.tree-item-link:active,
-#tabgroups-list li.vbm-row > a.tree-item-link.active,
-#tabgroups-list li.vbm-row > a.tree-item-link:focus {
-    background:
-        linear-gradient(
-            180deg,
-            rgba(139, 233, 253, 0.34) 0%,
-            rgba(98, 114, 164, 0.24) 100%
-        ) !important;
-
-    color: #F8F8F2 !important;
-    border-color: rgba(139, 233, 253, 0.95) !important;
-
-    outline: none !important;
-
-    box-shadow:
-        inset 0 0 7px rgba(139, 233, 253, 0.18),
-        0 0 4px rgba(139, 233, 253, 0.95),
-        0 0 10px rgba(139, 233, 253, 0.55),
-        0 0 18px rgba(189, 147, 249, 0.22) !important;
-
-    text-shadow:
-        0 0 2px rgba(248, 248, 242, 0.90),
-        0 0 6px rgba(139, 233, 253, 0.68) !important;
-
-    z-index: 2 !important;
-}
-
-/* Keep inner titles bright in selected rows */
-#staging-list li.vbm-row > a.tree-item-link:active i,
-#staging-list li.vbm-row > a.tree-item-link.active i,
-#staging-list li.vbm-row > a.tree-item-link:focus i,
-#tabgroups-list li.vbm-row > a.tree-item-link:active i,
-#tabgroups-list li.vbm-row > a.tree-item-link.active i,
-#tabgroups-list li.vbm-row > a.tree-item-link:focus i {
-    color: #F8F8F2 !important;
-    text-shadow:
-        0 0 2px rgba(248, 248, 242, 0.90),
-        0 0 6px rgba(139, 233, 253, 0.68) !important;
-}
-
-/* Hierarchy / section headers */
-.staging-section-head,
-.staging-bucket-head,
-.staging-group-head,
-.recent-group-head,
-.tabgroups-window-head,
-.tabgroups-group-head,
-.tabgroups-closed-head {
-    color: var(--text-folder) !important;
-}
-
-.staging-section-head:hover,
-.staging-bucket-head:hover,
-.staging-group-head:hover,
-.recent-group-head:hover,
-.tabgroups-window-head:hover,
-.tabgroups-group-head:hover,
-.tabgroups-closed-head:hover {
-    background: rgba(139, 233, 253, 0.08) !important;
-}
-
-/* Staging hierarchy connector */
-#staging-list {
-    --staging-line: rgba(139, 233, 253, 0.18) !important;
-}
-
-/* Shared 4.1 toolbars */
-.staging-toolbar,
-.search-toolbar,
-.tabgroups-toolbar,
-.stats-toolbar,
-.dead-toolbar,
-.dupes-toolbar {
-    color: var(--text-soft) !important;
-    background: rgba(36, 38, 49, 0.82) !important;
-    border-color: rgba(98, 114, 164, 0.30) !important;
-}
-
-.staging-toolbar button,
-.search-toolbar button,
-.tabgroups-toolbar button,
-.stats-toolbar button,
-.dead-toolbar button,
-.dupes-toolbar button {
-    font-family: "Exo 2", "Segoe UI", sans-serif !important;
-}
-
-.staging-toolbar button:hover:not([disabled]),
-.search-toolbar button:hover:not([disabled]),
-.tabgroups-toolbar button:hover:not([disabled]),
-.stats-toolbar button:hover:not([disabled]),
-.dead-toolbar button:hover:not([disabled]),
-.dupes-toolbar button:hover:not([disabled]) {
-    background: rgba(139, 233, 253, 0.12) !important;
-}
-
-/* Tab Groups filter */
-.tabgroups-toolbar .tabgroups-filter-input {
-    background: #303241 !important;
-    color: var(--text-main) !important;
-    border-color: var(--border-main) !important;
-    border-radius: 7px !important;
-    font-family: "Exo 2", "Segoe UI", sans-serif !important;
-}
-
-.tabgroups-toolbar .tabgroups-filter-input:focus {
-    border-color: var(--accent-cyan) !important;
-    outline-color: rgba(139, 233, 253, 0.32) !important;
-}
-
-.tabgroups-toolbar .tabgroups-filter-input::placeholder {
-    color: var(--text-soft) !important;
-}
-
-/* Modern toolbar dropdowns */
-.vbm-dropdown-list {
-    background: rgba(40, 42, 54, 0.985) !important;
-    color: var(--text-main) !important;
-    border-color: rgba(189, 147, 249, 0.32) !important;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.42) !important;
-}
-
-.vbm-dropdown-list li {
-    color: var(--text-main) !important;
-    border-radius: 6px !important;
-}
-
-.vbm-dropdown-list li:hover {
-    background: rgba(139, 233, 253, 0.14) !important;
-}
-
-.vbm-dropdown-list li:focus {
-    background:
-        linear-gradient(
-            180deg,
-            rgba(139, 233, 253, 0.34) 0%,
-            rgba(98, 114, 164, 0.24) 100%
-        ) !important;
-    color: #F8F8F2 !important;
-}
-
-/* Context-menu flyout submenus */
-menu[type="context"].submenu {
-    background: rgba(40, 42, 54, 0.99) !important;
-    border-color: rgba(189, 147, 249, 0.34) !important;
-    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.48) !important;
-}
-
-menu[type="context"] .menu-item.has-submenu::after {
-    color: var(--accent-cyan) !important;
-}
-
-/* New picker/editor dialogs */
-#tab-group-dialog,
-#tab-group-pick-dialog,
-#copy-move-dialog,
-#bookmark-folder-pick-dialog {
-    background:
-        linear-gradient(
-            180deg,
-            #303241 0%,
-            var(--bg-main) 100%
-        ) !important;
-
-    color: var(--text-main) !important;
-    border-color: rgba(98, 114, 164, 0.35) !important;
-    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.52) !important;
-}
-
-/* Announcement / What's New banners */
-#whats-new,
-.announce-banner,
-#announce {
-    background: rgba(48, 50, 65, 0.96) !important;
-    color: var(--text-main) !important;
-    border-color: rgba(98, 114, 164, 0.36) !important;
-}
-
-#whats-new a,
-.announce-banner a,
-.announce-banner .announce-link {
-    color: var(--accent-cyan) !important;
-}
-
-#whats-new .announce-icon,
-.announce-banner .announce-icon {
-    color: var(--accent-cyan) !important;
-}
-
-/* Count pills and compact row badges */
-.count-pill,
-.vbm-row .row-badge {
-    border-color: rgba(139, 233, 253, 0.28) !important;
-}
-
-.tabgroups-group .count-pill,
-#tabgroups-list .tabgroups-window-head .count-pill,
-#tabgroups-list .tabgroups-closed-group .count-pill,
-.staging-group-head .count-pill,
-.staging-bucket-head .count-pill {
-    background: rgba(139, 233, 253, 0.12) !important;
-    color: var(--accent-cyan) !important;
-}
-
-/* Semantic states */
-.palette-custom-tag {
-    color: var(--text-soft) !important;
-    border-color: rgba(98, 114, 164, 0.30) !important;
-}
-
-.dead-indicator,
-.dead-badge,
-.palette-badge {
-    color: var(--vbm-danger) !important;
-}
-
-/* Drag/drop affordances stay above the custom neon rows */
-#bookmark-clone,
-#drop-overlay {
-    z-index: 50 !important;
-}
-
-/* Modern scrollbar contract */
-::-webkit-scrollbar {
-    width: 13px !important;
-    height: 13px !important;
-}
-
-::-webkit-scrollbar-track,
-::-webkit-scrollbar-track-piece {
-    background: var(--bg-main) !important;
-    border-radius: 13px !important;
-}
-
-::-webkit-scrollbar-thumb {
-    background:
-        linear-gradient(
-            180deg,
-            #55618D 0%,
-            var(--accent-cyan) 100%
-        ) !important;
-
-    border: 3px solid var(--bg-main) !important;
-    border-radius: 13px !important;
-    background-clip: padding-box !important;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background:
-        linear-gradient(
-            180deg,
-            var(--accent-cyan) 0%,
-            var(--accent-purple) 100%
-        ) !important;
-
-    background-clip: padding-box !important;
-}
-
-/* Reduced-motion support for the neon breathing effect */
-@media (prefers-reduced-motion: reduce) {
-    #staging-list li.vbm-row > a.tree-item-link,
-    #tabgroups-list li.vbm-row > a.tree-item-link {
-        animation: none !important;
-    }
-}
-/* =========================================================
-   v4.1.1 — Staging underline + Current badges refinement
-   ========================================================= */
-
-/*
- * Staging rows reserve a trailing action column.
- * Stop the decorative hover line before that control so the
- * underline keeps the same visual rhythm as the other views.
- */
-#staging-list li.vbm-row > a.tree-item-link:hover::after {
-    right: 30px !important;
-}
-
-
-/*
- * The native current-window/current-tab badges use the full
- * accent fill. On these very small pills the Dracula cyan is
- * visually too intense, so use a softer translucent treatment
- * without changing --vbm-accent anywhere else in the theme.
- */
-#tabgroups-list ul li.tabgroups-window-head b.tabgroups-window-current,
-#tabgroups-list ul li.tabgroups-row .row-badge.current {
-    background: rgba(139, 233, 253, 0.20) !important;
-    color: #DDF8FF !important;
-
-    border: 1px solid rgba(139, 233, 253, 0.48) !important;
-
-    box-shadow:
-        inset 0 0 4px rgba(139, 233, 253, 0.08),
-        0 0 4px rgba(139, 233, 253, 0.10) !important;
-
-    font-weight: 500 !important;
-    text-shadow: none !important;
-}
-
-
-/* Keep the current-tab row tint subtle and separate from the badge. */
-#tabgroups-list li.tabgroups-current {
-    background-color: rgba(139, 233, 253, 0.055) !important;
-}
-/* =========================================================
-   v4.1.2 — Unified row geometry
-   ========================================================= */
-
-/*
- * vBookmarks 4.1 gives Staging/Recent and Tab Groups their own
- * compact row geometry. Match those anchors to the Dracula row
- * metrics already used by Stats, Dead Links and Duplicates.
- */
-#staging-list li.vbm-row > a.tree-item-link,
-#tabgroups-list li.vbm-row > a.tree-item-link {
-    padding:
-        var(--item-padding-y)
-        var(--item-padding-x) !important;
-
-    margin:
-        var(--item-margin-y)
-        var(--item-margin-x) !important;
-}
-
-
-/*
- * With the normal Dracula spacing restored, the decorative line
- * can use the same inset as every other list view.
- */
-#staging-list li.vbm-row > a.tree-item-link:hover::after,
-#tabgroups-list li.vbm-row > a.tree-item-link:hover::after {
-    left: 9px !important;
-    right: 9px !important;
-    bottom: 3px !important;
-}
-
-
-/*
- * Keep trailing row controls vertically centered when the anchor
- * grows to the standard Dracula row height.
- */
-#staging-list li.vbm-row,
-#tabgroups-list li.vbm-row {
-    align-items: center !important;
-}
-/* =========================================================
-   v4.1.3 — Remove native link underline in Staging/Tab Groups
-   ========================================================= */
-
-#staging-list li.vbm-row > a.tree-item-link,
-#tabgroups-list li.vbm-row > a.tree-item-link,
-#staging-list li.vbm-row > a.tree-item-link:hover,
-#tabgroups-list li.vbm-row > a.tree-item-link:hover,
-#staging-list li.vbm-row > a.tree-item-link:focus,
-#tabgroups-list li.vbm-row > a.tree-item-link:focus,
-#staging-list li.vbm-row > a.tree-item-link:active,
-#tabgroups-list li.vbm-row > a.tree-item-link:active {
+    color: var(--red-cyan) !important;
     text-decoration: none !important;
 }
 
-#staging-list li.vbm-row > a.tree-item-link i,
-#tabgroups-list li.vbm-row > a.tree-item-link i,
-#staging-list li.vbm-row > a.tree-item-link span,
-#tabgroups-list li.vbm-row > a.tree-item-link span,
-#staging-list li.vbm-row > a.tree-item-link b,
-#tabgroups-list li.vbm-row > a.tree-item-link b,
-#staging-list li.vbm-row > a.tree-item-link:hover i,
-#tabgroups-list li.vbm-row > a.tree-item-link:hover i,
-#staging-list li.vbm-row > a.tree-item-link:hover span,
-#tabgroups-list li.vbm-row > a.tree-item-link:hover span,
-#staging-list li.vbm-row > a.tree-item-link:hover b,
-#tabgroups-list li.vbm-row > a.tree-item-link:hover b {
-    text-decoration: none !important;
+    #userinfo_username a:hover,
+    #userinfo_major a:hover,
+    #userinfo_minor a:hover,
+    #userinfo_stats a:hover {
+        color: var(--red-text) !important;
+        text-shadow: 0 0 8px rgba(139,233,253,.28) !important;
+    }
+
+    /* Username gets a little more emphasis without changing geometry. */
+    #userinfo_username a.username,
+    #nav_userinfo a {
+        color: var(--red-text) !important;
+        font-weight: 600 !important;
+    }
+
+/* Stats are text, not buttons. Preserve useful semantic colours. */
+#userinfo_stats {
+    color: var(--red-muted) !important;
 }
+
+    #userinfo_stats .ratio_good,
+    #userinfo_stats .uploaded,
+    #userinfo_stats .seeding {
+        color: var(--red-green) !important;
+    }
+
+/* Keep alerts above content but below the account links visually. */
+#alerts {
+    z-index: 25 !important;
+}
+
+/* On slightly narrower desktop windows, reduce horizontal spread before wrapping. */
+@media (max-width: 1180px) {
+    #userinfo_username {
+        left: 28px !important;
+    }
+
+    #userinfo_major {
+        left: 160px !important;
+    }
+
+    #userinfo_minor {
+        right: 28px !important;
+    }
+
+    #userinfo_stats {
+        left: 28px !important;
+    }
+
+        #userinfo_username li,
+        #userinfo_major li,
+        #userinfo_minor li,
+        #userinfo_stats li {
+            margin-right: 5px !important;
+        }
+}
+
+/* =========================================================
+   END v0.3.5 HOTFIX
+   ========================================================= */
