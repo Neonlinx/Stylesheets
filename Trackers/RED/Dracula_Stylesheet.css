@@ -1,7 +1,12 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.21d
+ * Version: 0.3.21e
+ *
+ * Changelog 0.3.21e:
+ * - Replaced the remaining rectangular outer shadow with a true elliptical/radial ambient glow.
+ * - The secondary panel now keeps its depth without visible hard side cutoffs.
+ * - Preserved only a very small local shadow on the panel itself for edge definition.
  *
  * Changelog 0.3.21d:
  * - Refined the secondary control panel shadow to remove visible hard side cutoffs.
@@ -4275,4 +4280,30 @@ blockquote,
 
 /* =========================================================
    END v0.3.21d — SECONDARY PANEL SHADOW SOFTENING
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.21e — ELLIPTICAL AMBIENT GLOW
+   ========================================================= */
+
+/*
+ * Use the header background itself as a soft light field behind the
+ * secondary panel. A radial gradient fades to full transparency at
+ * every edge, avoiding the rectangular footprint of a box-shadow.
+ */
+#header {
+    background: radial-gradient( ellipse 68% 54% at 50% 88%, rgba(98, 114, 164, .105) 0%, rgba(68, 71, 90, .075) 32%, rgba(40, 42, 54, .035) 54%, rgba(40, 42, 54, 0) 76% ) !important;
+}
+
+    /*
+ * Keep only a very small local shadow on the actual panel.
+ * The large depth effect now comes from the radial glow above.
+ */
+    #header::after {
+        box-shadow: 0 6px 12px -9px rgba(0, 0, 0, .38), inset 0 0 0 1px rgba(255, 255, 255, .012) !important;
+    }
+
+/* =========================================================
+   END v0.3.21e — ELLIPTICAL AMBIENT GLOW
    ========================================================= */
