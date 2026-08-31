@@ -1,7 +1,14 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.21j
+ * Version: 0.3.21l
+ *
+ * Changelog 0.3.21l:
+ * - Fixed the global search shortcuts using RED's verified HTML structure.
+ * - Removed the unintended card/pill styling inherited by #searchbars .search_form.
+ * - Preserved the existing input geometry and behavior from v0.3.21j.
+ * - The search input is now the single visible pill, with the existing cyan hover/focus glow.
+ * - Slightly increased spacing between the six search shortcuts.
  *
  * Changelog 0.3.21j:
  * - Converted the secondary-area backdrop into an intentional lower #header layer.
@@ -4460,4 +4467,66 @@ blockquote,
 
 /* =========================================================
    END v0.3.21j — LOWER HEADER BACKDROP AS A TRUE OUTER LAYER
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.21l — VERIFIED SEARCH FORM WRAPPER FIX
+   ========================================================= */
+
+/*
+ * RED's global search markup is:
+ *
+ *   #searchbars
+ *     > ul
+ *       > li
+ *         > form.search_form
+ *           > input
+ *
+ * The generic .search_form card rule was styling the form wrapper while
+ * the input already had its own pill styling, creating a nested-pill effect.
+ *
+ * Keep the original Gazelle layout untouched and only neutralize the
+ * visual card styling on searchbar form wrappers.
+ */
+#searchbars .search_form {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    outline: 0 !important;
+}
+
+/*
+ * Preserve the original inline layout. Only add a little more breathing
+ * room between search shortcuts.
+ */
+#searchbars ul li {
+    margin-right: 10px !important;
+}
+
+    #searchbars ul li:last-child {
+        margin-right: 0 !important;
+    }
+
+/*
+ * Keep the input as the single visible search control.
+ * Geometry is intentionally not overridden here.
+ */
+#searchbars .search_form input:hover {
+    background: var(--red-hover) !important;
+    border-color: rgba(139, 233, 253, .50) !important;
+    box-shadow: 0 0 8px rgba(139, 233, 253, .18), 0 0 16px rgba(139, 233, 253, .07) !important;
+}
+
+#searchbars .search_form input:focus {
+    background: rgba(139, 233, 253, .10) !important;
+    border-color: rgba(139, 233, 253, .68) !important;
+    box-shadow: 0 0 0 1px rgba(139, 233, 253, .10), 0 0 10px rgba(139, 233, 253, .22), 0 0 20px rgba(139, 233, 253, .08) !important;
+}
+
+/* =========================================================
+   END v0.3.21l — VERIFIED SEARCH FORM WRAPPER FIX
    ========================================================= */
