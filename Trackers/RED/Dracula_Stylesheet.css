@@ -1,7 +1,13 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.21g
+ * Version: 0.3.21h
+ *
+ * Changelog 0.3.21h:
+ * - Diagnostic cleanup of the primary upper header shell.
+ * - Removed the upper header's outer box-shadow completely.
+ * - Preserved the upper shell background, border, radius and all geometry.
+ * - No changes to the secondary control panel or its spacing.
  *
  * Changelog 0.3.21g:
  * - Removed the layered drop-shadow stack that produced faint concentric/elliptical halos.
@@ -4360,6 +4366,24 @@ blockquote,
         box-shadow: 0 18px 28px -24px rgba(0, 0, 0, .48), inset 0 0 0 1px rgba(255, 255, 255, .012) !important;
     }
 
-/* =========================================================
+    /* =========================================================
    END v0.3.21g — SINGLE SOFT DEPTH SHADOW
+   ========================================================= */
+
+
+    /* =========================================================
+   v0.3.21h — PRIMARY HEADER SHADOW REMOVAL
+   ========================================================= */
+
+    /*
+ * Remove the outer shadow from the primary header shell.
+ * This isolates the upper panel visually and helps verify whether the
+ * faint halo around the logo/navigation area came from this shadow.
+ */
+    #header::before {
+        box-shadow: none !important;
+    }
+
+/* =========================================================
+   END v0.3.21h — PRIMARY HEADER SHADOW REMOVAL
    ========================================================= */
