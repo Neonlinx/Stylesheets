@@ -1,7 +1,12 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.21f
+ * Version: 0.3.21g
+ *
+ * Changelog 0.3.21g:
+ * - Removed the layered drop-shadow stack that produced faint concentric/elliptical halos.
+ * - Replaced it with one compact, soft bottom shadow.
+ * - Kept the secondary panel depth while eliminating visible shadow layers around the sides.
  *
  * Changelog 0.3.21f:
  * - Removed the intermediate radial header background that still appeared as a separate rectangular color band.
@@ -4337,6 +4342,24 @@ blockquote,
         filter: drop-shadow(0 10px 12px rgba(0, 0, 0, .16)) drop-shadow(0 18px 24px rgba(68, 71, 90, .08)) drop-shadow(0 22px 34px rgba(98, 114, 164, .045)) !important;
     }
 
-/* =========================================================
+    /* =========================================================
    END v0.3.21f — REMOVE INTERMEDIATE BAND / SHAPE-FOLLOWING GLOW
+   ========================================================= */
+
+
+    /* =========================================================
+   v0.3.21g — SINGLE SOFT DEPTH SHADOW
+   ========================================================= */
+
+    /*
+ * Remove the multi-pass drop-shadow effect. Multiple blurred silhouettes
+ * can become visible as faint concentric ellipses on very dark backgrounds.
+ */
+    #header::after {
+        filter: none !important;
+        box-shadow: 0 18px 28px -24px rgba(0, 0, 0, .48), inset 0 0 0 1px rgba(255, 255, 255, .012) !important;
+    }
+
+/* =========================================================
+   END v0.3.21g — SINGLE SOFT DEPTH SHADOW
    ========================================================= */
