@@ -1,7 +1,14 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.21i
+ * Version: 0.3.21j
+ *
+ * Changelog 0.3.21j:
+ * - Converted the secondary-area backdrop into an intentional lower #header layer.
+ * - Extended that backdrop underneath the entire secondary control panel instead of leaving it visible only at the sides.
+ * - Added rounded lower corners to the outer secondary backdrop.
+ * - Removed the temporary 8px outer ring introduced in v0.3.21i.
+ * - Kept the inner secondary panel geometry unchanged.
  *
  * Changelog 0.3.21i:
  * - Reworked the secondary panel depth effect into a true rounded outer layer.
@@ -4417,4 +4424,40 @@ blockquote,
 
 /* =========================================================
    END v0.3.21i — ROUNDED SECONDARY OUTER LAYER
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.21j — LOWER HEADER BACKDROP AS A TRUE OUTER LAYER
+   ========================================================= */
+
+/*
+ * The real #header now owns a very subtle lower backdrop.
+ * It begins exactly where the secondary control area starts, extends
+ * underneath the entire inner panel, and closes with rounded corners.
+ *
+ * This turns the previously visible side strips into an intentional
+ * outer layer instead of trying to hide them with additional shadows.
+ */
+#header {
+    background: linear-gradient( to bottom, transparent 0, transparent calc(var(--red-header-shell-height) + 8px), rgba(68, 71, 90, .055) calc(var(--red-header-shell-height) + 8px), rgba(68, 71, 90, .040) 100% ) !important;
+    border-radius: 0 0 18px 18px !important;
+    box-shadow: 0 16px 28px -24px rgba(0, 0, 0, .34) !important;
+}
+
+    /*
+ * Remove the temporary outer ring from v0.3.21i.
+ * The depth hierarchy is now:
+ *
+ *   inner secondary panel
+ *   -> lower #header backdrop
+ *   -> soft external shadow
+ */
+    #header::after {
+        filter: none !important;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .012) !important;
+    }
+
+/* =========================================================
+   END v0.3.21j — LOWER HEADER BACKDROP AS A TRUE OUTER LAYER
    ========================================================= */
