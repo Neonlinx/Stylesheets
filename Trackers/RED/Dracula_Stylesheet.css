@@ -1,7 +1,13 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.21e
+ * Version: 0.3.21f
+ *
+ * Changelog 0.3.21f:
+ * - Removed the intermediate radial header background that still appeared as a separate rectangular color band.
+ * - Restored a fully transparent header background behind the secondary control panel.
+ * - Rebuilt the depth effect with shape-following drop shadows on the rounded secondary panel.
+ * - Preserved the existing panel geometry, border and internal background.
  *
  * Changelog 0.3.21e:
  * - Replaced the remaining rectangular outer shadow with a true elliptical/radial ambient glow.
@@ -4306,4 +4312,31 @@ blockquote,
 
 /* =========================================================
    END v0.3.21e — ELLIPTICAL AMBIENT GLOW
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.21f — REMOVE INTERMEDIATE BAND / SHAPE-FOLLOWING GLOW
+   ========================================================= */
+
+/*
+ * Remove the intermediate radial fill from the header itself.
+ * The space surrounding the secondary panel must remain fully transparent.
+ */
+#header {
+    background: transparent !important;
+}
+
+    /*
+ * A CSS drop-shadow follows the rounded rendered shape instead of painting
+ * a rectangular background layer. This keeps the depth effect while allowing
+ * every outer edge and corner to dissolve naturally into the page background.
+ */
+    #header::after {
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .012) !important;
+        filter: drop-shadow(0 10px 12px rgba(0, 0, 0, .16)) drop-shadow(0 18px 24px rgba(68, 71, 90, .08)) drop-shadow(0 22px 34px rgba(98, 114, 164, .045)) !important;
+    }
+
+/* =========================================================
+   END v0.3.21f — REMOVE INTERMEDIATE BAND / SHAPE-FOLLOWING GLOW
    ========================================================= */
