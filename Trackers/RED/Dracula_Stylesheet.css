@@ -3702,3 +3702,101 @@ blockquote,
 /* =========================================================
    END v0.3.19 SECONDARY NAV RIGHT ALIGN + ALERT PUNCTUATION
    ========================================================= */
+
+/* =========================================================
+   v0.3.20 — BIG CUSTOM LOGO HEADER
+   ========================================================= */
+
+/* Allargo verso il basso il contenitore superiore */
+#header {
+    height: 126px !important;
+    min-height: 126px !important;
+    overflow: visible !important;
+}
+
+/* Area logo più grande */
+#logo {
+    position: absolute !important;
+    top: 10px !important;
+    left: 0 !important;
+    z-index: 50 !important;
+    width: 470px !important;
+    height: 96px !important;
+    overflow: visible !important;
+}
+
+    /* Sostituisco il vecchio logo testuale con l'immagine */
+    #logo a {
+        position: absolute !important;
+        top: 0 !important;
+        left: 28px !important;
+        display: block !important;
+        width: 430px !important;
+        height: 88px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: url("../../Assets/Images/Logos/Dracula_Redacted_Logo.png") left center / contain no-repeat !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        color: transparent !important;
+        font-size: 0 !important;
+        line-height: 0 !important;
+        text-decoration: none !important;
+        overflow: visible !important;
+    }
+
+        /* Tolgo il vecchio REDACTED/.SH generato via pseudo-elementi */
+        #logo a::before,
+        #logo a::after {
+            content: none !important;
+        }
+
+/* Menu principale in alto a destra: resta dov'è */
+#menu {
+    top: 0 !important;
+    height: 54px !important;
+}
+
+    #menu ul {
+        padding-top: 14px !important;
+    }
+
+/* Riga Inbox / Staff Inbox / Uploads / ... dentro al contenitore alto */
+#userinfo_minor {
+    top: 92px !important;
+    right: 55px !important;
+    left: auto !important;
+    justify-content: flex-end !important;
+    gap: 4px !important;
+}
+
+/* Pulsanti sotto al contenitore alto */
+#userinfo_username {
+    top: 150px !important;
+}
+
+#userinfo_major {
+    top: 150px !important;
+}
+
+#userinfo_stats {
+    top: 184px !important;
+}
+
+#alerts {
+    top: 150px !important;
+}
+
+/* Searchbar e contenuto scendono un po' */
+#searchbars {
+    top: 218px !important;
+}
+
+#content {
+    margin-top: 258px !important;
+}
+
+/* =========================================================
+   END v0.3.20 — BIG CUSTOM LOGO HEADER
+   ========================================================= */
