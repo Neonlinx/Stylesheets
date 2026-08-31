@@ -1,7 +1,15 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.21
+ * Version: 0.3.21b
+ *
+ * Changelog 0.3.21b:
+ * - Experimental header layout refactor.
+ * - Converted the lower header/account area to flow-based Flex/Grid positioning where possible.
+ * - Reduced dependency on hard-coded vertical top offsets.
+ * - Search shortcuts now follow the account/stat rows in normal document flow.
+ * - Added shared header sizing variables so future logo/header size changes require fewer coordinated edits.
+ * - Preserved the current visual appearance and custom Redacted.sh logo as closely as possible.
  *
  * Changelog 0.3.21:
  * - Integrated the new custom Redacted.sh image logo.
@@ -3905,4 +3913,230 @@ blockquote,
 
 /* =========================================================
    END v0.3.21 — CUSTOM LOGO + HEADER LAYOUT STABILIZATION
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.21b — EXPERIMENTAL FLOW-BASED HEADER REFACTOR
+   ========================================================= */
+
+/*
+ * Centralized dimensions.
+ * Future logo/header experiments should start by changing these values
+ * instead of manually re-spacing every dependent element.
+ */
+:root {
+    --red-header-shell-height: 126px;
+    --red-logo-width: 430px;
+    --red-logo-height: 88px;
+    --red-header-side-padding: 46px;
+    --red-header-row-gap: 8px;
+}
+
+/*
+ * The real #header becomes a flow container for everything below the
+ * decorative upper shell. The shell itself is drawn by ::before.
+ */
+#header {
+    position: relative !important;
+    display: block !important;
+    width: auto !important;
+    max-width: 1320px !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 auto !important;
+    padding: 80px 0 14px !important;
+    box-sizing: border-box !important;
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+}
+
+    /* Decorative upper rounded shell only. */
+    #header::before {
+        content: "" !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        height: var(--red-header-shell-height) !important;
+        background: linear-gradient( 180deg, var(--red-bg-panel-top) 0%, var(--red-bg-panel-bottom) 100% ) !important;
+        border: 1px solid var(--red-border-mid) !important;
+        border-top: 0 !important;
+        border-radius: 0 0 var(--red-radius-large) var(--red-radius-large) !important;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, .16) !important;
+        box-sizing: border-box !important;
+        pointer-events: none !important;
+        z-index: 0 !important;
+    }
+
+/* ---------- Logo remains anchored inside the decorative shell ---------- */
+
+#logo {
+    top: 10px !important;
+    left: 0 !important;
+    width: calc(var(--red-logo-width) + 40px) !important;
+    height: calc(var(--red-logo-height) + 8px) !important;
+    z-index: 50 !important;
+}
+
+    #logo a {
+        top: 0 !important;
+        left: 28px !important;
+        width: var(--red-logo-width) !important;
+        height: var(--red-logo-height) !important;
+    }
+
+/* ---------- Primary navigation remains anchored inside the shell ---------- */
+
+#menu {
+    top: 0 !important;
+    right: 0 !important;
+    height: 54px !important;
+    z-index: 40 !important;
+}
+
+    #menu ul {
+        padding-top: 14px !important;
+    }
+
+/* ---------- User information becomes the main flow layout ---------- */
+
+/*
+ * #userinfo begins while still inside the lower part of the upper shell.
+ * Row 1 contains the secondary utility links.
+ * Row 2 starts below the shell and contains account controls.
+ * Row 3 contains the stats.
+ */
+#userinfo {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    display: grid !important;
+    grid-template-columns: auto auto 1fr !important;
+    grid-template-rows: 26px 28px 24px !important;
+    column-gap: 8px !important;
+    row-gap: var(--red-header-row-gap) !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 var(--red-header-side-padding) 0 var(--red-header-side-padding) !important;
+    box-sizing: border-box !important;
+    overflow: visible !important;
+    pointer-events: none !important;
+    z-index: 35 !important;
+}
+
+/* Secondary links: first grid row, aligned with Staff above. */
+#userinfo_minor {
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    grid-column: 2 / 4 !important;
+    grid-row: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 6px !important;
+    width: auto !important;
+    height: 26px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: none !important;
+    pointer-events: auto !important;
+    white-space: nowrap !important;
+}
+
+/*
+ * The second grid row naturally falls just below the decorative shell
+ * because #userinfo starts at y=80 and row 1 consumes 26px + the row gap.
+ */
+#userinfo_username {
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+    align-self: center !important;
+    margin: 0 !important;
+    pointer-events: auto !important;
+}
+
+#userinfo_major {
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    grid-column: 2 !important;
+    grid-row: 2 !important;
+    align-self: center !important;
+    margin: 0 !important;
+    pointer-events: auto !important;
+}
+
+/* Stats automatically follow the account-control row. */
+#userinfo_stats {
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    grid-column: 1 / 3 !important;
+    grid-row: 3 !important;
+    align-self: center !important;
+    margin: 0 !important;
+    pointer-events: auto !important;
+}
+
+/*
+ * The alert still needs independent horizontal alignment because it is not
+ * part of the #userinfo list structure, but it now keys off one shared shell
+ * dimension rather than the older chain of unrelated offsets.
+ */
+#alerts {
+    top: calc(var(--red-header-shell-height) + 17px) !important;
+    right: var(--red-header-side-padding) !important;
+}
+
+/* ---------- Search shortcuts return to normal flow ---------- */
+
+#searchbars {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    clear: both !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 12px 0 0 !important;
+    padding: 8px 28px !important;
+    box-sizing: border-box !important;
+}
+
+/*
+ * #header now owns its real vertical height, so the main page no longer
+ * needs to compensate for header rows with a large hard-coded top offset.
+ */
+#content {
+    margin-top: 72px !important;
+}
+
+/* ---------- Desktop adaptation ---------- */
+
+@media (max-width: 1350px) {
+    :root {
+        --red-header-side-padding: 28px;
+    }
+
+    #userinfo_minor {
+        gap: 5px !important;
+    }
+}
+
+/* =========================================================
+   END v0.3.21b — EXPERIMENTAL FLOW-BASED HEADER REFACTOR
    ========================================================= */
