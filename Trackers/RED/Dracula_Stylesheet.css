@@ -1,7 +1,14 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.21b
+ * Version: 0.3.21c
+ *
+ * Changelog 0.3.21c:
+ * - Added a dedicated secondary control panel below the main header shell.
+ * - The secondary panel groups account controls, stats, alerts and global search shortcuts.
+ * - Added a subtle Dracula border, translucent background and soft outer shadow to visually separate the secondary area.
+ * - Lowered the account-control row so it no longer touches the bottom edge of the main header shell.
+ * - Kept the flow-based Grid/Flex header architecture introduced in v0.3.21b.
  *
  * Changelog 0.3.21b:
  * - Experimental header layout refactor.
@@ -4139,4 +4146,110 @@ blockquote,
 
 /* =========================================================
    END v0.3.21b — EXPERIMENTAL FLOW-BASED HEADER REFACTOR
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.21c — SECONDARY CONTROL PANEL + FLOW REFINEMENT
+   ========================================================= */
+
+/*
+ * Add one spacer row between the utility links inside the upper shell
+ * and the account controls below it. This keeps the lower controls
+ * visually separated without returning to hard-coded top offsets.
+ */
+#userinfo {
+    grid-template-columns: auto auto 1fr !important;
+    grid-template-rows: 26px 18px 28px 24px !important;
+    column-gap: 8px !important;
+    row-gap: var(--red-header-row-gap) !important;
+}
+
+/* Utility links remain inside the main upper shell. */
+#userinfo_minor {
+    grid-column: 2 / 4 !important;
+    grid-row: 1 !important;
+}
+
+/* Account controls now begin below the shell. */
+#userinfo_username {
+    grid-column: 1 !important;
+    grid-row: 3 !important;
+}
+
+#userinfo_major {
+    grid-column: 2 !important;
+    grid-row: 3 !important;
+}
+
+/* Stats naturally follow the account controls. */
+#userinfo_stats {
+    grid-column: 1 / 3 !important;
+    grid-row: 4 !important;
+}
+
+/*
+ * Secondary visual container.
+ * It deliberately sits slightly inside the main header width to create
+ * a clear hierarchy: primary header above, secondary controls below.
+ */
+#header::after {
+    content: "" !important;
+    position: absolute !important;
+    left: 24px !important;
+    right: 24px !important;
+    top: calc(var(--red-header-shell-height) + 8px) !important;
+    bottom: 0 !important;
+    box-sizing: border-box !important;
+    background: linear-gradient( 180deg, rgba(42, 45, 57, .34) 0%, rgba(40, 42, 54, .22) 100% ) !important;
+    border: 1px solid rgba(98, 114, 164, .22) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, .13), inset 0 0 0 1px rgba(255, 255, 255, .012) !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
+}
+
+/* Keep all interactive header content above the secondary panel. */
+#logo,
+#menu,
+#userinfo,
+#alerts,
+#searchbars {
+    z-index: 5 !important;
+}
+
+/*
+ * The alert belongs to the same first row as the account controls.
+ * Use the shared shell variable rather than an unrelated fixed top value.
+ */
+#alerts {
+    top: calc(var(--red-header-shell-height) + 21px) !important;
+}
+
+/* Search shortcuts remain in normal flow inside the secondary panel. */
+#searchbars {
+    margin-top: 12px !important;
+    padding-top: 8px !important;
+    padding-bottom: 10px !important;
+}
+
+/* A little breathing room at the bottom of the secondary panel. */
+#header {
+    padding-bottom: 18px !important;
+}
+
+/* Keep the main content comfortably separated from the grouped controls. */
+#content {
+    margin-top: 58px !important;
+}
+
+@media (max-width: 1350px) {
+    #header::after {
+        left: 18px !important;
+        right: 18px !important;
+    }
+}
+
+/* =========================================================
+   END v0.3.21c — SECONDARY CONTROL PANEL + FLOW REFINEMENT
    ========================================================= */
