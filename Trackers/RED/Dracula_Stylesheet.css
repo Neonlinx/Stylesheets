@@ -1,7 +1,12 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.21c
+ * Version: 0.3.21d
+ *
+ * Changelog 0.3.21d:
+ * - Refined the secondary control panel shadow to remove visible hard side cutoffs.
+ * - Replaced the broad rectangular shadow with a softer bottom-focused shadow using negative spread.
+ * - Slightly increased the secondary panel corner radius for a smoother visual transition.
  *
  * Changelog 0.3.21c:
  * - Added a dedicated secondary control panel below the main header shell.
@@ -4252,4 +4257,22 @@ blockquote,
 
 /* =========================================================
    END v0.3.21c — SECONDARY CONTROL PANEL + FLOW REFINEMENT
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.21d — SECONDARY PANEL SHADOW SOFTENING
+   ========================================================= */
+
+/*
+ * Keep the panel itself unchanged, but make the outer depth effect
+ * fade naturally instead of producing visible vertical side cutoffs.
+ */
+#header::after {
+    border-radius: 14px !important;
+    box-shadow: 0 14px 30px -14px rgba(0, 0, 0, .30), 0 7px 16px -10px rgba(98, 114, 164, .16), inset 0 0 0 1px rgba(255, 255, 255, .012) !important;
+}
+
+/* =========================================================
+   END v0.3.21d — SECONDARY PANEL SHADOW SOFTENING
    ========================================================= */
