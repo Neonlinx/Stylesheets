@@ -1,7 +1,16 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.19
+ * Version: 0.3.21
+ *
+ * Changelog 0.3.21:
+ * - Integrated the new custom Redacted.sh image logo.
+ * - Increased the upper header height to accommodate the larger branding area.
+ * - Stabilized the logged-in header geometry after the logo/header expansion.
+ * - Restored the secondary Inbox / Staff Inbox / Uploads / ... row inside the upper header.
+ * - Restored the Up / Down / Ratio / Tokens / Seeding row below the account controls.
+ * - Kept the global search shortcut row separated from all user-info rows.
+ * - All new comments are written in English for future public sharing.
  *
  * Changelog 0.3.19:
  * - Right-aligned the Inbox / Staff Inbox / Uploads / Bookmarks / Notifications / Subscriptions / Posts / Comments / Friends / Better row with the main navigation's Staff edge.
@@ -3703,18 +3712,24 @@ blockquote,
    END v0.3.19 SECONDARY NAV RIGHT ALIGN + ALERT PUNCTUATION
    ========================================================= */
 
+
 /* =========================================================
-   v0.3.20 — BIG CUSTOM LOGO HEADER
+   v0.3.21 — CUSTOM LOGO + HEADER LAYOUT STABILIZATION
    ========================================================= */
 
-/* Allargo verso il basso il contenitore superiore */
+/*
+ * The logo expansion changes the vertical rhythm of the header.
+ * Keep the upper shell taller, then position every dependent row
+ * from one consistent reference point.
+ */
 #header {
     height: 126px !important;
     min-height: 126px !important;
     overflow: visible !important;
 }
 
-/* Area logo più grande */
+/* ---------- Custom Redacted.sh logo ---------- */
+
 #logo {
     position: absolute !important;
     top: 10px !important;
@@ -3725,7 +3740,6 @@ blockquote,
     overflow: visible !important;
 }
 
-    /* Sostituisco il vecchio logo testuale con l'immagine */
     #logo a {
         position: absolute !important;
         top: 0 !important;
@@ -3743,16 +3757,18 @@ blockquote,
         font-size: 0 !important;
         line-height: 0 !important;
         text-decoration: none !important;
+        transform: none !important;
         overflow: visible !important;
     }
 
-        /* Tolgo il vecchio REDACTED/.SH generato via pseudo-elementi */
+        /* Disable the temporary text-based logo from earlier revisions. */
         #logo a::before,
         #logo a::after {
             content: none !important;
         }
 
-/* Menu principale in alto a destra: resta dov'è */
+/* ---------- Primary navigation ---------- */
+
 #menu {
     top: 0 !important;
     height: 54px !important;
@@ -3762,41 +3778,131 @@ blockquote,
         padding-top: 14px !important;
     }
 
-/* Riga Inbox / Staff Inbox / Uploads / ... dentro al contenitore alto */
+/* ---------- Logged-in control layer ---------- */
+
+/*
+ * The parent starts below the upper header.
+ * Username + major navigation remain in the normal flex flow.
+ */
+#userinfo {
+    position: absolute !important;
+    top: 144px !important;
+    left: 0 !important;
+    right: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 8px !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    height: 28px !important;
+    padding: 0 46px !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    pointer-events: none !important;
+    z-index: 35 !important;
+}
+
+/* Left account buttons stay in one robust flex row. */
+#userinfo_username,
+#userinfo_major {
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    width: auto !important;
+    height: 28px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    pointer-events: auto !important;
+}
+
+/*
+ * Secondary account navigation belongs inside the upper header.
+ * Its negative top offset is intentional because #userinfo itself
+ * starts below the header shell.
+ */
 #userinfo_minor {
-    top: 92px !important;
+    position: absolute !important;
+    top: -62px !important;
     right: 55px !important;
     left: auto !important;
+    display: flex !important;
+    align-items: center !important;
     justify-content: flex-end !important;
-    gap: 4px !important;
+    gap: 6px !important;
+    width: auto !important;
+    height: 26px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: none !important;
+    pointer-events: auto !important;
+    white-space: nowrap !important;
 }
 
-/* Pulsanti sotto al contenitore alto */
-#userinfo_username {
-    top: 150px !important;
-}
-
-#userinfo_major {
-    top: 150px !important;
-}
-
+/* Stats sit directly below the account-button row. */
 #userinfo_stats {
-    top: 184px !important;
+    position: absolute !important;
+    top: 36px !important;
+    left: 46px !important;
+    right: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    width: auto !important;
+    height: 24px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    pointer-events: auto !important;
 }
 
+/* Gift-token badge aligns with the first account-control row. */
 #alerts {
-    top: 150px !important;
+    top: 144px !important;
+    right: 46px !important;
 }
 
-/* Searchbar e contenuto scendono un po' */
+/* ---------- Global search shortcuts ---------- */
+
+/*
+ * Keep search shortcuts below both account rows.
+ * This prevents the secondary navigation and stats from overlapping them.
+ */
 #searchbars {
-    top: 218px !important;
+    top: 214px !important;
 }
 
+/* Pull the main page panel back up once the header rows are stable. */
 #content {
-    margin-top: 258px !important;
+    margin-top: 250px !important;
+}
+
+/* ---------- Narrower desktop adjustment ---------- */
+
+@media (max-width: 1350px) {
+    #userinfo {
+        padding-left: 28px !important;
+        padding-right: 28px !important;
+    }
+
+    #userinfo_minor {
+        right: 55px !important;
+        gap: 5px !important;
+    }
+
+    #userinfo_stats {
+        left: 28px !important;
+        gap: 6px !important;
+    }
+
+    #alerts {
+        right: 28px !important;
+    }
 }
 
 /* =========================================================
-   END v0.3.20 — BIG CUSTOM LOGO HEADER
+   END v0.3.21 — CUSTOM LOGO + HEADER LAYOUT STABILIZATION
    ========================================================= */
