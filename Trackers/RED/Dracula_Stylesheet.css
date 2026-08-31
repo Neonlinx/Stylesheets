@@ -1,7 +1,13 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.21h
+ * Version: 0.3.21i
+ *
+ * Changelog 0.3.21i:
+ * - Reworked the secondary panel depth effect into a true rounded outer layer.
+ * - Added a subtle uniform outer ring around the entire secondary panel, including the bottom edge.
+ * - The outer layer now follows the same rounded geometry instead of appearing only as straight side bands.
+ * - Added a soft bottom shadow behind the rounded outer layer for depth.
  *
  * Changelog 0.3.21h:
  * - Diagnostic cleanup of the primary upper header shell.
@@ -4384,6 +4390,31 @@ blockquote,
         box-shadow: none !important;
     }
 
-/* =========================================================
+    /* =========================================================
    END v0.3.21h — PRIMARY HEADER SHADOW REMOVAL
+   ========================================================= */
+
+
+    /* =========================================================
+   v0.3.21i — ROUNDED SECONDARY OUTER LAYER
+   ========================================================= */
+
+    /*
+ * Turn the previously accidental "middle background" into an intentional
+ * rounded outer layer. The zero-offset spread shadow follows the panel's
+ * border radius uniformly on every side, including the bottom edge.
+ *
+ * Visual stack:
+ *   secondary panel
+ *   -> soft rounded outer layer
+ *   -> diffuse depth shadow
+ */
+    #header::after {
+        border-radius: 14px !important;
+        filter: none !important;
+        box-shadow: 0 0 0 8px rgba(68, 71, 90, .070), 0 12px 24px -14px rgba(0, 0, 0, .34), inset 0 0 0 1px rgba(255, 255, 255, .012) !important;
+    }
+
+/* =========================================================
+   END v0.3.21i — ROUNDED SECONDARY OUTER LAYER
    ========================================================= */
