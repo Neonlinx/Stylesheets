@@ -1,7 +1,14 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.21r
+ * Version: 0.3.21s
+ *
+ * Changelog 0.3.21s:
+ * - Reworked the lower account-row halo as a true saturated pink/fuchsia light emission.
+ * - Removed any neutral/cyan appearance from the diffuse glow while keeping the existing pill colors.
+ * - Added near, medium and wide pink glow layers for a stronger colored diffusion around active pills.
+ * - Applied the same pink halo to Neonlinx while preserving its cyan-to-pink text gradient.
+ * - No geometry, search-field or stats changes.
  *
  * Changelog 0.3.21r:
  * - Fixed the lower account row's nested-pill effect confirmed through Chrome box-model inspection.
@@ -4765,4 +4772,41 @@ blockquote,
 
 /* =========================================================
    END v0.3.21r — SINGLE-LAYER ACCOUNT PILLS + TRUE PINK GLOW
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.21s — SATURATED PINK / FUCHSIA LIGHT DIFFUSION
+   ========================================================= */
+
+/*
+ * The visible halo must carry the same pink/fuchsia hue as the active
+ * pill itself. Use only #FF79C6-derived shadows: no neutral or cyan layer.
+ */
+#nav_useredit > a:hover,
+#nav_logout > a:hover,
+#nav_upload > a:hover,
+#nav_invite > a:hover,
+#nav_donate > a:hover,
+#nav_useredit > a:focus,
+#nav_logout > a:focus,
+#nav_upload > a:focus,
+#nav_invite > a:focus,
+#nav_donate > a:focus {
+    box-shadow: 0 0 0 1px rgba(255, 121, 198, .20), 0 0 7px rgba(255, 121, 198, .62), 0 0 15px rgba(255, 121, 198, .40), 0 0 27px rgba(255, 121, 198, .23), 0 0 42px rgba(255, 121, 198, .11), inset 0 0 7px rgba(255, 121, 198, .10) !important;
+}
+
+/*
+ * Neonlinx uses the same emitted pink light. Its text gradient remains
+ * independent from the halo and is therefore preserved.
+ */
+#nav_userinfo > a:hover,
+#nav_userinfo > a:focus,
+#userinfo_username #nav_userinfo > a:hover,
+#userinfo_username #nav_userinfo > a:focus {
+    box-shadow: 0 0 0 1px rgba(255, 121, 198, .20), 0 0 7px rgba(255, 121, 198, .62), 0 0 15px rgba(255, 121, 198, .40), 0 0 27px rgba(255, 121, 198, .23), 0 0 42px rgba(255, 121, 198, .11), inset 0 0 7px rgba(255, 121, 198, .10) !important;
+}
+
+/* =========================================================
+   END v0.3.21s — SATURATED PINK / FUCHSIA LIGHT DIFFUSION
    ========================================================= */
