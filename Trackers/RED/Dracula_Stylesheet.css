@@ -1,7 +1,14 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.21t
+ * Version: 0.3.21u
+ *
+ * Changelog 0.3.21u:
+ * - Increased the main navigation's cyan/teal light diffusion without changing its established colors.
+ * - Applied the same saturated multi-layer glow philosophy used by the corrected lower account pills.
+ * - Enhanced both hover/focus states and the currently active navigation item.
+ * - Preserved all menu geometry, backgrounds, borders and typography.
+ * - No changes to search fields, account pills, stats or header layout.
  *
  * Changelog 0.3.21t:
  * - Applied the exact Neonlinx pink/fuchsia halo to Settings / Logout / Upload / Invite / Donate.
@@ -4865,4 +4872,54 @@ blockquote,
 
 /* =========================================================
    END v0.3.21t — UNIFIED ACCOUNT HALO + NEONLINX ACTIVE SURFACE
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.21u — STRONGER MAIN NAV CYAN / TEAL DIFFUSION
+   ========================================================= */
+
+/*
+ * Preserve the established main-navigation colors and geometry.
+ * Only strengthen the emitted cyan/teal light around hovered,
+ * focused and currently active navigation pills.
+ */
+#menu a:hover,
+#menu a:focus,
+#index #nav_index a,
+#collage #nav_collages a,
+#forums #nav_forums a,
+#chat #nav_irc a,
+#rules #nav_rules a,
+#staff #nav_staff a,
+#torrents #nav_torrents a,
+#requests #nav_requests a,
+#top10 #nav_top10 a,
+#wiki #nav_wiki a,
+#imagehost #nav_imagehost a {
+    box-shadow: 0 0 0 1px rgba(139, 233, 253, .16), 0 0 7px rgba(139, 233, 253, .52), 0 0 15px rgba(139, 233, 253, .32), 0 0 27px rgba(139, 233, 253, .18), 0 0 42px rgba(139, 233, 253, .08), inset 0 0 7px rgba(139, 233, 253, .08) !important;
+}
+
+    /*
+ * The small underline is part of the same neon language, so give it
+ * a matching cyan halo instead of leaving it comparatively flat.
+ */
+    #menu a:hover::after,
+    #menu a:focus::after,
+    #index #nav_index a::after,
+    #collage #nav_collages a::after,
+    #forums #nav_forums a::after,
+    #chat #nav_irc a::after,
+    #rules #nav_rules a::after,
+    #staff #nav_staff a::after,
+    #torrents #nav_torrents a::after,
+    #requests #nav_requests a::after,
+    #top10 #nav_top10 a::after,
+    #wiki #nav_wiki a::after,
+    #imagehost #nav_imagehost a::after {
+        box-shadow: 0 0 7px rgba(139, 233, 253, .62), 0 0 14px rgba(139, 233, 253, .30) !important;
+    }
+
+/* =========================================================
+   END v0.3.21u — STRONGER MAIN NAV CYAN / TEAL DIFFUSION
    ========================================================= */
