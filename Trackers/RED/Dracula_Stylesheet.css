@@ -1,7 +1,14 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.21q
+ * Version: 0.3.21r
+ *
+ * Changelog 0.3.21r:
+ * - Fixed the lower account row's nested-pill effect confirmed through Chrome box-model inspection.
+ * - Neutralized the outer LI wrappers so each account control is rendered by one visible anchor pill only.
+ * - Restored a saturated pink/fuchsia diffuse glow for Settings / Logout / Upload / Invite / Donate.
+ * - Fixed Neonlinx hover so its pill background also becomes pink while preserving the cyan-to-pink text gradient.
+ * - Removed the cyan account-glow override introduced in v0.3.21q; search and stats styling remain unchanged.
  *
  * Changelog 0.3.21q:
  * - Increased the glow / diffuse light strength across the non-search pill family.
@@ -4680,4 +4687,82 @@ blockquote,
 
 /* =========================================================
    END v0.3.21q — STRONGER GLOBAL PILL GLOW
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.21r — SINGLE-LAYER ACCOUNT PILLS + TRUE PINK GLOW
+   ========================================================= */
+
+/*
+ * Chrome box-model inspection confirmed that the lower account row had
+ * a bordered LI wrapped around an independently bordered anchor. That
+ * produced the visible "pill over pill" edge. The LI now acts only as
+ * a structural wrapper; the anchor is the sole visible pill.
+ */
+#userinfo_username > li,
+#userinfo_major > li {
+    background: transparent !important;
+    background-image: none !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+}
+
+    /* Old Gazelle .brackets decoration must not create a second visual layer. */
+    #userinfo_username > li::before,
+    #userinfo_username > li::after,
+    #userinfo_major > li::before,
+    #userinfo_major > li::after {
+        content: none !important;
+        display: none !important;
+        background: none !important;
+        border: 0 !important;
+        box-shadow: none !important;
+    }
+
+/*
+ * Settings / Logout / Upload / Invite / Donate:
+ * preserve the established pink fill and border, but make the surrounding
+ * light visibly pink instead of inheriting the cyan glow from v0.3.21q.
+ */
+#nav_useredit > a:hover,
+#nav_logout > a:hover,
+#nav_upload > a:hover,
+#nav_invite > a:hover,
+#nav_donate > a:hover,
+#nav_useredit > a:focus,
+#nav_logout > a:focus,
+#nav_upload > a:focus,
+#nav_invite > a:focus,
+#nav_donate > a:focus {
+    color: var(--red-pink) !important;
+    background: var(--red-pink-hover-bg) !important;
+    border-color: var(--red-pink-hover-border) !important;
+    box-shadow: 0 0 0 1px rgba(255, 121, 198, .12), 0 0 8px rgba(255, 121, 198, .42), 0 0 18px rgba(255, 121, 198, .25), 0 0 30px rgba(255, 121, 198, .12), inset 0 0 0 1px rgba(255, 121, 198, .06) !important;
+}
+
+/*
+ * Neonlinx keeps its cyan -> pink text gradient, but the pill surface and
+ * halo now use the same pink interaction language as the other account
+ * controls instead of leaving a neutral grey base underneath.
+ */
+#nav_userinfo > a:hover,
+#nav_userinfo > a:focus,
+#userinfo_username #nav_userinfo > a:hover,
+#userinfo_username #nav_userinfo > a:focus {
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+    background-image: linear-gradient( 90deg, #baf4ff 0%, var(--red-cyan) 30%, #d0a8ff 66%, #ff9bd3 100% ), linear-gradient( rgba(255, 121, 198, .15), rgba(255, 121, 198, .15) ) !important;
+    background-origin: border-box, border-box !important;
+    background-clip: text, border-box !important;
+    -webkit-background-clip: text, border-box !important;
+    border-color: var(--red-pink-hover-border) !important;
+    box-shadow: 0 0 0 1px rgba(255, 121, 198, .12), 0 0 8px rgba(255, 121, 198, .42), 0 0 18px rgba(255, 121, 198, .25), 0 0 30px rgba(255, 121, 198, .12), inset 0 0 0 1px rgba(255, 121, 198, .06) !important;
+}
+
+/* =========================================================
+   END v0.3.21r — SINGLE-LAYER ACCOUNT PILLS + TRUE PINK GLOW
    ========================================================= */
