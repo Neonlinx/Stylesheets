@@ -1,7 +1,7 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.21y
+ * Version: 0.3.21z
  *
  * Changelog 0.3.21y:
  * - Removed the visible horizontal cutoff at the top of the secondary header backdrop.
@@ -5030,6 +5030,32 @@ blockquote,
 
 /* =========================================================
    END v0.3.21x — INACTIVE BORDER CONSISTENCY
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.21z — SLIGHTLY NARROWER SECONDARY PANEL
+   ========================================================= */
+
+/*
+ * Tighten the secondary lower panel by roughly 5px per side so it sits
+ * a little more compactly under the primary header shell while remaining
+ * perfectly centered. Keep all other geometry and styling intact.
+ */
+#header::after {
+    left: 29px !important;
+    right: 29px !important;
+}
+
+@media (max-width: 1350px) {
+    #header::after {
+        left: 23px !important;
+        right: 23px !important;
+    }
+}
+
+/* =========================================================
+   END v0.3.21z — SLIGHTLY NARROWER SECONDARY PANEL
    ========================================================= */
 
 
