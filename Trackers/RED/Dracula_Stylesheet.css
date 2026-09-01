@@ -1,7 +1,12 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.21u
+ * Version: 0.3.21v
+ *
+ * Changelog 0.3.21v:
+ * - Restored cyan text for both upper navigation rows now that RED is viewed without Dark Reader.
+ * - Main navigation and secondary utility navigation now use the theme's established cyan text color by default.
+ * - Preserved all existing hover, active, glow, geometry and layout behavior.
  *
  * Changelog 0.3.21u:
  * - Increased the main navigation's cyan/teal light diffusion without changing its established colors.
@@ -4922,4 +4927,42 @@ blockquote,
 
 /* =========================================================
    END v0.3.21u — STRONGER MAIN NAV CYAN / TEAL DIFFUSION
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.21v — UPPER NAVIGATION TEXT COLOR RESTORE
+   ========================================================= */
+
+/*
+ * Dark Reader previously altered the rendered colors of these rows.
+ * With RED now viewed directly, restore the intended Dracula cyan text
+ * while leaving active/hover geometry and lighting untouched.
+ */
+#menu a,
+#userinfo_minor a {
+    color: var(--red-cyan) !important;
+}
+
+    /* Keep all interaction states in the same cyan color family. */
+    #menu a:hover,
+    #menu a:focus,
+    #userinfo_minor a:hover,
+    #userinfo_minor a:focus,
+    #index #nav_index a,
+    #collage #nav_collages a,
+    #forums #nav_forums a,
+    #chat #nav_irc a,
+    #rules #nav_rules a,
+    #staff #nav_staff a,
+    #torrents #nav_torrents a,
+    #requests #nav_requests a,
+    #top10 #nav_top10 a,
+    #wiki #nav_wiki a,
+    #imagehost #nav_imagehost a {
+        color: var(--red-cyan) !important;
+    }
+
+/* =========================================================
+   END v0.3.21v — UPPER NAVIGATION TEXT COLOR RESTORE
    ========================================================= */
