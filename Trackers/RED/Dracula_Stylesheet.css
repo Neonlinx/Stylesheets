@@ -5078,3 +5078,44 @@ blockquote,
 /* =========================================================
    END v0.3.21aa — NARROWER OUTER HEADER BACKDROP ONLY
    ========================================================= */
+
+/* =========================================================
+   v0.3.21ab — SEARCH FIELDS ALWAYS TEAL + STRONGER ACTIVE HALO
+   ========================================================= */
+
+/*
+ * Reduce the visual jump between idle and active search fields.
+ * Keep the reconstructed teal surface visible at rest, then add a
+ * stronger neon halo on hover/focus instead of changing the whole pill.
+ */
+#searchbars .search_form input,
+#searchbars .search_form input[type="search"],
+#searchbars .search_form input[type="text"] {
+    background: linear-gradient( 180deg, #1A2F3E 0%, #172D3D 48%, #162B3B 100% ) !important;
+    color: var(--red-text-main) !important;
+    caret-color: var(--red-cyan) !important;
+    border-color: rgba(53, 176, 171, .62) !important;
+    box-shadow: 0 0 0 1px rgba(53, 176, 171, .08), 0 0 8px rgba(53, 176, 171, .14), inset 0 0 6px rgba(53, 176, 171, .05) !important;
+}
+
+    #searchbars .search_form input::placeholder {
+        color: var(--red-text-main) !important;
+        opacity: 1 !important;
+    }
+
+    #searchbars .search_form input:hover,
+    #searchbars .search_form input:focus {
+        background: linear-gradient( 180deg, #1B3342 0%, #18303F 48%, #172D3D 100% ) !important;
+        color: var(--red-text-main) !important;
+        border-color: rgba(53, 176, 171, .92) !important;
+        box-shadow: 0 0 0 1px rgba(53, 176, 171, .18), 0 0 7px rgba(53, 176, 171, .52), 0 0 15px rgba(53, 176, 171, .32), 0 0 27px rgba(53, 176, 171, .18), 0 0 42px rgba(53, 176, 171, .08), inset 0 0 7px rgba(53, 176, 171, .08) !important;
+    }
+
+        #searchbars .search_form input:hover::placeholder,
+        #searchbars .search_form input:focus::placeholder {
+            color: var(--red-text-main) !important;
+        }
+
+/* =========================================================
+   END v0.3.21ab — SEARCH FIELDS ALWAYS TEAL + STRONGER ACTIVE HALO
+   ========================================================= */
