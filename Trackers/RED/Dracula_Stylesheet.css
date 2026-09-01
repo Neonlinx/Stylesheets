@@ -1,13 +1,13 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.21m
+ * Version: 0.3.21n
  *
- * Changelog 0.3.21m:
- * - Restored a Dracula-green interaction treatment for the six global search shortcuts.
- * - Added a stronger multi-layer green glow on hover for a more visible neon diffusion.
- * - Added a matching green focus state while typing.
- * - Preserved the verified single-layer search geometry introduced in v0.3.21l.
+ * Changelog 0.3.21n:
+ * - Reworked global search hover/focus colors toward the original teal treatment.
+ * - Uses #226B80 as the active search fill and #35B0AB as the luminous border.
+ * - Added a stronger multi-layer teal glow around hovered and focused search fields.
+ * - Preserved the verified single-layer search geometry from v0.3.21l.
  *
  * Changelog 0.3.21l:
  * - Fixed the global search shortcuts using RED's verified HTML structure.
@@ -4539,37 +4539,37 @@ blockquote,
 
 
 /* =========================================================
-   v0.3.21m — GREEN NEON SEARCH INTERACTION
+   v0.3.21n — TEAL SEARCH HOVER / FOCUS
    ========================================================= */
 
 /*
- * Keep v0.3.21l's verified search structure untouched.
- * Only the interaction colors and glow are overridden here.
+ * Restore the darker teal interaction seen in the earlier search design.
+ * Only visual interaction properties are changed; layout remains untouched.
  */
 #searchbars .search_form input:hover {
-    background: rgba(80, 250, 123, .13) !important;
-    color: #e9fff0 !important;
-    border-color: rgba(80, 250, 123, .88) !important;
-    box-shadow: 0 0 0 1px rgba(80, 250, 123, .14), 0 0 8px rgba(80, 250, 123, .42), 0 0 18px rgba(80, 250, 123, .25), 0 0 30px rgba(80, 250, 123, .11) !important;
+    background: #226B80 !important;
+    color: #F4FFFF !important;
+    border-color: #35B0AB !important;
+    box-shadow: 0 0 0 1px rgba(53, 176, 171, .22), 0 0 8px rgba(53, 176, 171, .48), 0 0 18px rgba(53, 176, 171, .30), 0 0 30px rgba(53, 176, 171, .16) !important;
 }
 
 /*
- * Keep the field illuminated while it has keyboard focus.
- * Slightly stronger than hover so the active field remains obvious.
+ * Keep the active field clearly illuminated while typing.
+ * Focus is intentionally a little stronger than hover.
  */
 #searchbars .search_form input:focus {
-    background: rgba(80, 250, 123, .15) !important;
-    color: #f2fff6 !important;
-    caret-color: var(--red-green) !important;
-    border-color: var(--red-green) !important;
-    box-shadow: 0 0 0 1px rgba(80, 250, 123, .18), 0 0 10px rgba(80, 250, 123, .48), 0 0 21px rgba(80, 250, 123, .28), 0 0 34px rgba(80, 250, 123, .12) !important;
+    background: #226B80 !important;
+    color: #FFFFFF !important;
+    caret-color: #9FF7F1 !important;
+    border-color: #35B0AB !important;
+    box-shadow: 0 0 0 1px rgba(53, 176, 171, .30), 0 0 10px rgba(53, 176, 171, .56), 0 0 22px rgba(53, 176, 171, .34), 0 0 36px rgba(53, 176, 171, .18) !important;
 }
 
     #searchbars .search_form input:hover::placeholder,
     #searchbars .search_form input:focus::placeholder {
-        color: #e9fff0 !important;
+        color: #F4FFFF !important;
     }
 
 /* =========================================================
-   END v0.3.21m — GREEN NEON SEARCH INTERACTION
+   END v0.3.21n — TEAL SEARCH HOVER / FOCUS
    ========================================================= */
