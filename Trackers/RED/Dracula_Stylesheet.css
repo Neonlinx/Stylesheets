@@ -5116,6 +5116,24 @@ blockquote,
             color: var(--red-text-main) !important;
         }
 
-/* =========================================================
+    /* =========================================================
    END v0.3.21ab — SEARCH FIELDS ALWAYS TEAL + STRONGER ACTIVE HALO
+   ========================================================= */
+
+    /* =========================================================
+   v0.3.21ac — SEARCH FIELDS STRONGER HOVER / FOCUS GLOW
+   ========================================================= */
+
+    /*
+ * Keep the same teal active styling introduced in v0.3.21ab,
+ * but push the outer halo noticeably further so the active
+ * state feels more luminous and less subtle.
+ */
+    #searchbars .search_form input:hover,
+    #searchbars .search_form input:focus {
+        box-shadow: 0 0 0 1px rgba(53, 176, 171, .22), 0 0 10px rgba(53, 176, 171, .62), 0 0 20px rgba(53, 176, 171, .42), 0 0 34px rgba(53, 176, 171, .26), 0 0 52px rgba(53, 176, 171, .14), 0 0 72px rgba(53, 176, 171, .07), inset 0 0 8px rgba(53, 176, 171, .10) !important;
+    }
+
+/* =========================================================
+   END v0.3.21ac — SEARCH FIELDS STRONGER HOVER / FOCUS GLOW
    ========================================================= */
