@@ -1,7 +1,14 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.21s
+ * Version: 0.3.21t
+ *
+ * Changelog 0.3.21t:
+ * - Applied the exact Neonlinx pink/fuchsia halo to Settings / Logout / Upload / Invite / Donate.
+ * - Increased selector specificity so older account-row glow rules can no longer override the pink halo.
+ * - Forced Neonlinx's active pill surface to use the pink interaction background instead of the neutral grey base.
+ * - Preserved the Neonlinx cyan-to-pink text gradient and all existing geometry.
+ * - No search, stats or header-layout changes.
  *
  * Changelog 0.3.21s:
  * - Reworked the lower account-row halo as a true saturated pink/fuchsia light emission.
@@ -4809,4 +4816,53 @@ blockquote,
 
 /* =========================================================
    END v0.3.21s — SATURATED PINK / FUCHSIA LIGHT DIFFUSION
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.21t — UNIFIED ACCOUNT HALO + NEONLINX ACTIVE SURFACE
+   ========================================================= */
+
+/*
+ * Use the same high-specificity selector family for every lower account
+ * control so older generic #userinfo_* hover rules cannot replace the
+ * saturated pink halo with a weaker/neutral-looking shadow.
+ */
+#userinfo_username #nav_useredit > a:hover,
+#userinfo_username #nav_logout > a:hover,
+#userinfo_major #nav_upload > a:hover,
+#userinfo_major #nav_invite > a:hover,
+#userinfo_major #nav_donate > a:hover,
+#userinfo_username #nav_useredit > a:focus,
+#userinfo_username #nav_logout > a:focus,
+#userinfo_major #nav_upload > a:focus,
+#userinfo_major #nav_invite > a:focus,
+#userinfo_major #nav_donate > a:focus {
+    color: var(--red-pink) !important;
+    background-color: rgba(255, 121, 198, .15) !important;
+    background-image: none !important;
+    border-color: var(--red-pink-hover-border) !important;
+    box-shadow: 0 0 0 1px rgba(255, 121, 198, .20), 0 0 7px rgba(255, 121, 198, .62), 0 0 15px rgba(255, 121, 198, .40), 0 0 27px rgba(255, 121, 198, .23), 0 0 42px rgba(255, 121, 198, .11), inset 0 0 7px rgba(255, 121, 198, .10) !important;
+}
+
+/*
+ * Neonlinx requires two background layers because the first one is clipped
+ * to the text. Keep the text gradient, but make the actual pill surface
+ * unmistakably pink instead of leaving the old neutral grey layer visible.
+ */
+#userinfo_username #nav_userinfo > a:hover,
+#userinfo_username #nav_userinfo > a:focus {
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+    background-color: transparent !important;
+    background-image: linear-gradient( 90deg, #baf4ff 0%, var(--red-cyan) 30%, #d0a8ff 66%, #ff9bd3 100% ), linear-gradient( rgba(255, 121, 198, .22), rgba(255, 121, 198, .22) ) !important;
+    background-origin: border-box, border-box !important;
+    background-clip: text, border-box !important;
+    -webkit-background-clip: text, border-box !important;
+    border-color: var(--red-pink-hover-border) !important;
+    box-shadow: 0 0 0 1px rgba(255, 121, 198, .20), 0 0 7px rgba(255, 121, 198, .62), 0 0 15px rgba(255, 121, 198, .40), 0 0 27px rgba(255, 121, 198, .23), 0 0 42px rgba(255, 121, 198, .11), inset 0 0 7px rgba(255, 121, 198, .10) !important;
+}
+
+/* =========================================================
+   END v0.3.21t — UNIFIED ACCOUNT HALO + NEONLINX ACTIVE SURFACE
    ========================================================= */
