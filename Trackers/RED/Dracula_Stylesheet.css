@@ -1,7 +1,7 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.21z
+ * Version: 0.3.21aa
  *
  * Changelog 0.3.21y:
  * - Removed the visible horizontal cutoff at the top of the secondary header backdrop.
@@ -5034,32 +5034,6 @@ blockquote,
 
 
 /* =========================================================
-   v0.3.21z — SLIGHTLY NARROWER SECONDARY PANEL
-   ========================================================= */
-
-/*
- * Tighten the secondary lower panel by roughly 5px per side so it sits
- * a little more compactly under the primary header shell while remaining
- * perfectly centered. Keep all other geometry and styling intact.
- */
-#header::after {
-    left: 29px !important;
-    right: 29px !important;
-}
-
-@media (max-width: 1350px) {
-    #header::after {
-        left: 23px !important;
-        right: 23px !important;
-    }
-}
-
-/* =========================================================
-   END v0.3.21z — SLIGHTLY NARROWER SECONDARY PANEL
-   ========================================================= */
-
-
-/* =========================================================
    v0.3.21y — SEAMLESS OUTER HEADER BACKDROP
    ========================================================= */
 
@@ -5079,4 +5053,28 @@ blockquote,
 
 /* =========================================================
    END v0.3.21y — SEAMLESS OUTER HEADER BACKDROP
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.21aa — NARROWER OUTER HEADER BACKDROP ONLY
+   ========================================================= */
+
+/*
+ * Narrow only the subtle outer backdrop behind the lower header area,
+ * without changing the width or position of the actual secondary panel.
+ *
+ * The gradient remains identical, but is rendered slightly narrower and
+ * centered, leaving a few pixels of transparent breathing room on both sides.
+ */
+#header {
+    background: linear-gradient( to bottom, rgba(68, 71, 90, .010) 0%, rgba(68, 71, 90, .018) 38%, rgba(68, 71, 90, .032) 68%, rgba(68, 71, 90, .050) 86%, rgba(68, 71, 90, .040) 100% ) !important;
+    background-repeat: no-repeat !important;
+    background-position: center top !important;
+    background-size: calc(100% - 10px) 100% !important;
+    border-radius: 0 0 18px 18px !important;
+}
+
+/* =========================================================
+   END v0.3.21aa — NARROWER OUTER HEADER BACKDROP ONLY
    ========================================================= */
