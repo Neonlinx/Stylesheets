@@ -1,7 +1,13 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.21x
+ * Version: 0.3.21y
+ *
+ * Changelog 0.3.21y:
+ * - Removed the visible horizontal cutoff at the top of the secondary header backdrop.
+ * - Extended the outer #header backdrop upward behind the primary header shell.
+ * - Replaced the abrupt transparent-to-background transition with a gradual fade.
+ * - Preserved both header panels, rounded geometry, spacing and all control styling.
  *
  * Changelog 0.3.21x:
  * - Extended the inactive search-field border treatment to Neonlinx and the stats row.
@@ -5024,4 +5030,27 @@ blockquote,
 
 /* =========================================================
    END v0.3.21x — INACTIVE BORDER CONSISTENCY
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.21y — SEAMLESS OUTER HEADER BACKDROP
+   ========================================================= */
+
+/*
+ * The previous backdrop started abruptly at
+ * calc(var(--red-header-shell-height) + 8px), which became visible as a
+ * straight horizontal seam once Dark Reader was disabled.
+ *
+ * Start the outer layer much higher, behind the primary header shell,
+ * and fade it in gradually. The opaque primary shell hides the overlap,
+ * while the exposed side areas no longer show a hard cutoff.
+ */
+#header {
+    background: linear-gradient( to bottom, rgba(68, 71, 90, .010) 0%, rgba(68, 71, 90, .018) 38%, rgba(68, 71, 90, .032) 68%, rgba(68, 71, 90, .050) 86%, rgba(68, 71, 90, .040) 100% ) !important;
+    border-radius: 0 0 18px 18px !important;
+}
+
+/* =========================================================
+   END v0.3.21y — SEAMLESS OUTER HEADER BACKDROP
    ========================================================= */
