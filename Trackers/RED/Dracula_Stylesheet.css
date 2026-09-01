@@ -1,7 +1,14 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.21p
+ * Version: 0.3.21q
+ *
+ * Changelog 0.3.21q:
+ * - Increased the glow / diffuse light strength across the non-search pill family.
+ * - Enhanced cyan glow for the main navigation, secondary utility links and lower account pills.
+ * - Enhanced pink glow for the stats pill row while preserving the current color language.
+ * - Slightly strengthened the Gift Tokens alert halo so it sits in the same visual family.
+ * - Left the newly reconstructed search-field hover/focus styling unchanged.
  *
  * Changelog 0.3.21p:
  * - Recreated the original v0.3.21j search-hover appearance from sampled screenshot colors.
@@ -4574,4 +4581,103 @@ blockquote,
 
 /* =========================================================
    END v0.3.21p — RECONSTRUCTED 0.3.21j SEARCH APPEARANCE
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.21q — STRONGER GLOBAL PILL GLOW
+   ========================================================= */
+
+/*
+ * Make the non-search pill family feel more luminous without changing
+ * the established colors. Searchbars intentionally keep the v0.3.21p look.
+ */
+
+/* ---------- Main top navigation ---------- */
+#menu a:hover,
+#menu a:focus,
+#index #nav_index a,
+#collage #nav_collages a,
+#forums #nav_forums a,
+#chat #nav_irc a,
+#rules #nav_rules a,
+#staff #nav_staff a,
+#torrents #nav_torrents a,
+#requests #nav_requests a,
+#top10 #nav_top10 a,
+#wiki #nav_wiki a,
+#imagehost #nav_imagehost a {
+    box-shadow: 0 0 0 1px rgba(139, 233, 253, 0.08), 0 0 10px rgba(139, 233, 253, 0.22), 0 0 22px rgba(139, 233, 253, 0.12), 0 0 36px rgba(139, 233, 253, 0.06) !important;
+}
+
+    #menu a:hover::after,
+    #menu a:focus::after,
+    #index #nav_index a::after,
+    #collage #nav_collages a::after,
+    #forums #nav_forums a::after,
+    #chat #nav_irc a::after,
+    #rules #nav_rules a::after,
+    #staff #nav_staff a::after,
+    #torrents #nav_torrents a::after,
+    #requests #nav_requests a::after,
+    #top10 #nav_top10 a::after,
+    #wiki #nav_wiki a::after,
+    #imagehost #nav_imagehost a::after {
+        box-shadow: 0 0 10px rgba(139, 233, 253, 0.52) !important;
+    }
+
+/* ---------- Secondary utility links (Inbox, Uploads, ...) ---------- */
+#userinfo_minor a:hover,
+#userinfo_minor a:focus {
+    box-shadow: 0 0 0 1px rgba(139, 233, 253, 0.08), 0 0 10px rgba(139, 233, 253, 0.22), 0 0 22px rgba(139, 233, 253, 0.12), 0 0 34px rgba(139, 233, 253, 0.05), inset 0 0 0 1px rgba(139, 233, 253, 0.06) !important;
+}
+
+    #userinfo_minor a:hover::after,
+    #userinfo_minor a:focus::after {
+        box-shadow: 0 0 8px rgba(139, 233, 253, 0.48), 0 0 16px rgba(139, 233, 253, 0.22) !important;
+    }
+
+/* ---------- Lower account pills ---------- */
+#nav_userinfo > a:hover,
+#nav_useredit > a:hover,
+#nav_logout > a:hover,
+#nav_upload > a:hover,
+#nav_invite > a:hover,
+#nav_donate > a:hover,
+#userinfo_username > li > a:hover,
+#userinfo_major > li > a:hover,
+#nav_userinfo > a:focus,
+#nav_useredit > a:focus,
+#nav_logout > a:focus,
+#nav_upload > a:focus,
+#nav_invite > a:focus,
+#nav_donate > a:focus,
+#userinfo_username > li > a:focus,
+#userinfo_major > li > a:focus,
+#userinfo_username li > a:hover,
+#userinfo_major li > a:hover,
+#userinfo_username a.username:hover,
+#nav_userinfo a:hover {
+    box-shadow: 0 0 0 1px rgba(139, 233, 253, 0.08), 0 0 10px rgba(139, 233, 253, 0.20), 0 0 20px rgba(139, 233, 253, 0.11), 0 0 32px rgba(139, 233, 253, 0.05), inset 0 0 0 1px rgba(139, 233, 253, 0.05) !important;
+}
+
+/* ---------- Stats pills ---------- */
+#userinfo_stats > li:hover,
+#userinfo_stats > li:focus-within {
+    box-shadow: 0 0 0 1px rgba(255, 121, 198, 0.06), 0 0 10px rgba(255, 121, 198, 0.16), 0 0 20px rgba(255, 121, 198, 0.09), 0 0 32px rgba(255, 121, 198, 0.04), inset 0 0 0 1px rgba(255, 255, 255, 0.02) !important;
+}
+
+/* ---------- Gift Tokens alert pill ---------- */
+#alerts .alertbar,
+#alerts .blend {
+    box-shadow: 0 0 0 1px rgba(139, 233, 253, 0.04), 0 0 10px rgba(139, 233, 253, 0.10), 0 0 22px rgba(139, 233, 253, 0.05), 0 8px 18px rgba(0, 0, 0, 0.18) !important;
+}
+
+    #alerts .alertbar:hover,
+    #alerts .blend:hover {
+        box-shadow: 0 0 0 1px rgba(139, 233, 253, 0.08), 0 0 12px rgba(139, 233, 253, 0.18), 0 0 24px rgba(139, 233, 253, 0.08), 0 10px 22px rgba(0, 0, 0, 0.20) !important;
+    }
+
+/* =========================================================
+   END v0.3.21q — STRONGER GLOBAL PILL GLOW
    ========================================================= */
