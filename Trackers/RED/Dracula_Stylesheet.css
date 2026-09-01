@@ -1,13 +1,13 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.21o
+ * Version: 0.3.21p
  *
- * Changelog 0.3.21o:
- * - Restored the exact original v0.3.21j cyan hover composition for global search fields.
- * - Uses the original translucent cyan fill and border instead of a flat solid teal color.
- * - Strengthened the outer neon glow while preserving the original visual character.
- * - Added a slightly stronger matching focus state for active search fields.
+ * Changelog 0.3.21p:
+ * - Recreated the original v0.3.21j search-hover appearance from sampled screenshot colors.
+ * - Replaced the translucent overlay approach with a direct dark-teal vertical gradient.
+ * - Uses approximately #1A2F3E at the top and #162B3B at the bottom, centered around #172C3D.
+ * - Added a brighter cyan/teal border and a stronger multi-layer neon glow.
  * - Preserved the verified single-layer search geometry from v0.3.21l.
  *
  * Changelog 0.3.21l:
@@ -4540,32 +4540,31 @@ blockquote,
 
 
 /* =========================================================
-   v0.3.21o — ORIGINAL 0.3.21j SEARCH COLOR + STRONGER GLOW
+   v0.3.21p — RECONSTRUCTED 0.3.21j SEARCH APPEARANCE
    ========================================================= */
 
 /*
- * v0.3.21j did not use a flat teal fill. Its appearance came from
- * translucent Dracula cyan layered over the existing dark input background.
- * Reuse that exact interaction color here while keeping the single-pill
- * structure introduced in v0.3.21l.
+ * The original v0.3.21j visual result came from multiple translucent
+ * layers. Recreate the final visible color directly so the same appearance
+ * survives after removing the nested search-form pill.
  */
 #searchbars .search_form input:hover {
-    background: rgba(139, 233, 253, .16) !important;
+    background: linear-gradient( 180deg, #1A2F3E 0%, #172D3D 48%, #162B3B 100% ) !important;
     color: var(--red-text-main) !important;
-    border-color: rgba(139, 233, 253, .34) !important;
-    box-shadow: 0 0 0 1px rgba(139, 233, 253, .10), 0 0 8px rgba(139, 233, 253, .30), 0 0 18px rgba(139, 233, 253, .18), 0 0 30px rgba(139, 233, 253, .09) !important;
+    border-color: rgba(53, 176, 171, .78) !important;
+    box-shadow: 0 0 0 1px rgba(53, 176, 171, .12), 0 0 8px rgba(53, 176, 171, .34), 0 0 18px rgba(53, 176, 171, .20), 0 0 30px rgba(53, 176, 171, .10) !important;
 }
 
 /*
- * Focus keeps the same color language, but remains slightly brighter so
- * the currently active search field is easy to identify while typing.
+ * Focus keeps the same reconstructed teal surface but strengthens the
+ * outline and glow slightly so the active field remains obvious.
  */
 #searchbars .search_form input:focus {
-    background: rgba(139, 233, 253, .18) !important;
+    background: linear-gradient( 180deg, #1B3342 0%, #18303F 48%, #172D3D 100% ) !important;
     color: var(--red-text-main) !important;
     caret-color: var(--red-cyan) !important;
-    border-color: rgba(139, 233, 253, .50) !important;
-    box-shadow: 0 0 0 1px rgba(139, 233, 253, .14), 0 0 10px rgba(139, 233, 253, .36), 0 0 22px rgba(139, 233, 253, .22), 0 0 36px rgba(139, 233, 253, .11) !important;
+    border-color: rgba(53, 176, 171, .95) !important;
+    box-shadow: 0 0 0 1px rgba(53, 176, 171, .16), 0 0 10px rgba(53, 176, 171, .42), 0 0 22px rgba(53, 176, 171, .25), 0 0 36px rgba(53, 176, 171, .12) !important;
 }
 
     #searchbars .search_form input:hover::placeholder,
@@ -4574,5 +4573,5 @@ blockquote,
     }
 
 /* =========================================================
-   END v0.3.21o — ORIGINAL 0.3.21j SEARCH COLOR + STRONGER GLOW
+   END v0.3.21p — RECONSTRUCTED 0.3.21j SEARCH APPEARANCE
    ========================================================= */
