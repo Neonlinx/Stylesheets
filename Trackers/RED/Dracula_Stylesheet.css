@@ -1,7 +1,13 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.21w
+ * Version: 0.3.21x
+ *
+ * Changelog 0.3.21x:
+ * - Extended the inactive search-field border treatment to Neonlinx and the stats row.
+ * - Increased selector specificity for Neonlinx so its special gradient rule no longer masks the resting border.
+ * - Matched Up / Down / Ratio / Seeding borders to the same --red-border color used by inactive search fields.
+ * - Preserved all backgrounds, text colors, hover states, glow and geometry.
  *
  * Changelog 0.3.21w:
  * - Matched the inactive lower account-pill border to the global search-field border.
@@ -4992,6 +4998,30 @@ blockquote,
     border-color: var(--red-border) !important;
 }
 
-/* =========================================================
+    /* =========================================================
    END v0.3.21w — ACCOUNT PILLS INACTIVE BORDER MATCH
+   ========================================================= */
+
+
+    /* =========================================================
+   v0.3.21x — INACTIVE BORDER CONSISTENCY
+   ========================================================= */
+
+    /* Neonlinx has a dedicated gradient/background rule, so use a matching
+   high-specificity selector to ensure its resting border follows the same
+   search-field border color as the other lower controls. */
+    #userinfo_username #nav_userinfo > a,
+    #nav_userinfo > a,
+    #nav_userinfo > a.username {
+        border-color: var(--red-border) !important;
+    }
+
+/* Match the stats row to the same inactive border used by search fields. */
+#userinfo_stats > li,
+#userinfo_stats li {
+    border-color: var(--red-border) !important;
+}
+
+/* =========================================================
+   END v0.3.21x — INACTIVE BORDER CONSISTENCY
    ========================================================= */
