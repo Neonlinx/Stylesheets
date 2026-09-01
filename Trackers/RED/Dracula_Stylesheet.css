@@ -1,7 +1,12 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.21v
+ * Version: 0.3.21w
+ *
+ * Changelog 0.3.21w:
+ * - Matched the inactive lower account-pill border to the global search-field border.
+ * - Uses the theme's exact --red-border color (#6272A4) for Neonlinx / Settings / Logout / Upload / Invite / Donate.
+ * - Preserved all existing backgrounds, text colors, hover states, glow and geometry.
  *
  * Changelog 0.3.21v:
  * - Restored cyan text for both upper navigation rows now that RED is viewed without Dark Reader.
@@ -4965,4 +4970,28 @@ blockquote,
 
 /* =========================================================
    END v0.3.21v — UPPER NAVIGATION TEXT COLOR RESTORE
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.21w — ACCOUNT PILLS INACTIVE BORDER MATCH
+   ========================================================= */
+
+/*
+ * Match the resting border of the lower account pills to the exact
+ * border already used by the inactive global search fields.
+ */
+#nav_userinfo > a,
+#nav_useredit > a,
+#nav_logout > a,
+#nav_upload > a,
+#nav_invite > a,
+#nav_donate > a,
+#userinfo_username > li > a,
+#userinfo_major > li > a {
+    border-color: var(--red-border) !important;
+}
+
+/* =========================================================
+   END v0.3.21w — ACCOUNT PILLS INACTIVE BORDER MATCH
    ========================================================= */
