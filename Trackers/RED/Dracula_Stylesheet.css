@@ -1,7 +1,13 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.22e
+ * Version: 0.3.22g
+ *
+ * Changelog 0.3.22g:
+ * - Fixed the sidebar list selector: RED uses two classes (`stats nobullet`), not one `stats_nobullet` class.
+ * - Restored the intended internal padding for Latest blog posts and Stats.
+ * - Enlarged sidebar time pills slightly and added external spacing so italic parentheses remain visually separate.
+ * - Preserved the approved Home news, header, logo, search, and article styling.
  *
  * Changelog 0.3.21y:
  * - Removed the visible horizontal cutoff at the top of the secondary header backdrop.
@@ -5361,11 +5367,11 @@ code {
 
 /*
  * Some sidebar boxes (notably Latest blog posts and Stats) place their
- * content directly inside ul.stats_nobullet instead of a .pad/.body wrapper.
+ * content directly inside ul.stats.nobullet instead of a .pad/.body wrapper.
  * Give those lists the same internal breathing room as the other sidebar
  * boxes without changing the sidebar container or unrelated box layouts.
  */
-#index .sidebar .box > ul.stats_nobullet {
+#index .sidebar .box > ul.stats.nobullet {
     box-sizing: border-box !important;
     width: 100% !important;
     margin: 0 !important;
@@ -5373,11 +5379,33 @@ code {
 }
 
     /* Keep list rows flush inside the newly padded content area. */
-    #index .sidebar .box > ul.stats_nobullet > li {
+    #index .sidebar .box > ul.stats.nobullet > li {
         margin-left: 0 !important;
         margin-right: 0 !important;
     }
 
 /* =========================================================
    END v0.3.22f — SIDEBAR STATS LIST PADDING CONSISTENCY
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.22g — SIDEBAR TIME PILL BREATHING ROOM
+   ========================================================= */
+
+/*
+ * Sidebar dates are wrapped by italic parentheses outside the .time span.
+ * Add internal pill padding plus a small external gap so the pill does not
+ * visually collide with the surrounding parentheses.
+ */
+#index .sidebar .time {
+    display: inline-block !important;
+    padding: 2px 8px !important;
+    margin-left: 3px !important;
+    margin-right: 3px !important;
+    line-height: 1.15 !important;
+}
+
+/* =========================================================
+   END v0.3.22g — SIDEBAR TIME PILL BREATHING ROOM
    ========================================================= */
