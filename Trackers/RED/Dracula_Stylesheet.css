@@ -1,7 +1,7 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.21aa
+ * Version: 0.3.22e
  *
  * Changelog 0.3.21y:
  * - Removed the visible horizontal cutoff at the top of the secondary header backdrop.
@@ -5295,4 +5295,62 @@ blockquote,
 
 /* =========================================================
    END v0.3.22d — HOME NEWS CONTENT POLISH
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.22e — NEWS BLOCKQUOTES + GLOBAL INLINE CODE POLISH
+   ========================================================= */
+
+/*
+ * RED uses <blockquote> for two very different purposes inside news posts:
+ *
+ * 1) compact section headings such as Image Host / Freeload! / Requests love!
+ * 2) real quoted/content blocks containing lists, code examples and prose.
+ *
+ * Distinguish them structurally so the compact headings receive the cyan
+ * outline while full content blockquotes keep proper reading-space.
+ */
+
+/* ---------- Compact news mini-headings ---------- */
+
+#index .news_post > .pad blockquote:has(> strong:only-child) {
+    box-sizing: border-box !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding: 2px 10px 3px !important;
+    border: 1px solid rgba(139, 233, 253, .34) !important;
+    border-radius: 8px !important;
+    box-shadow: inset 0 0 0 1px rgba(139, 233, 253, .035) !important;
+}
+
+/* ---------- Real content / quote blockquotes ---------- */
+
+#index .news_post > .pad blockquote:not(:has(> strong:only-child)) {
+    box-sizing: border-box !important;
+    padding: 10px 12px !important;
+    border: 1px solid var(--red-border-mid) !important;
+    border-left-width: 1px !important;
+    border-radius: var(--red-radius) !important;
+}
+
+/* ---------- Global inline-code pills ---------- */
+
+/*
+ * Inline <code> is used throughout RED to highlight short URLs, snippets
+ * and literal values. Give it enough internal breathing room to read as a
+ * deliberate compact pill while keeping long inline code wrappable.
+ * Block-level <pre> examples are intentionally left unchanged here.
+ */
+code {
+    padding: 1px 5px 2px !important;
+    margin: 0 1px !important;
+    border-radius: 6px !important;
+    line-height: 1.35 !important;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+}
+
+/* =========================================================
+   END v0.3.22e — NEWS BLOCKQUOTES + GLOBAL INLINE CODE POLISH
    ========================================================= */
