@@ -1,7 +1,12 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.22h
+ * Version: 0.3.22i
+ *
+ * Changelog 0.3.22i:
+ * - Restyled the fixed right-side Noty notification cards to match the Dracula panel palette.
+ * - Replaced the white action strip with a dark rounded inner pill.
+ * - Preserved notification links and existing Home/header/sidebar styling unchanged.
  *
  * Changelog 0.3.22h:
  * - Increased internal padding for the Stats seeder/leecher ratio pill (.r50) for better visual balance.
@@ -5427,4 +5432,63 @@ code {
 
 /* =========================================================
    END v0.3.22h — STATS RATIO PILL SPACING
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.22i — RIGHT-SIDE NOTY NOTIFICATION CARDS
+   ========================================================= */
+
+/*
+ * RED's Noty notices are emitted with strong inline white backgrounds and
+ * square-looking action strips. Override those inline values so the notices
+ * stay within the Dracula palette while keeping their original structure.
+ */
+#noty_bottomRight_layout_container > li {
+    box-sizing: border-box !important;
+    background: transparent !important;
+    color: var(--red-text-main) !important;
+    border: 1px solid var(--red-border-mid) !important;
+    border-radius: var(--red-radius-large) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .28) !important;
+    overflow: hidden !important;
+}
+
+#noty_bottomRight_layout_container .noty_bar {
+    box-sizing: border-box !important;
+    background: var(--red-bg-main) !important;
+    border-radius: inherit !important;
+    overflow: hidden !important;
+}
+
+#noty_bottomRight_layout_container .noty_message {
+    box-sizing: border-box !important;
+    background: transparent !important;
+    color: var(--red-text-main) !important;
+}
+
+/*
+ * The action area becomes a separate inner pill instead of a flat white band.
+ * The small outer margin lets all four corners read clearly as rounded.
+ */
+#noty_bottomRight_layout_container .noty_buttons {
+    box-sizing: border-box !important;
+    margin: 4px 5px 5px !important;
+    padding: 4px 7px !important;
+    background: var(--red-bg-panel-top) !important;
+    color: var(--red-text-main) !important;
+    border: 1px solid var(--red-border-mid) !important;
+    border-radius: 8px !important;
+    box-shadow: inset 0 0 0 1px rgba(139, 233, 253, .025) !important;
+}
+
+    #noty_bottomRight_layout_container .noty_buttons a,
+    #noty_bottomRight_layout_container .noty_buttons button {
+        background: transparent !important;
+        border: 0 !important;
+        box-shadow: none !important;
+    }
+
+/* =========================================================
+   END v0.3.22i — RIGHT-SIDE NOTY NOTIFICATION CARDS
    ========================================================= */
