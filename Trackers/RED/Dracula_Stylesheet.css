@@ -5137,3 +5137,50 @@ blockquote,
 /* =========================================================
    END v0.3.21ac — SEARCH FIELDS STRONGER HOVER / FOCUS GLOW
    ========================================================= */
+
+/* =========================================================
+   v0.3.21ad — BIGGER LOGO + LOWER SECONDARY HEADER
+   ========================================================= */
+
+/*
+ * Slightly enlarge the custom logo while preserving proportions.
+ * The shell is already tall enough, so we only scale the logo block.
+ */
+:root {
+    --red-logo-width: 448px;
+    --red-logo-height: 92px;
+}
+
+#logo {
+    top: 8px !important;
+    width: calc(var(--red-logo-width) + 40px) !important;
+    height: calc(var(--red-logo-height) + 8px) !important;
+}
+
+    #logo a {
+        width: var(--red-logo-width) !important;
+        height: var(--red-logo-height) !important;
+    }
+
+/*
+ * Lower the whole secondary panel without changing its visual height.
+ * We do that by:
+ * 1) increasing the spacer row inside #userinfo,
+ * 2) lowering the panel backdrop by the same amount.
+ * Searchbars and everything below follow automatically.
+ */
+#userinfo {
+    grid-template-rows: 26px 30px 28px 24px !important;
+}
+
+#header::after {
+    top: calc(var(--red-header-shell-height) + 20px) !important;
+}
+
+#alerts {
+    top: calc(var(--red-header-shell-height) + 33px) !important;
+}
+
+/* =========================================================
+   END v0.3.21ad — BIGGER LOGO + LOWER SECONDARY HEADER
+   ========================================================= */
