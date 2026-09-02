@@ -5184,3 +5184,52 @@ blockquote,
 /* =========================================================
    END v0.3.21ad — BIGGER LOGO + LOWER SECONDARY HEADER
    ========================================================= */
+/* =========================================================
+   v0.3.22c — LOGO BIGGER + BETTER VERTICAL CENTERING
+   ========================================================= */
+
+/*
+ * 1) Logo:
+ * - leggermente più grande
+ * - centrato meglio in altezza dentro l'header superiore
+ */
+:root {
+    --red-logo-width: 468px;
+    --red-logo-height: 98px;
+}
+
+#logo {
+    top: calc((var(--red-header-shell-height) - var(--red-logo-height)) / 2) !important;
+    width: calc(var(--red-logo-width) + 40px) !important;
+    height: var(--red-logo-height) !important;
+}
+
+    #logo a {
+        width: var(--red-logo-width) !important;
+        height: var(--red-logo-height) !important;
+        margin-top: 0 !important;
+    }
+
+/*
+ * 2) Secondo header:
+ * - spostiamo leggermente verso il basso tutto il contenuto
+ * - riduciamo un po' il "vuoto" sotto le searchbars
+ * così il blocco risulta più centrato verticalmente.
+ */
+#userinfo {
+    padding-top: 8px !important;
+}
+
+#searchbars {
+    margin-top: 14px !important;
+    padding-top: 6px !important;
+    padding-bottom: 4px !important;
+}
+
+#header {
+    padding-bottom: 12px !important;
+}
+
+/* =========================================================
+   END v0.3.22c — LOGO BIGGER + BETTER VERTICAL CENTERING
+   ========================================================= */
