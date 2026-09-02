@@ -5184,14 +5184,16 @@ blockquote,
 /* =========================================================
    END v0.3.21ad — BIGGER LOGO + LOWER SECONDARY HEADER
    ========================================================= */
+
+
 /* =========================================================
    v0.3.22c — LOGO BIGGER + BETTER VERTICAL CENTERING
    ========================================================= */
 
 /*
  * 1) Logo:
- * - leggermente più grande
- * - centrato meglio in altezza dentro l'header superiore
+ * - slightly larger
+ * - vertically centered inside the primary header shell
  */
 :root {
     --red-logo-width: 468px;
@@ -5211,10 +5213,9 @@ blockquote,
     }
 
 /*
- * 2) Secondo header:
- * - spostiamo leggermente verso il basso tutto il contenuto
- * - riduciamo un po' il "vuoto" sotto le searchbars
- * così il blocco risulta più centrato verticalmente.
+ * 2) Secondary header:
+ * move its internal controls slightly downward and reduce dead space
+ * below the global search fields for better vertical balance.
  */
 #userinfo {
     padding-top: 8px !important;
@@ -5232,4 +5233,66 @@ blockquote,
 
 /* =========================================================
    END v0.3.22c — LOGO BIGGER + BETTER VERTICAL CENTERING
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.22d — HOME NEWS CONTENT POLISH
+   ========================================================= */
+
+/*
+ * RED's home-page news entries use .box.news_post with a direct .head
+ * followed by a direct .pad body. Scope every change to #index .news_post
+ * so other Gazelle boxes/pages keep their existing spacing and styling.
+ */
+
+/* ---------- News timestamp pill ---------- */
+
+#index .news_post > .head .time {
+    display: inline-block !important;
+    box-sizing: border-box !important;
+    margin: 0 2px !important;
+    padding: 2px 7px 3px !important;
+    line-height: 1 !important;
+    border-radius: 999px !important;
+}
+
+/* ---------- Main news body spacing ---------- */
+
+/*
+ * The news body is one large .pad container separated mostly with <br>,
+ * rather than individual paragraph elements. Give that container the
+ * same comfortable horizontal breathing room seen in the better-spaced
+ * sidebar boxes without changing generic .pad rules site-wide.
+ */
+#index .news_post > .pad {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+}
+
+/* ---------- Complete cyan outline for the news title bar ---------- */
+
+#index .news_post > .head {
+    border: 1px solid rgba(139, 233, 253, .28) !important;
+    border-radius: 9px !important;
+    box-shadow: inset 0 0 0 1px rgba(139, 233, 253, .025) !important;
+}
+
+/* ---------- Complete cyan outline for internal article mini-headings ---------- */
+
+/*
+ * Internal headings such as Image Host, PTPimg, Rules & Regulations,
+ * Usage, Disclaimer and Tokens are centered blockquotes inside the news body.
+ * Preserve their current background/text treatment and complete the border
+ * on all four sides using the same cyan family as the existing accent edge.
+ */
+#index .news_post > .pad > div[style*="text-align: center"] > blockquote {
+    box-sizing: border-box !important;
+    border: 1px solid rgba(139, 233, 253, .34) !important;
+    border-radius: 8px !important;
+    box-shadow: inset 0 0 0 1px rgba(139, 233, 253, .035) !important;
+}
+
+/* =========================================================
+   END v0.3.22d — HOME NEWS CONTENT POLISH
    ========================================================= */
