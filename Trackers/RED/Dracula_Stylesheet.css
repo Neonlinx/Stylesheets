@@ -5354,3 +5354,30 @@ code {
 /* =========================================================
    END v0.3.22e — NEWS BLOCKQUOTES + GLOBAL INLINE CODE POLISH
    ========================================================= */
+
+/* =========================================================
+   v0.3.22f — SIDEBAR STATS LIST PADDING CONSISTENCY
+   ========================================================= */
+
+/*
+ * Some sidebar boxes (notably Latest blog posts and Stats) place their
+ * content directly inside ul.stats_nobullet instead of a .pad/.body wrapper.
+ * Give those lists the same internal breathing room as the other sidebar
+ * boxes without changing the sidebar container or unrelated box layouts.
+ */
+#index .sidebar .box > ul.stats_nobullet {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 8px 10px !important;
+}
+
+    /* Keep list rows flush inside the newly padded content area. */
+    #index .sidebar .box > ul.stats_nobullet > li {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+/* =========================================================
+   END v0.3.22f — SIDEBAR STATS LIST PADDING CONSISTENCY
+   ========================================================= */
