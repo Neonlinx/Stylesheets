@@ -1,7 +1,11 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.22g
+ * Version: 0.3.22h
+ *
+ * Changelog 0.3.22h:
+ * - Increased internal padding for the Stats seeder/leecher ratio pill (.r50) for better visual balance.
+ * - Preserved all v0.3.22g sidebar spacing and Home styling unchanged.
  *
  * Changelog 0.3.22g:
  * - Fixed the sidebar list selector: RED uses two classes (`stats nobullet`), not one `stats_nobullet` class.
@@ -5408,4 +5412,19 @@ code {
 
 /* =========================================================
    END v0.3.22g — SIDEBAR TIME PILL BREATHING ROOM
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.22h — STATS RATIO PILL SPACING
+   ========================================================= */
+
+#index .sidebar .stats.nobullet .r50 {
+    display: inline-block !important;
+    padding: 2px 7px !important;
+    line-height: 1.15 !important;
+}
+
+/* =========================================================
+   END v0.3.22h — STATS RATIO PILL SPACING
    ========================================================= */
