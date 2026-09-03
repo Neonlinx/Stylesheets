@@ -1,7 +1,13 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.22j
+ * Version: 0.3.22k
+ *
+ * Changelog 0.3.22k:
+ * - Added layered night-tone gradients to the three major Home backgrounds: primary header shell, secondary header panel, and main content panel.
+ * - Combined a soft violet-blue radial haze near the top with a darker vertical falloff for more depth.
+ * - Made the main Home content gradient intentionally more pronounced than the two header panels.
+ * - Preserved all borders, shadows, geometry, inner boxes, Noty styling, logo, controls and article content.
  *
  * Changelog 0.3.22j:
  * - Changed only the outer Noty notification-card border to the same inactive account-pill border used by Neonlinx / Settings / Logout.
@@ -5515,4 +5521,43 @@ code {
 
 /* =========================================================
    END v0.3.22j — NOTY OUTER BORDER ACCENT
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.22k — HOME NIGHT-FADE DEPTH
+   ========================================================= */
+
+/*
+ * Recreate the subtle "night haze" that appeared while Dark Reader was
+ * active, but now directly and predictably in the theme itself.
+ *
+ * The three large Home surfaces share the same visual language:
+ * - a soft violet/blue radial haze near the upper area;
+ * - a gradual vertical descent toward a deeper charcoal/night tone.
+ *
+ * The main content panel gets the strongest falloff because its greater
+ * height gives the gradient room to develop naturally.
+ */
+
+/* ---------- 1) Primary header shell: short, restrained haze ---------- */
+
+#index #header::before {
+    background: radial-gradient( ellipse at 50% 0%, rgba(98, 114, 164, .13) 0%, rgba(68, 71, 90, .075) 38%, rgba(68, 71, 90, 0) 72% ), linear-gradient( 180deg, #303241 0%, #2C2E3B 45%, #282A36 100% ) !important;
+}
+
+/* ---------- 2) Secondary header panel: slightly deeper ---------- */
+
+#index #header::after {
+    background: radial-gradient( ellipse at 50% 0%, rgba(98, 114, 164, .115) 0%, rgba(68, 71, 90, .060) 40%, rgba(68, 71, 90, 0) 74% ), linear-gradient( 180deg, #2D2F3D 0%, #292B38 48%, #242631 100% ) !important;
+}
+
+/* ---------- 3) Main Home panel: pronounced night fade ---------- */
+
+#index #content {
+    background: radial-gradient( ellipse at 50% 0%, rgba(98, 114, 164, .14) 0%, rgba(68, 71, 90, .075) 34%, rgba(68, 71, 90, .025) 56%, rgba(68, 71, 90, 0) 74% ), linear-gradient( 180deg, #303241 0%, #2B2D3A 24%, #282A36 46%, #242631 70%, #1F2029 100% ) !important;
+}
+
+/* =========================================================
+   END v0.3.22k — HOME NIGHT-FADE DEPTH
    ========================================================= */
