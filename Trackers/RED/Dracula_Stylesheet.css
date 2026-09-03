@@ -1,7 +1,11 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.22k
+ * Version: 0.3.22l
+ *
+ * Changelog 0.3.22l:
+ * - Inverted only the main Home content background gradient so the article area starts darker at the top and becomes gradually lighter toward the bottom.
+ * - Kept the soft upper radial haze, but tuned the vertical fade direction to better match the user’s preferred depth effect.
  *
  * Changelog 0.3.22k:
  * - Added layered night-tone gradients to the three major Home backgrounds: primary header shell, secondary header panel, and main content panel.
@@ -5560,4 +5564,24 @@ code {
 
 /* =========================================================
    END v0.3.22k — HOME NIGHT-FADE DEPTH
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.22l — MAIN HOME GRADIENT INVERTED
+   ========================================================= */
+
+/*
+ * User-requested refinement:
+ * - keep the two header gradients as they are;
+ * - invert only the main Home background direction so the article region
+ *   is darker near the top and gradually lighter toward the bottom.
+ */
+
+#index #content {
+    background: radial-gradient( ellipse at 50% 0%, rgba(98, 114, 164, .10) 0%, rgba(68, 71, 90, .040) 34%, rgba(68, 71, 90, .015) 56%, rgba(68, 71, 90, 0) 74% ), linear-gradient( 180deg, #1F2029 0%, #23242E 18%, #272936 40%, #2B2D3A 68%, #303241 100% ) !important;
+}
+
+/* =========================================================
+   END v0.3.22l — MAIN HOME GRADIENT INVERTED
    ========================================================= */
