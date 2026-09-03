@@ -1,7 +1,12 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.22i
+ * Version: 0.3.22j
+ *
+ * Changelog 0.3.22j:
+ * - Changed only the outer Noty notification-card border to the same inactive account-pill border used by Neonlinx / Settings / Logout.
+ * - This separates the outer notification container more clearly from the two inner pills.
+ * - Preserved the v0.3.22i Noty backgrounds, inner-pill geometry, spacing, links and all other Home styling unchanged.
  *
  * Changelog 0.3.22i:
  * - Restyled the fixed right-side Noty notification cards to match the Dracula panel palette.
@@ -5491,4 +5496,23 @@ code {
 
 /* =========================================================
    END v0.3.22i — RIGHT-SIDE NOTY NOTIFICATION CARDS
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.22j — NOTY OUTER BORDER ACCENT
+   ========================================================= */
+
+/*
+ * Use the exact resting border already established for the account pills
+ * (Neonlinx / Settings / Logout / Upload / Invite / Donate).
+ * Only the OUTER Noty card changes: the two inner sections keep the v0.3.22i
+ * border treatment so their nested structure remains visually distinct.
+ */
+#noty_bottomRight_layout_container > li {
+    border-color: var(--red-border) !important;
+}
+
+/* =========================================================
+   END v0.3.22j — NOTY OUTER BORDER ACCENT
    ========================================================= */
