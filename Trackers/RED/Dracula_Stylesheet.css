@@ -1,7 +1,13 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.23e
+ * Version: 0.3.23f
+ *
+ * Changelog 0.3.23f:
+ * - Added a restrained cyan hover treatment to the inactive Basic / Advanced search-mode link, combining a soft text glow with an underline.
+ * - Restyled Torrents-page select controls to match the dark teal search-field language used on the Home page.
+ * - Added a stronger cyan/teal diffusion glow to select controls on mouse hover while keeping the resting state subdued.
+ * - Preserved all active-mode styling, writable-input behavior, row colors, spacing and panel layout from v0.3.23e.
  *
  * Changelog 0.3.23e:
  * - Fixed the duplicated slash in the Basic / Advanced Search mode switch by rebuilding the visible labels and separator cleanly in CSS.
@@ -6079,4 +6085,61 @@ code {
 
 /* =========================================================
    END v0.3.23e — SEARCH MODE LABEL + STRONGER ACTIVE GLOW
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.23f — INACTIVE MODE HOVER + SELECT FIELD LANGUAGE
+   ========================================================= */
+
+/*
+ * Inactive Basic / Advanced mode:
+ * keep it as text (not a pill), but add a small cyan underline and
+ * restrained diffusion on hover so it clearly feels interactive.
+ */
+#torrents #ft_basic_link:not(.hidden) > a,
+#torrents #ft_advanced_link:not(.hidden) > a {
+    transition: text-shadow .16s ease, text-decoration-color .16s ease, color .16s ease !important;
+}
+
+    #torrents #ft_basic_link:not(.hidden) > a:hover,
+    #torrents #ft_advanced_link:not(.hidden) > a:hover {
+        color: var(--red-cyan) !important;
+        text-decoration-line: underline !important;
+        text-decoration-thickness: 1px !important;
+        text-decoration-color: rgba(139, 233, 253, .88) !important;
+        text-underline-offset: 3px !important;
+        text-shadow: 0 0 5px rgba(139, 233, 253, .58), 0 0 11px rgba(139, 233, 253, .30), 0 0 18px rgba(139, 233, 253, .14) !important;
+    }
+
+/*
+ * Torrents-page SELECT controls:
+ * same dark teal family used by the Home search controls.
+ * Keep select arrows/native behavior intact.
+ */
+#torrents .filter_torrents select {
+    background: linear-gradient( 180deg, #1A2F3E 0%, #172D3D 48%, #162B3B 100% ) !important;
+    color: var(--red-text-main) !important;
+    border-color: rgba(53, 176, 171, .62) !important;
+    box-shadow: 0 0 0 1px rgba(53, 176, 171, .08), 0 0 8px rgba(53, 176, 171, .14), inset 0 0 6px rgba(53, 176, 171, .05) !important;
+    transition: border-color .16s ease, box-shadow .16s ease, background .16s ease !important;
+}
+
+    /* Hover: stronger diffusion, matching the highlighted Home search field. */
+    #torrents .filter_torrents select:hover {
+        background: linear-gradient( 180deg, #1B3342 0%, #18303F 48%, #172D3D 100% ) !important;
+        border-color: rgba(53, 176, 171, .92) !important;
+        box-shadow: 0 0 0 1px rgba(53, 176, 171, .22), 0 0 10px rgba(53, 176, 171, .62), 0 0 20px rgba(53, 176, 171, .42), 0 0 34px rgba(53, 176, 171, .26), 0 0 52px rgba(53, 176, 171, .14), 0 0 72px rgba(53, 176, 171, .07), inset 0 0 8px rgba(53, 176, 171, .10) !important;
+    }
+
+    /* Focus/open state: cleaner cyan/teal border, broad hover halo removed. */
+    #torrents .filter_torrents select:focus {
+        background: linear-gradient( 180deg, #1B3342 0%, #18303F 48%, #172D3D 100% ) !important;
+        border-color: rgba(53, 176, 171, .96) !important;
+        outline: none !important;
+        box-shadow: 0 0 0 1px rgba(53, 176, 171, .18), inset 0 0 8px rgba(53, 176, 171, .10) !important;
+    }
+
+/* =========================================================
+   END v0.3.23f — INACTIVE MODE HOVER + SELECT FIELD LANGUAGE
    ========================================================= */
