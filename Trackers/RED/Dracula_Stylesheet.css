@@ -1,7 +1,14 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.23
+ * Version: 0.3.23a
+ *
+ * Changelog 0.3.23a:
+ * - Refined the Torrents search panel only.
+ * - Removed the visual pill styling from the Torrent description and Tags tooltip labels while preserving tooltip behavior.
+ * - Increased row-striping contrast in the advanced search table and added inner padding so labels no longer sit on row edges.
+ * - Reworked the final search-action row so the result count stays aligned left while Filter torrents and Reset are centered as a pair with a clear gap.
+ * - Left the torrent results list unchanged from v0.3.23.
  *
  * Changelog 0.3.23:
  * - Started the Torrents page refinement pass.
@@ -5676,4 +5683,93 @@ code {
 
 /* =========================================================
    END v0.3.23 — TORRENTS PAGE: FIRST SPACING PASS
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.23a — TORRENTS SEARCH PANEL REFINEMENT
+   ========================================================= */
+
+/* Remove only the visual pill treatment from tooltip-based labels. */
+#torrents #torrent_description .label > .tooltip,
+#torrents #tagfilter .label > .tooltip {
+    background: transparent !important;
+    background-image: none !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/*
+ * Make the alternating search rows more visible and add breathing room
+ * around their content without changing input/select sizes.
+ */
+#torrents #ft_container > table.layout:first-child {
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+}
+
+    #torrents #ft_container > table.layout:first-child > tbody > tr:nth-child(odd) > td {
+        background: rgba(68, 71, 90, .18) !important;
+    }
+
+    #torrents #ft_container > table.layout:first-child > tbody > tr:nth-child(even) > td {
+        background: rgba(98, 114, 164, .075) !important;
+    }
+
+    #torrents #ft_container > table.layout:first-child > tbody > tr > td {
+        box-sizing: border-box !important;
+        padding-top: 4px !important;
+        padding-bottom: 4px !important;
+    }
+
+        #torrents #ft_container > table.layout:first-child > tbody > tr > td:first-child {
+            padding-left: 10px !important;
+        }
+
+        #torrents #ft_container > table.layout:first-child > tbody > tr > td:last-child {
+            padding-right: 10px !important;
+        }
+
+    /* Keep the label column tidy and visually detached from the row edge. */
+    #torrents #ft_container > table.layout:first-child td.label {
+        vertical-align: middle !important;
+    }
+
+/*
+ * Final action row:
+ * - result count stays on the left;
+ * - buttons are centered as a pair across the whole search panel;
+ * - clear gap between Filter torrents and Reset.
+ */
+#torrents .ft_submit {
+    position: relative !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 10px !important;
+    box-sizing: border-box !important;
+    min-height: 34px !important;
+    padding: 4px 10px !important;
+}
+
+    #torrents .ft_submit > span {
+        position: absolute !important;
+        left: 10px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        float: none !important;
+        margin: 0 !important;
+        line-height: 1.2 !important;
+    }
+
+    #torrents .ft_submit > input[type="submit"],
+    #torrents .ft_submit > input[type="button"] {
+        margin: 0 !important;
+    }
+
+/* =========================================================
+   END v0.3.23a — TORRENTS SEARCH PANEL REFINEMENT
    ========================================================= */
