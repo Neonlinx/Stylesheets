@@ -1,7 +1,13 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.22m
+ * Version: 0.3.23
+ *
+ * Changelog 0.3.23:
+ * - Started the Torrents page refinement pass.
+ * - Added controlled inner spacing to the large torrent search panel without altering the existing input/select geometry.
+ * - Added conservative left/right breathing room to the torrent results table, including its header and grouped torrent rows.
+ * - Preserved all Home styling from v0.3.22m unchanged.
  *
  * Changelog 0.3.22m:
  * - Added a soft external diffusion halo around the two upper Home header panels.
@@ -5616,4 +5622,58 @@ code {
 
 /* =========================================================
    END v0.3.22m — HEADER EDGE DIFFUSION
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.23 — TORRENTS PAGE: FIRST SPACING PASS
+   ========================================================= */
+
+/*
+ * 1) Search panel
+ * Keep the current fields/selects exactly as they are, but give the whole
+ * search content a little more breathing room from the large outer panel.
+ */
+#torrents .filter_torrents > #ft_container.pad {
+    box-sizing: border-box !important;
+    padding: 10px 12px 12px !important;
+}
+
+/*
+ * 2) Torrent results table
+ * Add breathing room at the table edges without changing the column layout.
+ * The Name / Year header and the main grouped-torrent information receive
+ * a small left inset; the far-right cells receive a matching right inset.
+ */
+
+/* Left edge / header */
+#torrents #torrent_table > tbody > tr.colhead > td:first-child {
+    padding-left: 6px !important;
+}
+
+#torrents #torrent_table > tbody > tr.colhead > td:nth-child(3) {
+    padding-left: 10px !important;
+}
+
+/* Main grouped release rows */
+#torrents #torrent_table > tbody > tr.group > td:first-child {
+    padding-left: 6px !important;
+}
+
+#torrents #torrent_table > tbody > tr.group > td.big_info {
+    padding-left: 10px !important;
+}
+
+/* Edition and individual torrent rows */
+#torrents #torrent_table > tbody > tr.group_torrent > td:first-child {
+    padding-left: 10px !important;
+}
+
+/* Matching breathing room on the right edge */
+#torrents #torrent_table > tbody > tr > td:last-child {
+    padding-right: 10px !important;
+}
+
+/* =========================================================
+   END v0.3.23 — TORRENTS PAGE: FIRST SPACING PASS
    ========================================================= */
