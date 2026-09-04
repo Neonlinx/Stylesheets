@@ -1,7 +1,13 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.22l
+ * Version: 0.3.22m
+ *
+ * Changelog 0.3.22m:
+ * - Added a soft external diffusion halo around the two upper Home header panels.
+ * - Used layered low-opacity blue-violet shadows rather than cyan glow, so the panels feel lifted without looking neon-framed.
+ * - Made the primary header halo slightly broader than the secondary header halo.
+ * - Preserved all gradients, borders, geometry, controls, content boxes and Noty styling from v0.3.22l.
  *
  * Changelog 0.3.22l:
  * - Inverted only the main Home content background gradient so the article area starts darker at the top and becomes gradually lighter toward the bottom.
@@ -5584,4 +5590,30 @@ code {
 
 /* =========================================================
    END v0.3.22l — MAIN HOME GRADIENT INVERTED
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.22m — HEADER EDGE DIFFUSION
+   ========================================================= */
+
+/*
+ * Add a broad, low-opacity night-tone diffusion around the two upper
+ * Home panels. This is intentionally NOT a cyan neon glow: the goal is
+ * a soft blue/violet atmospheric halo that visually lifts the panels
+ * from the page background while keeping the existing border readable.
+ */
+
+/* Primary header shell — wider diffusion */
+#index #header::before {
+    box-shadow: 0 0 0 1px rgba(98, 114, 164, .045), 0 0 14px rgba(98, 114, 164, .090), 0 0 34px rgba(98, 114, 164, .060), 0 0 62px rgba(189, 147, 249, .032) !important;
+}
+
+/* Secondary header panel — same family, slightly more restrained */
+#index #header::after {
+    box-shadow: 0 0 0 1px rgba(98, 114, 164, .035), 0 0 12px rgba(98, 114, 164, .075), 0 0 28px rgba(98, 114, 164, .048), 0 0 50px rgba(189, 147, 249, .024) !important;
+}
+
+/* =========================================================
+   END v0.3.22m — HEADER EDGE DIFFUSION
    ========================================================= */
