@@ -1,7 +1,12 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.23i
+ * Version: 0.3.23j
+ *
+ * Changelog 0.3.23j:
+ * - Removed the ineffective native option:hover customization attempt from Torrents dropdown menus.
+ * - Strengthened the placeholder/title option (e.g. Bitrate, Format, Release type, Leech Status) with a darker teal background and brighter cyan text.
+ * - Preserved the dark dropdown popup, select resting/hover/focus behavior and all v0.3.23i layout/styling.
  *
  * Changelog 0.3.23i:
  * - Refined Torrents dropdown popup styling.
@@ -6243,6 +6248,37 @@ code {
             color: #EAEAF2 !important;
         }
 
-/* =========================================================
+        /* =========================================================
    END v0.3.23i — DROPDOWN OPTION HOVER + TITLE EMPHASIS
+   ========================================================= */
+
+
+        /* =========================================================
+   v0.3.23j — DROPDOWN TITLE EMPHASIS / NATIVE HOVER FALLBACK
+   ========================================================= */
+
+        /*
+ * Chrome/Windows keeps native control of the popup row under the mouse,
+ * so the option:hover attempt from v0.3.23i is intentionally neutralized.
+ * Keep the popup dark and make the title/placeholder row clearly distinct.
+ */
+
+        /* Neutralize the custom hover attempt; native popup hover remains OS-driven. */
+        #torrents .filter_torrents select option:hover {
+            background: initial !important;
+            background-color: initial !important;
+            color: inherit !important;
+        }
+
+        /* Stronger title/placeholder row. */
+        #torrents .filter_torrents select option[value=""],
+        #torrents .filter_torrents select option[value=""]:checked {
+            background: #162B3B !important;
+            background-color: #162B3B !important;
+            color: #8BE9FD !important;
+            font-weight: 700 !important;
+        }
+
+/* =========================================================
+   END v0.3.23j — DROPDOWN TITLE EMPHASIS / NATIVE HOVER FALLBACK
    ========================================================= */
