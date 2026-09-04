@@ -1,7 +1,12 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.23l
+ * Version: 0.3.23m
+ *
+ * Changelog 0.3.23m:
+ * - Softened the Torrents search-label pink to a lighter pastel shade closer to the account/header pill family.
+ * - Reduced the pink text-glow intensity so labels remain distinct without appearing oversaturated.
+ * - Preserved all tag hover effects, controls, dropdowns, spacing and panel styling from v0.3.23l.
  *
  * Changelog 0.3.23l:
  * - Added a restrained cyan underline + soft glow hover treatment to the torrent tag links.
@@ -6388,6 +6393,27 @@ code {
     text-shadow: 0 0 5px rgba(255, 121, 198, .30), 0 0 10px rgba(255, 121, 198, .12) !important;
 }
 
-/* =========================================================
+    /* =========================================================
    END v0.3.23l — TAG HOVER + SEARCH LABEL PINK HIERARCHY
+   ========================================================= */
+
+
+    /* =========================================================
+   v0.3.23m — SOFTER SEARCH LABEL PINK
+   ========================================================= */
+
+    /*
+ * Keep the pink hierarchy introduced in v0.3.23l, but soften both the
+ * base color and the diffusion so it visually aligns better with the
+ * account/header pink accents.
+ */
+    #torrents #ft_container > table.layout:first-child td.label,
+    #torrents #ft_container > table.layout:first-child td.label label,
+    #torrents #ft_container > table.layout:first-child td.label > span {
+        color: #F2A3D0 !important;
+        text-shadow: 0 0 5px rgba(242, 163, 208, .22), 0 0 10px rgba(242, 163, 208, .08) !important;
+    }
+
+/* =========================================================
+   END v0.3.23m — SOFTER SEARCH LABEL PINK
    ========================================================= */
