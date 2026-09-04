@@ -1,7 +1,14 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.23c
+ * Version: 0.3.23d
+ *
+ * Changelog 0.3.23d:
+ * - Added a cyan active-mode pill for Basic / Advanced Search, matching the theme's established interactive language.
+ * - Rebuilt the Basic / Advanced label presentation in CSS so the active mode includes the word Search inside the pill.
+ * - Added safe inner horizontal padding to writable torrent-search fields so text and caret no longer sit against the border.
+ * - Added a cyan diffusion glow on mouse hover for writable fields, while keeping focused fields cleaner with a defined cyan border and subtle inset emphasis.
+ * - Preserved the darker row palette, spacing and centered action layout from v0.3.23c.
  *
  * Changelog 0.3.23c:
  * - Darkened the alternating search-row palette toward charcoal / near-black Dracula tones.
@@ -5905,4 +5912,96 @@ code {
 
 /* =========================================================
    END v0.3.23c — TORRENTS SEARCH DARKER ROW PALETTE
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.23d — TORRENTS SEARCH MODE + INPUT INTERACTION
+   ========================================================= */
+
+/*
+ * Basic / Advanced Search mode switch
+ *
+ * Gazelle renders "Search" as a loose text node after the four mode spans.
+ * Hide that loose text via font-size:0 on the <strong>, then rebuild the
+ * visible wording on the relevant spans. This lets the active mode become
+ * one coherent pill: "Basic Search" or "Advanced Search".
+ */
+#torrents .filter_torrents > .head > strong {
+    font-size: 0 !important;
+    line-height: 1 !important;
+}
+
+    #torrents .filter_torrents > .head > strong > span {
+        font-size: 13px !important;
+        line-height: 1.2 !important;
+    }
+
+/* Preserve the slash only where it is actually needed. */
+#torrents #ft_basic_link:not(.hidden)::after {
+    content: " / ";
+    color: var(--red-text-soft) !important;
+    margin: 0 3px !important;
+}
+
+#torrents #ft_advanced_link:not(.hidden)::before {
+    content: " / ";
+    color: var(--red-text-soft) !important;
+    margin: 0 3px !important;
+}
+
+/* Reattach "Search" to the currently active mode. */
+#torrents #ft_basic_text:not(.hidden)::after,
+#torrents #ft_advanced_text:not(.hidden)::after {
+    content: " Search";
+}
+
+/* Active Basic / Advanced mode: compact cyan pill with restrained glow. */
+#torrents #ft_basic_text:not(.hidden),
+#torrents #ft_advanced_text:not(.hidden) {
+    display: inline-block !important;
+    padding: 3px 8px 4px !important;
+    border: 1px solid rgba(139, 233, 253, .78) !important;
+    border-radius: 8px !important;
+    background: linear-gradient( 180deg, rgba(27, 51, 66, .92) 0%, rgba(24, 48, 63, .92) 50%, rgba(23, 45, 61, .92) 100% ) !important;
+    color: var(--red-cyan) !important;
+    box-shadow: 0 0 0 1px rgba(139, 233, 253, .12), 0 0 7px rgba(139, 233, 253, .34), 0 0 15px rgba(139, 233, 253, .18), inset 0 0 7px rgba(139, 233, 253, .07) !important;
+}
+
+/* Inactive mode remains a clean cyan text link. */
+#torrents #ft_basic_link:not(.hidden) > a,
+#torrents #ft_advanced_link:not(.hidden) > a {
+    color: var(--red-cyan) !important;
+    text-decoration: none !important;
+}
+
+/*
+ * Writable torrent-search fields
+ * Keep external dimensions unchanged while moving text/caret away from edges.
+ */
+#torrents .filter_torrents input[type="search"] {
+    box-sizing: border-box !important;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    caret-color: var(--red-cyan) !important;
+}
+
+    /*
+ * Hover = interactive diffusion.
+ * Use :not(:focus) so the glow disappears once the user is actually typing.
+ */
+    #torrents .filter_torrents input[type="search"]:hover:not(:focus) {
+        border-color: rgba(139, 233, 253, .92) !important;
+        box-shadow: 0 0 0 1px rgba(139, 233, 253, .18), 0 0 8px rgba(139, 233, 253, .48), 0 0 18px rgba(139, 233, 253, .30), 0 0 32px rgba(139, 233, 253, .16), 0 0 48px rgba(139, 233, 253, .07) !important;
+    }
+
+    /* Focus = cleaner cyan edge + subtle inner emphasis, no broad outer halo. */
+    #torrents .filter_torrents input[type="search"]:focus {
+        border-color: rgba(139, 233, 253, .96) !important;
+        outline: none !important;
+        box-shadow: 0 0 0 1px rgba(139, 233, 253, .16), inset 0 0 8px rgba(139, 233, 253, .10) !important;
+    }
+
+/* =========================================================
+   END v0.3.23d — TORRENTS SEARCH MODE + INPUT INTERACTION
    ========================================================= */
