@@ -1,7 +1,12 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.23g
+ * Version: 0.3.23h
+ *
+ * Changelog 0.3.23h:
+ * - Refined the currently selected entry inside Torrents dropdown menus.
+ * - Uses a dark teal selected-option background with cyan text to replace the bright native highlight where the browser permits it.
+ * - Preserved the dark popup menu, select hover/focus effects and all v0.3.23g styling.
  *
  * Changelog 0.3.23g:
  * - Restored dark dropdown menus for Torrents-page select controls.
@@ -6175,6 +6180,27 @@ code {
             color: #8BE9FD !important;
         }
 
-/* =========================================================
+        /* =========================================================
    END v0.3.23g — DARK SELECT POPUP MENU
+   ========================================================= */
+
+
+        /* =========================================================
+   v0.3.23h — SELECTED DROPDOWN OPTION ACCENT
+   ========================================================= */
+
+        /*
+ * Selected entry inside native dropdown menus.
+ * Browsers/Windows may still apply some native popup styling, but where
+ * option styling is honored this keeps the selected row in the Dracula
+ * teal/cyan family instead of the bright system-blue highlight.
+ */
+        #torrents .filter_torrents select option:checked {
+            background: #1B3342 !important;
+            background-color: #1B3342 !important;
+            color: #8BE9FD !important;
+        }
+
+/* =========================================================
+   END v0.3.23h — SELECTED DROPDOWN OPTION ACCENT
    ========================================================= */
