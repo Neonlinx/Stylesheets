@@ -1,7 +1,12 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.23b
+ * Version: 0.3.23c
+ *
+ * Changelog 0.3.23c:
+ * - Darkened the alternating search-row palette toward charcoal / near-black Dracula tones.
+ * - Unified the upper search controls and lower tag-list sections into the same darker visual family while keeping alternating rows distinct.
+ * - Preserved all spacing, tooltip behavior, centered action buttons and panel geometry from v0.3.23b.
  *
  * Changelog 0.3.23b:
  * - Extended the Torrents search-panel row treatment to the category list, tag list and final random-links row.
@@ -5857,4 +5862,47 @@ code {
 
 /* =========================================================
    END v0.3.23b — TORRENTS SEARCH ROW CONSISTENCY
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.23c — TORRENTS SEARCH DARKER ROW PALETTE
+   ========================================================= */
+
+/*
+ * Darker, more charcoal-oriented alternating bands.
+ * Keep a subtle Dracula violet/blue undertone, but move away from the
+ * lighter lavender feel of the previous revision.
+ */
+
+/* Upper search/control table */
+#torrents #ft_container > table.layout:first-child > tbody > tr:nth-child(odd) {
+    background: rgba(40, 42, 54, .90) !important;
+}
+
+#torrents #ft_container > table.layout:first-child > tbody > tr:nth-child(even) {
+    background: rgba(31, 32, 41, .92) !important;
+}
+
+/* Category header row */
+#torrents #ft_container > table.ft_cat_list > tbody > tr {
+    background: rgba(36, 38, 49, .92) !important;
+}
+
+/* Tag grid */
+#torrents #ft_container > table#taglist > tbody > tr:nth-child(odd) {
+    background: rgba(34, 36, 46, .92) !important;
+}
+
+#torrents #ft_container > table#taglist > tbody > tr:nth-child(even) {
+    background: rgba(25, 27, 35, .94) !important;
+}
+
+/* Random links / Hide tags row */
+#torrents #ft_container > table.layout.cat_list[width="100%"] > tbody > tr {
+    background: rgba(30, 32, 41, .94) !important;
+}
+
+/* =========================================================
+   END v0.3.23c — TORRENTS SEARCH DARKER ROW PALETTE
    ========================================================= */
