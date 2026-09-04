@@ -1,7 +1,12 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.23d
+ * Version: 0.3.23e
+ *
+ * Changelog 0.3.23e:
+ * - Fixed the duplicated slash in the Basic / Advanced Search mode switch by rebuilding the visible labels and separator cleanly in CSS.
+ * - Strengthened the active search-mode cyan diffusion to match the more pronounced glow language used by the upper header controls.
+ * - Preserved all input padding, hover/focus behavior, row colors and panel layout from v0.3.23d.
  *
  * Changelog 0.3.23d:
  * - Added a cyan active-mode pill for Basic / Advanced Search, matching the theme's established interactive language.
@@ -6004,4 +6009,74 @@ code {
 
 /* =========================================================
    END v0.3.23d — TORRENTS SEARCH MODE + INPUT INTERACTION
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.23e — SEARCH MODE LABEL + STRONGER ACTIVE GLOW
+   ========================================================= */
+
+/*
+ * Rebuild all visible mode text explicitly so Gazelle's built-in slash and
+ * the theme's separator never appear together.
+ */
+
+/* Hide the original text content of the four mode spans. */
+#torrents #ft_basic_text:not(.hidden),
+#torrents #ft_basic_link:not(.hidden),
+#torrents #ft_advanced_text:not(.hidden),
+#torrents #ft_advanced_link:not(.hidden) {
+    font-size: 0 !important;
+}
+
+    /* Active labels. */
+    #torrents #ft_basic_text:not(.hidden)::before {
+        content: "Basic Search";
+        font-size: 13px !important;
+    }
+
+    #torrents #ft_advanced_text:not(.hidden)::before {
+        content: "Advanced Search";
+        font-size: 13px !important;
+    }
+
+    /* Inactive clickable labels. */
+    #torrents #ft_basic_link:not(.hidden) > a,
+    #torrents #ft_advanced_link:not(.hidden) > a {
+        font-size: 0 !important;
+    }
+
+        #torrents #ft_basic_link:not(.hidden) > a::before {
+            content: "Basic";
+            font-size: 13px !important;
+        }
+
+        #torrents #ft_advanced_link:not(.hidden) > a::before {
+            content: "Advanced";
+            font-size: 13px !important;
+        }
+
+    /* Exactly one slash between the two modes, regardless of which is active. */
+    #torrents #ft_basic_link:not(.hidden)::after {
+        content: " / ";
+        font-size: 13px !important;
+        color: var(--red-text-soft) !important;
+        margin: 0 3px !important;
+    }
+
+    #torrents #ft_advanced_link:not(.hidden)::before {
+        content: " / ";
+        font-size: 13px !important;
+        color: var(--red-text-soft) !important;
+        margin: 0 3px !important;
+    }
+
+/* Stronger cyan diffusion, closer to the highlighted upper controls. */
+#torrents #ft_basic_text:not(.hidden),
+#torrents #ft_advanced_text:not(.hidden) {
+    box-shadow: 0 0 0 1px rgba(139, 233, 253, .20), 0 0 8px rgba(139, 233, 253, .58), 0 0 18px rgba(139, 233, 253, .40), 0 0 30px rgba(139, 233, 253, .24), 0 0 44px rgba(139, 233, 253, .12), inset 0 0 8px rgba(139, 233, 253, .10) !important;
+}
+
+/* =========================================================
+   END v0.3.23e — SEARCH MODE LABEL + STRONGER ACTIVE GLOW
    ========================================================= */
