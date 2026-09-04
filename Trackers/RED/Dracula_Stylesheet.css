@@ -1,7 +1,12 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.23f
+ * Version: 0.3.23g
+ *
+ * Changelog 0.3.23g:
+ * - Restored dark dropdown menus for Torrents-page select controls.
+ * - Added dark color-scheme hints plus explicit option background/text colors to prevent light Windows/Chrome popup styling from clashing with the theme.
+ * - Preserved all select resting/hover/focus styling and every v0.3.23f interaction unchanged.
  *
  * Changelog 0.3.23f:
  * - Added a restrained cyan hover treatment to the inactive Basic / Advanced search-mode link, combining a soft text glow with an underline.
@@ -6142,4 +6147,34 @@ code {
 
 /* =========================================================
    END v0.3.23f — INACTIVE MODE HOVER + SELECT FIELD LANGUAGE
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.23g — DARK SELECT POPUP MENU
+   ========================================================= */
+
+/*
+ * Native select popups on Windows/Chrome can partially inherit the OS theme.
+ * Explicitly advertise a dark control scheme and style the options so the
+ * opened menu remains consistent with the Dracula palette.
+ */
+#torrents .filter_torrents select {
+    color-scheme: dark !important;
+}
+
+    #torrents .filter_torrents select option,
+    #torrents .filter_torrents select optgroup {
+        background: #282A36 !important;
+        color: #EAEAF2 !important;
+    }
+
+        /* Keep the currently selected / hovered native entry readable where supported. */
+        #torrents .filter_torrents select option:checked {
+            background: #1B3342 !important;
+            color: #8BE9FD !important;
+        }
+
+/* =========================================================
+   END v0.3.23g — DARK SELECT POPUP MENU
    ========================================================= */
