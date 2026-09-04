@@ -1,7 +1,13 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.23h
+ * Version: 0.3.23i
+ *
+ * Changelog 0.3.23i:
+ * - Refined Torrents dropdown popup styling.
+ * - Added a teal/cyan hover treatment for dropdown options where the browser permits option:hover styling.
+ * - Emphasized the placeholder/title option (e.g. Bitrate, Format, Release type, Leech Status) with stronger cyan text and weight.
+ * - Preserved the dark popup background and all select resting/hover/focus styling from v0.3.23h.
  *
  * Changelog 0.3.23h:
  * - Refined the currently selected entry inside Torrents dropdown menus.
@@ -6201,6 +6207,42 @@ code {
             color: #8BE9FD !important;
         }
 
-/* =========================================================
+        /* =========================================================
    END v0.3.23h — SELECTED DROPDOWN OPTION ACCENT
+   ========================================================= */
+
+
+        /* =========================================================
+   v0.3.23i — DROPDOWN OPTION HOVER + TITLE EMPHASIS
+   ========================================================= */
+
+        /*
+ * Native select popup behavior varies by browser/OS.
+ * These rules are applied where Chrome/Windows permits option-level styling.
+ */
+
+        /* Placeholder/title entry at the top of each dropdown. */
+        #torrents .filter_torrents select option[value=""] {
+            background: #202733 !important;
+            background-color: #202733 !important;
+            color: #8BE9FD !important;
+            font-weight: 600 !important;
+        }
+
+        /* Option under the mouse: dark teal instead of bright system blue. */
+        #torrents .filter_torrents select option:hover {
+            background: #1B3342 !important;
+            background-color: #1B3342 !important;
+            color: #8BE9FD !important;
+        }
+
+        /* Keep selected entry coherent as well, where native rendering allows it. */
+        #torrents .filter_torrents select option:checked {
+            background: #24313D !important;
+            background-color: #24313D !important;
+            color: #EAEAF2 !important;
+        }
+
+/* =========================================================
+   END v0.3.23i — DROPDOWN OPTION HOVER + TITLE EMPHASIS
    ========================================================= */
