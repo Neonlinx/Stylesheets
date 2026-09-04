@@ -1,7 +1,13 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.23a
+ * Version: 0.3.23b
+ *
+ * Changelog 0.3.23b:
+ * - Extended the Torrents search-panel row treatment to the category list, tag list and final random-links row.
+ * - Restored a clearly visible alternating-row effect using stronger Dracula-compatible contrasts.
+ * - Added consistent left/right breathing room across the additional search rows highlighted during review.
+ * - Preserved tooltip behavior, centered action buttons and all v0.3.23a geometry.
  *
  * Changelog 0.3.23a:
  * - Refined the Torrents search panel only.
@@ -5772,4 +5778,83 @@ code {
 
 /* =========================================================
    END v0.3.23a — TORRENTS SEARCH PANEL REFINEMENT
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.23b — TORRENTS SEARCH ROW CONSISTENCY
+   ========================================================= */
+
+/*
+ * Stronger alternating bands for the main search table.
+ * Use row-level backgrounds rather than only subtle cell fills so the
+ * striping remains clearly visible across the entire width.
+ */
+#torrents #ft_container > table.layout:first-child > tbody > tr:nth-child(odd) {
+    background: rgba(68, 71, 90, .30) !important;
+}
+
+#torrents #ft_container > table.layout:first-child > tbody > tr:nth-child(even) {
+    background: rgba(98, 114, 164, .12) !important;
+}
+
+#torrents #ft_container > table.layout:first-child > tbody > tr > td {
+    background: transparent !important;
+}
+
+/*
+ * Category header row (Music / Applications / E-Books / ...)
+ * and tag-grid rows (acoustic / alternative / ...).
+ * These are separate tables, so they need their own spacing and bands.
+ */
+#torrents #ft_container > table.ft_cat_list > tbody > tr,
+#torrents #ft_container > table#taglist > tbody > tr {
+    background: rgba(68, 71, 90, .22) !important;
+}
+
+    #torrents #ft_container > table#taglist > tbody > tr:nth-child(even) {
+        background: rgba(98, 114, 164, .095) !important;
+    }
+
+    #torrents #ft_container > table.ft_cat_list > tbody > tr > td,
+    #torrents #ft_container > table#taglist > tbody > tr > td {
+        box-sizing: border-box !important;
+        padding-top: 4px !important;
+        padding-bottom: 4px !important;
+    }
+
+        #torrents #ft_container > table.ft_cat_list > tbody > tr > td:first-child,
+        #torrents #ft_container > table#taglist > tbody > tr > td:first-child {
+            padding-left: 10px !important;
+        }
+
+        #torrents #ft_container > table.ft_cat_list > tbody > tr > td:last-child,
+        #torrents #ft_container > table#taglist > tbody > tr > td:last-child {
+            padding-right: 10px !important;
+        }
+
+/*
+ * Final Random torrent / Random artist / Hide tags row is another
+ * standalone table. Give it the same inset and a distinct soft band.
+ */
+#torrents #ft_container > table.layout.cat_list[width="100%"] > tbody > tr {
+    background: rgba(68, 71, 90, .28) !important;
+}
+
+    #torrents #ft_container > table.layout.cat_list[width="100%"] > tbody > tr > td {
+        box-sizing: border-box !important;
+        padding-top: 5px !important;
+        padding-bottom: 5px !important;
+    }
+
+        #torrents #ft_container > table.layout.cat_list[width="100%"] > tbody > tr > td:first-child {
+            padding-left: 10px !important;
+        }
+
+        #torrents #ft_container > table.layout.cat_list[width="100%"] > tbody > tr > td:last-child {
+            padding-right: 10px !important;
+        }
+
+/* =========================================================
+   END v0.3.23b — TORRENTS SEARCH ROW CONSISTENCY
    ========================================================= */
