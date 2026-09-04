@@ -1,7 +1,13 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.23j
+ * Version: 0.3.23k
+ *
+ * Changelog 0.3.23k:
+ * - Added a stronger cyan text-glow + underline hover language to bracket-style action links in the Torrents search panel and right-side Noty notifications.
+ * - Restyled Filter torrents and Reset as persistent cyan-accent action buttons with a restrained resting glow.
+ * - Added a stronger cyan diffusion and underline emphasis to those two buttons on hover.
+ * - Preserved all dropdown, row, spacing and search-mode styling from v0.3.23j.
  *
  * Changelog 0.3.23j:
  * - Removed the ineffective native option:hover customization attempt from Torrents dropdown menus.
@@ -6281,4 +6287,62 @@ code {
 
 /* =========================================================
    END v0.3.23j — DROPDOWN TITLE EMPHASIS / NATIVE HOVER FALLBACK
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.23k — BRACKET LINK HOVER + PRIMARY SEARCH ACTIONS
+   ========================================================= */
+
+/*
+ * Bracket-style action links:
+ * [Hide], [Random torrent], [Random artist], [Hide tags],
+ * and the right-side Noty actions such as [Dismiss] / [View] / [Clear] / [Hide].
+ *
+ * Resting state stays clean. Hover gets a stronger cyan text diffusion and
+ * underline, matching the interaction language introduced for Basic/Advanced.
+ */
+#torrents .filter_torrents a.brackets,
+#noty_bottomRight_layout_container a.brackets {
+    transition: color .16s ease, text-shadow .16s ease, text-decoration-color .16s ease !important;
+}
+
+    #torrents .filter_torrents a.brackets:hover,
+    #noty_bottomRight_layout_container a.brackets:hover {
+        color: var(--red-cyan) !important;
+        text-decoration-line: underline !important;
+        text-decoration-thickness: 1px !important;
+        text-decoration-color: rgba(139, 233, 253, .96) !important;
+        text-underline-offset: 3px !important;
+        text-shadow: 0 0 5px rgba(139, 233, 253, .72), 0 0 11px rgba(139, 233, 253, .46), 0 0 20px rgba(139, 233, 253, .24), 0 0 30px rgba(139, 233, 253, .12) !important;
+    }
+
+/*
+ * Bottom search actions:
+ * persistent cyan border + restrained glow in the resting state,
+ * stronger diffusion on hover.
+ */
+#torrents .ft_submit > input[type="submit"],
+#torrents .ft_submit > input[type="button"] {
+    background: linear-gradient( 180deg, #1A2F3E 0%, #172D3D 48%, #162B3B 100% ) !important;
+    color: var(--red-cyan) !important;
+    border: 1px solid rgba(139, 233, 253, .72) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 0 0 1px rgba(139, 233, 253, .10), 0 0 7px rgba(139, 233, 253, .24), 0 0 14px rgba(139, 233, 253, .12), inset 0 0 6px rgba(139, 233, 253, .06) !important;
+    transition: border-color .16s ease, box-shadow .16s ease, background .16s ease, color .16s ease !important;
+}
+
+    #torrents .ft_submit > input[type="submit"]:hover,
+    #torrents .ft_submit > input[type="button"]:hover {
+        background: linear-gradient( 180deg, #1B3342 0%, #18303F 48%, #172D3D 100% ) !important;
+        color: #EAFBFF !important;
+        border-color: rgba(139, 233, 253, .98) !important;
+        text-decoration-line: underline !important;
+        text-decoration-thickness: 1px !important;
+        text-underline-offset: 3px !important;
+        box-shadow: 0 0 0 1px rgba(139, 233, 253, .24), 0 0 9px rgba(139, 233, 253, .68), 0 0 18px rgba(139, 233, 253, .46), 0 0 30px rgba(139, 233, 253, .28), 0 0 46px rgba(139, 233, 253, .15), 0 0 64px rgba(139, 233, 253, .07), inset 0 0 8px rgba(139, 233, 253, .10) !important;
+    }
+
+/* =========================================================
+   END v0.3.23k — BRACKET LINK HOVER + PRIMARY SEARCH ACTIONS
    ========================================================= */
