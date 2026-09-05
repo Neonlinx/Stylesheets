@@ -1,7 +1,14 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.23p
+ * Version: 0.3.23q
+ *
+ * Changelog 0.3.23q:
+ * - Started the Torrents results-list header refinement.
+ * - Centered the Torrents pagination row and added clearer vertical separation from both the search panel and results table.
+ * - Increased the results table header-row height/padding so Name / Year, Files, Time and Size have proper breathing room.
+ * - Restyled the three sortable activity icons as larger teal circular controls with a soft resting glow and stronger hover diffusion.
+ * - Preserved the completed v0.3.23p search-panel styling unchanged.
  *
  * Changelog 0.3.23p:
  * - Reworked selectable option labels (Unknown year, Any/All, category labels, etc.) into subtle teal pill-style chips.
@@ -6561,4 +6568,88 @@ code {
 
 /* =========================================================
    END v0.3.23p — SELECTABLE LABEL CHIPS
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.23q — TORRENTS RESULTS HEADER / PAGINATION
+   ========================================================= */
+
+/*
+ * Pagination:
+ * center it across the results area and give it enough vertical breathing
+ * room to read as a navigation strip between the search panel and list.
+ */
+#torrents .linkbox {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    margin: 14px 0 10px !important;
+    padding: 2px 10px !important;
+    text-align: center !important;
+    line-height: 1.55 !important;
+}
+
+/*
+ * Results table header:
+ * the original row is too shallow, so increase vertical room without
+ * changing the underlying column geometry.
+ */
+#torrents #torrent_table > tbody > tr.colhead > td {
+    box-sizing: border-box !important;
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
+    vertical-align: middle !important;
+    line-height: 1.25 !important;
+}
+
+    /* Keep the main Name / Year title comfortably inset. */
+    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(3) {
+        padding-left: 12px !important;
+    }
+
+    /*
+ * Snatches / Seeders / Leechers sorting controls:
+ * turn the three icon links into compact teal circular controls.
+ */
+    #torrents #torrent_table > tbody > tr.colhead > td.sign {
+        padding-left: 3px !important;
+        padding-right: 3px !important;
+        text-align: center !important;
+    }
+
+        #torrents #torrent_table > tbody > tr.colhead > td.sign > a {
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            box-sizing: border-box !important;
+            width: 24px !important;
+            height: 24px !important;
+            padding: 0 !important;
+            background: linear-gradient( 180deg, #1A2F3E 0%, #172D3D 48%, #162B3B 100% ) !important;
+            border: 1px solid rgba(53, 176, 171, .72) !important;
+            border-radius: 50% !important;
+            box-shadow: 0 0 0 1px rgba(53, 176, 171, .08), 0 0 7px rgba(53, 176, 171, .24), 0 0 14px rgba(53, 176, 171, .11), inset 0 0 6px rgba(53, 176, 171, .06) !important;
+            transition: background .16s ease, border-color .16s ease, box-shadow .16s ease, transform .16s ease !important;
+        }
+
+            #torrents #torrent_table > tbody > tr.colhead > td.sign > a > img {
+                display: block !important;
+                width: 14px !important;
+                height: 14px !important;
+                max-width: 14px !important;
+                max-height: 14px !important;
+                margin: 0 !important;
+                object-fit: contain !important;
+            }
+
+            /* Stronger activation when the user points at a sorting control. */
+            #torrents #torrent_table > tbody > tr.colhead > td.sign > a:hover {
+                background: linear-gradient( 180deg, #1B3342 0%, #18303F 48%, #172D3D 100% ) !important;
+                border-color: rgba(53, 176, 171, .98) !important;
+                box-shadow: 0 0 0 1px rgba(53, 176, 171, .22), 0 0 9px rgba(53, 176, 171, .68), 0 0 18px rgba(53, 176, 171, .44), 0 0 30px rgba(53, 176, 171, .24), 0 0 44px rgba(53, 176, 171, .12), inset 0 0 8px rgba(53, 176, 171, .10) !important;
+                transform: translateY(-1px) !important;
+            }
+
+/* =========================================================
+   END v0.3.23q — TORRENTS RESULTS HEADER / PAGINATION
    ========================================================= */
