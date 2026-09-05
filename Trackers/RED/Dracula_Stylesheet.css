@@ -1,7 +1,12 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.23o
+ * Version: 0.3.23p
+ *
+ * Changelog 0.3.23p:
+ * - Reworked selectable option labels (Unknown year, Any/All, category labels, etc.) into subtle teal pill-style chips.
+ * - Uses the same inner dark-teal fill language as the search select controls, so these labels read as intentional interactive elements.
+ * - Added a stronger hover activation glow for those chips while preserving all checkbox/radio accents and v0.3.23o behavior elsewhere.
  *
  * Changelog 0.3.23o:
  * - Strengthened selectable option labels (Unknown year, Any/All, category labels, etc.) with a richer teal tone and persistent soft glow.
@@ -6504,4 +6509,56 @@ code {
 
 /* =========================================================
    END v0.3.23o — STRONGER SELECTABLE OPTION TEAL
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.23p — SELECTABLE LABEL CHIPS
+   ========================================================= */
+
+/*
+ * The plain text treatment was still too weak against the dense tag grid.
+ * Turn these checkbox/radio labels into subtle teal chips that reuse the
+ * dark inner fill language of the search selects, then let them light up
+ * more clearly on hover.
+ */
+#torrents .filter_torrents label[for="search_unknown_year"],
+#torrents .filter_torrents label[for="search_unknown_remasteryear"],
+#torrents .filter_torrents label[for="tags_type0"],
+#torrents .filter_torrents label[for="tags_type1"],
+#torrents .filter_torrents .ft_cat_list label {
+    display: inline-block !important;
+    margin-left: 4px !important;
+    margin-right: 8px !important;
+    padding: 2px 9px !important;
+    line-height: 1.35 !important;
+    color: #EAFBFF !important;
+    text-shadow: 0 0 4px rgba(139, 233, 253, .12) !important;
+    background: linear-gradient( 180deg, #1A2F3E 0%, #172D3D 48%, #162B3B 100% ) !important;
+    border: 1px solid rgba(53, 176, 171, .54) !important;
+    border-radius: 999px !important;
+    box-shadow: 0 0 0 1px rgba(53, 176, 171, .08), 0 0 8px rgba(53, 176, 171, .16), inset 0 0 6px rgba(53, 176, 171, .05) !important;
+    transition: color .16s ease, border-color .16s ease, background .16s ease, box-shadow .16s ease, text-shadow .16s ease !important;
+}
+
+    #torrents .filter_torrents label[for="search_unknown_year"]:hover,
+    #torrents .filter_torrents label[for="search_unknown_remasteryear"]:hover,
+    #torrents .filter_torrents label[for="tags_type0"]:hover,
+    #torrents .filter_torrents label[for="tags_type1"]:hover,
+    #torrents .filter_torrents .ft_cat_list label:hover {
+        color: #8BE9FD !important;
+        text-shadow: 0 0 5px rgba(139, 233, 253, .58), 0 0 11px rgba(139, 233, 253, .24) !important;
+        background: linear-gradient( 180deg, #1B3342 0%, #18303F 48%, #172D3D 100% ) !important;
+        border-color: rgba(53, 176, 171, .92) !important;
+        box-shadow: 0 0 0 1px rgba(53, 176, 171, .18), 0 0 10px rgba(53, 176, 171, .52), 0 0 22px rgba(53, 176, 171, .28), 0 0 36px rgba(53, 176, 171, .12), inset 0 0 8px rgba(53, 176, 171, .10) !important;
+    }
+
+/* Keep inline spacing of Any / All tidy next to the radios. */
+#torrents .filter_torrents label[for="tags_type0"],
+#torrents .filter_torrents label[for="tags_type1"] {
+    margin-right: 2px !important;
+}
+
+/* =========================================================
+   END v0.3.23p — SELECTABLE LABEL CHIPS
    ========================================================= */
