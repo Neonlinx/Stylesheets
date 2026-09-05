@@ -1,7 +1,11 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.23t
+ * Version: 0.3.23u
+ *
+ * Changelog 0.3.23u:
+ * - Increased the vertical spacing around the Torrents pagination strip for clearer separation from both the search panel and the results table.
+ * - Preserved the pagination pill sizing, active-page emphasis, hover glow and all v0.3.23t results-header styling.
  *
  * Changelog 0.3.23t:
  * - Reworked Torrents pagination into compact teal/cyan pills for stronger navigation hierarchy.
@@ -6883,4 +6887,22 @@ code {
 
 /* =========================================================
    END v0.3.23t — PAGINATION PILLS + ACTIVE PAGE STATE
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.23u — PAGINATION VERTICAL BREATHING ROOM
+   ========================================================= */
+
+/*
+ * Keep the pagination pills exactly as styled in v0.3.23t, but give the
+ * navigation strip more room above and below so it does not feel squeezed
+ * between the completed search panel and the results header.
+ */
+#torrents .linkbox {
+    margin: 18px 0 14px !important;
+}
+
+/* =========================================================
+   END v0.3.23u — PAGINATION VERTICAL BREATHING ROOM
    ========================================================= */
