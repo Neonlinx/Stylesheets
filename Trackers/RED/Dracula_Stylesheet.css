@@ -1,7 +1,13 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.23q
+ * Version: 0.3.23r
+ *
+ * Changelog 0.3.23r:
+ * - Removed the narrow pill/background effect from Torrents pagination links; pagination now uses text-only cyan glow on hover.
+ * - Simplified the three sortable activity controls so only the native circular icon remains visually present, eliminating the double-circle appearance.
+ * - Enlarged those native icons slightly and added teal/cyan diffusion directly to the icon control on hover.
+ * - Preserved the centered pagination spacing and taller results header from v0.3.23q.
  *
  * Changelog 0.3.23q:
  * - Started the Torrents results-list header refinement.
@@ -6652,4 +6658,84 @@ code {
 
 /* =========================================================
    END v0.3.23q — TORRENTS RESULTS HEADER / PAGINATION
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.23r — PAGINATION TEXT GLOW + SINGLE SORT ICON
+   ========================================================= */
+
+/*
+ * Pagination links:
+ * remove any inherited pill/background treatment and keep only a clean
+ * text-glow interaction.
+ */
+#torrents .linkbox a,
+#torrents .linkbox a strong {
+    background: transparent !important;
+    background-image: none !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    outline: 0 !important;
+    padding: 0 !important;
+}
+
+#torrents .linkbox a {
+    transition: color .16s ease, text-shadow .16s ease !important;
+}
+
+    #torrents .linkbox a:hover,
+    #torrents .linkbox a:hover strong {
+        color: var(--red-cyan) !important;
+        text-decoration: none !important;
+        text-shadow: 0 0 5px rgba(139, 233, 253, .72), 0 0 11px rgba(139, 233, 253, .42), 0 0 20px rgba(139, 233, 253, .22), 0 0 30px rgba(139, 233, 253, .10) !important;
+    }
+
+/*
+ * Sort controls:
+ * the source PNGs already contain their own circular visual. Remove the
+ * extra CSS circle introduced in v0.3.23q so there is only one visible pill.
+ */
+#torrents #torrent_table > tbody > tr.colhead > td.sign > a {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 22px !important;
+    height: 22px !important;
+    padding: 0 !important;
+    background: transparent !important;
+    background-image: none !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    transform: none !important;
+}
+
+    /* Slightly enlarge the native circular glyph itself. */
+    #torrents #torrent_table > tbody > tr.colhead > td.sign > a > img {
+        width: 18px !important;
+        height: 18px !important;
+        max-width: 18px !important;
+        max-height: 18px !important;
+        border-radius: 50% !important;
+        filter: drop-shadow(0 0 3px rgba(53, 176, 171, .28)) drop-shadow(0 0 6px rgba(53, 176, 171, .14)) !important;
+        transition: filter .16s ease, transform .16s ease !important;
+    }
+
+    /* Hover glow now belongs directly to the single visible icon. */
+    #torrents #torrent_table > tbody > tr.colhead > td.sign > a:hover {
+        background: transparent !important;
+        border: 0 !important;
+        box-shadow: none !important;
+        transform: none !important;
+    }
+
+        #torrents #torrent_table > tbody > tr.colhead > td.sign > a:hover > img {
+            filter: drop-shadow(0 0 4px rgba(139, 233, 253, .78)) drop-shadow(0 0 9px rgba(53, 176, 171, .58)) drop-shadow(0 0 16px rgba(53, 176, 171, .30)) !important;
+            transform: scale(1.08) !important;
+        }
+
+/* =========================================================
+   END v0.3.23r — PAGINATION TEXT GLOW + SINGLE SORT ICON
    ========================================================= */
