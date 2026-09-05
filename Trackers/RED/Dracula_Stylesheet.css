@@ -1,7 +1,12 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.23n
+ * Version: 0.3.23o
+ *
+ * Changelog 0.3.23o:
+ * - Strengthened selectable option labels (Unknown year, Any/All, category labels, etc.) with a richer teal tone and persistent soft glow.
+ * - Added a brighter cyan/teal hover state so those labels remain clearly distinct from the tag grid.
+ * - Preserved the teal checkbox/radio accent and all v0.3.23n layout, result-count and search-panel styling.
  *
  * Changelog 0.3.23n:
  * - Restyled the torrent result-count line with a stronger pink accent and soft glow, without adding a pill.
@@ -6465,4 +6470,38 @@ code {
 
 /* =========================================================
    END v0.3.23n — RESULT COUNT + SELECTABLE OPTION ACCENTS
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.23o — STRONGER SELECTABLE OPTION TEAL
+   ========================================================= */
+
+/*
+ * Selectable labels should stand apart from the dense tag grid.
+ * Use a richer teal with a small persistent glow, then brighten toward
+ * cyan on hover while keeping the checkbox/radio accents unchanged.
+ */
+#torrents .filter_torrents label[for="search_unknown_year"],
+#torrents .filter_torrents label[for="search_unknown_remasteryear"],
+#torrents .filter_torrents label[for="tags_type0"],
+#torrents .filter_torrents label[for="tags_type1"],
+#torrents .filter_torrents label[for="group_results"],
+#torrents .filter_torrents .ft_cat_list label {
+    color: #7FD8D3 !important;
+    text-shadow: 0 0 4px rgba(127, 216, 211, .30), 0 0 9px rgba(127, 216, 211, .14) !important;
+}
+
+    #torrents .filter_torrents label[for="search_unknown_year"]:hover,
+    #torrents .filter_torrents label[for="search_unknown_remasteryear"]:hover,
+    #torrents .filter_torrents label[for="tags_type0"]:hover,
+    #torrents .filter_torrents label[for="tags_type1"]:hover,
+    #torrents .filter_torrents label[for="group_results"]:hover,
+    #torrents .filter_torrents .ft_cat_list label:hover {
+        color: #8BE9FD !important;
+        text-shadow: 0 0 5px rgba(139, 233, 253, .58), 0 0 11px rgba(139, 233, 253, .30), 0 0 18px rgba(139, 233, 253, .14) !important;
+    }
+
+/* =========================================================
+   END v0.3.23o — STRONGER SELECTABLE OPTION TEAL
    ========================================================= */
