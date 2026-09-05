@@ -1,7 +1,14 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.23m
+ * Version: 0.3.23n
+ *
+ * Changelog 0.3.23n:
+ * - Restyled the torrent result-count line with a stronger pink accent and soft glow, without adding a pill.
+ * - Recolored selectable option labels (Unknown year, Any/All, category labels, etc.) to a soft teal/cyan family.
+ * - Added a subtle teal hover glow to those selectable labels.
+ * - Replaced the default Windows blue checkbox/radio accent with the theme's teal accent color.
+ * - Preserved all v0.3.23m search-panel colors, tag interactions, dropdowns, spacing and action-button behavior.
  *
  * Changelog 0.3.23m:
  * - Softened the Torrents search-label pink to a lighter pastel shade closer to the account/header pill family.
@@ -6416,4 +6423,46 @@ code {
 
 /* =========================================================
    END v0.3.23m — SOFTER SEARCH LABEL PINK
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.23n — RESULT COUNT + SELECTABLE OPTION ACCENTS
+   ========================================================= */
+
+/* Result count: persistent pink emphasis, text-only. */
+#torrents .ft_submit > span {
+    color: #FF79C6 !important;
+    text-shadow: 0 0 5px rgba(255, 121, 198, .60), 0 0 11px rgba(255, 121, 198, .34), 0 0 20px rgba(255, 121, 198, .16) !important;
+}
+
+/* Selectable option labels: soft teal/cyan. */
+#torrents .filter_torrents label[for="search_unknown_year"],
+#torrents .filter_torrents label[for="search_unknown_remasteryear"],
+#torrents .filter_torrents label[for="tags_type0"],
+#torrents .filter_torrents label[for="tags_type1"],
+#torrents .filter_torrents label[for="group_results"],
+#torrents .filter_torrents .ft_cat_list label {
+    color: #9EDDE2 !important;
+    transition: color .16s ease, text-shadow .16s ease !important;
+}
+
+    #torrents .filter_torrents label[for="search_unknown_year"]:hover,
+    #torrents .filter_torrents label[for="search_unknown_remasteryear"]:hover,
+    #torrents .filter_torrents label[for="tags_type0"]:hover,
+    #torrents .filter_torrents label[for="tags_type1"]:hover,
+    #torrents .filter_torrents label[for="group_results"]:hover,
+    #torrents .filter_torrents .ft_cat_list label:hover {
+        color: var(--red-cyan) !important;
+        text-shadow: 0 0 5px rgba(139, 233, 253, .38), 0 0 10px rgba(139, 233, 253, .16) !important;
+    }
+
+/* Replace Windows blue checkbox/radio accent with theme teal. */
+#torrents .filter_torrents input[type="checkbox"],
+#torrents .filter_torrents input[type="radio"] {
+    accent-color: #33B0AB !important;
+}
+
+/* =========================================================
+   END v0.3.23n — RESULT COUNT + SELECTABLE OPTION ACCENTS
    ========================================================= */
