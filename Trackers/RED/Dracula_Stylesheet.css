@@ -1,7 +1,12 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.23u
+ * Version: 0.3.23v
+ *
+ * Changelog 0.3.23v:
+ * - Increased the spacing ABOVE the Torrents pagination so the pills read as part of the results-list section rather than the search panel.
+ * - Restyled [Random torrent], [Random artist] and [Hide tags] as teal/cyan action pills with a stronger hover glow.
+ * - Added extra breathing room around that mini action row so it separates more clearly from both the tag list and the final action/count row.
  *
  * Changelog 0.3.23u:
  * - Increased the vertical spacing around the Torrents pagination strip for clearer separation from both the search panel and the results table.
@@ -6905,4 +6910,69 @@ code {
 
 /* =========================================================
    END v0.3.23u — PAGINATION VERTICAL BREATHING ROOM
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.23v — SEARCH FOOTER PILLS + PAGINATION OWNERSHIP
+   ========================================================= */
+
+/*
+ * Pagination should visually belong to the results list below, not to the
+ * search panel above. Increase only the TOP gap while keeping the lower gap
+ * comparatively tighter.
+ */
+#torrents .linkbox {
+    margin: 28px 0 10px !important;
+}
+
+/*
+ * Random torrent / Random artist / Hide tags row:
+ * give it more breathing room so it no longer sits too close to the tags
+ * above or to the result-count / primary-action row below.
+ */
+#torrents #ft_container > table.layout.cat_list[width="100%"] {
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+}
+
+    #torrents #ft_container > table.layout.cat_list[width="100%"] > tbody > tr > td {
+        padding-top: 9px !important;
+        padding-bottom: 9px !important;
+    }
+
+    /*
+ * Turn the bracket links into compact teal/cyan pills, visually related
+ * to the other action controls used in this search panel.
+ */
+    #torrents #ft_container > table.layout.cat_list[width="100%"] a.brackets {
+        display: inline-block !important;
+        margin: 0 8px 0 0 !important;
+        padding: 4px 10px 5px !important;
+        background: linear-gradient( 180deg, #1A2F3E 0%, #172D3D 48%, #162B3B 100% ) !important;
+        color: #DFFBFF !important;
+        border: 1px solid rgba(53, 176, 171, .76) !important;
+        border-radius: 9px !important;
+        box-shadow: 0 0 0 1px rgba(53, 176, 171, .08), 0 0 7px rgba(53, 176, 171, .20), 0 0 14px rgba(53, 176, 171, .10), inset 0 0 6px rgba(53, 176, 171, .06) !important;
+        text-decoration: none !important;
+        text-shadow: none !important;
+        transition: color .16s ease, background .16s ease, border-color .16s ease, box-shadow .16s ease, transform .16s ease !important;
+    }
+
+    /* Last link in the left cluster does not need extra trailing gap. */
+    #torrents #ft_container > table.layout.cat_list[width="100%"] > tbody > tr > td:first-child a.brackets:last-of-type {
+        margin-right: 0 !important;
+    }
+
+    #torrents #ft_container > table.layout.cat_list[width="100%"] a.brackets:hover {
+        background: linear-gradient( 180deg, #1B3342 0%, #18303F 48%, #172D3D 100% ) !important;
+        color: var(--red-cyan) !important;
+        border-color: rgba(139, 233, 253, .94) !important;
+        box-shadow: 0 0 0 1px rgba(139, 233, 253, .18), 0 0 9px rgba(139, 233, 253, .56), 0 0 18px rgba(139, 233, 253, .34), 0 0 30px rgba(139, 233, 253, .18), inset 0 0 7px rgba(139, 233, 253, .08) !important;
+        text-decoration: none !important;
+        transform: translateY(-1px) !important;
+    }
+
+/* =========================================================
+   END v0.3.23v — SEARCH FOOTER PILLS + PAGINATION OWNERSHIP
    ========================================================= */
