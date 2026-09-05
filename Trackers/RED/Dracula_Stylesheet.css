@@ -1,7 +1,14 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.23s
+ * Version: 0.3.23t
+ *
+ * Changelog 0.3.23t:
+ * - Reworked Torrents pagination into compact teal/cyan pills for stronger navigation hierarchy.
+ * - Styled the current page range as a brighter active pill inspired by the Basic / Advanced Search control.
+ * - Kept inactive page ranges subdued at rest with a stronger cyan diffusion on hover.
+ * - Applied the same pill language to Next / Last navigation while preserving centered pagination spacing.
+ * - Preserved all sorting-button and results-header styling from v0.3.23s.
  *
  * Changelog 0.3.23s:
  * - Strengthened the text-only cyan diffusion on Torrents pagination hover while keeping pagination free of pills/backgrounds.
@@ -6811,4 +6818,69 @@ code {
 
 /* =========================================================
    END v0.3.23s — STRONGER PAGINATION GLOW + ROOMIER SORT PILLS
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.23t — PAGINATION PILLS + ACTIVE PAGE STATE
+   ========================================================= */
+
+/*
+ * Pagination now behaves like a navigation control:
+ * - inactive ranges = subdued teal pills;
+ * - current range = brighter active cyan pill;
+ * - hover = stronger diffusion, similar to the search-mode language.
+ *
+ * The literal pipe separators remain outside the pills to keep the row light.
+ */
+
+/* Base pill for clickable page ranges. */
+#torrents .linkbox > a {
+    display: inline-block !important;
+    margin: 0 2px !important;
+    padding: 3px 7px 4px !important;
+    background: linear-gradient( 180deg, #1A2F3E 0%, #172D3D 48%, #162B3B 100% ) !important;
+    color: #DFFBFF !important;
+    border: 1px solid rgba(53, 176, 171, .60) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 0 0 1px rgba(53, 176, 171, .06), 0 0 6px rgba(53, 176, 171, .14), inset 0 0 6px rgba(53, 176, 171, .05) !important;
+    text-decoration: none !important;
+    transition: color .16s ease, background .16s ease, border-color .16s ease, box-shadow .16s ease, transform .16s ease !important;
+}
+
+    #torrents .linkbox > a > strong {
+        color: inherit !important;
+        background: transparent !important;
+        border: 0 !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+    }
+
+    /* Hover for inactive page pills. */
+    #torrents .linkbox > a:hover {
+        background: linear-gradient( 180deg, #1B3342 0%, #18303F 48%, #172D3D 100% ) !important;
+        color: var(--red-cyan) !important;
+        border-color: rgba(139, 233, 253, .94) !important;
+        box-shadow: 0 0 0 1px rgba(139, 233, 253, .18), 0 0 8px rgba(139, 233, 253, .52), 0 0 17px rgba(139, 233, 253, .32), 0 0 28px rgba(139, 233, 253, .17), inset 0 0 7px rgba(139, 233, 253, .08) !important;
+        transform: translateY(-1px) !important;
+    }
+
+/*
+ * Current page range is the direct <strong> child of .linkbox,
+ * unlike the clickable ranges where <strong> lives inside <a>.
+ */
+#torrents .linkbox > strong {
+    display: inline-block !important;
+    margin: 0 2px !important;
+    padding: 3px 8px 4px !important;
+    background: linear-gradient( 180deg, #1B3342 0%, #18303F 48%, #172D3D 100% ) !important;
+    color: var(--red-cyan) !important;
+    border: 1px solid rgba(139, 233, 253, .88) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 0 0 1px rgba(139, 233, 253, .20), 0 0 8px rgba(139, 233, 253, .58), 0 0 18px rgba(139, 233, 253, .40), 0 0 30px rgba(139, 233, 253, .22), inset 0 0 8px rgba(139, 233, 253, .10) !important;
+    font-weight: 700 !important;
+}
+
+/* =========================================================
+   END v0.3.23t — PAGINATION PILLS + ACTIVE PAGE STATE
    ========================================================= */
