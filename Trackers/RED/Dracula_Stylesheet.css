@@ -1,7 +1,12 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.23r
+ * Version: 0.3.23s
+ *
+ * Changelog 0.3.23s:
+ * - Strengthened the text-only cyan diffusion on Torrents pagination hover while keeping pagination free of pills/backgrounds.
+ * - Restored the circular teal sorting-button shell from v0.3.23q, but enlarged the outer circle so the native inner icon no longer feels cramped.
+ * - Kept a clearly visible hover diffusion around the sorting buttons and preserved the centered pagination/header spacing from v0.3.23r.
  *
  * Changelog 0.3.23r:
  * - Removed the narrow pill/background effect from Torrents pagination links; pagination now uses text-only cyan glow on hover.
@@ -6738,4 +6743,72 @@ code {
 
 /* =========================================================
    END v0.3.23r — PAGINATION TEXT GLOW + SINGLE SORT ICON
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.23s — STRONGER PAGINATION GLOW + ROOMIER SORT PILLS
+   ========================================================= */
+
+/*
+ * Pagination remains text-only, but the hover diffusion is intentionally
+ * stronger and broader than in v0.3.23r.
+ */
+#torrents .linkbox a:hover,
+#torrents .linkbox a:hover strong {
+    color: var(--red-cyan) !important;
+    text-decoration: none !important;
+    text-shadow: 0 0 5px rgba(139, 233, 253, .90), 0 0 10px rgba(139, 233, 253, .68), 0 0 18px rgba(139, 233, 253, .46), 0 0 28px rgba(139, 233, 253, .28), 0 0 42px rgba(139, 233, 253, .14) !important;
+}
+
+/*
+ * Sorting controls:
+ * restore the outer teal circular shell, but make it clearly larger than
+ * the native circular glyph inside. This keeps the double-layer look
+ * intentional rather than cramped.
+ */
+#torrents #torrent_table > tbody > tr.colhead > td.sign > a {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+    width: 27px !important;
+    height: 27px !important;
+    padding: 0 !important;
+    background: linear-gradient( 180deg, #1A2F3E 0%, #172D3D 48%, #162B3B 100% ) !important;
+    border: 1px solid rgba(53, 176, 171, .78) !important;
+    border-radius: 50% !important;
+    box-shadow: 0 0 0 1px rgba(53, 176, 171, .10), 0 0 7px rgba(53, 176, 171, .26), 0 0 14px rgba(53, 176, 171, .12), inset 0 0 6px rgba(53, 176, 171, .06) !important;
+    transform: none !important;
+    transition: background .16s ease, border-color .16s ease, box-shadow .16s ease, transform .16s ease !important;
+}
+
+    /* Keep the native inner glyph comfortably smaller than the outer shell. */
+    #torrents #torrent_table > tbody > tr.colhead > td.sign > a > img {
+        width: 17px !important;
+        height: 17px !important;
+        max-width: 17px !important;
+        max-height: 17px !important;
+        margin: 0 !important;
+        border-radius: 50% !important;
+        filter: drop-shadow(0 0 2px rgba(139, 233, 253, .22)) !important;
+        transform: none !important;
+        transition: filter .16s ease, transform .16s ease !important;
+    }
+
+    /* Strong hover diffusion around the OUTER sorting pill. */
+    #torrents #torrent_table > tbody > tr.colhead > td.sign > a:hover {
+        background: linear-gradient( 180deg, #1B3342 0%, #18303F 48%, #172D3D 100% ) !important;
+        border-color: rgba(53, 176, 171, .98) !important;
+        box-shadow: 0 0 0 1px rgba(53, 176, 171, .24), 0 0 9px rgba(53, 176, 171, .72), 0 0 18px rgba(53, 176, 171, .48), 0 0 30px rgba(53, 176, 171, .30), 0 0 46px rgba(53, 176, 171, .16), 0 0 64px rgba(53, 176, 171, .08), inset 0 0 8px rgba(53, 176, 171, .10) !important;
+        transform: translateY(-1px) !important;
+    }
+
+        #torrents #torrent_table > tbody > tr.colhead > td.sign > a:hover > img {
+            filter: drop-shadow(0 0 3px rgba(139, 233, 253, .42)) !important;
+            transform: scale(1.03) !important;
+        }
+
+/* =========================================================
+   END v0.3.23s — STRONGER PAGINATION GLOW + ROOMIER SORT PILLS
    ========================================================= */
