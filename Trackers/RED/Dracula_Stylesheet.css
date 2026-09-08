@@ -1,7 +1,13 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.23ab
+ * Version: 0.3.23ac
+ *
+ * Changelog 0.3.23ac:
+ * - Rebuilt the Torrents sortable column headers around the REAL clickable anchors instead of decorative overlay text.
+ * - Name / Year now uses the existing Year link as the full visible pill and click target.
+ * - Time and Size are styled directly as clickable pills, eliminating the doubled labels from v0.3.23ab.
+ * - Files remains a matching non-clickable pill because RED's current markup exposes it as plain text rather than an anchor.
  *
  * Changelog 0.3.23ab:
  * - Fixed the Torrents column-header pills so full labels render correctly instead of being partially hidden by the decorative surface.
@@ -7482,6 +7488,153 @@ code {
         text-shadow: 0 0 5px rgba(139, 233, 253, .82), 0 0 10px rgba(139, 233, 253, .46), 0 0 18px rgba(139, 233, 253, .22) !important;
     }
 
-/* =========================================================
+    /* =========================================================
    END v0.3.23ab — COLUMN HEADER PILL LABEL FIX
+   ========================================================= */
+
+
+    /* =========================================================
+   v0.3.23ac — REAL CLICKABLE COLUMN-HEADER PILLS
+   ========================================================= */
+
+    /*
+ * Remove the decorative pseudo-label layer from aa/ab.
+ * Sortable headers must be built from the real anchors so the visible pill
+ * itself is the click target.
+ */
+    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(3)::before,
+    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(3)::after,
+    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(4)::before,
+    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(4)::after,
+    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(5)::before,
+    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(5)::after,
+    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(6)::before,
+    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(6)::after {
+        content: none !important;
+        display: none !important;
+    }
+
+/* Reset the cells themselves. */
+#torrents #torrent_table > tbody > tr.colhead > td:nth-child(3),
+#torrents #torrent_table > tbody > tr.colhead > td:nth-child(4),
+#torrents #torrent_table > tbody > tr.colhead > td:nth-child(5),
+#torrents #torrent_table > tbody > tr.colhead > td:nth-child(6) {
+    color: #DFFBFF !important;
+    text-shadow: none !important;
+}
+
+/*
+ * NAME / YEAR
+ * RED's markup is: plain text "Name / " + <a>Year</a>.
+ * Hide the plain text visually by collapsing the cell font, then use the
+ * real Year anchor as a full "Name / Year" pill.
+ */
+#torrents #torrent_table > tbody > tr.colhead > td:nth-child(3) {
+    font-size: 0 !important;
+    padding-left: 10px !important;
+}
+
+    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(3) > a {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        min-width: 92px !important;
+        height: 28px !important;
+        padding: 0 10px !important;
+        font-size: 13px !important;
+        font-weight: 600 !important;
+        line-height: 1 !important;
+        color: transparent !important;
+        text-decoration: none !important;
+        background: linear-gradient( 180deg, #1A2F3E 0%, #172D3D 48%, #162B3B 100% ) !important;
+        border: 1px solid rgba(53, 176, 171, .72) !important;
+        border-radius: 8px !important;
+        box-shadow: 0 0 0 1px rgba(53, 176, 171, .06), 0 0 6px rgba(53, 176, 171, .16), inset 0 0 6px rgba(53, 176, 171, .05) !important;
+        transition: background .16s ease, border-color .16s ease, box-shadow .16s ease, transform .16s ease !important;
+    }
+
+        #torrents #torrent_table > tbody > tr.colhead > td:nth-child(3) > a::before {
+            content: "Name / Year" !important;
+            color: #DFFBFF !important;
+            font-size: 13px !important;
+            font-weight: 600 !important;
+            line-height: 1 !important;
+        }
+
+/*
+ * TIME / SIZE
+ * These are already real <a> elements, so style those anchors directly.
+ */
+#torrents #torrent_table > tbody > tr.colhead > td:nth-child(5) > a,
+#torrents #torrent_table > tbody > tr.colhead > td:nth-child(6) > a {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 54px !important;
+    height: 28px !important;
+    padding: 0 10px !important;
+    color: #DFFBFF !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    line-height: 1 !important;
+    text-decoration: none !important;
+    text-shadow: none !important;
+    background: linear-gradient( 180deg, #1A2F3E 0%, #172D3D 48%, #162B3B 100% ) !important;
+    border: 1px solid rgba(53, 176, 171, .72) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 0 0 1px rgba(53, 176, 171, .06), 0 0 6px rgba(53, 176, 171, .16), inset 0 0 6px rgba(53, 176, 171, .05) !important;
+    transition: color .16s ease, text-shadow .16s ease, background .16s ease, border-color .16s ease, box-shadow .16s ease, transform .16s ease !important;
+}
+
+/*
+ * FILES
+ * Current RED markup exposes "Files" as plain text, not an <a>, so it can
+ * match the visual language but cannot become a true sort link with CSS alone.
+ */
+#torrents #torrent_table > tbody > tr.colhead > td:nth-child(4) {
+    display: table-cell !important;
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
+    color: transparent !important;
+    position: relative !important;
+}
+
+    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(4)::before {
+        content: "Files" !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        position: relative !important;
+        min-width: 54px !important;
+        height: 28px !important;
+        padding: 0 10px !important;
+        color: #DFFBFF !important;
+        font-size: 13px !important;
+        font-weight: 600 !important;
+        line-height: 1 !important;
+        background: linear-gradient( 180deg, #1A2F3E 0%, #172D3D 48%, #162B3B 100% ) !important;
+        border: 1px solid rgba(53, 176, 171, .72) !important;
+        border-radius: 8px !important;
+        box-shadow: 0 0 0 1px rgba(53, 176, 171, .06), 0 0 6px rgba(53, 176, 171, .16), inset 0 0 6px rgba(53, 176, 171, .05) !important;
+    }
+
+/* Shared hover for the REAL clickable pills. */
+#torrents #torrent_table > tbody > tr.colhead > td:nth-child(3) > a:hover,
+#torrents #torrent_table > tbody > tr.colhead > td:nth-child(5) > a:hover,
+#torrents #torrent_table > tbody > tr.colhead > td:nth-child(6) > a:hover {
+    color: var(--red-cyan) !important;
+    background: linear-gradient( 180deg, #1B3342 0%, #18303F 48%, #172D3D 100% ) !important;
+    border-color: rgba(139, 233, 253, .96) !important;
+    box-shadow: 0 0 0 1px rgba(139, 233, 253, .18), 0 0 8px rgba(139, 233, 253, .58), 0 0 17px rgba(139, 233, 253, .36), 0 0 28px rgba(139, 233, 253, .18), inset 0 0 7px rgba(139, 233, 253, .08) !important;
+    text-shadow: 0 0 5px rgba(139, 233, 253, .82), 0 0 10px rgba(139, 233, 253, .46) !important;
+    transform: translateY(-1px) !important;
+}
+
+    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(3) > a:hover::before {
+        color: var(--red-cyan) !important;
+        text-shadow: 0 0 5px rgba(139, 233, 253, .82), 0 0 10px rgba(139, 233, 253, .46) !important;
+    }
+
+/* =========================================================
+   END v0.3.23ac — REAL CLICKABLE COLUMN-HEADER PILLS
    ========================================================= */
