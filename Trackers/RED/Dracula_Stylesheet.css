@@ -1,7 +1,15 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.23ae
+ * Version: 0.3.23ag
+ *
+ * Changelog 0.3.23ag:
+ * - Increased the reserved right-side clearance again so very long release titles wrap earlier and never overlap the shifted Bookmark / Manual (+) controls.
+ * - Preserved the v0.3.23af wrapping behavior and all v0.3.23ae Files/bookmark alignment changes.
+ *
+ * Changelog 0.3.23af:
+ * - Increased the reserved right-side space in release title/tag blocks so long album names wrap before the shifted Bookmark / Manual (+) controls.
+ * - Kept the v0.3.23ae Files-column and Bookmark alignment unchanged.
  *
  * Changelog 0.3.23ae:
  * - Shifted the Files header pill left so it centers visually over the numeric Files column.
@@ -7429,4 +7437,46 @@ code {
 
 /* =========================================================
    END v0.3.23ae — FILES COLUMN / BOOKMARK AXIS ALIGNMENT
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.23af — LONG TITLE CLEARANCE FOR BOOKMARK CONTROLS
+   ========================================================= */
+
+/*
+ * The Bookmark / Manual controls were moved left in v0.3.23ae.
+ * Reserve a wider right-hand safety zone so long release titles wrap
+ * before reaching those controls instead of visually colliding with them.
+ */
+#torrents #torrent_table tr.group .group_info {
+    padding-right: 86px !important;
+}
+
+    #torrents #torrent_table tr.group .group_info > a,
+    #torrents #torrent_table tr.group .group_info .tags {
+        overflow-wrap: anywhere !important;
+        word-break: normal !important;
+    }
+
+/* =========================================================
+   END v0.3.23af — LONG TITLE CLEARANCE FOR BOOKMARK CONTROLS
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.23ag — EXTRA TITLE CLEARANCE FOR BOOKMARK CONTROLS
+   ========================================================= */
+
+/*
+ * The controls now sit farther left, so reserve a wider safety area on the
+ * right side of the title/tag block. This forces very long titles to wrap
+ * one step earlier instead of reaching the Bookmark / Manual icons.
+ */
+#torrents #torrent_table tr.group .group_info {
+    padding-right: 116px !important;
+}
+
+/* =========================================================
+   END v0.3.23ag — EXTRA TITLE CLEARANCE FOR BOOKMARK CONTROLS
    ========================================================= */
