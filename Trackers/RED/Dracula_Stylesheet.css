@@ -1,7 +1,12 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.23aa
+ * Version: 0.3.23ab
+ *
+ * Changelog 0.3.23ab:
+ * - Fixed the Torrents column-header pills so full labels render correctly instead of being partially hidden by the decorative surface.
+ * - Rebuilt the visible labels with dedicated overlay text while keeping the original Year / Time / Size links underneath and clickable.
+ * - Corrected the individual pill placement for Name / Year, Files, Time and Size without altering table column geometry.
  *
  * Changelog 0.3.23aa:
  * - Reworked Name / Year, Files, Time and Size into compact teal/cyan header pills matching the pagination controls.
@@ -7391,4 +7396,92 @@ code {
 
 /* =========================================================
    END v0.3.23aa — TORRENTS COLUMN-HEADER PILLS
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.23ab — COLUMN HEADER PILL LABEL FIX
+   ========================================================= */
+
+/*
+ * v0.3.23aa placed the decorative pill above raw text nodes such as
+ * "Name / " and "Files". Only child elements could be raised with z-index,
+ * so parts of the labels were hidden. Keep the real content in place for
+ * click targets, make it visually transparent, and draw the complete visible
+ * labels in a dedicated overlay.
+ */
+#torrents #torrent_table > tbody > tr.colhead > td:nth-child(3),
+#torrents #torrent_table > tbody > tr.colhead > td:nth-child(4),
+#torrents #torrent_table > tbody > tr.colhead > td:nth-child(5),
+#torrents #torrent_table > tbody > tr.colhead > td:nth-child(6) {
+    color: transparent !important;
+    text-shadow: none !important;
+}
+
+    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(3) > a,
+    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(5) > a,
+    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(6) > a {
+        color: transparent !important;
+        text-shadow: none !important;
+        position: relative !important;
+        z-index: 3 !important;
+    }
+
+    /* Visible labels above the pill surface; pointer-events lets clicks pass through. */
+    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(3)::after,
+    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(4)::after,
+    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(5)::after,
+    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(6)::after {
+        position: absolute !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        color: #DFFBFF !important;
+        font-size: 13px !important;
+        font-weight: 600 !important;
+        line-height: 1 !important;
+        text-shadow: none !important;
+        pointer-events: none !important;
+        z-index: 4 !important;
+        transition: color .16s ease, text-shadow .16s ease !important;
+    }
+
+    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(3)::after {
+        content: "Name / Year" !important;
+        left: 18px !important;
+    }
+
+    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(4)::after {
+        content: "Files" !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+    }
+
+    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(5)::after {
+        content: "Time" !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+    }
+
+    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(6)::after {
+        content: "Size" !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+    }
+
+    /* Make the Name / Year pill a little wider so the complete label fits naturally. */
+    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(3)::before {
+        width: 104px !important;
+    }
+
+    /* Hover: illuminate both pill and reconstructed label. */
+    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(3):hover::after,
+    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(4):hover::after,
+    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(5):hover::after,
+    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(6):hover::after {
+        color: var(--red-cyan) !important;
+        text-shadow: 0 0 5px rgba(139, 233, 253, .82), 0 0 10px rgba(139, 233, 253, .46), 0 0 18px rgba(139, 233, 253, .22) !important;
+    }
+
+/* =========================================================
+   END v0.3.23ab — COLUMN HEADER PILL LABEL FIX
    ========================================================= */
