@@ -1,7 +1,13 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.23ag
+ * Version: 0.3.23ah
+ *
+ * Changelog 0.3.23ah:
+ * - Recolored edition/release-description rows with the soft search-label pink and a subtle matching glow.
+ * - Recolored right-side torrent metrics (Files/Time/Size/activity counts) with the stronger result-count pink and diffuse glow.
+ * - Applied the same stronger pink/glow language to Bookmark / Manual (+) controls in main release rows.
+ * - Preserved the v0.3.23ag geometry, title wrapping, artwork sizing and row striping.
  *
  * Changelog 0.3.23ag:
  * - Increased the reserved right-side clearance again so very long release titles wrap earlier and never overlap the shifted Bookmark / Manual (+) controls.
@@ -7479,4 +7485,69 @@ code {
 
 /* =========================================================
    END v0.3.23ag — EXTRA TITLE CLEARANCE FOR BOOKMARK CONTROLS
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.23ah — EDITION PINK + RIGHT-SIDE METRIC GLOW
+   ========================================================= */
+
+/*
+ * Edition / release-description rows:
+ * reuse the softer pastel pink already used by the search-form labels.
+ * This keeps them visually distinct from cyan torrent actions without
+ * overpowering the list.
+ */
+#torrents #torrent_table > tbody > tr.group_torrent.edition > td:first-child,
+#torrents #torrent_table > tbody > tr.group_torrent.edition > td:first-child a,
+#torrents #torrent_table > tbody > tr.group_torrent.edition > td:first-child span,
+#torrents #torrent_table > tbody > tr.group_torrent.edition > td:first-child strong {
+    color: #F2A3D0 !important;
+    text-shadow: 0 0 5px rgba(242, 163, 208, .28), 0 0 10px rgba(242, 163, 208, .12) !important;
+}
+
+/*
+ * Right-side values:
+ * copy the stronger result-count pink language so Files / Time / Size /
+ * activity values form one clear numeric/statistical column family.
+ */
+#torrents #torrent_table tr.group > td.nobr,
+#torrents #torrent_table tr.group > td.number_column,
+#torrents #torrent_table tr.group_torrent > td.nobr,
+#torrents #torrent_table tr.group_torrent > td.number_column,
+#torrents #torrent_table tr.torrent > td.nobr,
+#torrents #torrent_table tr.torrent > td.number_column,
+#torrents #torrent_table tr.torrent_row > td.nobr,
+#torrents #torrent_table tr.torrent_row > td.number_column {
+    color: #FF79C6 !important;
+    text-shadow: 0 0 5px rgba(255, 121, 198, .60), 0 0 11px rgba(255, 121, 198, .34), 0 0 20px rgba(255, 121, 198, .16) !important;
+}
+
+    /* Make nested links/spans inherit the same metric treatment. */
+    #torrents #torrent_table tr.group > td.nobr a,
+    #torrents #torrent_table tr.group > td.nobr span,
+    #torrents #torrent_table tr.group > td.number_column a,
+    #torrents #torrent_table tr.group > td.number_column span,
+    #torrents #torrent_table tr.group_torrent > td.nobr a,
+    #torrents #torrent_table tr.group_torrent > td.nobr span,
+    #torrents #torrent_table tr.group_torrent > td.number_column a,
+    #torrents #torrent_table tr.group_torrent > td.number_column span {
+        color: inherit !important;
+        text-shadow: inherit !important;
+    }
+
+/*
+ * Bookmark / Manual (+) controls:
+ * use the same stronger pink emission so the symbols belong visually to
+ * the right-side metric family.
+ */
+#torrents #torrent_table tr.group .group_info .add_bookmark,
+#torrents #torrent_table tr.group .group_info .add_bookmark a,
+#torrents #torrent_table tr.group .group_info .add_bookmark span {
+    color: #FF79C6 !important;
+    text-shadow: 0 0 5px rgba(255, 121, 198, .60), 0 0 11px rgba(255, 121, 198, .34), 0 0 20px rgba(255, 121, 198, .16) !important;
+}
+
+/* =========================================================
+   END v0.3.23ah — EDITION PINK + RIGHT-SIDE METRIC GLOW
    ========================================================= */
