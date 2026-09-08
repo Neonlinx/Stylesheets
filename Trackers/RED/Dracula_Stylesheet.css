@@ -1,7 +1,12 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.23y
+ * Version: 0.3.23z
+ *
+ * Changelog 0.3.23z:
+ * - Restyled the Torrents list column headings (Name / Year, Files, Time, Size) with the same cyan/teal language used by the pagination controls.
+ * - Added a brighter cyan text diffusion on hover while keeping the header text pill-free.
+ * - Preserved all v0.3.23y release-block, row striping, artwork and inline-status refinements.
  *
  * Changelog 0.3.23y:
  * - Removed inherited pill styling from torrent status labels such as Trumpable / Reported while preserving their native warning colors.
@@ -7256,4 +7261,41 @@ code {
 
 /* =========================================================
    END v0.3.23y — RELEASE BLOCK / ROW PALETTE / INLINE STATUS
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.23z — TORRENTS COLUMN-HEADER CYAN HOVER
+   ========================================================= */
+
+/*
+ * Column headings:
+ * reuse the pagination cyan/teal visual language, but keep the header
+ * pill-free. Hover lights the whole text cell so Name / Year, Files,
+ * Time and Size behave consistently even where the label itself is not
+ * wrapped in a link.
+ */
+#torrents #torrent_table > tbody > tr.colhead > td:not(.small):not(.sign) {
+    color: #DFFBFF !important;
+    text-shadow: 0 0 4px rgba(139, 233, 253, .16), 0 0 8px rgba(53, 176, 171, .08) !important;
+    transition: color .16s ease, text-shadow .16s ease !important;
+}
+
+    #torrents #torrent_table > tbody > tr.colhead > td:not(.small):not(.sign) > a {
+        color: inherit !important;
+        text-decoration: none !important;
+        background: transparent !important;
+        border: 0 !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+    }
+
+    #torrents #torrent_table > tbody > tr.colhead > td:not(.small):not(.sign):hover,
+    #torrents #torrent_table > tbody > tr.colhead > td:not(.small):not(.sign):hover > a {
+        color: var(--red-cyan) !important;
+        text-shadow: 0 0 5px rgba(139, 233, 253, .90), 0 0 10px rgba(139, 233, 253, .68), 0 0 18px rgba(139, 233, 253, .42), 0 0 28px rgba(139, 233, 253, .20) !important;
+    }
+
+/* =========================================================
+   END v0.3.23z — TORRENTS COLUMN-HEADER CYAN HOVER
    ========================================================= */
