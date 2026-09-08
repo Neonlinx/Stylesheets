@@ -1,7 +1,15 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.23x
+ * Version: 0.3.23y
+ *
+ * Changelog 0.3.23y:
+ * - Removed inherited pill styling from torrent status labels such as Trumpable / Reported while preserving their native warning colors.
+ * - Moved the main release block to the darker charcoal used previously by the darkest torrent rows.
+ * - Reworked edition/torrent row striping to reuse the same two charcoal/lavender-dark tones used in the upper search-form rows.
+ * - Reserved fixed space for Bookmark / Manual icons so long album titles wrap before the icons instead of pushing them onto a lower line.
+ * - Shifted album artwork left to align it more closely with edition/torrent text below.
+ * - Preserved all v0.3.23x artwork sizing, DL/RP cleanup and list structure.
  *
  * Changelog 0.3.23x:
  * - Removed inherited pill styling from DL / RP torrent action links while keeping the links and tooltips fully functional.
@@ -7168,4 +7176,84 @@ code {
 
 /* =========================================================
    END v0.3.23x — TORRENT ROW CONTRAST / ARTWORK / ACTION CLEANUP
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.23y — RELEASE BLOCK / ROW PALETTE / INLINE STATUS
+   ========================================================= */
+
+/*
+ * Trumpable / Reported and similar torrent status labels are textual status
+ * markers, not pills. Keep their native warning colors but remove inherited
+ * tooltip/badge surfaces.
+ */
+#torrents #torrent_table .torrent_label {
+    display: inline !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+    background-image: none !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+}
+
+/*
+ * Main release block:
+ * use the darkest charcoal from the previous torrent-row treatment.
+ */
+#torrents #torrent_table tr.group > td {
+    background: rgba(25, 27, 35, .96) !important;
+}
+
+/*
+ * Edition + torrent rows:
+ * reuse the two dark tones from the upper search-form striping instead of
+ * the much darker row pair used in v0.3.23x.
+ */
+#torrents #torrent_table > tbody > tr.group_torrent:nth-child(odd) > td {
+    background: rgba(40, 42, 54, .90) !important;
+}
+
+#torrents #torrent_table > tbody > tr.group_torrent:nth-child(even) > td {
+    background: rgba(31, 32, 41, .92) !important;
+}
+
+/*
+ * Long titles must wrap BEFORE the Bookmark / Manual controls.
+ * Make the info block a positioning context and reserve room on the right.
+ */
+#torrents #torrent_table tr.group .group_info {
+    position: relative !important;
+    padding-right: 58px !important;
+}
+
+    #torrents #torrent_table tr.group .group_info .add_bookmark {
+        position: absolute !important;
+        top: 2px !important;
+        right: 8px !important;
+        float: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        white-space: nowrap !important;
+    }
+
+/*
+ * Align artwork closer to the left edge used by the edition/torrent rows.
+ * The big_info cell previously contributed an extra 10px inset.
+ */
+#torrents #torrent_table > tbody > tr.group > td.big_info {
+    padding-left: 0 !important;
+}
+
+#torrents #torrent_table .group_image img,
+#torrents #torrent_table tr.group .group_image img {
+    margin-left: 0 !important;
+}
+
+/* =========================================================
+   END v0.3.23y — RELEASE BLOCK / ROW PALETTE / INLINE STATUS
    ========================================================= */
