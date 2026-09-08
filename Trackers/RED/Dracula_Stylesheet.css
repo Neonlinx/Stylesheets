@@ -1,7 +1,14 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.23v
+ * Version: 0.3.23w
+ *
+ * Changelog 0.3.23w:
+ * - Started the Torrents result-row structural refinement.
+ * - Removed the inherited generic tooltip pill styling from album-title links and time labels while preserving their tooltip behavior.
+ * - Repositioned each release title/tag block beside the cover image and aligned it to the top instead of dropping below the artwork.
+ * - Top-aligned the group-row time/size/activity columns so the left and right information starts on the same visual line.
+ * - Preserved the completed search panel, pagination and results-header styling from v0.3.23v.
  *
  * Changelog 0.3.23v:
  * - Increased the spacing ABOVE the Torrents pagination so the pills read as part of the results-list section rather than the search panel.
@@ -6975,4 +6982,79 @@ code {
 
 /* =========================================================
    END v0.3.23v — SEARCH FOOTER PILLS + PAGINATION OWNERSHIP
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.23w — TORRENT GROUP ROW STRUCTURE / TOOLTIP CLEANUP
+   ========================================================= */
+
+/*
+ * The generic .tooltip rule is intended for floating tooltip boxes, but
+ * Gazelle also puts the .tooltip class directly on album links and time
+ * spans. Neutralize only those inline elements inside the torrent table.
+ * Tooltip JS/classes stay intact.
+ */
+#torrents #torrent_table tr.group .group_info > a.tooltip,
+#torrents #torrent_table td.nobr > span.time.tooltip {
+    background: transparent !important;
+    background-image: none !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    outline: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/*
+ * Gazelle adds class="clear" to .group_info. The theme's generic .clear rule
+ * applies clear:both, which pushes the title/tags below the floated cover.
+ * Cancel that only here so the information begins beside the artwork.
+ */
+#torrents #torrent_table tr.group .group_info.clear {
+    clear: none !important;
+}
+
+/* Title/tags sit at the top beside the cover, DarkMono-style. */
+#torrents #torrent_table tr.group .group_info {
+    box-sizing: border-box !important;
+    width: auto !important;
+    min-height: 78px !important;
+    height: auto !important;
+    padding: 1px 8px 4px 4px !important;
+    margin: 0 !important;
+    vertical-align: top !important;
+    line-height: 1.30 !important;
+}
+
+    #torrents #torrent_table tr.group .group_info .tags {
+        margin-top: 4px !important;
+        line-height: 1.25 !important;
+    }
+
+/*
+ * Align the rest of each main group row with the top line of the cover/title
+ * block instead of vertically centering time/size/activity values.
+ */
+#torrents #torrent_table tr.group > td {
+    vertical-align: top !important;
+}
+
+    #torrents #torrent_table tr.group > td.nobr,
+    #torrents #torrent_table tr.group > td.number_column {
+        padding-top: 12px !important;
+    }
+
+/* Keep the cover itself anchored at the top of the group row. */
+#torrents #torrent_table tr.group .group_image {
+    vertical-align: top !important;
+}
+
+    #torrents #torrent_table tr.group .group_image img {
+        margin-top: 2px !important;
+    }
+
+/* =========================================================
+   END v0.3.23w — TORRENT GROUP ROW STRUCTURE / TOOLTIP CLEANUP
    ========================================================= */
