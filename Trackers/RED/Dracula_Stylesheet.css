@@ -1,7 +1,14 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.23w
+ * Version: 0.3.23x
+ *
+ * Changelog 0.3.23x:
+ * - Removed inherited pill styling from DL / RP torrent action links while keeping the links and tooltips fully functional.
+ * - Increased album artwork in Torrents result groups by roughly 20% and adjusted the adjacent info block accordingly.
+ * - Darkened each main release-group block (cover + artist/title + tags + right-side stats) to separate releases more clearly.
+ * - Added alternating dark row bands to edition headers and individual torrent rows, matching the visual rhythm used in the tag grid.
+ * - Preserved the v0.3.23w top alignment and all completed search/pagination/header styling.
  *
  * Changelog 0.3.23w:
  * - Started the Torrents result-row structural refinement.
@@ -7057,4 +7064,108 @@ code {
 
 /* =========================================================
    END v0.3.23w — TORRENT GROUP ROW STRUCTURE / TOOLTIP CLEANUP
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.23x — TORRENT ROW CONTRAST / ARTWORK / ACTION CLEANUP
+   ========================================================= */
+
+/*
+ * DL / RP links:
+ * these are inline torrent actions, not pills. Explicitly neutralize any
+ * generic button/bracket styling inherited elsewhere in the theme.
+ */
+#torrents #torrent_table .torrent_action_buttons a.button_dl,
+#torrents #torrent_table .torrent_action_buttons a.button_rp {
+    display: inline !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+    background-image: none !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    color: var(--red-cyan) !important;
+    text-decoration: none !important;
+}
+
+    #torrents #torrent_table .torrent_action_buttons a.button_dl:hover,
+    #torrents #torrent_table .torrent_action_buttons a.button_rp:hover {
+        background: transparent !important;
+        border: 0 !important;
+        box-shadow: none !important;
+        color: var(--red-cyan) !important;
+        text-decoration: underline !important;
+        text-underline-offset: 2px !important;
+        text-shadow: 0 0 5px rgba(139, 233, 253, .50), 0 0 10px rgba(139, 233, 253, .20) !important;
+    }
+
+/*
+ * Main release group block:
+ * slightly darker than before so the cover/title/tags/stat block reads as
+ * one distinct release card against the edition/torrent rows below.
+ */
+#torrents #torrent_table tr.group > td {
+    background: rgba(34, 36, 46, .96) !important;
+}
+
+/*
+ * Artwork:
+ * previous theme size was 74px; move to 90px (~20% larger) while keeping
+ * enough room beside it for the title/tag block.
+ */
+#torrents #torrent_table .group_image,
+#torrents #torrent_table td.group_image {
+    width: 106px !important;
+    min-width: 106px !important;
+}
+
+    #torrents #torrent_table .group_image img,
+    #torrents #torrent_table tr.group .group_image img {
+        width: 90px !important;
+        height: 90px !important;
+        max-width: 90px !important;
+        max-height: 90px !important;
+        margin: 2px 10px 2px 2px !important;
+        object-fit: cover !important;
+        border-radius: 5px !important;
+    }
+
+/* Keep the text block vertically balanced with the larger artwork. */
+#torrents #torrent_table tr.group .group_info {
+    min-height: 94px !important;
+    padding-top: 2px !important;
+}
+
+/*
+ * Edition header + individual torrent rows:
+ * alternate charcoal bands throughout the list, using the same darker
+ * rhythm already established in the tag grid.
+ */
+#torrents #torrent_table > tbody > tr.group_torrent:nth-child(odd) > td {
+    background: rgba(34, 36, 46, .94) !important;
+}
+
+#torrents #torrent_table > tbody > tr.group_torrent:nth-child(even) > td {
+    background: rgba(25, 27, 35, .96) !important;
+}
+
+/*
+ * Keep edition rows readable as separators without losing the alternating
+ * band underneath.
+ */
+#torrents #torrent_table > tbody > tr.group_torrent.edition > td {
+    font-weight: 600 !important;
+}
+
+/* Preserve the existing cyan hover language above the darker row bands. */
+#torrents #torrent_table > tbody > tr.group_torrent:hover > td {
+    background: var(--red-hover) !important;
+}
+
+/* =========================================================
+   END v0.3.23x — TORRENT ROW CONTRAST / ARTWORK / ACTION CLEANUP
    ========================================================= */
