@@ -1,7 +1,12 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.23z
+ * Version: 0.3.23aa
+ *
+ * Changelog 0.3.23aa:
+ * - Reworked Name / Year, Files, Time and Size into compact teal/cyan header pills matching the pagination controls.
+ * - Added a stronger cyan glow on hover while preserving the existing table layout and column widths.
+ * - Preserved all v0.3.23z torrent-list structure and row styling.
  *
  * Changelog 0.3.23z:
  * - Restyled the Torrents list column headings (Name / Year, Files, Time, Size) with the same cyan/teal language used by the pagination controls.
@@ -7298,4 +7303,92 @@ code {
 
 /* =========================================================
    END v0.3.23z — TORRENTS COLUMN-HEADER CYAN HOVER
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.23aa — TORRENTS COLUMN-HEADER PILLS
+   ========================================================= */
+
+/*
+ * The header labels need true pill visuals like the pagination, but the
+ * underlying <td> elements must remain table cells. Use a compact pseudo-
+ * element behind the text so column geometry is left untouched.
+ */
+#torrents #torrent_table > tbody > tr.colhead > td:nth-child(3),
+#torrents #torrent_table > tbody > tr.colhead > td:nth-child(4),
+#torrents #torrent_table > tbody > tr.colhead > td:nth-child(5),
+#torrents #torrent_table > tbody > tr.colhead > td:nth-child(6) {
+    position: relative !important;
+    z-index: 0 !important;
+    color: #DFFBFF !important;
+    text-shadow: none !important;
+}
+
+    /* Keep text above the decorative pill. */
+    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(3) > *,
+    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(4) > *,
+    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(5) > *,
+    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(6) > * {
+        position: relative !important;
+        z-index: 2 !important;
+    }
+
+    /* Base teal pill surface. */
+    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(3)::before,
+    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(4)::before,
+    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(5)::before,
+    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(6)::before {
+        content: "" !important;
+        position: absolute !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        height: 26px !important;
+        background: linear-gradient( 180deg, #1A2F3E 0%, #172D3D 48%, #162B3B 100% ) !important;
+        border: 1px solid rgba(53, 176, 171, .72) !important;
+        border-radius: 8px !important;
+        box-shadow: 0 0 0 1px rgba(53, 176, 171, .06), 0 0 6px rgba(53, 176, 171, .16), inset 0 0 6px rgba(53, 176, 171, .05) !important;
+        z-index: 1 !important;
+        transition: background .16s ease, border-color .16s ease, box-shadow .16s ease !important;
+    }
+
+    /* Individual pill widths / positions. */
+    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(3)::before {
+        left: 7px !important;
+        width: 88px !important;
+    }
+
+    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(4)::before,
+    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(5)::before,
+    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(6)::before {
+        left: 50% !important;
+        width: 52px !important;
+        transform: translate(-50%, -50%) !important;
+    }
+
+/* Give Name / Year a little inner breathing room. */
+#torrents #torrent_table > tbody > tr.colhead > td:nth-child(3) {
+    padding-left: 18px !important;
+}
+
+    /* Hover lights up the complete pill. */
+    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(3):hover,
+    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(4):hover,
+    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(5):hover,
+    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(6):hover {
+        color: var(--red-cyan) !important;
+        text-shadow: 0 0 5px rgba(139, 233, 253, .78), 0 0 10px rgba(139, 233, 253, .42) !important;
+    }
+
+        #torrents #torrent_table > tbody > tr.colhead > td:nth-child(3):hover::before,
+        #torrents #torrent_table > tbody > tr.colhead > td:nth-child(4):hover::before,
+        #torrents #torrent_table > tbody > tr.colhead > td:nth-child(5):hover::before,
+        #torrents #torrent_table > tbody > tr.colhead > td:nth-child(6):hover::before {
+            background: linear-gradient( 180deg, #1B3342 0%, #18303F 48%, #172D3D 100% ) !important;
+            border-color: rgba(139, 233, 253, .96) !important;
+            box-shadow: 0 0 0 1px rgba(139, 233, 253, .18), 0 0 8px rgba(139, 233, 253, .58), 0 0 17px rgba(139, 233, 253, .36), 0 0 28px rgba(139, 233, 253, .18), inset 0 0 7px rgba(139, 233, 253, .08) !important;
+        }
+
+/* =========================================================
+   END v0.3.23aa — TORRENTS COLUMN-HEADER PILLS
    ========================================================= */
