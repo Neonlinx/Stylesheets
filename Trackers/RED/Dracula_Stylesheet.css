@@ -1,7 +1,12 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.23ad
+ * Version: 0.3.23ae
+ *
+ * Changelog 0.3.23ae:
+ * - Shifted the Files header pill left so it centers visually over the numeric Files column.
+ * - Shifted the Bookmark / Manual (+) controls left to align with the same Files-column axis.
+ * - Preserved all v0.3.23ad semantic clickable header-pill behavior and torrent-row styling.
  *
  * Changelog 0.3.23ad:
  * - Rebuilt the Torrents column-header pills from the clean v0.3.23y checkpoint using semantic selectors instead of fragile nth-child positions.
@@ -7397,4 +7402,31 @@ code {
 
 /* =========================================================
    END v0.3.23ad — SEMANTIC CLICKABLE COLUMN-HEADER PILLS
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.23ae — FILES COLUMN / BOOKMARK AXIS ALIGNMENT
+   ========================================================= */
+
+/*
+ * RED's Files heading cell is visually wider than the numeric column below.
+ * Nudge only the decorative Files pill left so its center sits on the same
+ * vertical axis as the file-count numbers.
+ */
+#torrents #torrent_table tr.colhead td:has(+ td > a[href*="order_by=time"])::after {
+    position: relative !important;
+    left: -18px !important;
+}
+
+/*
+ * The Bookmark / Manual controls belong to the main release row but should
+ * visually line up under the Files column rather than floating too far right.
+ */
+#torrents #torrent_table tr.group .group_info .add_bookmark {
+    right: 24px !important;
+}
+
+/* =========================================================
+   END v0.3.23ae — FILES COLUMN / BOOKMARK AXIS ALIGNMENT
    ========================================================= */
