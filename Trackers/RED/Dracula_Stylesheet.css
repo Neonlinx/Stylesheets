@@ -1,28 +1,14 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.23ac
+ * Version: 0.3.23ad
  *
- * Changelog 0.3.23ac:
- * - Rebuilt the Torrents sortable column headers around the REAL clickable anchors instead of decorative overlay text.
- * - Name / Year now uses the existing Year link as the full visible pill and click target.
- * - Time and Size are styled directly as clickable pills, eliminating the doubled labels from v0.3.23ab.
- * - Files remains a matching non-clickable pill because RED's current markup exposes it as plain text rather than an anchor.
- *
- * Changelog 0.3.23ab:
- * - Fixed the Torrents column-header pills so full labels render correctly instead of being partially hidden by the decorative surface.
- * - Rebuilt the visible labels with dedicated overlay text while keeping the original Year / Time / Size links underneath and clickable.
- * - Corrected the individual pill placement for Name / Year, Files, Time and Size without altering table column geometry.
- *
- * Changelog 0.3.23aa:
- * - Reworked Name / Year, Files, Time and Size into compact teal/cyan header pills matching the pagination controls.
- * - Added a stronger cyan glow on hover while preserving the existing table layout and column widths.
- * - Preserved all v0.3.23z torrent-list structure and row styling.
- *
- * Changelog 0.3.23z:
- * - Restyled the Torrents list column headings (Name / Year, Files, Time, Size) with the same cyan/teal language used by the pagination controls.
- * - Added a brighter cyan text diffusion on hover while keeping the header text pill-free.
- * - Preserved all v0.3.23y release-block, row striping, artwork and inline-status refinements.
+ * Changelog 0.3.23ad:
+ * - Rebuilt the Torrents column-header pills from the clean v0.3.23y checkpoint using semantic selectors instead of fragile nth-child positions.
+ * - Name / Year, Time and Size now use their real native sorting links as the visible clickable pills.
+ * - Files is styled as a matching non-link pill using its relationship to the Time column.
+ * - Eliminated duplicated labels and avoided changing the table's native column geometry.
+ * - Added pagination-style teal resting states and strong cyan hover diffusion.
  *
  * Changelog 0.3.23y:
  * - Removed inherited pill styling from torrent status labels such as Trumpable / Reported while preserving their native warning colors.
@@ -7281,298 +7267,27 @@ code {
 
 
 /* =========================================================
-   v0.3.23z — TORRENTS COLUMN-HEADER CYAN HOVER
+   v0.3.23ad — SEMANTIC CLICKABLE COLUMN-HEADER PILLS
    ========================================================= */
 
 /*
- * Column headings:
- * reuse the pagination cyan/teal visual language, but keep the header
- * pill-free. Hover lights the whole text cell so Name / Year, Files,
- * Time and Size behave consistently even where the label itself is not
- * wrapped in a link.
+ * IMPORTANT:
+ * Do not rely on nth-child here. RED can conditionally include/remove the
+ * small leading columns, which makes positional selectors fragile.
+ * Target the actual sorting URLs and the Name/Year width attribute instead.
  */
-#torrents #torrent_table > tbody > tr.colhead > td:not(.small):not(.sign) {
-    color: #DFFBFF !important;
-    text-shadow: 0 0 4px rgba(139, 233, 253, .16), 0 0 8px rgba(53, 176, 171, .08) !important;
-    transition: color .16s ease, text-shadow .16s ease !important;
-}
 
-    #torrents #torrent_table > tbody > tr.colhead > td:not(.small):not(.sign) > a {
-        color: inherit !important;
-        text-decoration: none !important;
-        background: transparent !important;
-        border: 0 !important;
-        box-shadow: none !important;
-        padding: 0 !important;
-    }
+/* ---------- Shared real-link pill styling ---------- */
 
-    #torrents #torrent_table > tbody > tr.colhead > td:not(.small):not(.sign):hover,
-    #torrents #torrent_table > tbody > tr.colhead > td:not(.small):not(.sign):hover > a {
-        color: var(--red-cyan) !important;
-        text-shadow: 0 0 5px rgba(139, 233, 253, .90), 0 0 10px rgba(139, 233, 253, .68), 0 0 18px rgba(139, 233, 253, .42), 0 0 28px rgba(139, 233, 253, .20) !important;
-    }
-
-/* =========================================================
-   END v0.3.23z — TORRENTS COLUMN-HEADER CYAN HOVER
-   ========================================================= */
-
-
-/* =========================================================
-   v0.3.23aa — TORRENTS COLUMN-HEADER PILLS
-   ========================================================= */
-
-/*
- * The header labels need true pill visuals like the pagination, but the
- * underlying <td> elements must remain table cells. Use a compact pseudo-
- * element behind the text so column geometry is left untouched.
- */
-#torrents #torrent_table > tbody > tr.colhead > td:nth-child(3),
-#torrents #torrent_table > tbody > tr.colhead > td:nth-child(4),
-#torrents #torrent_table > tbody > tr.colhead > td:nth-child(5),
-#torrents #torrent_table > tbody > tr.colhead > td:nth-child(6) {
-    position: relative !important;
-    z-index: 0 !important;
-    color: #DFFBFF !important;
-    text-shadow: none !important;
-}
-
-    /* Keep text above the decorative pill. */
-    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(3) > *,
-    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(4) > *,
-    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(5) > *,
-    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(6) > * {
-        position: relative !important;
-        z-index: 2 !important;
-    }
-
-    /* Base teal pill surface. */
-    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(3)::before,
-    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(4)::before,
-    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(5)::before,
-    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(6)::before {
-        content: "" !important;
-        position: absolute !important;
-        top: 50% !important;
-        transform: translateY(-50%) !important;
-        height: 26px !important;
-        background: linear-gradient( 180deg, #1A2F3E 0%, #172D3D 48%, #162B3B 100% ) !important;
-        border: 1px solid rgba(53, 176, 171, .72) !important;
-        border-radius: 8px !important;
-        box-shadow: 0 0 0 1px rgba(53, 176, 171, .06), 0 0 6px rgba(53, 176, 171, .16), inset 0 0 6px rgba(53, 176, 171, .05) !important;
-        z-index: 1 !important;
-        transition: background .16s ease, border-color .16s ease, box-shadow .16s ease !important;
-    }
-
-    /* Individual pill widths / positions. */
-    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(3)::before {
-        left: 7px !important;
-        width: 88px !important;
-    }
-
-    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(4)::before,
-    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(5)::before,
-    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(6)::before {
-        left: 50% !important;
-        width: 52px !important;
-        transform: translate(-50%, -50%) !important;
-    }
-
-/* Give Name / Year a little inner breathing room. */
-#torrents #torrent_table > tbody > tr.colhead > td:nth-child(3) {
-    padding-left: 18px !important;
-}
-
-    /* Hover lights up the complete pill. */
-    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(3):hover,
-    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(4):hover,
-    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(5):hover,
-    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(6):hover {
-        color: var(--red-cyan) !important;
-        text-shadow: 0 0 5px rgba(139, 233, 253, .78), 0 0 10px rgba(139, 233, 253, .42) !important;
-    }
-
-        #torrents #torrent_table > tbody > tr.colhead > td:nth-child(3):hover::before,
-        #torrents #torrent_table > tbody > tr.colhead > td:nth-child(4):hover::before,
-        #torrents #torrent_table > tbody > tr.colhead > td:nth-child(5):hover::before,
-        #torrents #torrent_table > tbody > tr.colhead > td:nth-child(6):hover::before {
-            background: linear-gradient( 180deg, #1B3342 0%, #18303F 48%, #172D3D 100% ) !important;
-            border-color: rgba(139, 233, 253, .96) !important;
-            box-shadow: 0 0 0 1px rgba(139, 233, 253, .18), 0 0 8px rgba(139, 233, 253, .58), 0 0 17px rgba(139, 233, 253, .36), 0 0 28px rgba(139, 233, 253, .18), inset 0 0 7px rgba(139, 233, 253, .08) !important;
-        }
-
-/* =========================================================
-   END v0.3.23aa — TORRENTS COLUMN-HEADER PILLS
-   ========================================================= */
-
-
-/* =========================================================
-   v0.3.23ab — COLUMN HEADER PILL LABEL FIX
-   ========================================================= */
-
-/*
- * v0.3.23aa placed the decorative pill above raw text nodes such as
- * "Name / " and "Files". Only child elements could be raised with z-index,
- * so parts of the labels were hidden. Keep the real content in place for
- * click targets, make it visually transparent, and draw the complete visible
- * labels in a dedicated overlay.
- */
-#torrents #torrent_table > tbody > tr.colhead > td:nth-child(3),
-#torrents #torrent_table > tbody > tr.colhead > td:nth-child(4),
-#torrents #torrent_table > tbody > tr.colhead > td:nth-child(5),
-#torrents #torrent_table > tbody > tr.colhead > td:nth-child(6) {
-    color: transparent !important;
-    text-shadow: none !important;
-}
-
-    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(3) > a,
-    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(5) > a,
-    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(6) > a {
-        color: transparent !important;
-        text-shadow: none !important;
-        position: relative !important;
-        z-index: 3 !important;
-    }
-
-    /* Visible labels above the pill surface; pointer-events lets clicks pass through. */
-    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(3)::after,
-    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(4)::after,
-    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(5)::after,
-    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(6)::after {
-        position: absolute !important;
-        top: 50% !important;
-        transform: translateY(-50%) !important;
-        color: #DFFBFF !important;
-        font-size: 13px !important;
-        font-weight: 600 !important;
-        line-height: 1 !important;
-        text-shadow: none !important;
-        pointer-events: none !important;
-        z-index: 4 !important;
-        transition: color .16s ease, text-shadow .16s ease !important;
-    }
-
-    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(3)::after {
-        content: "Name / Year" !important;
-        left: 18px !important;
-    }
-
-    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(4)::after {
-        content: "Files" !important;
-        left: 50% !important;
-        transform: translate(-50%, -50%) !important;
-    }
-
-    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(5)::after {
-        content: "Time" !important;
-        left: 50% !important;
-        transform: translate(-50%, -50%) !important;
-    }
-
-    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(6)::after {
-        content: "Size" !important;
-        left: 50% !important;
-        transform: translate(-50%, -50%) !important;
-    }
-
-    /* Make the Name / Year pill a little wider so the complete label fits naturally. */
-    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(3)::before {
-        width: 104px !important;
-    }
-
-    /* Hover: illuminate both pill and reconstructed label. */
-    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(3):hover::after,
-    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(4):hover::after,
-    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(5):hover::after,
-    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(6):hover::after {
-        color: var(--red-cyan) !important;
-        text-shadow: 0 0 5px rgba(139, 233, 253, .82), 0 0 10px rgba(139, 233, 253, .46), 0 0 18px rgba(139, 233, 253, .22) !important;
-    }
-
-    /* =========================================================
-   END v0.3.23ab — COLUMN HEADER PILL LABEL FIX
-   ========================================================= */
-
-
-    /* =========================================================
-   v0.3.23ac — REAL CLICKABLE COLUMN-HEADER PILLS
-   ========================================================= */
-
-    /*
- * Remove the decorative pseudo-label layer from aa/ab.
- * Sortable headers must be built from the real anchors so the visible pill
- * itself is the click target.
- */
-    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(3)::before,
-    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(3)::after,
-    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(4)::before,
-    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(4)::after,
-    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(5)::before,
-    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(5)::after,
-    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(6)::before,
-    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(6)::after {
-        content: none !important;
-        display: none !important;
-    }
-
-/* Reset the cells themselves. */
-#torrents #torrent_table > tbody > tr.colhead > td:nth-child(3),
-#torrents #torrent_table > tbody > tr.colhead > td:nth-child(4),
-#torrents #torrent_table > tbody > tr.colhead > td:nth-child(5),
-#torrents #torrent_table > tbody > tr.colhead > td:nth-child(6) {
-    color: #DFFBFF !important;
-    text-shadow: none !important;
-}
-
-/*
- * NAME / YEAR
- * RED's markup is: plain text "Name / " + <a>Year</a>.
- * Hide the plain text visually by collapsing the cell font, then use the
- * real Year anchor as a full "Name / Year" pill.
- */
-#torrents #torrent_table > tbody > tr.colhead > td:nth-child(3) {
-    font-size: 0 !important;
-    padding-left: 10px !important;
-}
-
-    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(3) > a {
-        display: inline-flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        min-width: 92px !important;
-        height: 28px !important;
-        padding: 0 10px !important;
-        font-size: 13px !important;
-        font-weight: 600 !important;
-        line-height: 1 !important;
-        color: transparent !important;
-        text-decoration: none !important;
-        background: linear-gradient( 180deg, #1A2F3E 0%, #172D3D 48%, #162B3B 100% ) !important;
-        border: 1px solid rgba(53, 176, 171, .72) !important;
-        border-radius: 8px !important;
-        box-shadow: 0 0 0 1px rgba(53, 176, 171, .06), 0 0 6px rgba(53, 176, 171, .16), inset 0 0 6px rgba(53, 176, 171, .05) !important;
-        transition: background .16s ease, border-color .16s ease, box-shadow .16s ease, transform .16s ease !important;
-    }
-
-        #torrents #torrent_table > tbody > tr.colhead > td:nth-child(3) > a::before {
-            content: "Name / Year" !important;
-            color: #DFFBFF !important;
-            font-size: 13px !important;
-            font-weight: 600 !important;
-            line-height: 1 !important;
-        }
-
-/*
- * TIME / SIZE
- * These are already real <a> elements, so style those anchors directly.
- */
-#torrents #torrent_table > tbody > tr.colhead > td:nth-child(5) > a,
-#torrents #torrent_table > tbody > tr.colhead > td:nth-child(6) > a {
+#torrents #torrent_table tr.colhead a[href*="order_by=year"],
+#torrents #torrent_table tr.colhead a[href*="order_by=time"],
+#torrents #torrent_table tr.colhead a[href*="order_by=size"] {
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
-    min-width: 54px !important;
-    height: 28px !important;
-    padding: 0 10px !important;
+    box-sizing: border-box !important;
+    min-height: 28px !important;
+    padding: 4px 10px 5px !important;
     color: #DFFBFF !important;
     font-size: 13px !important;
     font-weight: 600 !important;
@@ -7580,61 +7295,106 @@ code {
     text-decoration: none !important;
     text-shadow: none !important;
     background: linear-gradient( 180deg, #1A2F3E 0%, #172D3D 48%, #162B3B 100% ) !important;
-    border: 1px solid rgba(53, 176, 171, .72) !important;
+    border: 1px solid rgba(53, 176, 171, .68) !important;
     border-radius: 8px !important;
     box-shadow: 0 0 0 1px rgba(53, 176, 171, .06), 0 0 6px rgba(53, 176, 171, .16), inset 0 0 6px rgba(53, 176, 171, .05) !important;
-    transition: color .16s ease, text-shadow .16s ease, background .16s ease, border-color .16s ease, box-shadow .16s ease, transform .16s ease !important;
+    transition: color .16s ease, background .16s ease, border-color .16s ease, box-shadow .16s ease, text-shadow .16s ease, transform .16s ease !important;
 }
+
+/* ---------- Name / Year ---------- */
 
 /*
- * FILES
- * Current RED markup exposes "Files" as plain text, not an <a>, so it can
- * match the visual language but cannot become a true sort link with CSS alone.
+ * HTML is: Name / <a ...order_by=year...>Year</a>
+ * Hide the raw cell text and the original Year text, then reconstruct the
+ * complete visible label INSIDE the real Year link. The pill itself remains
+ * the true sorting click target.
  */
-#torrents #torrent_table > tbody > tr.colhead > td:nth-child(4) {
-    display: table-cell !important;
-    padding-top: 6px !important;
-    padding-bottom: 6px !important;
+#torrents #torrent_table tr.colhead td[width="100%"] {
+    font-size: 0 !important;
     color: transparent !important;
-    position: relative !important;
+    padding-left: 12px !important;
 }
 
-    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(4)::before {
+    #torrents #torrent_table tr.colhead td[width="100%"] > a[href*="order_by=year"] {
+        min-width: 108px !important;
+        font-size: 0 !important;
+    }
+
+        #torrents #torrent_table tr.colhead td[width="100%"] > a[href*="order_by=year"]::before {
+            content: "Name / Year" !important;
+            color: #DFFBFF !important;
+            font-size: 13px !important;
+            font-weight: 600 !important;
+            line-height: 1 !important;
+        }
+
+/* ---------- Time / Size ---------- */
+
+#torrents #torrent_table tr.colhead a[href*="order_by=time"],
+#torrents #torrent_table tr.colhead a[href*="order_by=size"] {
+    min-width: 54px !important;
+}
+
+/* ---------- Files ---------- */
+
+/*
+ * Files is plain text. Identify its cell as the one immediately preceding
+ * the Time sorting cell, then draw one matching pill as the cell content.
+ */
+#torrents #torrent_table tr.colhead td:has(+ td > a[href*="order_by=time"]) {
+    font-size: 0 !important;
+    color: transparent !important;
+    text-align: center !important;
+}
+
+    #torrents #torrent_table tr.colhead td:has(+ td > a[href*="order_by=time"])::after {
         content: "Files" !important;
         display: inline-flex !important;
         align-items: center !important;
         justify-content: center !important;
-        position: relative !important;
+        box-sizing: border-box !important;
         min-width: 54px !important;
-        height: 28px !important;
-        padding: 0 10px !important;
+        min-height: 28px !important;
+        padding: 4px 10px 5px !important;
         color: #DFFBFF !important;
         font-size: 13px !important;
         font-weight: 600 !important;
         line-height: 1 !important;
         background: linear-gradient( 180deg, #1A2F3E 0%, #172D3D 48%, #162B3B 100% ) !important;
-        border: 1px solid rgba(53, 176, 171, .72) !important;
+        border: 1px solid rgba(53, 176, 171, .68) !important;
         border-radius: 8px !important;
         box-shadow: 0 0 0 1px rgba(53, 176, 171, .06), 0 0 6px rgba(53, 176, 171, .16), inset 0 0 6px rgba(53, 176, 171, .05) !important;
+        transition: color .16s ease, background .16s ease, border-color .16s ease, box-shadow .16s ease, text-shadow .16s ease !important;
     }
 
-/* Shared hover for the REAL clickable pills. */
-#torrents #torrent_table > tbody > tr.colhead > td:nth-child(3) > a:hover,
-#torrents #torrent_table > tbody > tr.colhead > td:nth-child(5) > a:hover,
-#torrents #torrent_table > tbody > tr.colhead > td:nth-child(6) > a:hover {
+/* ---------- Hover / activation ---------- */
+
+#torrents #torrent_table tr.colhead a[href*="order_by=year"]:hover,
+#torrents #torrent_table tr.colhead a[href*="order_by=time"]:hover,
+#torrents #torrent_table tr.colhead a[href*="order_by=size"]:hover {
     color: var(--red-cyan) !important;
     background: linear-gradient( 180deg, #1B3342 0%, #18303F 48%, #172D3D 100% ) !important;
     border-color: rgba(139, 233, 253, .96) !important;
     box-shadow: 0 0 0 1px rgba(139, 233, 253, .18), 0 0 8px rgba(139, 233, 253, .58), 0 0 17px rgba(139, 233, 253, .36), 0 0 28px rgba(139, 233, 253, .18), inset 0 0 7px rgba(139, 233, 253, .08) !important;
-    text-shadow: 0 0 5px rgba(139, 233, 253, .82), 0 0 10px rgba(139, 233, 253, .46) !important;
+    text-shadow: 0 0 5px rgba(139, 233, 253, .82), 0 0 10px rgba(139, 233, 253, .46), 0 0 18px rgba(139, 233, 253, .22) !important;
     transform: translateY(-1px) !important;
 }
 
-    #torrents #torrent_table > tbody > tr.colhead > td:nth-child(3) > a:hover::before {
-        color: var(--red-cyan) !important;
-        text-shadow: 0 0 5px rgba(139, 233, 253, .82), 0 0 10px rgba(139, 233, 253, .46) !important;
-    }
+/* Reconstructed Name / Year text needs its own glow/color. */
+#torrents #torrent_table tr.colhead td[width="100%"] > a[href*="order_by=year"]:hover::before {
+    color: var(--red-cyan) !important;
+    text-shadow: 0 0 5px rgba(139, 233, 253, .82), 0 0 10px rgba(139, 233, 253, .46), 0 0 18px rgba(139, 233, 253, .22) !important;
+}
+
+/* Files is not sortable, but visually follows the same hover language. */
+#torrents #torrent_table tr.colhead td:has(+ td > a[href*="order_by=time"]):hover::after {
+    color: var(--red-cyan) !important;
+    background: linear-gradient( 180deg, #1B3342 0%, #18303F 48%, #172D3D 100% ) !important;
+    border-color: rgba(139, 233, 253, .96) !important;
+    box-shadow: 0 0 0 1px rgba(139, 233, 253, .18), 0 0 8px rgba(139, 233, 253, .58), 0 0 17px rgba(139, 233, 253, .36), 0 0 28px rgba(139, 233, 253, .18), inset 0 0 7px rgba(139, 233, 253, .08) !important;
+    text-shadow: 0 0 5px rgba(139, 233, 253, .82), 0 0 10px rgba(139, 233, 253, .46), 0 0 18px rgba(139, 233, 253, .22) !important;
+}
 
 /* =========================================================
-   END v0.3.23ac — REAL CLICKABLE COLUMN-HEADER PILLS
+   END v0.3.23ad — SEMANTIC CLICKABLE COLUMN-HEADER PILLS
    ========================================================= */
