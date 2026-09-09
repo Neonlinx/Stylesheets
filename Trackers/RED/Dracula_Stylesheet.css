@@ -7589,3 +7589,59 @@ code {
 /* =========================================================
    END v0.3.23aj — PAGINATION-TONE RIGHT-SIDE METRICS
    ========================================================= */
+
+
+/* =========================================================
+   v0.3.23ak — RIGHT-SIDE CYAN + MAIN TITLE PINK
+   ========================================================= */
+
+/*
+ * Right-side torrent metrics: force the pagination-number cyan-white across
+ * every numeric/stat column, including file counts and activity numbers.
+ */
+#torrents #torrent_table > tbody > tr > td:nth-last-child(-n+6),
+#torrents #torrent_table > tbody > tr > td:nth-last-child(-n+6) a,
+#torrents #torrent_table > tbody > tr > td:nth-last-child(-n+6) span {
+    color: #DFFBFF !important;
+    text-shadow: 0 0 4px rgba(139, 233, 253, .22), 0 0 8px rgba(53, 176, 171, .10) !important;
+}
+
+/*
+ * Bookmark / Manual (+) controls: same right-side family as the stats.
+ */
+#torrents #torrent_table tr.group .group_info .add_bookmark,
+#torrents #torrent_table tr.group .group_info .add_bookmark a,
+#torrents #torrent_table tr.group .group_info .add_bookmark span {
+    color: #DFFBFF !important;
+    text-shadow: 0 0 4px rgba(139, 233, 253, .22), 0 0 8px rgba(53, 176, 171, .10) !important;
+}
+
+/*
+ * Main group title line (artist - album + bracketed year/type):
+ * use the same vivid pink/glow family as the edition/release-description lines.
+ * Apply it to direct children only, then keep the tag line cyan below.
+ */
+#torrents #torrent_table tr.group .group_info {
+    color: #FF79C6 !important;
+    text-shadow: 0 0 5px rgba(255, 121, 198, .60), 0 0 11px rgba(255, 121, 198, .34), 0 0 20px rgba(255, 121, 198, .16) !important;
+}
+
+    #torrents #torrent_table tr.group .group_info > a:not(.add_bookmark),
+    #torrents #torrent_table tr.group .group_info > span,
+    #torrents #torrent_table tr.group .group_info > strong,
+    #torrents #torrent_table tr.group .group_info > b {
+        color: inherit !important;
+        text-shadow: inherit !important;
+    }
+
+    /* Keep the genre/tag row in the established cyan accent. */
+    #torrents #torrent_table tr.group .group_info .tags,
+    #torrents #torrent_table tr.group .group_info .tags a,
+    #torrents #torrent_table tr.group .group_info .tags span {
+        color: var(--red-cyan) !important;
+        text-shadow: 0 0 4px rgba(139, 233, 253, .14) !important;
+    }
+
+/* =========================================================
+   END v0.3.23ak — RIGHT-SIDE CYAN + MAIN TITLE PINK
+   ========================================================= */
