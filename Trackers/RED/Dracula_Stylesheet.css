@@ -7645,3 +7645,59 @@ code {
 /* =========================================================
    END v0.3.23ak — RIGHT-SIDE CYAN + MAIN TITLE PINK
    ========================================================= */
+
+
+/* =========================================================
+   v0.3.23al — CYAN TITLE / PINK BRACKETS / CYAN ICONS
+   ========================================================= */
+
+/*
+ * Keep the group-info parent pink so the unwrapped plain-text fragments
+ * like [2026] [Album] stay vivid, but push the actual title link itself
+ * back to the usual cyan family.
+ */
+#torrents #torrent_table tr.group .group_info {
+    color: #FF79C6 !important;
+    text-shadow: 0 0 5px rgba(255, 121, 198, .60), 0 0 11px rgba(255, 121, 198, .34), 0 0 20px rgba(255, 121, 198, .16) !important;
+}
+
+    /* Main title link: Artist - Album returns to the normal cyan accent. */
+    #torrents #torrent_table tr.group .group_info > a:first-of-type {
+        color: var(--red-cyan) !important;
+        text-shadow: 0 0 4px rgba(139, 233, 253, .16), 0 0 8px rgba(139, 233, 253, .08) !important;
+    }
+
+    /* Tags stay cyan as before. */
+    #torrents #torrent_table tr.group .group_info .tags,
+    #torrents #torrent_table tr.group .group_info .tags a,
+    #torrents #torrent_table tr.group .group_info .tags span {
+        color: var(--red-cyan) !important;
+        text-shadow: 0 0 4px rgba(139, 233, 253, .14) !important;
+    }
+
+    /*
+ * The bookmark and + controls still need the right-side cyan-white tone.
+ * Cover the container, links, descendants, and pseudo-elements so icon-font
+ * or generated-content symbols do not remain white.
+ */
+    #torrents #torrent_table tr.group .group_info .add_bookmark,
+    #torrents #torrent_table tr.group .group_info .add_bookmark a,
+    #torrents #torrent_table tr.group .group_info .add_bookmark span,
+    #torrents #torrent_table tr.group .group_info .add_bookmark i,
+    #torrents #torrent_table tr.group .group_info .add_bookmark svg,
+    #torrents #torrent_table tr.group .group_info .add_bookmark *,
+    #torrents #torrent_table tr.group .group_info .add_bookmark::before,
+    #torrents #torrent_table tr.group .group_info .add_bookmark::after,
+    #torrents #torrent_table tr.group .group_info .add_bookmark a::before,
+    #torrents #torrent_table tr.group .group_info .add_bookmark a::after,
+    #torrents #torrent_table tr.group .group_info .add_bookmark *::before,
+    #torrents #torrent_table tr.group .group_info .add_bookmark *::after {
+        color: #DFFBFF !important;
+        fill: #DFFBFF !important;
+        stroke: #DFFBFF !important;
+        text-shadow: 0 0 4px rgba(139, 233, 253, .22), 0 0 8px rgba(53, 176, 171, .10) !important;
+    }
+
+/* =========================================================
+   END v0.3.23al — CYAN TITLE / PINK BRACKETS / CYAN ICONS
+   ========================================================= */
