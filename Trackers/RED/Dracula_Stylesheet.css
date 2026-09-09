@@ -7549,3 +7549,43 @@ code {
 /* =========================================================
    END v0.3.23ai — INVERTED PINK BALANCE
    ========================================================= */
+
+
+/* =========================================================
+   v0.3.23aj — PAGINATION-TONE RIGHT-SIDE METRICS
+   ========================================================= */
+
+#torrents #torrent_table tr.group > td.nobr,
+#torrents #torrent_table tr.group > td.number_column,
+#torrents #torrent_table tr.group_torrent > td.nobr,
+#torrents #torrent_table tr.group_torrent > td.number_column,
+#torrents #torrent_table tr.torrent > td.nobr,
+#torrents #torrent_table tr.torrent > td.number_column,
+#torrents #torrent_table tr.torrent_row > td.nobr,
+#torrents #torrent_table tr.torrent_row > td.number_column {
+    color: #DFFBFF !important;
+    text-shadow: 0 0 4px rgba(139, 233, 253, .22), 0 0 8px rgba(53, 176, 171, .10) !important;
+}
+
+    #torrents #torrent_table tr.group > td.nobr a,
+    #torrents #torrent_table tr.group > td.nobr span,
+    #torrents #torrent_table tr.group > td.number_column a,
+    #torrents #torrent_table tr.group > td.number_column span,
+    #torrents #torrent_table tr.group_torrent > td.nobr a,
+    #torrents #torrent_table tr.group_torrent > td.nobr span,
+    #torrents #torrent_table tr.group_torrent > td.number_column a,
+    #torrents #torrent_table tr.group_torrent > td.number_column span {
+        color: inherit !important;
+        text-shadow: inherit !important;
+    }
+
+#torrents #torrent_table tr.group .group_info .add_bookmark,
+#torrents #torrent_table tr.group .group_info .add_bookmark a,
+#torrents #torrent_table tr.group .group_info .add_bookmark span {
+    color: #DFFBFF !important;
+    text-shadow: 0 0 4px rgba(139, 233, 253, .22), 0 0 8px rgba(53, 176, 171, .10) !important;
+}
+
+/* =========================================================
+   END v0.3.23aj — PAGINATION-TONE RIGHT-SIDE METRICS
+   ========================================================= */
