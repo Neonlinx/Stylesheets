@@ -1,7 +1,13 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.23aj
+ * Version: 0.3.23ak
+ *
+ * Changelog 0.3.23ak:
+ * - Simplified the edition/release separator bands by removing the one-sided cyan accent stripe.
+ * - Disabled the edition-row hover brightening so separator rows keep a stable appearance under the mouse.
+ * - Preserved the dark teal band, teal text, subtle borders and restrained diffusion introduced in v0.3.23aj.
+ * - Preserved all torrent status pills, title-line behavior, artwork sizing, row striping, pagination and column alignment unchanged.
  *
  * Changelog 0.3.23aj:
  * - Strengthened the visual separation of edition/release header rows using a dark teal band derived from the existing pagination-pill palette.
@@ -7732,4 +7738,36 @@ code {
 
 /* =========================================================
    END v0.3.23aj — EDITION HEADER TEAL BAND / SEPARATOR POLISH
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.23ak — EDITION BAND CLEANUP / STATIC HOVER STATE
+   ========================================================= */
+
+/*
+ * Remove the one-sided left accent introduced in v0.3.23aj.
+ * The teal separator band already provides enough hierarchy on its own.
+ */
+#torrents #torrent_table > tbody > tr.group_torrent.edition > td:first-child {
+    box-shadow: inset 0 1px 0 rgba(139, 233, 253, .035), inset 0 0 12px rgba(53, 176, 171, .055), 0 0 8px rgba(53, 176, 171, .075) !important;
+}
+
+/*
+ * Edition rows are structural separators, not interactive controls.
+ * Keep their exact resting appearance even when the mouse is over them.
+ */
+#torrents #torrent_table > tbody > tr.group_torrent.edition:hover > td {
+    background: linear-gradient( 180deg, #1A3343 0%, #183040 52%, #162C3B 100% ) !important;
+    border-top: 1px solid rgba(53, 176, 171, .34) !important;
+    border-bottom: 1px solid rgba(53, 176, 171, .20) !important;
+    box-shadow: inset 0 1px 0 rgba(139, 233, 253, .035), inset 0 0 12px rgba(53, 176, 171, .055), 0 0 8px rgba(53, 176, 171, .075) !important;
+}
+
+    #torrents #torrent_table > tbody > tr.group_torrent.edition:hover > td:first-child {
+        box-shadow: inset 0 1px 0 rgba(139, 233, 253, .035), inset 0 0 12px rgba(53, 176, 171, .055), 0 0 8px rgba(53, 176, 171, .075) !important;
+    }
+
+/* =========================================================
+   END v0.3.23ak — EDITION BAND CLEANUP / STATIC HOVER STATE
    ========================================================= */
