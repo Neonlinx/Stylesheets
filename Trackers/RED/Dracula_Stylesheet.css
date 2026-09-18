@@ -1,7 +1,14 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.23ai
+ * Version: 0.3.23aj
+ *
+ * Changelog 0.3.23aj:
+ * - Strengthened the visual separation of edition/release header rows using a dark teal band derived from the existing pagination-pill palette.
+ * - Added a subtle vertical teal gradient, restrained teal borders and layered glow/diffusion so edition metadata reads as a deliberate section separator without becoming a full pill.
+ * - Increased edition-header vertical padding slightly for clearer rhythm between release groups and torrent rows.
+ * - Preserved the v0.3.23ai title-line reset and all pink torrent-status pills unchanged.
+ * - Preserved all v0.3.23ag geometry, artwork sizing, wrapping, row striping, pagination and column alignment.
  *
  * Changelog 0.3.23ai:
  * - Reworked edition/release header emphasis from pink to the established teal/cyan family used by pagination and search controls.
@@ -7665,4 +7672,64 @@ code {
 
 /* =========================================================
    END v0.3.23ai — EDITION TEAL EMPHASIS / TITLE COLOR RESET
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.23aj — EDITION HEADER TEAL BAND / SEPARATOR POLISH
+   ========================================================= */
+
+/*
+ * EDITION / RELEASE HEADER ROWS
+ *
+ * Build a more distinct separator band from the same dark teal family used
+ * by the pagination/header pills.  The base reference is #183040, softened
+ * into a very small vertical gradient so the row has depth without looking
+ * like another standalone button.
+ */
+#torrents #torrent_table > tbody > tr.group_torrent.edition > td {
+    background: linear-gradient( 180deg, #1A3343 0%, #183040 52%, #162C3B 100% ) !important;
+    border-top: 1px solid rgba(53, 176, 171, .34) !important;
+    border-bottom: 1px solid rgba(53, 176, 171, .20) !important;
+    box-shadow: inset 0 1px 0 rgba(139, 233, 253, .035), inset 0 0 12px rgba(53, 176, 171, .055), 0 0 8px rgba(53, 176, 171, .075) !important;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+}
+
+    /*
+ * Keep the metadata itself bright enough to sit clearly on the dark teal band,
+ * but slightly softer than the global cyan navigation so it still reads as
+ * structural information rather than a primary action.
+ */
+    #torrents #torrent_table > tbody > tr.group_torrent.edition > td:first-child,
+    #torrents #torrent_table > tbody > tr.group_torrent.edition > td:first-child a,
+    #torrents #torrent_table > tbody > tr.group_torrent.edition > td:first-child strong,
+    #torrents #torrent_table > tbody > tr.group_torrent.edition > td:first-child span {
+        color: #79E1DB !important;
+        font-weight: 600 !important;
+        text-shadow: 0 0 4px rgba(83, 207, 200, .62), 0 0 9px rgba(53, 176, 171, .34), 0 0 16px rgba(53, 176, 171, .14) !important;
+    }
+
+    /*
+ * A light left-side accent gives the edition row a subtle anchor without
+ * turning the whole separator into a bordered card/pill.
+ */
+    #torrents #torrent_table > tbody > tr.group_torrent.edition > td:first-child {
+        box-shadow: inset 3px 0 0 rgba(83, 207, 200, .72), inset 0 1px 0 rgba(139, 233, 253, .035), inset 0 0 12px rgba(53, 176, 171, .055), 0 0 8px rgba(53, 176, 171, .075) !important;
+    }
+
+/* Preserve the normal hover language but keep the teal identity visible. */
+#torrents #torrent_table > tbody > tr.group_torrent.edition:hover > td {
+    background: linear-gradient( 180deg, #1D3949 0%, #1A3444 52%, #183040 100% ) !important;
+    border-top-color: rgba(139, 233, 253, .48) !important;
+    border-bottom-color: rgba(139, 233, 253, .28) !important;
+    box-shadow: inset 0 1px 0 rgba(139, 233, 253, .05), inset 0 0 14px rgba(83, 207, 200, .08), 0 0 9px rgba(83, 207, 200, .12) !important;
+}
+
+    #torrents #torrent_table > tbody > tr.group_torrent.edition:hover > td:first-child {
+        box-shadow: inset 3px 0 0 rgba(139, 233, 253, .88), inset 0 1px 0 rgba(139, 233, 253, .05), inset 0 0 14px rgba(83, 207, 200, .08), 0 0 9px rgba(83, 207, 200, .12) !important;
+    }
+
+/* =========================================================
+   END v0.3.23aj — EDITION HEADER TEAL BAND / SEPARATOR POLISH
    ========================================================= */
