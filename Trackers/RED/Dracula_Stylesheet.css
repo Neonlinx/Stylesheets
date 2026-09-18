@@ -1,7 +1,14 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.23ag
+ * Version: 0.3.23ah
+ *
+ * Changelog 0.3.23ah:
+ * - Started the Torrents metadata/status emphasis pass from the clean v0.3.23ag checkpoint.
+ * - Highlighted only the bracketed release metadata after each Artist - Album title with the established Dracula pink/glow language, while keeping the actual title and tags cyan.
+ * - Restyled edition/release header rows (year / label / catalogue / media) with a stronger pink text glow and no pill surface.
+ * - Restyled torrent status labels such as Trumpable, Freeleech, Neutral Leech and Non-Normal as compact pink status pills with a stronger neon diffusion.
+ * - Preserved all v0.3.23ag layout, pagination, artwork, wrapping, row-striping and column geometry.
  *
  * Changelog 0.3.23ag:
  * - Increased the reserved right-side clearance again so very long release titles wrap earlier and never overlap the shifted Bookmark / Manual (+) controls.
@@ -7479,4 +7486,113 @@ code {
 
 /* =========================================================
    END v0.3.23ag — EXTRA TITLE CLEARANCE FOR BOOKMARK CONTROLS
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.23ah — TORRENT RELEASE METADATA / STATUS EMPHASIS
+   ========================================================= */
+
+/*
+ * MAIN GROUP TITLE
+ *
+ * Gazelle renders the Artist - Album title inside the emphasized title
+ * element and keeps the trailing [year] [release type] metadata in the same
+ * group-info line.  Make the parent pink first, then explicitly restore the
+ * actual title element and tag line to cyan.  This leaves only the trailing
+ * release metadata in the pink family when RED exposes it as plain text.
+ */
+#torrents #torrent_table tr.group .group_info {
+    color: var(--red-pink) !important;
+    text-shadow: 0 0 5px rgba(255, 121, 198, .50), 0 0 11px rgba(255, 121, 198, .26), 0 0 20px rgba(255, 121, 198, .12) !important;
+}
+
+    /* Artist - Album remains in the normal RED cyan language. */
+    #torrents #torrent_table tr.group .group_info > strong,
+    #torrents #torrent_table tr.group .group_info > strong a,
+    #torrents #torrent_table tr.group .group_info > b,
+    #torrents #torrent_table tr.group .group_info > b a {
+        color: var(--red-cyan) !important;
+        text-shadow: 0 0 4px rgba(139, 233, 253, .14), 0 0 8px rgba(139, 233, 253, .06) !important;
+    }
+
+    /*
+ * Some RED/Gazelle builds wrap [year] / [release type] in direct spans.
+ * When those wrappers are present, promote them to compact pink pills.
+ * The fallback above still gives plain-text metadata the requested pink glow.
+ */
+    #torrents #torrent_table tr.group .group_info > span:not(.tags):not(.add_bookmark):not(.torrent_label) {
+        display: inline-block !important;
+        box-sizing: border-box !important;
+        margin: 0 2px !important;
+        padding: 2px 7px 3px !important;
+        color: var(--red-pink) !important;
+        background: linear-gradient( 180deg, rgba(255, 121, 198, .13) 0%, rgba(255, 121, 198, .075) 100% ) !important;
+        border: 1px solid rgba(255, 121, 198, .66) !important;
+        border-radius: 7px !important;
+        box-shadow: 0 0 0 1px rgba(255, 121, 198, .08), 0 0 7px rgba(255, 121, 198, .30), 0 0 15px rgba(255, 121, 198, .15), inset 0 0 6px rgba(255, 121, 198, .05) !important;
+        text-shadow: 0 0 5px rgba(255, 121, 198, .58), 0 0 10px rgba(255, 121, 198, .24) !important;
+        line-height: 1.25 !important;
+    }
+
+    /* Genre/tag line must remain cyan, not inherit the pink metadata colour. */
+    #torrents #torrent_table tr.group .group_info .tags,
+    #torrents #torrent_table tr.group .group_info .tags a,
+    #torrents #torrent_table tr.group .group_info .tags span {
+        color: var(--red-cyan) !important;
+        text-shadow: 0 0 4px rgba(139, 233, 253, .12) !important;
+    }
+
+/*
+ * EDITION / RELEASE HEADER ROWS
+ *
+ * These are structural separators such as:
+ * 2015 / Interscope Records / catalogue / CD
+ * Give them the stronger pink text treatment without turning the whole row
+ * into another pill/card.
+ */
+#torrents #torrent_table > tbody > tr.group_torrent.edition > td:first-child,
+#torrents #torrent_table > tbody > tr.group_torrent.edition > td:first-child a,
+#torrents #torrent_table > tbody > tr.group_torrent.edition > td:first-child strong,
+#torrents #torrent_table > tbody > tr.group_torrent.edition > td:first-child span {
+    color: #FF8BCD !important;
+    text-shadow: 0 0 5px rgba(255, 121, 198, .55), 0 0 11px rgba(255, 121, 198, .28), 0 0 18px rgba(255, 121, 198, .12) !important;
+}
+
+/*
+ * TORRENT STATUS LABELS
+ *
+ * Re-introduce an intentional compact status pill for labels such as
+ * Trumpable / Freeleech / Neutral Leech / Non-Normal.  v0.3.23y removed the
+ * generic inherited pill; this block replaces it with our own controlled one.
+ */
+#torrents #torrent_table .torrent_label {
+    display: inline-block !important;
+    box-sizing: border-box !important;
+    margin: 0 2px !important;
+    padding: 2px 7px 3px !important;
+    color: var(--red-pink) !important;
+    background: linear-gradient( 180deg, rgba(255, 121, 198, .16) 0%, rgba(255, 121, 198, .08) 100% ) !important;
+    border: 1px solid rgba(255, 121, 198, .82) !important;
+    border-radius: 7px !important;
+    outline: 0 !important;
+    box-shadow: 0 0 0 1px rgba(255, 121, 198, .12), 0 0 8px rgba(255, 121, 198, .42), 0 0 17px rgba(255, 121, 198, .22), inset 0 0 7px rgba(255, 121, 198, .06) !important;
+    text-shadow: 0 0 5px rgba(255, 121, 198, .72), 0 0 11px rgba(255, 121, 198, .34) !important;
+    font-weight: 600 !important;
+    line-height: 1.20 !important;
+    white-space: nowrap !important;
+    transition: color .16s ease, background .16s ease, border-color .16s ease, box-shadow .16s ease, transform .16s ease !important;
+}
+
+    #torrents #torrent_table .torrent_label:hover {
+        color: #FFD3EB !important;
+        background: linear-gradient( 180deg, rgba(255, 121, 198, .24) 0%, rgba(255, 121, 198, .12) 100% ) !important;
+        border-color: rgba(255, 174, 219, .98) !important;
+        box-shadow: 0 0 0 1px rgba(255, 121, 198, .20), 0 0 9px rgba(255, 121, 198, .68), 0 0 19px rgba(255, 121, 198, .42), 0 0 32px rgba(255, 121, 198, .20), inset 0 0 8px rgba(255, 121, 198, .09) !important;
+        text-shadow: 0 0 5px rgba(255, 211, 235, .82), 0 0 12px rgba(255, 121, 198, .54) !important;
+        transform: translateY(-1px) !important;
+    }
+
+/* =========================================================
+   END v0.3.23ah — TORRENT RELEASE METADATA / STATUS EMPHASIS
    ========================================================= */
