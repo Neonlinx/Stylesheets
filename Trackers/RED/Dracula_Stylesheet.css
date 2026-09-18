@@ -1,7 +1,14 @@
 /*
  * RED — Dracula vBookmarks Theme
  * Author: Neonlinx
- * Version: 0.3.23ah
+ * Version: 0.3.23ai
+ *
+ * Changelog 0.3.23ai:
+ * - Reworked edition/release header emphasis from pink to the established teal/cyan family used by pagination and search controls.
+ * - Removed the broad pink inheritance from the main group-info line because RED mixes plain text nodes and links there, which caused artist names, separators and closing brackets to become pink unpredictably.
+ * - Restored the full Artist - Album line and bracket metadata to the normal cyan family until the exact RED markup is inspected and targeted safely.
+ * - Preserved the new compact pink status pills for Trumpable / Reported / Freeleech-style labels.
+ * - Preserved all v0.3.23ag geometry, artwork sizing, row striping, wrapping, pagination and column alignment.
  *
  * Changelog 0.3.23ah:
  * - Started the Torrents metadata/status emphasis pass from the clean v0.3.23ag checkpoint.
@@ -7595,4 +7602,67 @@ code {
 
 /* =========================================================
    END v0.3.23ah — TORRENT RELEASE METADATA / STATUS EMPHASIS
+   ========================================================= */
+
+
+/* =========================================================
+   v0.3.23ai — EDITION TEAL EMPHASIS / TITLE COLOR RESET
+   ========================================================= */
+
+/*
+ * MAIN GROUP TITLE RESET
+ *
+ * RED mixes links and plain text nodes inside .group_info. Coloring the
+ * parent affects separators and bracket fragments unpredictably. Keep the
+ * complete title line in the normal cyan family for now; the [year] /
+ * [release type] metadata will be targeted only after inspecting the live DOM.
+ */
+#torrents #torrent_table tr.group .group_info {
+    color: var(--red-cyan) !important;
+    text-shadow: none !important;
+}
+
+    #torrents #torrent_table tr.group .group_info > a,
+    #torrents #torrent_table tr.group .group_info > strong,
+    #torrents #torrent_table tr.group .group_info > strong a,
+    #torrents #torrent_table tr.group .group_info > b,
+    #torrents #torrent_table tr.group .group_info > b a {
+        color: var(--red-cyan) !important;
+        text-shadow: 0 0 4px rgba(139, 233, 253, .12), 0 0 8px rgba(139, 233, 253, .05) !important;
+    }
+
+    /*
+ * Disable the provisional direct-span metadata pill experiment from v0.3.23ah.
+ */
+    #torrents #torrent_table tr.group .group_info > span:not(.tags):not(.add_bookmark):not(.torrent_label) {
+        display: inline !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        color: var(--red-cyan) !important;
+        background: transparent !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        text-shadow: 0 0 4px rgba(139, 233, 253, .12) !important;
+    }
+
+/*
+ * EDITION / RELEASE HEADER ROWS
+ *
+ * Move the year / label / catalogue / media separator line into the same
+ * teal family used by pagination/search pills, but keep it as text rather
+ * than adding another pill surface.
+ */
+#torrents #torrent_table > tbody > tr.group_torrent.edition > td:first-child,
+#torrents #torrent_table > tbody > tr.group_torrent.edition > td:first-child a,
+#torrents #torrent_table > tbody > tr.group_torrent.edition > td:first-child strong,
+#torrents #torrent_table > tbody > tr.group_torrent.edition > td:first-child span {
+    color: #65D6D1 !important;
+    text-shadow: 0 0 4px rgba(53, 176, 171, .62), 0 0 9px rgba(53, 176, 171, .34), 0 0 16px rgba(53, 176, 171, .16) !important;
+}
+
+/* Keep the v0.3.23ah status pills untouched. */
+
+/* =========================================================
+   END v0.3.23ai — EDITION TEAL EMPHASIS / TITLE COLOR RESET
    ========================================================= */
